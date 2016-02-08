@@ -1,2 +1,2 @@
 # planetads
-A Directory application
+A Directory application system

@@ -1,0 +1,410 @@
+[03-Sep-2015 08:33:26 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/views/admin/view_high_probability.php on line 66
+[03-Sep-2015 09:22:06 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting ',' or ';' in /home/jeromexavierk/public_html/idms/application/views/admin/view_indents.php on line 92
+[03-Sep-2015 09:22:31 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/views/admin/view_indents.php on line 65
+[03-Sep-2015 09:23:44 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/views/admin/view_indents.php on line 65
+[04-Sep-2015 01:57:22 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/views/admin/view_high_probability.php on line 115
+[04-Sep-2015 02:14:39 America/Chicago] PHP Warning:  Unterminated comment starting line 226 in /home/jeromexavierk/public_html/idms/application/views/admin/header.php on line 226
+[04-Sep-2015 04:07:26 America/Chicago] PHP Parse error:  syntax error, unexpected 'Admin' (T_STRING) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 1
+[04-Sep-2015 04:07:28 America/Chicago] PHP Parse error:  syntax error, unexpected 'Admin' (T_STRING) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 1
+[04-Sep-2015 04:07:57 America/Chicago] PHP Parse error:  syntax error, unexpected 'Admin' (T_STRING) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 1
+[04-Sep-2015 04:08:00 America/Chicago] PHP Parse error:  syntax error, unexpected 'Admin' (T_STRING) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 1
+[04-Sep-2015 04:08:02 America/Chicago] PHP Parse error:  syntax error, unexpected 'Admin' (T_STRING) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 1
+[04-Sep-2015 04:08:04 America/Chicago] PHP Parse error:  syntax error, unexpected 'Admin' (T_STRING) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 1
+[04-Sep-2015 04:43:02 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 1
+[04-Sep-2015 04:43:26 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 1
+[04-Sep-2015 04:43:28 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 1
+[04-Sep-2015 04:43:30 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 1
+[04-Sep-2015 04:45:49 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 1
+[04-Sep-2015 04:45:51 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 1
+[04-Sep-2015 04:45:53 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 1
+[04-Sep-2015 04:48:21 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 1
+[04-Sep-2015 04:48:26 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 1
+[04-Sep-2015 04:48:34 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 1
+[04-Sep-2015 04:50:23 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 1
+[04-Sep-2015 04:50:31 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 1
+[04-Sep-2015 04:50:37 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 1
+[04-Sep-2015 04:50:46 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 1
+[04-Sep-2015 04:55:21 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 1
+[04-Sep-2015 04:55:22 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 1
+[04-Sep-2015 04:56:19 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 1
+[04-Sep-2015 05:02:57 America/Chicago] PHP Parse error:  syntax error, unexpected 'ate' (T_STRING) in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 81
+[04-Sep-2015 05:03:00 America/Chicago] PHP Parse error:  syntax error, unexpected 'ate' (T_STRING) in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 81
+[04-Sep-2015 05:03:50 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 197
+[04-Sep-2015 05:03:52 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 197
+[04-Sep-2015 05:03:54 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 197
+[04-Sep-2015 05:04:20 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 197
+[04-Sep-2015 05:04:23 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 197
+[04-Sep-2015 05:07:30 America/Chicago] PHP Parse error:  syntax error, unexpected 'ate' (T_STRING) in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 286
+[04-Sep-2015 05:07:33 America/Chicago] PHP Parse error:  syntax error, unexpected 'ate' (T_STRING) in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 286
+[04-Sep-2015 05:07:58 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 400
+[04-Sep-2015 05:08:02 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 400
+[04-Sep-2015 05:13:11 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/views/admin/high_probability.php on line 300
+[04-Sep-2015 05:29:49 America/Chicago] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 24
+[04-Sep-2015 05:29:52 America/Chicago] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 24
+[04-Sep-2015 05:29:54 America/Chicago] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 24
+[04-Sep-2015 05:32:54 America/Chicago] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 28
+[04-Sep-2015 05:32:55 America/Chicago] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 28
+[04-Sep-2015 05:32:56 America/Chicago] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 28
+[04-Sep-2015 05:32:57 America/Chicago] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 28
+[04-Sep-2015 05:58:23 America/Chicago] PHP Fatal error:  Cannot redeclare Admin_model::pr_resource_list() in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 135
+[04-Sep-2015 05:58:36 America/Chicago] PHP Fatal error:  Cannot redeclare Admin_model::pr_resource_list() in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 135
+[04-Sep-2015 06:34:38 America/Chicago] PHP Parse error:  syntax error, unexpected '$query' (T_VARIABLE) in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 135
+[04-Sep-2015 06:35:07 America/Chicago] PHP Parse error:  syntax error, unexpected '$query' (T_VARIABLE) in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 135
+[04-Sep-2015 07:43:16 America/Chicago] PHP Fatal error:  Cannot redeclare Admin_model::update_indents() in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 135
+[04-Sep-2015 07:43:17 America/Chicago] PHP Fatal error:  Cannot redeclare Admin_model::update_indents() in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 135
+[04-Sep-2015 07:44:50 America/Chicago] PHP Fatal error:  Call to undefined method Admin_model::list_grades() in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 310
+[04-Sep-2015 07:44:54 America/Chicago] PHP Fatal error:  Call to undefined method Admin_model::list_grades() in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 310
+[04-Sep-2015 07:45:41 America/Chicago] PHP Fatal error:  Call to undefined method Admin_model::list_grades() in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 310
+[04-Sep-2015 07:45:43 America/Chicago] PHP Fatal error:  Call to undefined method Admin_model::list_grades() in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 310
+[04-Sep-2015 07:45:46 America/Chicago] PHP Fatal error:  Call to undefined method Admin_model::list_grades() in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 310
+[04-Sep-2015 07:56:13 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/grades.php on line 1
+[04-Sep-2015 07:56:22 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/grades.php on line 1
+[04-Sep-2015 07:56:58 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/grades.php on line 1
+[04-Sep-2015 07:57:33 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/grades.php on line 1
+[04-Sep-2015 07:59:40 America/Chicago] PHP Parse error:  syntax error, unexpected 'row' (T_STRING), expecting variable (T_VARIABLE) or '$' in /home/jeromexavierk/public_html/idms/application/views/admin/grades.php on line 26
+[04-Sep-2015 07:59:42 America/Chicago] PHP Parse error:  syntax error, unexpected 'row' (T_STRING), expecting variable (T_VARIABLE) or '$' in /home/jeromexavierk/public_html/idms/application/views/admin/grades.php on line 26
+[04-Sep-2015 07:59:43 America/Chicago] PHP Parse error:  syntax error, unexpected 'row' (T_STRING), expecting variable (T_VARIABLE) or '$' in /home/jeromexavierk/public_html/idms/application/views/admin/grades.php on line 26
+[04-Sep-2015 08:00:02 America/Chicago] PHP Parse error:  syntax error, unexpected 'row' (T_STRING), expecting variable (T_VARIABLE) or '$' in /home/jeromexavierk/public_html/idms/application/views/admin/grades.php on line 26
+[04-Sep-2015 08:00:04 America/Chicago] PHP Parse error:  syntax error, unexpected 'row' (T_STRING), expecting variable (T_VARIABLE) or '$' in /home/jeromexavierk/public_html/idms/application/views/admin/grades.php on line 26
+[04-Sep-2015 08:12:06 America/Chicago] PHP Fatal error:  Call to undefined method Admin_model::delete_grade() in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 343
+[07-Sep-2015 02:08:40 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting ')' in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 267
+[07-Sep-2015 05:13:53 America/Chicago] PHP Fatal error:  Cannot redeclare Admin_model::view_single_visa_type() in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 340
+[07-Sep-2015 05:13:56 America/Chicago] PHP Fatal error:  Cannot redeclare Admin_model::view_single_visa_type() in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 340
+[07-Sep-2015 05:14:22 America/Chicago] PHP Parse error:  syntax error, unexpected ''act' (T_ENCAPSED_AND_WHITESPACE) in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 140
+[07-Sep-2015 05:14:32 America/Chicago] PHP Fatal error:  Cannot redeclare Admin_model::delete_visa_type() in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 348
+[07-Sep-2015 05:14:34 America/Chicago] PHP Fatal error:  Cannot redeclare Admin_model::delete_visa_type() in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 348
+[07-Sep-2015 05:33:50 America/Chicago] PHP Fatal error:  Cannot redeclare Admin::add_project_type() in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 518
+[07-Sep-2015 05:33:51 America/Chicago] PHP Fatal error:  Cannot redeclare Admin::add_project_type() in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 518
+[07-Sep-2015 05:53:31 America/Chicago] PHP Fatal error:  Call to undefined method Admin_model::list_opportunity() in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 168
+[07-Sep-2015 05:53:34 America/Chicago] PHP Fatal error:  Call to undefined method Admin_model::list_opportunity() in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 168
+[07-Sep-2015 05:59:12 America/Chicago] PHP Fatal error:  Call to undefined method Admin_model::list_opportunity() in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 168
+[08-Sep-2015 00:58:05 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 452
+[08-Sep-2015 00:58:07 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 452
+[08-Sep-2015 00:59:20 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 86
+[08-Sep-2015 01:45:49 America/Chicago] PHP Warning:  Unterminated comment starting line 377 in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 377
+[08-Sep-2015 01:45:49 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 380
+[08-Sep-2015 03:57:56 America/Chicago] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 210
+[08-Sep-2015 03:57:59 America/Chicago] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 210
+[08-Sep-2015 03:58:12 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 422
+[08-Sep-2015 04:05:00 America/Chicago] PHP Parse error:  syntax error, unexpected '$i' (T_VARIABLE), expecting ',' or ';' in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 215
+[08-Sep-2015 04:05:02 America/Chicago] PHP Parse error:  syntax error, unexpected '$i' (T_VARIABLE), expecting ',' or ';' in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 215
+[08-Sep-2015 04:15:39 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 202
+[08-Sep-2015 04:17:03 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 202
+[08-Sep-2015 04:30:41 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 552
+[08-Sep-2015 06:13:01 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 201
+[08-Sep-2015 06:13:04 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 201
+[08-Sep-2015 06:13:19 America/Chicago] PHP Parse error:  syntax error, unexpected ''oppo' (T_ENCAPSED_AND_WHITESPACE), expecting ']' in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 208
+[08-Sep-2015 06:14:08 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 208
+[08-Sep-2015 06:57:07 America/Chicago] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 209
+[08-Sep-2015 06:57:10 America/Chicago] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 209
+[08-Sep-2015 06:57:24 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 86
+[08-Sep-2015 06:57:26 America/Chicago] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 213
+[08-Sep-2015 06:57:37 America/Chicago] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 213
+[08-Sep-2015 06:57:38 America/Chicago] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 213
+[08-Sep-2015 06:57:40 America/Chicago] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 213
+[08-Sep-2015 06:57:58 America/Chicago] PHP Parse error:  syntax error, unexpected ''<thead><tr><th>Resources</th>' (T_ENCAPSED_AND_WHITESPACE) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 246
+[08-Sep-2015 07:05:15 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 86
+[08-Sep-2015 07:11:45 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting '(' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 99
+[08-Sep-2015 07:14:22 America/Chicago] PHP Parse error:  syntax error, unexpected '=', expecting ')' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 90
+[08-Sep-2015 07:14:24 America/Chicago] PHP Parse error:  syntax error, unexpected '=', expecting ')' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 90
+[08-Sep-2015 07:14:39 America/Chicago] PHP Parse error:  syntax error, unexpected '=', expecting ')' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 91
+[08-Sep-2015 07:14:41 America/Chicago] PHP Parse error:  syntax error, unexpected '=', expecting ')' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 91
+[08-Sep-2015 07:14:42 America/Chicago] PHP Parse error:  syntax error, unexpected '=', expecting ')' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 91
+[08-Sep-2015 07:14:58 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting function (T_FUNCTION) in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 99
+[08-Sep-2015 07:14:58 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting ')' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 422
+[08-Sep-2015 07:45:04 America/Chicago] PHP Parse error:  syntax error, unexpected ')' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 89
+[08-Sep-2015 07:45:06 America/Chicago] PHP Parse error:  syntax error, unexpected ')' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 89
+[08-Sep-2015 07:45:15 America/Chicago] PHP Fatal error:  Class 'Admin_model' not found in /home/jeromexavierk/public_html/idms/system/core/Loader.php on line 304
+[08-Sep-2015 07:46:13 America/Chicago] PHP Parse error:  syntax error, unexpected 'print_r' (T_STRING) in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 90
+[08-Sep-2015 07:46:15 America/Chicago] PHP Parse error:  syntax error, unexpected 'print_r' (T_STRING) in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 90
+[08-Sep-2015 07:46:28 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 52
+[08-Sep-2015 07:46:30 America/Chicago] PHP Parse error:  syntax error, unexpected 'fu' (T_STRING), expecting function (T_FUNCTION) in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 247
+[08-Sep-2015 08:08:57 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 86
+[08-Sep-2015 08:08:59 America/Chicago] PHP Parse error:  syntax error, unexpected ''joined' (T_ENCAPSED_AND_WHITESPACE), expecting ')' in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 392
+[08-Sep-2015 08:09:00 America/Chicago] PHP Parse error:  syntax error, unexpected ''Added succ' (T_ENCAPSED_AND_WHITESPACE) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 669
+[08-Sep-2015 08:11:07 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 86
+[10-Sep-2015 04:55:26 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/views/admin/view_opportunity.php on line 110
+[10-Sep-2015 06:31:44 America/Chicago] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 192
+[10-Sep-2015 07:20:02 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 138
+[10-Sep-2015 07:27:34 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 138
+[10-Sep-2015 07:34:40 America/Chicago] PHP Fatal error:  Call to undefined method Admin_model::view_single_opportunity() in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 328
+[10-Sep-2015 07:34:42 America/Chicago] PHP Fatal error:  Call to undefined method Admin_model::view_single_opportunity() in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 328
+[10-Sep-2015 07:47:26 America/Chicago] PHP Fatal error:  Call to undefined method CI_DB_mysql_driver::result_array() in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 112
+[10-Sep-2015 07:47:27 America/Chicago] PHP Fatal error:  Call to undefined method CI_DB_mysql_driver::result_array() in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 112
+[10-Sep-2015 07:47:28 America/Chicago] PHP Fatal error:  Call to undefined method CI_DB_mysql_driver::result_array() in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 112
+[10-Sep-2015 07:47:29 America/Chicago] PHP Fatal error:  Call to undefined method CI_DB_mysql_driver::result_array() in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 112
+[10-Sep-2015 07:47:31 America/Chicago] PHP Fatal error:  Call to undefined method CI_DB_mysql_driver::result_array() in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 112
+[10-Sep-2015 07:48:17 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 294
+[10-Sep-2015 07:48:18 America/Chicago] PHP Fatal error:  Call to undefined method CI_DB_mysql_driver::result() in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 113
+[10-Sep-2015 07:48:20 America/Chicago] PHP Fatal error:  Call to undefined method CI_DB_mysql_driver::result() in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 113
+[10-Sep-2015 07:48:21 America/Chicago] PHP Fatal error:  Call to undefined method CI_DB_mysql_driver::result() in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 113
+[10-Sep-2015 07:48:22 America/Chicago] PHP Fatal error:  Call to undefined method CI_DB_mysql_driver::result() in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 113
+[10-Sep-2015 07:50:32 America/Chicago] PHP Fatal error:  Call to undefined method CI_DB_mysql_driver::result() in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 113
+[10-Sep-2015 07:50:33 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting '(' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 95
+[10-Sep-2015 07:50:34 America/Chicago] PHP Parse error:  syntax error, unexpected '/' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 114
+[10-Sep-2015 07:50:35 America/Chicago] PHP Parse error:  syntax error, unexpected '/' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 114
+[10-Sep-2015 07:50:36 America/Chicago] PHP Parse error:  syntax error, unexpected '/' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 114
+[10-Sep-2015 08:03:02 America/Chicago] PHP Fatal error:  Call to a member function result() on a non-object in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 116
+[10-Sep-2015 08:03:03 America/Chicago] PHP Fatal error:  Call to a member function result() on a non-object in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 116
+[10-Sep-2015 08:03:05 America/Chicago] PHP Fatal error:  Call to a member function result() on a non-object in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 116
+[10-Sep-2015 08:03:38 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting '(' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 95
+[10-Sep-2015 08:03:40 America/Chicago] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 116
+[10-Sep-2015 08:03:44 America/Chicago] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 116
+[10-Sep-2015 08:04:13 America/Chicago] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 116
+[10-Sep-2015 08:04:48 America/Chicago] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 116
+[10-Sep-2015 08:04:50 America/Chicago] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 117
+[10-Sep-2015 08:04:52 America/Chicago] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 117
+[10-Sep-2015 08:05:06 America/Chicago] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 117
+[10-Sep-2015 08:06:15 America/Chicago] PHP Fatal error:  Function name must be a string in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 117
+[10-Sep-2015 08:06:16 America/Chicago] PHP Fatal error:  Function name must be a string in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 117
+[10-Sep-2015 08:06:18 America/Chicago] PHP Fatal error:  Function name must be a string in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 117
+[10-Sep-2015 08:06:19 America/Chicago] PHP Fatal error:  Function name must be a string in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 117
+[10-Sep-2015 08:06:20 America/Chicago] PHP Fatal error:  Function name must be a string in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 117
+[10-Sep-2015 08:06:30 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting '(' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 95
+[10-Sep-2015 08:13:23 America/Chicago] PHP Warning:  Unterminated comment starting line 233 in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 233
+[10-Sep-2015 08:13:23 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting function (T_FUNCTION) in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 233
+[10-Sep-2015 08:16:31 America/Chicago] PHP Fatal error:  Class 'Admin_model' not found in /home/jeromexavierk/public_html/idms/system/core/Loader.php on line 304
+[10-Sep-2015 08:21:11 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 175
+[11-Sep-2015 01:19:23 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 264
+[11-Sep-2015 01:19:25 America/Chicago] PHP Fatal error:  Call to a member function view_single_opportunity_skills() on a non-object in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 339
+[11-Sep-2015 01:19:26 America/Chicago] PHP Fatal error:  Call to a member function view_single_opportunity_skills() on a non-object in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 339
+[11-Sep-2015 01:19:27 America/Chicago] PHP Fatal error:  Call to a member function view_single_opportunity_skills() on a non-object in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 339
+[11-Sep-2015 01:19:28 America/Chicago] PHP Fatal error:  Call to a member function view_single_opportunity_skills() on a non-object in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 339
+[11-Sep-2015 01:19:44 America/Chicago] PHP Fatal error:  Call to a member function view_single_opportunity_skills() on a non-object in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 339
+[11-Sep-2015 01:19:45 America/Chicago] PHP Parse error:  syntax error, unexpected '();' in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 168
+[11-Sep-2015 01:21:00 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting '(' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 95
+[11-Sep-2015 01:25:33 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 86
+[11-Sep-2015 01:27:11 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 501
+[11-Sep-2015 02:03:50 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 195
+[11-Sep-2015 02:32:04 America/Chicago] PHP Parse error:  syntax error, unexpected 'functio' (T_STRING), expecting function (T_FUNCTION) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 40
+[11-Sep-2015 02:32:06 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 264
+[11-Sep-2015 02:34:12 America/Chicago] PHP Parse error:  syntax error, unexpected ''admin/v' (T_ENCAPSED_AND_WHITESPACE), expecting ')' in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 740
+[11-Sep-2015 02:36:14 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting ')' in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 198
+[11-Sep-2015 02:42:59 America/Chicago] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 143
+[11-Sep-2015 02:43:39 America/Chicago] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 143
+[11-Sep-2015 02:43:40 America/Chicago] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 143
+[11-Sep-2015 02:43:41 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting '(' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 95
+[11-Sep-2015 02:43:42 America/Chicago] PHP Fatal error:  Function name must be a string in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 143
+[11-Sep-2015 02:43:43 America/Chicago] PHP Fatal error:  Function name must be a string in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 143
+[11-Sep-2015 02:44:17 America/Chicago] PHP Fatal error:  Function name must be a string in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 143
+[11-Sep-2015 02:44:18 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting '(' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 95
+[11-Sep-2015 02:44:19 America/Chicago] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 144
+[11-Sep-2015 02:45:06 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 264
+[11-Sep-2015 04:36:56 America/Chicago] PHP Fatal error:  [] operator not supported for strings in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 295
+[11-Sep-2015 04:37:00 America/Chicago] PHP Fatal error:  [] operator not supported for strings in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 295
+[11-Sep-2015 04:37:05 America/Chicago] PHP Fatal error:  [] operator not supported for strings in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 295
+[11-Sep-2015 04:38:17 America/Chicago] PHP Fatal error:  [] operator not supported for strings in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 295
+[11-Sep-2015 04:38:20 America/Chicago] PHP Fatal error:  [] operator not supported for strings in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 295
+[11-Sep-2015 04:38:24 America/Chicago] PHP Fatal error:  [] operator not supported for strings in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 295
+[11-Sep-2015 04:38:39 America/Chicago] PHP Fatal error:  [] operator not supported for strings in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 295
+[11-Sep-2015 04:39:20 America/Chicago] PHP Fatal error:  [] operator not supported for strings in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 295
+[11-Sep-2015 04:39:24 America/Chicago] PHP Fatal error:  [] operator not supported for strings in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 295
+[11-Sep-2015 04:39:42 America/Chicago] PHP Fatal error:  [] operator not supported for strings in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 295
+[11-Sep-2015 04:39:44 America/Chicago] PHP Fatal error:  [] operator not supported for strings in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 295
+[11-Sep-2015 04:39:52 America/Chicago] PHP Fatal error:  [] operator not supported for strings in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 295
+[11-Sep-2015 04:39:55 America/Chicago] PHP Fatal error:  [] operator not supported for strings in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 295
+[11-Sep-2015 04:40:50 America/Chicago] PHP Fatal error:  [] operator not supported for strings in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 296
+[11-Sep-2015 04:42:00 America/Chicago] PHP Fatal error:  [] operator not supported for strings in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 296
+[11-Sep-2015 04:42:03 America/Chicago] PHP Fatal error:  [] operator not supported for strings in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 296
+[11-Sep-2015 04:42:05 America/Chicago] PHP Fatal error:  [] operator not supported for strings in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 296
+[11-Sep-2015 05:02:16 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 763
+[11-Sep-2015 05:09:05 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 641
+[11-Sep-2015 05:09:06 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 870
+[11-Sep-2015 05:11:23 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 394
+[11-Sep-2015 05:12:28 America/Chicago] PHP Parse error:  syntax error, unexpected ''planned_release' (T_ENCAPSED_AND_WHITESPACE), expecting ')' in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 481
+[11-Sep-2015 05:28:27 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/views/admin/opportunity.php on line 334
+[11-Sep-2015 05:31:24 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 86
+[11-Sep-2015 06:29:03 America/Chicago] PHP Warning:  Unterminated comment starting line 74 in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 74
+[11-Sep-2015 06:29:03 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting function (T_FUNCTION) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 86
+[11-Sep-2015 06:29:05 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 737
+[11-Sep-2015 07:05:29 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting :: (T_PAAMAYIM_NEKUDOTAYIM) in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 181
+[11-Sep-2015 07:05:31 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting :: (T_PAAMAYIM_NEKUDOTAYIM) in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 181
+[11-Sep-2015 07:05:32 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting :: (T_PAAMAYIM_NEKUDOTAYIM) in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 181
+[11-Sep-2015 07:05:34 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting :: (T_PAAMAYIM_NEKUDOTAYIM) in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 181
+[11-Sep-2015 07:05:36 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting :: (T_PAAMAYIM_NEKUDOTAYIM) in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 181
+[11-Sep-2015 07:07:10 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting :: (T_PAAMAYIM_NEKUDOTAYIM) in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 181
+[11-Sep-2015 07:07:12 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting :: (T_PAAMAYIM_NEKUDOTAYIM) in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 181
+[11-Sep-2015 07:07:13 America/Chicago] PHP Parse error:  syntax error, unexpected ''res_na' (T_ENCAPSED_AND_WHITESPACE), expecting ']' in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 399
+[11-Sep-2015 07:07:14 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting :: (T_PAAMAYIM_NEKUDOTAYIM) in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 181
+[11-Sep-2015 07:07:15 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting :: (T_PAAMAYIM_NEKUDOTAYIM) in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 181
+[11-Sep-2015 07:07:16 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting :: (T_PAAMAYIM_NEKUDOTAYIM) in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 181
+[11-Sep-2015 07:07:17 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting :: (T_PAAMAYIM_NEKUDOTAYIM) in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 181
+[11-Sep-2015 07:07:17 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting :: (T_PAAMAYIM_NEKUDOTAYIM) in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 181
+[11-Sep-2015 07:08:29 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting :: (T_PAAMAYIM_NEKUDOTAYIM) in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 74
+[11-Sep-2015 07:08:30 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting :: (T_PAAMAYIM_NEKUDOTAYIM) in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 74
+[11-Sep-2015 07:08:31 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting :: (T_PAAMAYIM_NEKUDOTAYIM) in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 74
+[11-Sep-2015 07:08:32 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting :: (T_PAAMAYIM_NEKUDOTAYIM) in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 74
+[11-Sep-2015 07:08:33 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting :: (T_PAAMAYIM_NEKUDOTAYIM) in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 74
+[11-Sep-2015 07:09:08 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting :: (T_PAAMAYIM_NEKUDOTAYIM) in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 75
+[11-Sep-2015 07:09:10 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting :: (T_PAAMAYIM_NEKUDOTAYIM) in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 75
+[11-Sep-2015 07:09:10 America/Chicago] PHP Parse error:  syntax error, unexpected ')', expecting :: (T_PAAMAYIM_NEKUDOTAYIM) in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 75
+[11-Sep-2015 07:12:44 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 75
+[11-Sep-2015 07:12:45 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 75
+[11-Sep-2015 07:12:46 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 75
+[11-Sep-2015 07:38:26 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting '(' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 95
+[11-Sep-2015 07:42:56 America/Chicago] PHP Parse error:  syntax error, unexpected '+', expecting variable (T_VARIABLE) or '$' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 521
+[11-Sep-2015 07:42:57 America/Chicago] PHP Parse error:  syntax error, unexpected '+', expecting variable (T_VARIABLE) or '$' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 521
+[11-Sep-2015 07:42:58 America/Chicago] PHP Parse error:  syntax error, unexpected '+', expecting variable (T_VARIABLE) or '$' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 521
+[11-Sep-2015 07:42:59 America/Chicago] PHP Parse error:  syntax error, unexpected '+', expecting variable (T_VARIABLE) or '$' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 521
+[11-Sep-2015 07:43:15 America/Chicago] PHP Fatal error:  Class 'Admin_model' not found in /home/jeromexavierk/public_html/idms/system/core/Loader.php on line 304
+[11-Sep-2015 07:43:16 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 521
+[11-Sep-2015 07:43:17 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 521
+[11-Sep-2015 07:43:18 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 521
+[11-Sep-2015 07:43:19 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 521
+[11-Sep-2015 07:44:01 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 521
+[11-Sep-2015 07:44:02 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting '(' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 95
+[11-Sep-2015 07:44:03 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 521
+[11-Sep-2015 07:44:04 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 521
+[11-Sep-2015 07:44:05 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 521
+[11-Sep-2015 07:44:54 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 521
+[11-Sep-2015 07:44:55 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 521
+[11-Sep-2015 07:44:56 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 521
+[11-Sep-2015 07:44:57 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 521
+[11-Sep-2015 07:44:58 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 521
+[11-Sep-2015 07:45:10 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 521
+[11-Sep-2015 07:47:41 America/Chicago] PHP Fatal error:  Class 'Admin_model' not found in /home/jeromexavierk/public_html/idms/system/core/Loader.php on line 304
+[11-Sep-2015 07:47:57 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting ';' or '{' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 255
+[11-Sep-2015 07:57:45 America/Chicago] PHP Parse error:  syntax error, unexpected 'only' (T_STRING) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 299
+[11-Sep-2015 07:57:46 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting ';' or '{' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 255
+[11-Sep-2015 07:57:47 America/Chicago] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 525
+[11-Sep-2015 07:57:48 America/Chicago] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 525
+[11-Sep-2015 07:57:49 America/Chicago] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 525
+[11-Sep-2015 07:57:51 America/Chicago] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 525
+[11-Sep-2015 07:57:52 America/Chicago] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 525
+[11-Sep-2015 07:58:03 America/Chicago] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 525
+[11-Sep-2015 07:58:04 America/Chicago] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 525
+[11-Sep-2015 07:58:24 America/Chicago] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 525
+[11-Sep-2015 07:58:25 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting ';' or '{' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 255
+[11-Sep-2015 08:00:33 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting ')' in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 334
+[11-Sep-2015 08:03:11 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting '(' in /home/jeromexavierk/public_html/idms/application/models/admin_model.php on line 95
+[11-Sep-2015 08:04:03 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting ')' in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 301
+[11-Sep-2015 08:08:32 America/Chicago] PHP Parse error:  syntax error, unexpected ''locat' (T_ENCAPSED_AND_WHITESPACE), expecting ')' in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 702
+[11-Sep-2015 08:08:34 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 822
+[11-Sep-2015 08:15:13 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 83
+[11-Sep-2015 08:15:15 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 83
+[11-Sep-2015 08:15:16 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 83
+[11-Sep-2015 08:15:17 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/jeromexavierk/public_html/idms/application/views/admin/dashboard.php on line 83
+[12-Sep-2015 00:48:58 America/Chicago] PHP Warning:  Unterminated comment starting line 86 in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 86
+[12-Sep-2015 00:48:58 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting function (T_FUNCTION) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 92
+[12-Sep-2015 00:54:48 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting ')' in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 552
+[12-Sep-2015 00:55:29 America/Chicago] PHP Warning:  Unterminated comment starting line 90 in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 90
+[12-Sep-2015 00:55:29 America/Chicago] PHP Parse error:  syntax error, unexpected end of file, expecting function (T_FUNCTION) in /home/jeromexavierk/public_html/idms/application/controllers/admin.php on line 91
+[12-Sep-2015 02:40:42 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/jeromexavierk/public_html/idms/application/views/admin/footer.php on line 42
+[12-Sep-2015 02:40:44 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/jeromexavierk/public_html/idms/application/views/admin/footer.php on line 42
+[12-Sep-2015 02:41:01 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/jeromexavierk/public_html/idms/application/views/admin/footer.php on line 42
+[12-Sep-2015 02:41:04 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/jeromexavierk/public_html/idms/application/views/admin/footer.php on line 42
+[12-Sep-2015 07:30:07 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/jeromexavierk/public_html/idms/application/views/admin/footer.php on line 30
+[12-Sep-2015 07:30:10 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/jeromexavierk/public_html/idms/application/views/admin/footer.php on line 30
+[12-Sep-2015 07:30:12 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/jeromexavierk/public_html/idms/application/views/admin/footer.php on line 30
+[12-Sep-2015 07:30:16 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/jeromexavierk/public_html/idms/application/views/admin/footer.php on line 30
+[12-Sep-2015 07:30:29 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home/jeromexavierk/public_html/idms/application/views/admin/footer.php on line 30
+[12-Sep-2015 07:50:14 America/Chicago] PHP Parse error:  syntax error, unexpected ''mode_of_fulfillment' (T_ENCAPSED_AND_WHITESPACE), expecting ']' in /home/jeromexavierk/public_html/idms/application/views/admin/view_opportunity.php on line 106
+[14-Sep-2015 06:29:21 America/Chicago] PHP Parse error:  syntax error, unexpected '=', expecting variable (T_VARIABLE) or '$' in /home/jeromexavierk/public_html/idms/application/views/admin/view_opportunity.php on line 122
+[14-Sep-2015 06:29:22 America/Chicago] PHP Parse error:  syntax error, unexpected '=', expecting variable (T_VARIABLE) or '$' in /home/jeromexavierk/public_html/idms/application/views/admin/view_opportunity.php on line 122
+[14-Sep-2015 06:29:23 America/Chicago] PHP Parse error:  syntax error, unexpected '=', expecting variable (T_VARIABLE) or '$' in /home/jeromexavierk/public_html/idms/application/views/admin/view_opportunity.php on line 122
+[14-Sep-2015 06:29:24 America/Chicago] PHP Parse error:  syntax error, unexpected '=', expecting variable (T_VARIABLE) or '$' in /home/jeromexavierk/public_html/idms/application/views/admin/view_opportunity.php on line 122
+[14-Sep-2015 06:29:25 America/Chicago] PHP Parse error:  syntax error, unexpected '=', expecting variable (T_VARIABLE) or '$' in /home/jeromexavierk/public_html/idms/application/views/admin/view_opportunity.php on line 122
+[15-Sep-2015 09:06:19 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:06:46 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:07:17 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:07:19 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:07:45 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:07:46 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:08:16 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:08:17 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:08:18 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:09:50 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:10:23 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:10:25 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:10:26 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:10:38 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:11:01 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:11:02 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:11:03 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:12:00 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:12:01 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:12:02 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:12:03 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:12:04 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:12:05 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:12:05 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:12:05 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:12:06 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:12:06 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:13:51 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:13:52 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:13:53 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:13:55 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:14:03 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:14:04 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[15-Sep-2015 09:14:05 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home/jeromexavierk/public_html/idms/application/views/admin/resource_list.php on line 1
+[11-Dec-2015 07:43:49] PHP Fatal error:  Call to undefined method Admin_model::admin_entry() in /home/juliston/public_html/demo/lottery/application/controllers/admin.php on line 65
+[11-Dec-2015 07:45:09] PHP Fatal error:  Call to undefined method Admin_model::admin_entry() in /home/juliston/public_html/demo/lottery/application/controllers/admin.php on line 65
+[14-Dec-2015 03:36:17] PHP Parse error:  syntax error, unexpected $end in /home/juliston/public_html/demo/lottery/application/views/admin/admin_entry.php on line 32
+[14-Dec-2015 04:01:19] PHP Fatal error:  Call to undefined method Admin_model::admin_entry() in /home/juliston/public_html/demo/lottery/application/controllers/admin.php on line 92
+[14-Dec-2015 04:11:07] PHP Fatal error:  Call to undefined function  format_date() in /home/juliston/public_html/demo/lottery/application/controllers/admin.php on line 102
+[14-Dec-2015 04:11:30] PHP Parse error:  syntax error, unexpected $end in /home/juliston/public_html/demo/lottery/application/controllers/admin.php on line 114
+[14-Dec-2015 04:11:33] PHP Fatal error:  Call to undefined function  format_date() in /home/juliston/public_html/demo/lottery/application/controllers/admin.php on line 102
+[14-Dec-2015 04:11:35] PHP Fatal error:  Call to undefined function  format_date() in /home/juliston/public_html/demo/lottery/application/controllers/admin.php on line 102
+[14-Dec-2015 04:12:03] PHP Fatal error:  Call to undefined function  __format_date() in /home/juliston/public_html/demo/lottery/application/controllers/admin.php on line 102
+[14-Dec-2015 04:12:06] PHP Fatal error:  Call to undefined function  __format_date() in /home/juliston/public_html/demo/lottery/application/controllers/admin.php on line 102
+[14-Dec-2015 04:54:10] PHP Fatal error:  Call to a member function format() on a non-object in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 51
+[14-Dec-2015 04:54:49] PHP Fatal error:  Class 'Date' not found in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 50
+[14-Dec-2015 04:54:52] PHP Fatal error:  Class 'Date' not found in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 50
+[14-Dec-2015 04:55:05] PHP Fatal error:  Class 'date' not found in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 50
+[14-Dec-2015 04:56:38] PHP Fatal error:  Class 'date' not found in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 50
+[14-Dec-2015 04:56:42] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 51
+[14-Dec-2015 04:56:47] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 51
+[14-Dec-2015 05:17:26] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/juliston/public_html/demo/lottery/application/models/admin_model.php on line 58
+[14-Dec-2015 05:17:27] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/juliston/public_html/demo/lottery/application/models/admin_model.php on line 58
+[14-Dec-2015 06:16:04] PHP Parse error:  syntax error, unexpected ',' in /home/juliston/public_html/demo/lottery/application/models/admin_model.php on line 65
+[14-Dec-2015 06:16:04] PHP Parse error:  syntax error, unexpected ',' in /home/juliston/public_html/demo/lottery/application/models/admin_model.php on line 65
+[14-Dec-2015 06:16:06] PHP Parse error:  syntax error, unexpected ',' in /home/juliston/public_html/demo/lottery/application/models/admin_model.php on line 65
+[14-Dec-2015 06:16:53] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/juliston/public_html/demo/lottery/application/controllers/admin.php on line 127
+[14-Dec-2015 06:17:24] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/juliston/public_html/demo/lottery/application/controllers/admin.php on line 127
+[14-Dec-2015 06:17:26] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/juliston/public_html/demo/lottery/application/controllers/admin.php on line 127
+[14-Dec-2015 06:35:18] PHP Fatal error:  Cannot redeclare Admin_model::list_opportunity_filter() in /home/juliston/public_html/demo/lottery/application/models/admin_model.php on line 71
+[14-Dec-2015 06:35:21] PHP Fatal error:  Cannot redeclare Admin_model::list_opportunity_filter() in /home/juliston/public_html/demo/lottery/application/models/admin_model.php on line 71
+[14-Dec-2015 06:36:19] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/juliston/public_html/demo/lottery/application/controllers/admin.php on line 127
+[14-Dec-2015 06:37:29] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/juliston/public_html/demo/lottery/application/controllers/admin.php on line 127
+[14-Dec-2015 06:41:58] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/juliston/public_html/demo/lottery/application/controllers/admin.php on line 127
+[14-Dec-2015 07:07:30] PHP Parse error:  syntax error, unexpected $end in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 104
+[14-Dec-2015 23:31:49] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/juliston/public_html/demo/lottery/application/controllers/admin.php on line 101
+[14-Dec-2015 23:49:25] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/juliston/public_html/demo/lottery/application/controllers/admin.php on line 101
+[15-Dec-2015 00:14:07] PHP Fatal error:  Call to a member function result_array() on a non-object in /home/juliston/public_html/demo/lottery/application/controllers/admin.php on line 101
+[15-Dec-2015 01:17:39] PHP Parse error:  syntax error, unexpected $end in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 224
+[15-Dec-2015 01:29:27] PHP Parse error:  syntax error, unexpected '"' in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 141
+[15-Dec-2015 01:29:50] PHP Parse error:  syntax error, unexpected T_ENCAPSED_AND_WHITESPACE, expecting T_STRING or T_VARIABLE or T_NUM_STRING in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 141
+[15-Dec-2015 01:30:41] PHP Parse error:  syntax error, unexpected T_ENCAPSED_AND_WHITESPACE, expecting T_STRING or T_VARIABLE or T_NUM_STRING in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 141
+[15-Dec-2015 03:30:36] PHP Parse error:  syntax error, unexpected '*' in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 162
+[15-Dec-2015 05:41:18] PHP Parse error:  syntax error, unexpected '}' in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 153
+[15-Dec-2015 06:57:29] PHP Parse error:  syntax error, unexpected '{' in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 185
+[15-Dec-2015 06:57:51] PHP Parse error:  syntax error, unexpected '{' in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 185
+[15-Dec-2015 06:57:54] PHP Parse error:  syntax error, unexpected '{' in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 185
+[15-Dec-2015 07:01:59] PHP Parse error:  syntax error, unexpected '}' in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 159
+[15-Dec-2015 07:02:03] PHP Parse error:  syntax error, unexpected '}' in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 159
+[15-Dec-2015 07:14:02] PHP Fatal error:  Cannot use [] for reading in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 161
+[15-Dec-2015 07:28:22] PHP Parse error:  syntax error, unexpected $end in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 311
+[15-Dec-2015 07:28:25] PHP Parse error:  syntax error, unexpected $end in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 311
+[15-Dec-2015 07:30:21] PHP Parse error:  syntax error, unexpected '.', expecting T_VARIABLE or '$' in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 248
+[15-Dec-2015 07:30:24] PHP Parse error:  syntax error, unexpected '.', expecting T_VARIABLE or '$' in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 248
+[15-Dec-2015 07:34:44] PHP Parse error:  syntax error, unexpected '.', expecting T_VARIABLE or '$' in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 250
+[15-Dec-2015 07:35:56] PHP Parse error:  syntax error, unexpected '.', expecting T_VARIABLE or '$' in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 250
+[15-Dec-2015 07:35:59] PHP Parse error:  syntax error, unexpected '.', expecting T_VARIABLE or '$' in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 250
+[16-Dec-2015 00:53:46] PHP Parse error:  syntax error, unexpected '}' in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 159
+[18-Dec-2015 01:09:05] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/juliston/public_html/demo/lottery/application/controllers/admin.php on line 116
+[18-Dec-2015 01:09:06] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/juliston/public_html/demo/lottery/application/controllers/admin.php on line 116
+[18-Dec-2015 01:09:07] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/juliston/public_html/demo/lottery/application/controllers/admin.php on line 116
+[18-Dec-2015 01:09:23] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/juliston/public_html/demo/lottery/application/controllers/admin.php on line 116
+[18-Dec-2015 01:09:24] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/juliston/public_html/demo/lottery/application/controllers/admin.php on line 116
+[18-Dec-2015 01:09:25] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/juliston/public_html/demo/lottery/application/controllers/admin.php on line 101
+[18-Dec-2015 01:09:25] PHP Parse error:  syntax error, unexpected $end, expecting ']' in /home/juliston/public_html/demo/lottery/application/controllers/admin.php on line 101
+[18-Dec-2015 01:09:26] PHP Fatal error:  Cannot redeclare Admin_model::list_admin_entries_by_limit() in /home/juliston/public_html/demo/lottery/application/models/admin_model.php on line 116
+[18-Dec-2015 01:09:27] PHP Fatal error:  Cannot redeclare Admin_model::list_admin_entries_by_limit() in /home/juliston/public_html/demo/lottery/application/models/admin_model.php on line 116
+[18-Dec-2015 01:09:53] PHP Fatal error:  Cannot redeclare Admin_model::list_admin_entries_by_limit() in /home/juliston/public_html/demo/lottery/application/models/admin_model.php on line 116
+[18-Dec-2015 01:09:56] PHP Fatal error:  Cannot redeclare Admin_model::list_admin_entries_by_limit() in /home/juliston/public_html/demo/lottery/application/models/admin_model.php on line 116
+[18-Dec-2015 01:09:57] PHP Fatal error:  Cannot redeclare Admin_model::list_admin_entries_by_limit() in /home/juliston/public_html/demo/lottery/application/models/admin_model.php on line 116
+[31-Dec-2015 08:23:37] PHP Parse error:  syntax error, unexpected '}' in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 101
+[31-Dec-2015 08:23:39] PHP Parse error:  syntax error, unexpected '}' in /home/juliston/public_html/demo/lottery/application/views/admin/list_admin_entry.php on line 101
+[07-Jan-2016 14:47:02 UTC] PHP Fatal error:  Call to undefined method Admin_model::login() in /home/esconite/public_html/projects/plannetads_dev/application/controllers/adminlogin.php on line 35
+[07-Jan-2016 14:47:17 UTC] PHP Fatal error:  Call to undefined method Admin_model::login() in /home/esconite/public_html/projects/plannetads_dev/application/controllers/adminlogin.php on line 35
