@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /openclassifieds/images/*
+Sitemap: http://localhost/openclassifieds/sitemap.xml.gz
