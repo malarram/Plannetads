@@ -14,6 +14,8 @@ MySQL - 5.5.5-10.0.17-MariaDB : Database - openclassifieds
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 /*Table structure for table `oc2_access` */
 
+DROP TABLE IF EXISTS `oc2_access`;
+
 CREATE TABLE `oc2_access` (
   `id_access` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_role` int(10) unsigned NOT NULL,
@@ -26,6 +28,8 @@ CREATE TABLE `oc2_access` (
 insert  into `oc2_access`(`id_access`,`id_role`,`access`) values (1,10,'*.*'),(2,1,'profile.*'),(3,1,'stats.user'),(4,1,'myads.*'),(5,1,'messages.*'),(6,5,'translations.*'),(7,5,'profile.*'),(8,5,'stats.user'),(9,5,'content.*'),(10,5,'myads.*'),(11,5,'messages.*'),(12,7,'profile.*'),(13,7,'content.*'),(14,7,'stats.user'),(15,7,'blog.*'),(16,7,'translations.*'),(17,7,'ad.*'),(18,7,'widgets.*'),(19,7,'menu.*'),(20,7,'category.*'),(21,7,'location.*'),(22,7,'myads.*'),(23,7,'messages.*');
 
 /*Table structure for table `oc2_ads` */
+
+DROP TABLE IF EXISTS `oc2_ads`;
 
 CREATE TABLE `oc2_ads` (
   `id_ad` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -66,6 +70,8 @@ insert  into `oc2_ads`(`id_ad`,`id_user`,`id_category`,`id_location`,`title`,`se
 
 /*Table structure for table `oc2_categories` */
 
+DROP TABLE IF EXISTS `oc2_categories`;
+
 CREATE TABLE `oc2_categories` (
   `id_category` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(145) NOT NULL,
@@ -88,6 +94,8 @@ insert  into `oc2_categories`(`id_category`,`name`,`order`,`created`,`id_categor
 
 /*Table structure for table `oc2_config` */
 
+DROP TABLE IF EXISTS `oc2_config`;
+
 CREATE TABLE `oc2_config` (
   `group_name` varchar(128) NOT NULL,
   `config_key` varchar(128) NOT NULL,
@@ -101,6 +109,8 @@ CREATE TABLE `oc2_config` (
 insert  into `oc2_config`(`group_name`,`config_key`,`config_value`) values ('appearance','theme','default'),('appearance','theme_mobile',''),('appearance','allow_query_theme','0'),('appearance','custom_css','0'),('appearance','custom_css_version','0'),('appearance','map_active','0'),('appearance','map_jscode',''),('appearance','map_settings',''),('i18n','charset','utf-8'),('i18n','timezone','Europe/Berlin'),('i18n','locale','en_US'),('i18n','allow_query_language','1'),('payment','paypal_currency','USD'),('payment','sandbox','0'),('payment','to_featured','0'),('payment','to_top','0'),('payment','pay_to_go_on_feature','1'),('payment','featured_plans','{\"5\":\"10\"}'),('payment','pay_to_go_on_top','5'),('payment','paypal_account',''),('payment','paypal_seller','0'),('payment','stock','0'),('payment','paymill_private',''),('payment','paymill_public',''),('payment','stripe_private',''),('payment','stripe_public',''),('payment','stripe_address','0'),('payment','stripe_alipay','0'),('payment','alternative',''),('payment','bitpay_apikey',''),('payment','authorize_sandbox','0'),('payment','authorize_login',''),('payment','authorize_key',''),('payment','twocheckout_sid',''),('payment','twocheckout_secretword',''),('payment','twocheckout_sandbox','0'),('payment','fraudlabspro',''),('payment','paysbuy',''),('payment','paysbuy_sandbox','0'),('general','api_key','v+qs+9euzn9@+6na2q%+%tz$ru@cq4q+'),('general','number_format','%n'),('general','date_format','d-m-y'),('general','measurement','metric'),('general','base_url','http://localhost:8004/'),('general','moderation','0'),('general','maintenance','0'),('general','analytics',''),('general','translate',''),('general','site_name','Plannetads'),('general','site_description',''),('general','subscribe','0'),('general','akismet_key',''),('general','alert_terms',''),('general','contact_page',''),('general','search_by_description','0'),('general','blog','0'),('general','blog_disqus',''),('general','minify','0'),('general','faq','0'),('general','faq_disqus',''),('general','forums','0'),('general','messaging','1'),('general','black_list','1'),('general','ocacu','1455532911'),('general','landing_page','{\"controller\":\"home\",\"action\":\"index\"}'),('general','disallowbots','0'),('general','html_head',''),('general','html_footer',''),('general','recaptcha_active','0'),('general','recaptcha_secretkey',''),('general','recaptcha_sitekey',''),('general','cookie_consent','0'),('general','auto_locate','1'),('general','social_auth','0'),('general','adblock','0'),('general','search_multi_catloc','0'),('general','gcm_apikey',''),('general','email_domains',''),('general','cron','1'),('image','allowed_formats','jpeg,jpg,png,'),('image','max_image_size','5'),('image','height',''),('image','width','1200'),('image','height_thumb','200'),('image','width_thumb','200'),('image','quality','90'),('image','watermark','0'),('image','watermark_path',''),('image','watermark_position','0'),('image','aws_s3_active','0'),('image','aws_access_key',''),('image','aws_secret_key',''),('image','aws_s3_bucket',''),('image','aws_s3_domain','0'),('image','disallow_nudes','0'),('advertisement','num_images','4'),('advertisement','expire_date','0'),('advertisement','description','1'),('advertisement','address','1'),('advertisement','phone','1'),('advertisement','upload_file','0'),('advertisement','location','1'),('advertisement','description_bbcode','1'),('advertisement','captcha','1'),('advertisement','website','1'),('advertisement','price','1'),('advertisement','contact','1'),('advertisement','tos',''),('advertisement','thanks_page',''),('advertisement','disqus',''),('advertisement','fbcomments',''),('advertisement','map','0'),('advertisement','map_style',''),('advertisement','map_zoom','14'),('advertisement','center_lon',''),('advertisement','center_lat',''),('advertisement','auto_locate_distance','100'),('advertisement','ads_in_home','0'),('advertisement','banned_words_replacement','xxx'),('advertisement','banned_words',''),('advertisement','fields','{\"map-link\":{\"type\":\"string\",\"label\":\"Map link\",\"tooltip\":\"Map link\",\"values\":null,\"categories\":[\"5\",\"18\",\"19\",\"20\"],\"required\":true,\"searchable\":false,\"admin_privilege\":false,\"show_listing\":false}}'),('advertisement','parent_category','1'),('advertisement','related','5'),('advertisement','map_pub_new','0'),('advertisement','qr_code','0'),('advertisement','login_to_post','0'),('advertisement','reviews','0'),('advertisement','reviews_paid','0'),('advertisement','advertisements_per_page','10'),('advertisement','feed_elements','20'),('advertisement','map_elements','100'),('advertisement','sort_by','published-desc'),('advertisement','count_visits','1'),('advertisement','login_to_contact','0'),('advertisement','only_admin_post','0'),('advertisement','sharing','0'),('advertisement','logbee','0'),('advertisement','leave_alert','1'),('advertisement','validate_banned_words','0'),('email','notify_email','arivu.sacs@gmail.com'),('email','smtp_active','0'),('email','new_ad_notify','0'),('email','smtp_host',''),('email','smtp_port',''),('email','smtp_auth','0'),('email','smtp_ssl','0'),('email','smtp_user',''),('email','smtp_pass',''),('email','elastic_active','0'),('email','elastic_username',''),('email','elastic_password',''),('user','user_fields','{}'),('social','config','{\"debug_mode\":\"0\",\"providers\":{\"OpenID\":{\"enabled\":\"0\"},\"Yahoo\":{\"enabled\":\"0\",\"keys\":{\"id\":\"\",\"secret\":\"\"}},\n\"AOL\":{\"enabled\":\"0\"},\"Google\":{\"enabled\":\"0\",\"keys\":{\"id\":\"\",\"secret\":\"\"}},\"Facebook\":{\"enabled\":\"0\",\"keys\":{\"id\":\"\",\"secret\":\"\"}},\n\"Twitter\":{\"enabled\":\"0\",\"keys\":{\"key\":\"\",\"secret\":\"\"}},\"Live\":{\"enabled\":\"0\",\"keys\":{\"id\":\"\",\"secret\":\"\"}},\"MySpace\":{\"enabled\":\"0\",\"keys\":{\"key\":\"\",\"secret\":\"\"}},\n\"LinkedIn\":{\"enabled\":\"0\",\"keys\":{\"key\":\"\",\"secret\":\"\"}},\"Foursquare\":{\"enabled\":\"0\",\"keys\":{\"id\":\"\",\"secret\":\"\"}}},\"base_url\":\"\",\"debug_file\":\"\"}'),('theme','default','{\"theme\":\"default\",\"admin_theme\":\"bootstrap\",\"category_badge\":\"0\",\"hide_description_icon\":\"0\",\"premium\":1}'),('widget','Widget_Locations_1455335669','{\"class\":\"Widget_Locations\",\"created\":1455335669,\"placeholder\":\"sidebar\",\"data\":{\"locations_title\":\"Locations\",\"locations\":\"popular\"}}'),('placeholder','sidebar','[\"Widget_Locations_1455335669\",\"Widget_Search_1455358638\",\"Widget_UserSearch_1455358659\"]'),('widget','Widget_Search_1455358638','{\"class\":\"Widget_Search\",\"created\":1455358638,\"placeholder\":\"sidebar\",\"data\":{\"text_title\":\"Search\",\"advanced\":\"1\",\"custom\":\"1\"}}'),('widget','Widget_UserSearch_1455358659','{\"class\":\"Widget_UserSearch\",\"created\":1455358659,\"placeholder\":\"sidebar\",\"data\":{\"text_title\":\"Search\",\"custom\":\"1\"}}'),('placeholder','footer','[]');
 
 /*Table structure for table `oc2_content` */
+
+DROP TABLE IF EXISTS `oc2_content`;
 
 CREATE TABLE `oc2_content` (
   `id_content` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -122,6 +132,8 @@ insert  into `oc2_content`(`id_content`,`locale`,`order`,`title`,`seotitle`,`des
 
 /*Table structure for table `oc2_coupons` */
 
+DROP TABLE IF EXISTS `oc2_coupons`;
+
 CREATE TABLE `oc2_coupons` (
   `id_coupon` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_product` int(10) unsigned DEFAULT NULL,
@@ -140,6 +152,8 @@ CREATE TABLE `oc2_coupons` (
 /*Data for the table `oc2_coupons` */
 
 /*Table structure for table `oc2_crontab` */
+
+DROP TABLE IF EXISTS `oc2_crontab`;
 
 CREATE TABLE `oc2_crontab` (
   `id_crontab` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -166,6 +180,8 @@ insert  into `oc2_crontab`(`id_crontab`,`name`,`period`,`callback`,`params`,`des
 
 /*Table structure for table `oc2_favorites` */
 
+DROP TABLE IF EXISTS `oc2_favorites`;
+
 CREATE TABLE `oc2_favorites` (
   `id_favorite` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_user` int(10) unsigned NOT NULL,
@@ -178,6 +194,8 @@ CREATE TABLE `oc2_favorites` (
 /*Data for the table `oc2_favorites` */
 
 /*Table structure for table `oc2_forums` */
+
+DROP TABLE IF EXISTS `oc2_forums`;
 
 CREATE TABLE `oc2_forums` (
   `id_forum` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -195,6 +213,8 @@ CREATE TABLE `oc2_forums` (
 /*Data for the table `oc2_forums` */
 
 /*Table structure for table `oc2_locations` */
+
+DROP TABLE IF EXISTS `oc2_locations`;
 
 CREATE TABLE `oc2_locations` (
   `id_location` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -218,6 +238,8 @@ insert  into `oc2_locations`(`id_location`,`name`,`order`,`id_location_parent`,`
 
 /*Table structure for table `oc2_messages` */
 
+DROP TABLE IF EXISTS `oc2_messages`;
+
 CREATE TABLE `oc2_messages` (
   `id_message` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_ad` int(10) unsigned DEFAULT NULL,
@@ -236,6 +258,8 @@ CREATE TABLE `oc2_messages` (
 /*Data for the table `oc2_messages` */
 
 /*Table structure for table `oc2_orders` */
+
+DROP TABLE IF EXISTS `oc2_orders`;
 
 CREATE TABLE `oc2_orders` (
   `id_order` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -261,6 +285,8 @@ CREATE TABLE `oc2_orders` (
 
 /*Table structure for table `oc2_posts` */
 
+DROP TABLE IF EXISTS `oc2_posts`;
+
 CREATE TABLE `oc2_posts` (
   `id_post` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_user` int(10) unsigned NOT NULL,
@@ -283,6 +309,8 @@ CREATE TABLE `oc2_posts` (
 
 /*Table structure for table `oc2_reviews` */
 
+DROP TABLE IF EXISTS `oc2_reviews`;
+
 CREATE TABLE `oc2_reviews` (
   `id_review` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_user` int(10) unsigned NOT NULL,
@@ -301,6 +329,8 @@ CREATE TABLE `oc2_reviews` (
 
 /*Table structure for table `oc2_roles` */
 
+DROP TABLE IF EXISTS `oc2_roles`;
+
 CREATE TABLE `oc2_roles` (
   `id_role` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
@@ -316,6 +346,8 @@ insert  into `oc2_roles`(`id_role`,`name`,`description`,`date_created`) values (
 
 /*Table structure for table `oc2_subscribers` */
 
+DROP TABLE IF EXISTS `oc2_subscribers`;
+
 CREATE TABLE `oc2_subscribers` (
   `id_subscribe` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_user` int(10) unsigned NOT NULL,
@@ -330,6 +362,8 @@ CREATE TABLE `oc2_subscribers` (
 /*Data for the table `oc2_subscribers` */
 
 /*Table structure for table `oc2_users` */
+
+DROP TABLE IF EXISTS `oc2_users`;
 
 CREATE TABLE `oc2_users` (
   `id_user` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -373,6 +407,8 @@ CREATE TABLE `oc2_users` (
 insert  into `oc2_users`(`id_user`,`name`,`seoname`,`email`,`password`,`description`,`status`,`id_role`,`id_location`,`created`,`last_modified`,`logins`,`last_login`,`last_ip`,`user_agent`,`token`,`token_created`,`token_expires`,`api_token`,`hybridauth_provider_name`,`hybridauth_provider_uid`,`subscriber`,`rate`,`has_image`,`failed_attempts`,`last_failed`,`notification_date`,`device_id`) values (1,'admin','admin','arivu.sacs@gmail.com','5f6547a7876bebe722c0e415003a702a444805022adefe7ba8d582cece505f43',NULL,1,10,NULL,'2016-02-11 22:41:17',NULL,9,'2016-02-15 06:48:48',0,'5ca928198ffd1e05c6656ea003ba26f884ba166e','493a392bb9e802b4ef5b77b3da112d059a680157','2016-02-15 06:48:48','2016-05-15 07:48:48',NULL,NULL,NULL,1,NULL,0,0,'2016-02-13 04:19:32',NULL,NULL);
 
 /*Table structure for table `oc2_visits` */
+
+DROP TABLE IF EXISTS `oc2_visits`;
 
 CREATE TABLE `oc2_visits` (
   `id_visit` int(10) unsigned NOT NULL AUTO_INCREMENT,
