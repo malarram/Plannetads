@@ -43,7 +43,7 @@
   <body>
 	<?=$header?>
   <?=View::factory('oc-panel/sidebar',array('user'=>$user))?>
-    <div class="bs-docs-nav">
+    <div class="bs-docs-nav clearfix bs-main">
 
 
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 main pull-left" id="content">

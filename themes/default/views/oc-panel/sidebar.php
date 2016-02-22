@@ -12,7 +12,7 @@
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                        <i class="fa fa-angle-double-down i-right"></i>
+                                        <i class="fa fa-caret-down i-right"></i>
                                         <span class="glyphicon glyphicon-th"></span>
                                         <span class="title-txt"><?=__('Classifieds')?></span>
                                     </a>
@@ -258,16 +258,6 @@
                             </div>
                         </div>-->
                         <?endif?>
-                        <div class="panel panel-sidebar collapse-menu">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a  class=" btn-colapse-sidebar">
-                                        <span class="glyphicon glyphicon-circle-arrow-left"></span>
-                                        <span class="title-txt"><?=__('Collapse menu')?></span>
-                                    </a>
-                                </h4>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

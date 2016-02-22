@@ -123,7 +123,12 @@ class Auth_Controller extends Controller
                 						'css/summernote.css'=>'screen',
                 						'css/bootstrap-tour.min.css'=>'screen',
                 						'css/sweet-alert.min.css'=>'screen',
-                                        'css/admin-styles.css?v='.Core::VERSION => 'screen');
+                                        'css/admin-styles.css?v='.Core::VERSION => 'screen',
+                                        // 'css/neon-core.css?v='.Core::VERSION => 'screen',
+                                        // 'css/neon-theme.css?v='.Core::VERSION => 'screen',
+                                        // 'css/neon-forms.css?v='.Core::VERSION => 'screen'
+                                        );
+
 
                 	Theme::$styles = array_merge($theme_css,$common_css);
 
