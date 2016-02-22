@@ -54,7 +54,7 @@
         <div class="uk-panel uk-accordion"  data-uk-accordion="{animate: false}">
             <h3 class="uk-padding-remove uk-position-relative category-acc">
                 <a title="<?= HTML::chars($c['name']) ?>" rel="<?= HTML::chars($c['name']) ?>" href="<?= Route::url('list', array('category' => $c['seoname'], 'location' => $user_location ? $user_location->seoname : NULL)) ?>" class="uk-panel-title uk-display-block">
-                    <i class="<?=$icon_class?> uk-margin-small-right"></i><?= mb_strtoupper($c['name']); ?>
+                    <i class="<?=$icon_class?> uk-margin-small-right"></i><?= $c['name']; ?>
                 </a>
                 <a href="javascript:void(0);" class="uk-accordion-title uk-active uk-position-absolute uk-position-top-right"  data-uk-toggle="{target:'.cat-plus-<?=$i?>'}">
                     <i class="uk-icon-plus uk-text-small cat-plus-<?=$i?>"></i>
