@@ -24,7 +24,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .top-bar .uk-nav > li > a{
-    color: #505656;
+    color: #12222d;
     text-decoration: none;
     padding: 8px 10px;
     display: block;
@@ -103,54 +103,55 @@ background: #F5F5F5;
 
 .main-search {
 }
+
 /* Different color for some fields */
 
 .keyword-input::-webkit-input-placeholder,
 .keyword-input::-webkit-input-placeholder
 {
-  color:    #6F6F6F;
+  color:    #424242;
 }
 
 .keyword-input:-moz-placeholder,
 .keyword-input:-moz-placeholder 
 {
-  color:    #6F6F6F;
+  color:    #424242;
 }
 
 .keyword-input::-moz-placeholder,
 .keyword-input::-moz-placeholder 
 {
-  color:    #6F6F6F;
+  color:    #424242;
 }
 
 .keyword-input:-ms-input-placeholder,
 .keyword-input:-ms-input-placeholder 
 {
-  color:    #6F6F6F;
+  color:    #424242;
 }
 
 .location-input::-webkit-input-placeholder,
 .location-input::-webkit-input-placeholder
 {
-  color:    #6F6F6F;
+  color:    #424242;
 }
 
 .location-input:-moz-placeholder,
 .location-input:-moz-placeholder 
 {
-  color:    #6F6F6F;
+  color:    #424242;
 }
 
 .location-input::-moz-placeholder,
 .location-input::-moz-placeholder 
 {
-  color:    #6F6F6F;
+  color:    #424242;
 }
 
 .location-input:-ms-input-placeholder,
 .location-input:-ms-input-placeholder 
 {
-  color:    #6F6F6F;
+  color:    #424242;
 }
 
 .search-container {
@@ -206,7 +207,8 @@ background: #F5F5F5;
 }
 
 .categories-listing ul li a {
-    color: #505656;
+    color: #12222d;
+    font-size: 14px
 }
 
 .categories-listing ul li a:hover {
@@ -414,7 +416,7 @@ footer {
     color:#fff;
 }
 
-#footer .uk-icon-button.uk-icon-youtube{
+#footer .uk-icon-button.uk-icon-youtube-play{
     background:#cd201f;
     color:#fff;
 }
