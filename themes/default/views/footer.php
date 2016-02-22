@@ -15,11 +15,11 @@
         <ul class="uk-list uk-float-right">
             <li><a href="" class="uk-icon-button uk-icon-facebook"></a></li>
             <li><a href="" class="uk-icon-button uk-icon-twitter"></a></li>
+            <li><a href="" class="uk-icon-button uk-icon-linkedin"></a></li>
             <li><a href="" class="uk-icon-button uk-icon-google-plus"></a></li>
             <li><a href="" class="uk-icon-button uk-icon-instagram"></a></li>
-            <li><a href="" class="uk-icon-button uk-icon-linkedin"></a></li>
             <li><a href="" class="uk-icon-button uk-icon-pinterest"></a></li>
-            <li><a href="" class="uk-icon-button uk-icon-youtube"></a></li>
+            <li><a href="" class="uk-icon-button uk-icon-youtube-play"></a></li>
         </ul>
         <? foreach ( Widgets::render('footer') as $widget): ?>
         <?= $widget ?>
