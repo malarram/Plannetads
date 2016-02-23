@@ -1,25 +1,11 @@
 <?php
 $categories = Model_Category::get_as_array();
-$order_categories = Model_Category::get_multidimensional();
-if (!function_exists('category_tree')) {
-
-    function category_tree($item, $key, $cats) {
-        if (core::config('general.search_multi_catloc')):
-            ?>
-            <option value="<?php echo $cats[$key]['seoname'] ?>" data-id="<?php echo $cats[$key]['id'] ?>" <?php echo (is_array(core::request('category')) AND in_array($cats[$key]['seoname'], core::request('category'))) ? "selected" : '' ?> ><?php echo $cats[$key]['name'] ?></option>
-        <?php else: ?>
-            <option value="<?php echo $cats[$key]['seoname'] ?>" data-id="<?php echo $cats[$key]['id'] ?>" <?php echo (core::request('category') == $cats[$key]['seoname']) ? "selected" : '' ?> ><?php echo $cats[$key]['name'] ?></option>
-        <?php endif ?>
-        <?php if (count($item) > 0): ?>
-            <optgroup label="<?php echo $cats[$key]['name'] ?>">
-                <?php if (is_array($item)) array_walk($item, 'category_tree', $cats); ?>
-            </optgroup>
-        <?php endif ?>
-        <?php
+if(!function_exists('parent_category')){
+    function parent_category($item){
+       if($item['parent_deep'] == '0' && $item['id_category_parent'] != '0') return $item;
     }
-
 }
-
+$parent_categories = array_filter($categories, 'parent_category');
 
 $locations = Model_Location::get_as_array();
 $order_locations = Model_Location::get_multidimensional();
@@ -55,7 +41,9 @@ if (!function_exists('location_tree')) {
                         <?php if (!core::config('general.search_multi_catloc')) : ?>
                             <option value=""><?php echo __('All Category') ?></option>
                         <?php endif ?>
-<?php array_walk($order_categories, 'category_tree', $categories); ?>
+                        <?php foreach($parent_categories as $category): ?>
+                            <option value="<?php echo $category['seoname'] ?>" data-id="<?php echo $category['id'] ?>" <?php echo (core::request('category') == $category['seoname']) ? "selected" : '' ?> ><?php echo $category['name'] ?></option>
+                            <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="uk-width-medium-4-10 uk-width-small-1-1" class="uk-search">

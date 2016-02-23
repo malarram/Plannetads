@@ -50,7 +50,7 @@
     </div>
     <div class="uk-grid-width-small-1-2 uk-grid-width-medium-1-4" data-uk-grid="{gutter: 20}">
 <?$i=0; foreach($categs as $c):?>
-        <?if($c['id_category_parent'] == 1 && $c['id_category'] != 1): $icon_class = (!empty($c['icon_class'])) ? $c['icon_class'] : 'uk-icon-home';?>
+        <?if($c['id_category_parent'] == 1 && $c['id_category'] != 1): $icon_class = (!empty($c['has_icon_class'])) ? $c['has_icon_class'] : 'uk-icon-home';?>
         <div class="uk-panel uk-accordion"  data-uk-accordion="{animate: false}">
             <h3 class="uk-padding-remove uk-position-relative category-acc">
                 <a title="<?= HTML::chars($c['name']) ?>" rel="<?= HTML::chars($c['name']) ?>" href="<?= Route::url('list', array('category' => $c['seoname'], 'location' => $user_location ? $user_location->seoname : NULL)) ?>" class="uk-panel-title uk-display-block">
