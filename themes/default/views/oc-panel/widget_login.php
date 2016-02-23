@@ -65,14 +65,14 @@
             <li><a href="<?=Route::url('oc-panel',array('controller'=>'myads','action'=>'index'))?>"><i
                    class="glyphicon glyphicon-edit"></i> <?=__('My Advertisements')?></a></li>
 
-            <li><a href="<?=Route::url('oc-panel',array('controller'=>'profile','action'=>'favorites'))?>"><i
-                   class="glyphicon glyphicon-heart"></i> <?=__('My Favorites')?></a></li>
+<!--            <li><a href="<?=Route::url('oc-panel',array('controller'=>'profile','action'=>'favorites'))?>"><i
+                   class="glyphicon glyphicon-heart"></i> <?=__('My Favorites')?></a></li>-->
 
-            <li><a href="<?=Route::url('oc-panel',array('controller'=>'profile','action'=>'orders'))?>"><i
-                   class="glyphicon glyphicon-shopping-cart"></i> <?=__('My Payments')?></a></li>
+<!--            <li><a href="<?=Route::url('oc-panel',array('controller'=>'profile','action'=>'orders'))?>"><i
+                   class="glyphicon glyphicon-shopping-cart"></i> <?=__('My Payments')?></a></li>-->
 
-            <li><a href="<?=Route::url('oc-panel',array('controller'=>'profile','action'=>'subscriptions'))?>"><i
-                   class="glyphicon glyphicon-envelope"></i> <?=__('Subscriptions')?></a></li>
+<!--            <li><a href="<?=Route::url('oc-panel',array('controller'=>'profile','action'=>'subscriptions'))?>"><i
+                   class="glyphicon glyphicon-envelope"></i> <?=__('Subscriptions')?></a></li>-->
 
             <?if (core::config('general.messaging') == TRUE):?>
                 <li>
