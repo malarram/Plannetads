@@ -55,10 +55,10 @@
                             <?=Theme::admin_link(__('FAQ'),'content','create?type=help&locale_select='.core::config('i18n.locale'),'oc-panel')?>
                             <? //Theme::admin_link(__('Page'), 'content','create?type=page&locale_select='.core::config('i18n.locale'),'oc-panel')?>
                             <?if (Core::config('advertisement.only_admin_post')!=1 OR Auth::instance()->get_user()->id_role == Model_Role::ROLE_ADMIN):?>
-                          <!--  <li class="divider"></li>
+                            <li class="divider"></li>
                     		<li><a href="<?=Route::url('post_new')?>">
                     			<i class="glyphicon  glyphicon-pencil"></i> <?=__('Publish new')?></a>
-                                </li>-->
+                                </li>
                             <?endif?>
                     	</ul>
             	   </li>
