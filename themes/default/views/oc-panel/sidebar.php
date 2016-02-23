@@ -27,7 +27,7 @@
                                         <? endif?>
                                         <tr><td class="br"><?=Theme::admin_link(__('Categories'),'category','index','oc-panel','glyphicon  glyphicon-tags')?></td></tr>
                                         <tr><td class="br"><?=Theme::admin_link(__('Locations'),'location','index','oc-panel','glyphicon  glyphicon-map-marker')?></td></tr>
-                                        <tr><td class="br"><?=Theme::admin_link(__('Orders'), 'order','index','oc-panel','glyphicon  glyphicon-shopping-cart')?></td></tr>
+<!--                                        <tr><td class="br"><?=Theme::admin_link(__('Orders'), 'order','index','oc-panel','glyphicon  glyphicon-shopping-cart')?></td></tr>-->
                                         <tr><td class="br"><?=Theme::admin_link(__('Coupons'), 'coupon','index','oc-panel','glyphicon glyphicon-tag')?></td></tr>
                                         <?if (core::config('advertisement.reviews')==1):?>
                                             <tr><td class="br"><?=Theme::admin_link(__('Reviews'), 'review','index','oc-panel','glyphicon glyphicon-star-empty')?></td></tr>
@@ -58,12 +58,12 @@
                                             <tr><td class="br"><?=Theme::admin_link(__('FAQ'), 'content','help','oc-panel',' glyphicon glyphicon-question-sign')?></td></tr>
                                         <?endif?>
                                         <tr><td class="br"><?=Theme::admin_link(__('Translations'), 'translations','index','oc-panel','glyphicon glyphicon-globe')?></td></tr>
-                                        <tr><td class="br"><?=Theme::admin_link(__('Newsletters'), 'newsletter','index','oc-panel','glyphicon glyphicon-envelope')?></td></tr>
+<!--                                        <tr><td class="br"><?=Theme::admin_link(__('Newsletters'), 'newsletter','index','oc-panel','glyphicon glyphicon-envelope')?></td></tr>-->
                                         <?if(core::config('general.forums')==1):?>
                                             <tr><td class="br"><?=Theme::admin_link(__('Forums'),'forum','index','oc-panel','glyphicon glyphicon-tags')?></td></tr>
                                             <tr><td class="br"><?=Theme::admin_link(__('Topics'), 'topic','index','oc-panel','glyphicon glyphicon-pencil')?></td></tr>
                                         <?endif?>
-                                        <tr><td class="br"><?=Theme::admin_link(__('CMS Images'), 'cmsimages','index','oc-panel','glyphicon glyphicon-camera')?></td></tr>
+<!--                                        <tr><td class="br"><?=Theme::admin_link(__('CMS Images'), 'cmsimages','index','oc-panel','glyphicon glyphicon-camera')?></td></tr>-->
                                     </table>
                                 </div>
                             </div>

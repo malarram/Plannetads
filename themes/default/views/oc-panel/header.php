@@ -24,10 +24,10 @@
                           core::config('general.moderation') == 5):  // payment with moderation?>
                     <?=Theme::admin_link(__('Moderation'),'ad','moderate','oc-panel','glyphicon glyphicon-ban-circle')?>
                     <? endif?>
-                	<?=Theme::admin_link(__('Stats'),'stats','index','oc-panel','glyphicon glyphicon-align-left')?>
-                    <?=Theme::admin_link(__('Widgets'),'widget','index','oc-panel','glyphicon glyphicon-move')?>
+                	<? // Theme::admin_link(__('Stats'),'stats','index','oc-panel','glyphicon glyphicon-align-left')?>
+                    <? //Theme::admin_link(__('Widgets'),'widget','index','oc-panel','glyphicon glyphicon-move')?>
                     <? if(Auth::instance()->get_user()->id_role==Model_Role::ROLE_ADMIN):?>
-                    <li class="dropdown">
+<!--                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="glyphicon glyphicon-cog"></i> <?=__('Cache')?> <b class="caret"></b>
                         </a>
@@ -44,20 +44,21 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li>-->
             	    <li  class="dropdown ">
                         <a href="#" class="dropdown-toggle"
             		      data-toggle="dropdown"><i class="glyphicon glyphicon-plus"></i> <?=__('New')?> <b class="caret"></b></a>
                     	<ul class="dropdown-menu">
                             <?=Theme::admin_link(__('Category'),'category','create')?>
                             <?=Theme::admin_link(__('Location'),'location','create')?>
-                            <?=Theme::admin_link(__('Blog post'),'blog','create')?>
+                            <? //Theme::admin_link(__('Blog post'),'blog','create')?>
                             <?=Theme::admin_link(__('FAQ'),'content','create?type=help&locale_select='.core::config('i18n.locale'),'oc-panel')?>
-                            <?=Theme::admin_link(__('Page'), 'content','create?type=page&locale_select='.core::config('i18n.locale'),'oc-panel')?>
+                            <? //Theme::admin_link(__('Page'), 'content','create?type=page&locale_select='.core::config('i18n.locale'),'oc-panel')?>
                             <?if (Core::config('advertisement.only_admin_post')!=1 OR Auth::instance()->get_user()->id_role == Model_Role::ROLE_ADMIN):?>
-                            <li class="divider"></li>
+                          <!--  <li class="divider"></li>
                     		<li><a href="<?=Route::url('post_new')?>">
-                    			<i class="glyphicon  glyphicon-pencil"></i> <?=__('Publish new')?></a>	</li>
+                    			<i class="glyphicon  glyphicon-pencil"></i> <?=__('Publish new')?></a>
+                                </li>-->
                             <?endif?>
                     	</ul>
             	   </li>
