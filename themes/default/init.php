@@ -55,7 +55,10 @@ Theme::$scripts['footer']	= array('js/jquery-1.11.3.min.js',
                                     'js/components/accordion.js',
                                     'js/plugins/vegas/vegas.min.js',
                                     'js/plugins/easy-autocomplete/easy-autocomplete.min.js',
-                                    'js/main.js'
+                                    'js/components/slideshow.js',
+                                    'js/main.js',
+                                    'js/favico-0.3.8.min.js',
+                                    'js/default.init.js?v='.Core::VERSION,
                                     );
 
 /**

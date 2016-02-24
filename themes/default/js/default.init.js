@@ -1,5 +1,5 @@
 $(function(){
-    
+
     //favorites system
 	$('.add-favorite, .remove-favorite').click(function(event) {
 		  event.preventDefault();
@@ -17,9 +17,9 @@ $(function(){
                         else
                             $('#'+countname).html(currentvalue+1);
                     }
-                    
+
 					$('#'+$this.data('id')+' a').toggleClass('add-favorite remove-favorite');
-					$('#'+$this.data('id')+' a i').toggleClass('glyphicon-heart-empty glyphicon-heart');
+					$('#'+$this.data('id')+' a i').toggleClass('uk-icon-heart-o uk-icon-heart');
 				});
 	});
 
@@ -37,7 +37,7 @@ $(function(){
         $(document).mouseup(function (e)
         {
             var contact = $("#contact-notification");
-        
+
             if (!contact.is(e.target) // if the target of the click isn't the container...
                 && contact.has(e.target).length === 0) // ... nor a descendant of the container
             {
@@ -49,14 +49,14 @@ $(function(){
             }
         });
     });
-    
+
     //intial value
     favicon.badge($('#contact-notification span').text());
 });
 
 //validate auth pages
 $(function(){
-    
+
     $.validator.addMethod(
         "emaildomain",
         function(value, element, domains) {
@@ -89,7 +89,7 @@ $(function(){
     $(".register").each(function() {
         $(this).validate($register_params)
     });
-    
+
 });
 
 function createCookie(name,value,seconds) {
@@ -127,7 +127,7 @@ $(function(){
     if ($('input[name="auto_locate"]').length) {
 
         $('#auto-locations').on('show.bs.modal', function () {
-            $('.modal .modal-body').css('overflow-y', 'auto'); 
+            $('.modal .modal-body').css('overflow-y', 'auto');
             $('.modal .modal-body').css('max-height', $(window).height() * 0.8);
         });
 
@@ -176,10 +176,10 @@ $(function(){
         createCookie('cancel_auto_locate',1,1800);
     });
 
-    setInterval(function () {
-        if ( ! navigator.onLine )
-            $('.off-line').show();
-        else
-            $('.off-line').hide();
-    }, 250);
+//    setInterval(function () {
+//        if ( ! navigator.onLine )
+//            $('.off-line').show();
+//        else
+//            $('.off-line').hide();
+//    }, 250);
 });
