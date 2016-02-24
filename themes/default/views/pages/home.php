@@ -18,7 +18,7 @@
         <ul class="uk-grid uk-slideset">
             <?
             $i=0; foreach($ads as $ad):
-            if($ad_first = $ad->get_first_image() === NULL):
+            if(!$ad_first = $ad->get_first_image()):
                 $ad_first = URL::base().'themes/default/images/default-ad-thumb.jpg';
             endif;
             ?>

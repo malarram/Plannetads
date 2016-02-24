@@ -125,13 +125,18 @@ function decodeHtml(html) {
 
 $(function(){
     if ($('input[name="auto_locate"]').length) {
+        var autolocModal = UIkit.modal('#auto-locations');
+        autolocModal.show();
 
-        $('#auto-locations').on('show.bs.modal', function () {
-            $('.modal .modal-body').css('overflow-y', 'auto');
-            $('.modal .modal-body').css('max-height', $(window).height() * 0.8);
+        $('#auto-locations').on({
+            'show.uk.modal': function(){
+                $('.modal .modal-body').css('overflow-y', 'auto');
+                $('.modal .modal-body').css('max-height', $(window).height() * 0.8);
+            },
+            'hide.uk.modal': function(){
+                console.log("Element is not visible.");
+            }
         });
-
-        $('#auto-locations').modal('show');
 
         if ( ! readCookie('cancel_auto_locate') && ( ! readCookie('mylat') || ! readCookie('mylng'))) {
             var lat;
@@ -146,7 +151,7 @@ $(function(){
                     // show modal
                     $.get($('meta[name="application-name"]').data('baseurl'), function(data) {
                         $('input[name="auto_locate"]').after($(data).find("#auto-locations"));
-                        $('#auto-locations').modal('show');
+                        autolocModal.show();
                     })
                 },
                 error: function(error) {
