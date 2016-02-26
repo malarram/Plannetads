@@ -25,7 +25,7 @@ class Alert {
 	/**
 	 * @var  string  Template for a error message block
 	 */
-	public static $tpl = '<div class="alert alert-%s"><h3>%s</h3><p>%s</p></div>';
+	public static $tpl = '<div class="uk-alert uk-alert-%s"><h3>%s</h3><p>%s</p></div>';
 
 	/**
 	 * Sets a new alert message
@@ -43,7 +43,7 @@ class Alert {
 
 		$mydata = array(
             'type' => $type,
-            'title'=> $title, 
+            'title'=> $title,
             'text' => $text
 		);
 
@@ -55,7 +55,7 @@ class Alert {
 		{
             //avoid duplicated alerts
             $duplicated = FALSE;
-            foreach ($data as $key => $value) 
+            foreach ($data as $key => $value)
             {
                 if ($value==$mydata)
                     $duplicated = TRUE;

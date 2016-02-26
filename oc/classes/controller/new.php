@@ -132,6 +132,9 @@ class Controller_New extends Controller
                 $id_location = $selected_location->id_location;
         }
 
+        Breadcrumbs::add(Breadcrumb::factory()->set_title(__('Home'))->set_url(Route::url('default')));
+        Breadcrumbs::add(Breadcrumb::factory()->set_title(__('Post Ad')));
+
         //render view publish new
         $this->template->content = View::factory('pages/ad/new', array('form_show'          => $form_show,
                                                                        'id_category'        => $id_category,

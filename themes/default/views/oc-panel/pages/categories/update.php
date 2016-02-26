@@ -34,8 +34,7 @@
                     <div class="form-group">
                         <div class="col-sm-12">
                             <?= FORM::label('category_icon', __('Select from files'), array('for'=>'category_icon'))?>
-                            <input type="file" name="category_icon" id="category_icon" /> <br />OR<br />
-                            <input type="text" name="category_icon_class" class="form-control" id="category_icon_class" placeholder="icon class name" value="<?php echo $category->get_icon_class() ?>"/>
+                            <input type="file" name="category_icon" id="category_icon" />
                         </div>
                     </div>
 

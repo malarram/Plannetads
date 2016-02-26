@@ -1,17 +1,17 @@
 // selectize for category and location selects
 $(function(){
-    
+
     // create 1st category select
     category_select = createCategorySelect();
     // remove hidden class
-    $('#category-chained .select-category[data-level="0"]').parent('div').removeClass('hidden');
-    
+    $('#category-chained .select-category[data-level="0"]').parent('div').removeClass('uk-hidden');
+
     // load options for 1st category select
     category_select.load(function(callback) {
         $.ajax({
             url: $('#category-chained').data('apiurl'),
             type: 'GET',
-            data: { 
+            data: {
                 "id_category_parent": 1,
                 "sort": 'order',
             },
@@ -23,21 +23,21 @@ $(function(){
             }
         });
     });
-    
+
     // advertisement location is enabled?
     if ($('#location-chained').length ) {
 
         // create 1st location select
         location_select = createLocationSelect();
-        // remove hidden class
-        $('#location-chained .select-location[data-level="0"]').parent('div').removeClass('hidden');
-        
+        // remove uk-hidden class
+        $('#location-chained .select-location[data-level="0"]').parent('div').removeClass('uk-hidden');
+
         // load options for 1st location select
         location_select.load(function(callback) {
             $.ajax({
                 url: $('#location-chained').data('apiurl'),
                 type: 'GET',
-                data: { 
+                data: {
                     "id_location_parent": 1,
                     "sort": 'order',
                 },
@@ -55,41 +55,41 @@ $(function(){
 });
 
 function createCategorySelect () {
-    
+
     // count how many category selects we have rendered
     num_category_select = $('#category-chained .select-category[data-level]').length;
-    
+
     // clone category select from template
     $('#select-category-template').clone().attr('id', '').insertBefore($('#select-category-template')).find('select').attr('data-level', num_category_select);
-    
+
     // initialize selectize on created category select
     category_select = $('.select-category[data-level="'+ num_category_select +'"]').selectize({
         valueField:  'id_category',
         labelField:  'name',
         searchField: 'name',
         onChange: function (value) {
-            
+
             if (!value.length) return;
-            
+
             // get current category level
             current_level = $('#category-chained .option[data-value="'+ value +'"]').closest('.selectize-control').prev().data('level');
-            
+
             // is allowed to post on selected category?
             if ( current_level > 0 || (current_level == 0 && $('#category-chained').is('[data-isparent]')))
             {
                 // update #category-selected input value
                 $('#category-selected').attr('value', value);
-                
+
                 //get category price
                 $.ajax({
                     url: $('#category-chained').data('apiurl') + '/' + value,
                     success: function(results) {
                         if (decodeHtml(results.category.price) != $('#category-chained').data('price0')) {
                             price_txt = $('#paid-category .help-block').data('title').replace(/%s/g, results.category.name).replace(/%d/g, results.category.price);
-                            $('#paid-category').removeClass('hidden').find('.help-block span').text(price_txt);
+                            $('#paid-category').removeClass('uk-hidden').find('.help-block span').text(price_txt);
                         }
                         else {
-                            $('#paid-category').addClass('hidden');
+                            $('#paid-category').addClass('uk-hidden');
                         }
                     }
                 });
@@ -98,22 +98,22 @@ function createCategorySelect () {
             {
                 // set empty value
                 $('#category-selected').attr('value', '');
-                $('#paid-category').addClass('hidden');
+                $('#paid-category').addClass('uk-hidden');
             }
-            
+
             // get current category level
             current_level = $('#category-chained .option[data-value="'+ value +'"]').closest('.selectize-control').prev().data('level');
-            
+
             destroyCategoryChildSelect(current_level);
-            
+
             // create category select
             category_select = createCategorySelect();
-            
+
             // load options for category select
             category_select.load(function (callback) {
                 $.ajax({
                     url: $('#category-chained').data('apiurl'),
-                    data: { 
+                    data: {
                         "id_category_parent": value,
                         "sort": 'order',
                     },
@@ -122,7 +122,7 @@ function createCategorySelect () {
                         if (results.categories.length > 0)
                         {
                             callback(results.categories);
-                            $('#category-chained .select-category[data-level="' + (current_level + 1) + '"]').parent('div').removeClass('hidden');
+                            $('#category-chained .select-category[data-level="' + (current_level + 1) + '"]').parent('div').removeClass('uk-hidden');
                         }
                         else
                         {
@@ -136,44 +136,44 @@ function createCategorySelect () {
             });
         }
     });
-    
+
     // return selectize control
     return category_select[0].selectize;
 }
 
 function createLocationSelect () {
-    
+
     // count how many location selects we have rendered
     num_location_select = $('#location-chained .select-location[data-level]').length;
-    
+
     // clone location select from template
     $('#select-location-template').clone().attr('id', '').insertBefore($('#select-location-template')).find('select').attr('data-level', num_location_select);
-    
+
     // initialize selectize on created location select
     location_select = $('.select-location[data-level="'+ num_location_select +'"]').selectize({
         valueField:  'id_location',
         labelField:  'name',
         searchField: 'name',
         onChange: function (value) {
-            
+
             if (!value.length) return;
-            
+
             // update #location-selected input value
             $('#location-selected').attr('value', value);
-            
+
             // get current location level
             current_level = $('#location-chained .option[data-value="'+ value +'"]').closest('.selectize-control').prev().data('level');
-            
+
             destroyLocationChildSelect(current_level);
-            
+
             // create location select
             location_select = createLocationSelect();
-            
+
             // load options for location select
             location_select.load(function (callback) {
                 $.ajax({
                     url: $('#location-chained').data('apiurl'),
-                    data: { 
+                    data: {
                         "id_location_parent": value,
                         "sort": 'order',
                     },
@@ -182,7 +182,7 @@ function createLocationSelect () {
                         if (results.locations.length > 0)
                         {
                             callback(results.locations);
-                            $('#location-chained .select-location[data-level="' + (current_level + 1) + '"]').parent('div').removeClass('hidden');
+                            $('#location-chained .select-location[data-level="' + (current_level + 1) + '"]').parent('div').removeClass('uk-hidden');
                         }
                         else
                         {
@@ -196,7 +196,7 @@ function createLocationSelect () {
             });
         }
     });
-    
+
     // return selectize control
     return location_select[0].selectize;
 }
@@ -220,13 +220,13 @@ function destroyLocationChildSelect (level) {
 }
 
 $('#category-edit button').click(function(){
-    $('#category-chained').removeClass('hidden');
-    $('#category-edit').addClass('hidden');
+    $('#category-chained').removeClass('uk-hidden');
+    $('#category-edit').addClass('uk-hidden');
 });
-    
+
 $('#location-edit button').click(function(){
-    $('#location-chained').removeClass('hidden');
-    $('#location-edit').addClass('hidden');
+    $('#location-chained').removeClass('uk-hidden');
+    $('#location-edit').addClass('uk-hidden');
 });
 
 // sceditor
@@ -237,7 +237,7 @@ $('textarea[name=description]:not(.disable-bbcode)').sceditorBBCodePlugin({
     emoticonsEnabled: false,
     style: $('meta[name="application-name"]').data('baseurl') + "themes/default/css/jquery.sceditor.default.min.css",
 });
-	
+
 // paste plain text in sceditor
 $(".sceditor-container iframe").contents().find("body").bind('paste', function(e) {
     var text = ''; var that = $(this);
@@ -249,7 +249,7 @@ $(".sceditor-container iframe").contents().find("body").bind('paste', function(e
     else if (e.originalEvent.clipboardData)
         text = $('<div></div>').text(e.originalEvent.clipboardData.getData('text'));
 
-        
+
     if (document.queryCommandSupported('insertText')) {
         $(".sceditor-container iframe")[0].contentWindow.document.execCommand('insertHTML', false, $(text).html());
         return false;
@@ -265,7 +265,7 @@ $(".sceditor-container iframe").contents().find("body").bind('paste', function(e
             });
         }, 1);
     }
-});	
+});
 
 // google map set marker on address
 if ($('#map').length !== 0){
@@ -274,7 +274,7 @@ if ($('#map').length !== 0){
         zoom: parseInt($('#map').attr('data-zoom')),
         lat: $('#map').attr('data-lat'),
         lng: $('#map').attr('data-lon')
-    }); 
+    });
     var typingTimer;                //timer identifier
     var doneTypingInterval = 500;  //time in ms, 5 second for example
     //on keyup, start the countdown
@@ -295,7 +295,7 @@ if ($('#map').length !== 0){
                         div: '#map',
                         lat: latlng.lat(),
                         lng: latlng.lng(),
-                    }); 
+                    });
                     map.setCenter(latlng.lat(), latlng.lng());
                     map.addMarker({
                         lat: latlng.lat(),
@@ -322,7 +322,7 @@ $('.locateme').click(function() {
                 div: '#map',
                 lat: lat,
                 lng: lng,
-            }); 
+            });
             map.setCenter(lat, lng);
             map.addMarker({
                 lat: lat,
@@ -367,7 +367,7 @@ $('.fileinput').on('change.bs.fileinput', function() {
                 type: "warning",
                 allowOutsideClick: true
             });
-            
+
             $(this).closest('.fileinput').fileinput('clear');
         }
         else
@@ -390,7 +390,7 @@ $('.fileinput').on('change.bs.fileinput', function() {
     }
 
     //unhide next box image after selecting first
-    $(this).next('.fileinput').removeClass('hidden');
+    $(this).next('.fileinput').removeClass('uk-hidden');
 });
 
 $('.fileinput').on('clear.bs.fileinput', function() {
@@ -470,21 +470,21 @@ $(function(){
 });
 
 // sure you want to leave alert and processing modal
-$(function(){
-    if ($('input[name=leave_alert]').length === 0) {
-        var _ouibounce = ouibounce(false, {
-            aggressive: true,
-            callback: function() {
-                swal({
-                    title: $('#publish-new-btn').data('swaltitle'),
-                    text: $('#publish-new-btn').data('swaltext'),
-                    type: "warning",
-                    allowOutsideClick: true
-                });
-            }
-        });
-    }
-});
+//$(function(){
+//    if ($('input[name=leave_alert]').length === 0) {
+//        var _ouibounce = ouibounce(false, {
+//            aggressive: true,
+//            callback: function() {
+//                swal({
+//                    title: $('#publish-new-btn').data('swaltitle'),
+//                    text: $('#publish-new-btn').data('swaltext'),
+//                    type: "warning",
+//                    allowOutsideClick: true
+//                });
+//            }
+//        });
+//    }
+//});
 
 function clearFileInput($input) {
     if ($input.val() == '') {
@@ -501,7 +501,7 @@ function clearFileInput($input) {
             $input.unwrap().appendTo($tmpEl).unwrap();
         } else {
             $input.wrap('<form>').closest('form').trigger('reset').unwrap();
-        }   
+        }
     } else {
         $input.val('');
     }

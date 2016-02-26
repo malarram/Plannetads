@@ -33,14 +33,12 @@
         <div class="alert alert-warning off-line" style="display:none;"><strong><?= __('Warning') ?>!</strong> <?= __('We detected you are currently off-line, please connect to gain full experience.') ?></div>
         <?if(Controller::$full_width):?>
         <div class="uk-width-1-1">
-                <?= Alert::show() ?>
             <div id="uk-container"><?= $content ?></div>
         </div>
         <?else:?>
         <div class="uk-width-3-4">
-                <?= Alert::show() ?>
             <div id="uk-container">
-        <?= $content ?>
+                <?= $content ?>
             </div>
         </div>
         <?= FORM::open(Route::url('search'), array('class' => 'col-xs-3', 'method' => 'GET', 'action' => '')) ?>

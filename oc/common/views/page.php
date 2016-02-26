@@ -11,7 +11,7 @@
                     <li <? if($page->seotitle == 'faq') echo 'class="uk-active"'; ?>><a href="<?= Route::url('page', array('seotitle' => 'faq')) ?>" title="<?= __('FAQ') ?>"><?= __('FAQ') ?></a></li>
                     <li <? if($page->seotitle == 'privacy-policy') echo 'class="uk-active"'; ?>><a href="<?= Route::url('page', array('seotitle' => 'privacy-policy')) ?>" title="<?= __('Privacy Policy') ?>"><?= __('Privacy Policy') ?></a></li>
                     <li <? if($page->seotitle == 'terms-of-service') echo 'class="uk-active"'; ?>><a href="<?= Route::url('page', array('seotitle' => 'terms-of-service')) ?>" title="<?= __('Terms of Service') ?>"><?= __('Terms of Service') ?></a></li>
-                    <li <? if($page->seotitle == 'help') echo 'class="uk-active"'; ?>><a href="#" title="<?= __('Help') ?>"><?= __('Help') ?></a></li>
+                    <li <? if($page->seotitle == 'help') echo 'class="uk-active"'; ?>><a href="<?= Route::url('page', array('seotitle' => 'help')) ?>" title="<?= __('Help') ?>"><?= __('Help') ?></a></li>
                     <?= Theme::nav_link('Contact', 'contact', '', 'index', 'contact') ?>
                 </ul>
             </div>

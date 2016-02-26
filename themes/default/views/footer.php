@@ -5,11 +5,11 @@
         <div class="uk-wid">
             <ul class="uk-list uk-float-left">
                 <li><a href="<?=Route::url('page',array('seotitle'=>'about-us'))?>" title="<?=__('About Us')?>"><?=__('About Us')?></a></li> |
-                    <li><a href="<?= Route::url('page', array('seotitle' => 'faq')) ?>" title="<?= __('FAQ') ?>"><?= __('FAQ') ?></a></li> |
+                <li><a href="<?= Route::url('page', array('seotitle' => 'faq')) ?>" title="<?= __('FAQ') ?>"><?= __('FAQ') ?></a></li> |
+                <li><a href="<?= Route::url('page', array('seotitle' => 'help')) ?>" title="<?= __('Help') ?>"><?= __('Help') ?></a></li> |
                 <li><a href="<?=Route::url('page',array('seotitle'=>'privacy-policy'))?>" title="<?=__('Privacy Policy')?>"><?=__('Privacy Policy')?></a></li> |
-                <li><a href="<?=Route::url('page',array('seotitle'=>'terms-of-service'))?>" title="<?=__('Terms of Service')?>"><?=__('Terms of Service')?></a></li> |
-                <li><a href="#" title="<?=__('Help')?>"><?=__('Help')?></a></li> |
-                <?=Theme::nav_link('Contact','contact', '', 'index', 'contact')?>
+                <li><a href="<?=Route::url('page',array('seotitle'=>'terms-of-service'))?>" title="<?=__('Terms of Use')?>"><?=__('Terms of Use')?></a></li> |
+                <?=Theme::nav_link('Contact Us','contact', '', 'index', 'contact')?>
             </ul>
         </div>
         <ul class="uk-list uk-float-right">
