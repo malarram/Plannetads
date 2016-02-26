@@ -3,7 +3,7 @@
 class Controller_Contact extends Controller {
 
 	public function action_index()
-	{ 
+	{
 
 		//template header
 		$this->template->title           	= __('Contact Us');
@@ -12,7 +12,7 @@ class Controller_Contact extends Controller {
 		Breadcrumbs::add(Breadcrumb::factory()->set_title(__('Home'))->set_url(Route::url('default')));
 		Breadcrumbs::add(Breadcrumb::factory()->set_title(__('Contact Us')));
 
-		if($this->request->post()) //message submition  
+		if($this->request->post()) //message submition
 		{
             //captcha check
             if(captcha::check('contact'))
@@ -53,17 +53,18 @@ class Controller_Contact extends Controller {
             }
             else
                 Alert::set(Alert::ERROR, __('Check the form for errors'));
-					
-				
+
+
 		}
 
+                Controller::$full_width = true;
         $this->template->content = View::factory('pages/contact');
-		
+
 	}
 
-	//email message generating, for single ad. Client -> owner  
+	//email message generating, for single ad. Client -> owner
 	public function action_user_contact()
-	{	
+	{
 		$ad = new Model_Ad($this->request->param('id'));
 
 		//message to user
@@ -71,7 +72,7 @@ class Controller_Contact extends Controller {
 		{
 
             $user = new Model_User($ad->id_user);
-        
+
             //require login to contact
             if ( (core::config('advertisement.login_to_contact') == TRUE OR core::config('general.messaging') == TRUE)
 				AND !Auth::instance()->logged_in())
@@ -166,15 +167,15 @@ class Controller_Contact extends Controller {
 			else
 			{
 				Alert::set(Alert::ERROR, __('Captcha is not correct'));
-				
+
 				HTTP::redirect(Route::url('ad',array('category'=>$ad->category->seoname,'seotitle'=>$ad->seotitle)));
 			}
 		}
-	
+
 	}
 
 
-    //email message generating, for single profile.   
+    //email message generating, for single profile.
     public function action_userprofile_contact()
     {
         $user_to = new Model_User($this->request->param('id'));
@@ -209,7 +210,7 @@ class Controller_Contact extends Controller {
                 {
 					if(core::config('general.messaging'))
 					{
-						$ret = Model_Message::send_user(core::post('message'), $this->user, $user_to);						
+						$ret = Model_Message::send_user(core::post('message'), $this->user, $user_to);
 					}
 					else
 					{
@@ -237,7 +238,7 @@ class Controller_Contact extends Controller {
 
             HTTP::redirect(Route::url('profile',array('seoname'=>$user_to->seoname)));
         }
-    
+
     }
 
 }
