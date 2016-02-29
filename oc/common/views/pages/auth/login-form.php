@@ -12,11 +12,11 @@
     <div class="uk-form-row">
         <div class="uk-float-left">
             <label for="remember" class="uk-text-small">
-            <input type="checkbox" name="remember" id="remember" checked="checked">&nbsp;<?= __('Remember me') ?>
+                <input type="checkbox" name="remember" id="remember" checked="checked">&nbsp;<?= __('Remember me') ?>
             </label>
         </div>
         <div class="uk-float-right">
-            <a href="#forgot_password_form" class="uk-text-small" data-uk-modal="{target:'<?= Route::url('oc-panel', array('directory' => 'user', 'controller' => 'auth', 'action' => 'forgot')) ?>#forgot_password_form'}"><?= __('Forgot password?') ?></a>
+            <a href="#forgot_password_form" class="uk-text-small" data-uk-modal="{target:'#forgot_password_form'}"><?= __('Forgot password?') ?></a>
         </div>
     </div>
 

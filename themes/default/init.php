@@ -59,19 +59,20 @@ Theme::$scripts['footer']	= array('js/jquery-1.11.3.min.js',
                                     'js/main.js',
                                     'js/favico-0.3.8.min.js',
                                     'js/default.init.js?v='.Core::VERSION,
+                                    'js/theme.init.js?v='.Core::VERSION,
                                     );
 
 /**
  * custom error alerts
  */
-Form::$errors_tpl 	= '<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a>
-			       		<h4 class="alert-heading">%s</h4>
+Form::$errors_tpl 	= '<div class="uk-alert uk-alert-danger"><a class="close" data-dismiss="alert">×</a>
+			       		<h4 class="uk-alert-heading">%s</h4>
 			        	<ul>%s</ul></div>';
 
-Form::$error_tpl 	= '<div class="alert "><a class="close" data-dismiss="alert">×</a>%s</div>';
+Form::$error_tpl 	= '<div class="uk-alert "><a class="close" data-dismiss="alert">×</a>%s</div>';
 
 
-Alert::$tpl 	= 	'<div class="alert alert-%s">
+Alert::$tpl 	= 	'<div class="uk-alert uk-alert-%s">
 					<a class="close" data-dismiss="alert" href="#">×</a>
-					<h4 class="alert-heading">%s</h4>%s
+					<h4 class="uk-alert-heading">%s</h4>%s
 					</div>';

@@ -87,7 +87,6 @@ class Controller_Home extends Controller {
         {
             $ads->where(DB::expr('DATE_ADD( published, INTERVAL '.core::config('advertisement.expire_date').' DAY)'), '>', Date::unix2mysql());
         }
-
         $ads = $ads->limit(Theme::get('num_home_latest_ads', 4))->cached()->find_all();
 
 		$categs = Model_Category::get_category_count(TRUE, $user_location);

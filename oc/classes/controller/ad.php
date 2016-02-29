@@ -366,13 +366,13 @@ class Controller_Ad extends Controller {
                 {
                     $this->template->title .= ' - '.$location->name;
 
-                    if ($location_parent!==NULL)
-                    {
-                        $this->template->title .=' ('.$location_parent->name.')';
-                        Breadcrumbs::add(Breadcrumb::factory()->set_title($location_parent->name)->set_url(Route::url('list', array('location'=>$location_parent->seoname))));
-                    }
-
-                    Breadcrumbs::add(Breadcrumb::factory()->set_title($location->name)->set_url(Route::url('list', array('location'=>$location->seoname))));
+//                    if ($location_parent!==NULL)
+//                    {
+//                        $this->template->title .=' ('.$location_parent->name.')';
+//                        Breadcrumbs::add(Breadcrumb::factory()->set_title($location_parent->name)->set_url(Route::url('list', array('location'=>$location_parent->seoname))));
+//                    }
+//
+//                    Breadcrumbs::add(Breadcrumb::factory()->set_title($location->name)->set_url(Route::url('list', array('location'=>$location->seoname))));
 
                     if ($category_parent!==NULL)
                         Breadcrumbs::add(Breadcrumb::factory()->set_title($category_parent->name)

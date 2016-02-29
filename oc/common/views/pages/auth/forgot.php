@@ -1,10 +1,11 @@
 <?php defined('SYSPATH') or die('No direct script access.');?>
-<div class="well">
-	
-	<div class="page-header">
-		<h1><?=__('Remember password')?></h1>
-	</div>
+<?= Breadcrumbs::render('breadcrumbs') ?>
 
-	<?=View::factory('pages/auth/forgot-form')?>
-	
-</div><!--/well--> 
+<div class="uk-container uk-container-center">
+    <div class="uk-width-large-4-10 uk-container-center">
+        <h3 class="text-bolder uk-text-center"><?= __('Forgot password') ?></h3>
+        <div class="uk-panel uk-panel-box uk-panel-box-secondary ">
+            <?= View::factory('pages/auth/forgot-form') ?>
+        </div>
+    </div>
+</div>

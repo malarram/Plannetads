@@ -30,7 +30,7 @@
                         </a>
                     </div>
                     <span class="uk-text-danger uk-text-bold uk-text-small"><?=i18n::money_format( $ad->price)?></span>
-                    <h5 class="uk-margin-top-remove">
+                    <h5 class="uk-margin-top-remove trim-title">
                         <a href="<?= Route::url('ad', array('category' => $ad->category->seoname, 'seotitle' => $ad->seotitle)) ?>">
                             <?= $ad->title ?>
                         </a>

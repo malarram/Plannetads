@@ -200,6 +200,8 @@ class Controller_Panel_Auth extends Controller {
 
 		}
 
+            Breadcrumbs::add(Breadcrumb::factory()->set_title(__('Home'))->set_url(Route::url('default')));
+            Breadcrumbs::add(Breadcrumb::factory()->set_title(__('Forgot password')));
 
 	}
 

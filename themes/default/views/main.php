@@ -31,23 +31,10 @@
 
 <?= $header ?>
         <div class="alert alert-warning off-line" style="display:none;"><strong><?= __('Warning') ?>!</strong> <?= __('We detected you are currently off-line, please connect to gain full experience.') ?></div>
-        <?if(Controller::$full_width):?>
         <div class="uk-width-1-1">
             <div id="uk-container"><?= $content ?></div>
         </div>
-        <?else:?>
-        <div class="uk-width-3-4">
-            <div id="uk-container">
-                <?= $content ?>
-            </div>
-        </div>
-        <?= FORM::open(Route::url('search'), array('class' => 'col-xs-3', 'method' => 'GET', 'action' => '')) ?>
-        <div class="form-group">
-            <input type="text" name="search" class="search-query form-control" placeholder="<?= __('Search') ?>">
-        </div>
-        <?= FORM::close() ?>
-        <?= View::fragment('sidebar_front', 'sidebar') ?>
-        <?endif?>
+        
         <?= $footer ?>
 
         <?= Theme::scripts($scripts, 'footer') ?>

@@ -113,19 +113,19 @@ background: #F5F5F5;
 }
 
 .keyword-input:-moz-placeholder,
-.keyword-input:-moz-placeholder 
+.keyword-input:-moz-placeholder
 {
   color:    #424242;
 }
 
 .keyword-input::-moz-placeholder,
-.keyword-input::-moz-placeholder 
+.keyword-input::-moz-placeholder
 {
   color:    #424242;
 }
 
 .keyword-input:-ms-input-placeholder,
-.keyword-input:-ms-input-placeholder 
+.keyword-input:-ms-input-placeholder
 {
   color:    #424242;
 }
@@ -137,19 +137,19 @@ background: #F5F5F5;
 }
 
 .location-input:-moz-placeholder,
-.location-input:-moz-placeholder 
+.location-input:-moz-placeholder
 {
   color:    #424242;
 }
 
 .location-input::-moz-placeholder,
-.location-input::-moz-placeholder 
+.location-input::-moz-placeholder
 {
   color:    #424242;
 }
 
 .location-input:-ms-input-placeholder,
-.location-input:-ms-input-placeholder 
+.location-input:-ms-input-placeholder
 {
   color:    #424242;
 }
@@ -598,8 +598,8 @@ table {
 
 
 /* Portrait and Landscape */
-/*@media only screen 
-  and (min-device-width: 320px) 
+/*@media only screen
+  and (min-device-width: 320px)
   and (max-device-width: 767px)
   and (-webkit-min-device-pixel-ratio: 2) {
 	.language{
@@ -610,21 +610,21 @@ table {
 }
 
 
- Portrait and Landscape 
-@media only screen 
-  and (min-device-width: 480px) 
+ Portrait and Landscape
+@media only screen
+  and (min-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 2) {
     .logo-large{
          display:inline-block;
     }
      .logo-small{
         display:none;
-      
+
     }
 }
 
-@media only screen 
-    and (min-device-width: 120px) 
+@media only screen
+    and (min-device-width: 120px)
     and (max-device-width: 480px)
     and (-webkit-min-device-pixel-ratio: 2) {
     .logo-large{
@@ -632,7 +632,7 @@ table {
     }
     .logo-small{
         display:inline-block;
-      
+
     }
 }*/
 
@@ -651,3 +651,10 @@ table {
     border-bottom: #ddd 1px solid;
 }
 
+
+.trim-title {
+  text-overflow: ellipsis;
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+}

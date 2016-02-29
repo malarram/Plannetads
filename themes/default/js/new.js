@@ -230,43 +230,45 @@ $('#location-edit button').click(function(){
 });
 
 // sceditor
-$('textarea[name=description]:not(.disable-bbcode)').sceditorBBCodePlugin({
-    toolbar: "bold,italic,underline,strike,|left,center,right,justify|" +
-    "bulletlist,orderedlist|link,unlink,youtube|source",
-    resizeEnabled: "true",
-    emoticonsEnabled: false,
-    style: $('meta[name="application-name"]').data('baseurl') + "themes/default/css/jquery.sceditor.default.min.css",
-});
+//$('textarea[name=description]:not(.disable-bbcode)').sceditorBBCodePlugin({
+//    toolbar: "bold,italic,underline,strike,|left,center,right,justify|" +
+//    "bulletlist,orderedlist|link,unlink,youtube|source",
+//    resizeEnabled: "true",
+//    emoticonsEnabled: false,
+//    style: $('meta[name="application-name"]').data('baseurl') + "themes/default/css/jquery.sceditor.default.min.css",
+//});
 
 // paste plain text in sceditor
-$(".sceditor-container iframe").contents().find("body").bind('paste', function(e) {
-    var text = ''; var that = $(this);
-
-    if (e.clipboardData)
-        text = e.clipboardData.getData('text/plain');
-    else if (window.clipboardData)
-        text = window.clipboardData.getData('Text');
-    else if (e.originalEvent.clipboardData)
-        text = $('<div></div>').text(e.originalEvent.clipboardData.getData('text'));
-
-
-    if (document.queryCommandSupported('insertText')) {
-        $(".sceditor-container iframe")[0].contentWindow.document.execCommand('insertHTML', false, $(text).html());
-        return false;
-    }
-    else { // IE > 7
-        that.find('*').each(function () {
-             $(this).addClass('within');
-        });
-
-        setTimeout(function () {
-            that.find('*').each(function () {
-                $(this).not('.within').contents().unwrap();
-            });
-        }, 1);
-    }
-});
-
+//$(".sceditor-container iframe").contents().find("body").bind('paste', function(e) {
+//    var text = ''; var that = $(this);
+//
+//    if (e.clipboardData)
+//        text = e.clipboardData.getData('text/plain');
+//    else if (window.clipboardData)
+//        text = window.clipboardData.getData('Text');
+//    else if (e.originalEvent.clipboardData)
+//        text = $('<div></div>').text(e.originalEvent.clipboardData.getData('text'));
+//
+//
+//    if (document.queryCommandSupported('insertText')) {
+//        $(".sceditor-container iframe")[0].contentWindow.document.execCommand('insertHTML', false, $(text).html());
+//        return false;
+//    }
+//    else { // IE > 7
+//        that.find('*').each(function () {
+//             $(this).addClass('within');
+//        });
+//
+//        setTimeout(function () {
+//            that.find('*').each(function () {
+//                $(this).not('.within').contents().unwrap();
+//            });
+//        }, 1);
+//    }
+//});
+    $('.summernote').summernote({
+        height: 200
+    });
 // google map set marker on address
 if ($('#map').length !== 0){
     new GMaps({

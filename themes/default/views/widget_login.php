@@ -20,5 +20,5 @@
 </ul>
 <?else:?>
 <a class="uk-button uk-button-large uk-margin-small-right" href="#signin_form" data-uk-modal><span ><?= __('Sign in') ?></span></a>
-<a class="uk-button uk-button-large uk-button-success" href="<?=Route::url('post_new')?>"><?= __('Post an Ad') ?></a>
 <?endif?>
+<a class="uk-button uk-button-large uk-button-success" href="<?=Route::url('post_new')?>"><?= __('Post an Ad') ?></a>
