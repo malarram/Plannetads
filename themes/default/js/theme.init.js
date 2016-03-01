@@ -5,6 +5,8 @@ $("button[name=submit]").click(function(){
     $("textarea[name=description]").data("sceditor").updateOriginal();
 });
 
+$('.chosen-select').chosen();
+
     //chosen enable/disable
 //    $('select').chosen({
 //        no_results_text: getChosenLocalization("no_results_text"),
@@ -39,7 +41,7 @@ $("button[name=submit]").click(function(){
 //    $(window).load(function(){
 //        $('#accept_terms_modal').modal('show');
 //    });
-    
+
 });
 
 function setCookie(c_name,value,exdays)

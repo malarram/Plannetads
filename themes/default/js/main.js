@@ -3,7 +3,10 @@ doc.setAttribute('data-useragent', navigator.userAgent);
 
 $(function(){
   $('.search-container select').selectric();
-
+  $('#location-change').on('change',function(){
+      _href = $(this).find(':selected').data('href');
+      window.location.href = _href;
+  });
   $.validator.setDefaults({
     'errorClass'   : 'uk-text-danger uk-form-help-block',
     'errorElement' : 'p',

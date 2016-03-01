@@ -37,6 +37,7 @@ Theme::$styles = array( 'css/uikit.css' => 'screen',
                         'js/plugins/vegas/vegas.min.css' => 'screen',
                         'js/plugins/easy-autocomplete/easy-autocomplete.css' => 'screen',
                         'js/plugins/easy-autocomplete/easy-autocomplete.themes.css' => 'screen',
+                        URL::base().'cdn/chosen.min.css' => 'screen',
                         'css/styles.css?v='.Core::VERSION => 'screen',
                     );
 
@@ -46,6 +47,7 @@ if (Theme::$skin!='default')
 Theme::$scripts['footer']	= array('js/jquery-1.11.3.min.js',
                                     'js/uikit.min.js',
                                     'js/plugins/selectric/jquery.selectric.min.js',
+                                    URL::base().'cdn/chosen.jquery.min.js',
                                     Route::url('jslocalization', array('controller'=>'jslocalization', 'action'=>'chosen')),
                                     'js/jquery.validate.min.js',
                                     Route::url('jslocalization', array('controller'=>'jslocalization', 'action'=>'validate')),

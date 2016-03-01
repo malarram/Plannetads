@@ -1,8 +1,19 @@
 <div class="cities uk-float-right">
     <div class="uk-button-dropdown" data-uk-dropdown="{mode:'click'}">
-        <a class="uk-button uk-button-mini" ><i class="uk-icon-map-marker"></i> London <i class="uk-icon-caret-down"></i></a>
-        <div class="uk-dropdown uk-scrollable-box">
+        <?php
+        $locations = new Widget_Locations();
+        $locations->before();
+        ?>
+        <select data-placeholder="Choose a location..." class="uk-nav uk-nav-dropdown uk-panel chosen-select" id="location-change">
+            <?foreach($locations->loc_items as $loc):?>
+            <option <?= ($loc->id_location == $locations->loc_breadcrumb['id']) ? 'selected' : '' ?> value="<?=$loc->id_location?>" data-href="<?=Route::url('list',array('location'=>$loc->seoname,'category'=>$locations->cat_seoname))?>">
+                <?=$loc->name?>
+            </option>
+            <?endforeach?>
+        </select>
 
+        <!--<a class="uk-button uk-button-mini" ><i class="uk-icon-map-marker"></i> London <i class="uk-icon-caret-down"></i></a>-->
+<!--        <div class="uk-dropdown uk-scrollable-box">
             <div class="uk-h6">Cities in England : </div>
             <ul class="uk-nav uk-nav-dropdown uk-panel uk-margin-bottom">
                 <li><a href="#" title="London"> Bath</a></li>
@@ -32,6 +43,6 @@
                 <li><a href="#" title="Oxford">  Inverness</a></li>
                 <li><a href="#" title="Oxford">  Stirling</a></li>
             </ul>
-        </div>
+        </div>-->
     </div>
 </div>
