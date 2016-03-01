@@ -75,16 +75,25 @@ $(function(){
 
     var $params = {rules:{}, messages:{}};
     $params['rules']['email'] = {required: true, email: true};
+    $params['rules']['password'] = {required: true};
+    $params['messages']['email'] = {required: 'Enter email address', email: 'Email address not valid'};
+    $params['messages']['password'] = {required: 'Enter password'};
 
     $(".auth").each(function() {
         $(this).validate($params)
     });
 
     var $register_params = {rules:{}, messages:{}};
+    $register_params['rules']['name'] = {required: true};
     $register_params['rules']['email'] = {required: true, email: true, emaildomain: $('.register :input[name="email"]').data('domain')};
     $register_params['rules']['password1'] = {required: true};
-    $register_params['rules']['password2'] = {required: true};
-    $register_params['messages']['email'] = {"emaildomain" : $('.register :input[name="email"]').data('error')};
+    $register_params['rules']['password2'] = {required: true, equalTo: "#password1"};
+
+    $register_params['messages']['name'] = {required: 'Enter your name'};
+    $register_params['messages']['email'] = {required: 'Enter email address', email: 'Email address not valid', "emaildomain" : $('.register :input[name="email"]').data('error')};
+    $register_params['messages']['password1'] = {required: 'Enter password'};
+    $register_params['messages']['password2'] = {required: 'Enter Retype password', equalTo: "Retype password not equal"};
+
 
     $(".register").each(function() {
         $(this).validate($register_params)

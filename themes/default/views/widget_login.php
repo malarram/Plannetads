@@ -8,7 +8,7 @@
             </span>
         </a>
         <!-- This is the dropdown -->
-        <div class="uk-dropdown uk-dropdown-navbar">
+        <div class="uk-dropdown uk-dropdown-navbar <?= (Auth::instance()->logged_in()) ? "uk-contrast" : "" ?>">
             <ul class="uk-nav uk-nav-navbar">
                 <li><a href="<?= Route::url('oc-panel', array('controller' => 'myads', 'action' => 'index')) ?>"><?= __('My Ads') ?></a></li>
                 <li><a href="<?= Route::url('oc-panel', array('controller' => 'profile', 'action' => 'favorites')) ?>"><?= __('Wishlists') ?></a></li>

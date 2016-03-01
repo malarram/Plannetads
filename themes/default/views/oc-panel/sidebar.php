@@ -133,7 +133,7 @@
                         </div>-->
                         <?endif?>
                         <?if ($user->has_access_to_any('user,role,access')):?>
-<!--                        <div class="panel panel-sidebar">
+                        <div class="panel panel-sidebar">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseUser">
@@ -147,7 +147,7 @@
                                 <div class="panel-body">
                                     <table class="table no-hide">
                                         <tr><td class="br"><?=Theme::admin_link(__('Users'),'user','index','oc-panel','glyphicon  glyphicon-user')?></td></tr>
-                                        <tr><td class="br"><?=Theme::admin_link(__('Roles'),'role','index','oc-panel','glyphicon  glyphicon-retweet')?></td></tr>
+<!--                                        <tr><td class="br"><?=Theme::admin_link(__('Roles'),'role','index','oc-panel','glyphicon  glyphicon-retweet')?></td></tr>
                                         <tr><td class="br"><?=Theme::admin_link(__('Custom Fields'), 'userfields','index','oc-panel','glyphicon  glyphicon-plus-sign')?></td></tr>
                                         <?if(core::config('general.black_list')):?>
                                         <tr><td class="br"><?=Theme::admin_link(__('Black list'),'pool','index','oc-panel','glyphicon  glyphicon-fire')?></td></tr>
@@ -160,11 +160,11 @@
                                                     <span class="side-name-link"><?=__('Public profile')?></span>
                                                 </a>
                                             </li>
-                                        </td></tr>
+                                        </td></tr>-->
                                     </table>
                                 </div>
                             </div>
-                        </div>-->
+                        </div>
                         <?endif?>
 
                         <?if ($user->has_access_to_any('tools')):?>

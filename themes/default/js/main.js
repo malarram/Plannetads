@@ -3,6 +3,19 @@ doc.setAttribute('data-useragent', navigator.userAgent);
 
 $(function(){
   $('.search-container select').selectric();
+
+  $.validator.setDefaults({
+    'errorClass'   : 'uk-text-danger uk-form-help-block',
+    'errorElement' : 'p',
+    highlight: function (element, errorClass, validClass) {
+        console.log('highlight');
+        $(element).removeClass(errorClass).addClass('uk-form-danger');
+    },
+    unhighlight: function (element, errorClass, validClass) {
+        console.log('un highlight');
+        $(element).removeClass('uk-form-danger').addClass(validClass);
+    },
+  });
 });
 
 $(".main-search").vegas({

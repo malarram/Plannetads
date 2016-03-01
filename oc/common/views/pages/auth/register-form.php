@@ -1,6 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
 
-<form class="uk-form uk-form-stacked" method="post" action="<?= Route::url('oc-panel', array('directory' => 'user', 'controller' => 'auth', 'action' => 'register')) ?>">
+<form class="uk-form uk-form-stacked register" method="post" action="<?= Route::url('oc-panel', array('directory' => 'user', 'controller' => 'auth', 'action' => 'register')) ?>">
+
     <?= Form::errors() ?>
     <div class="uk-grid uk-form-row">
         <div class="uk-width-1-1">
@@ -22,7 +23,7 @@
     </div>
     <div class="uk-form-row">
         <label class="uk-form-label" for="password"><?= __('New password') ?></label>
-        <input class="uk-width-1-1 uk-form-large" type="password" name="password1" placeholder="<?= __('Password') ?>">
+        <input class="uk-width-1-1 uk-form-large" type="password" name="password1" id="password1" placeholder="<?= __('Password') ?>">
     </div>
     <div class="uk-form-row">
         <label class="uk-form-label" for="password"><?= __('Repeat password') ?></label>

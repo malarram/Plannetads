@@ -110,7 +110,8 @@
                             <div class="uk-thumbnail uk-thumbnail-mini uk-margin-right ">
                             <img src="<?= $user->get_profile_image() ?>" class="img-rounded" alt="<?= __('Profile Picture') ?>" height='200' width="200">
                             </div>
-                             <a class="uk-form-file uk-button">Change<input type="file" name="profile_image" id="profile_img"></a>
+                            <input type="file" name="profile_image" id="profile_img">
+                             <!--<a class="uk-form-file uk-button">Change<input type="file" name="profile_image" id="profile_img"></a>-->
                         </div>
                     </div>
 

@@ -276,12 +276,15 @@ class Controller_Panel_Auth extends Controller {
             else
             {
                 $errors = $validation->errors('auth');
-
+                Form::set_errors($errors);
+                
                 foreach ($errors as $error)
                     Alert::set(Alert::ALERT, $error);
             }
 		}
 
+            Breadcrumbs::add(Breadcrumb::factory()->set_title(__('Home'))->set_url(Route::url('default')));
+            Breadcrumbs::add(Breadcrumb::factory()->set_title(__('Register')));
 		//template header
 		$this->template->title            = __('Register new user');
 

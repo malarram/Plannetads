@@ -1,9 +1,11 @@
 <?php defined('SYSPATH') or die('No direct script access.');?>
+<?= Breadcrumbs::render('breadcrumbs') ?>
 
-	
-	<div class="page-header">
-		<h1><?=__('Register')?></h1>
-	</div>
-
-	<?=View::factory('pages/auth/register-form')?>
-	  
+<div class="uk-container uk-container-center">
+    <div class="uk-width-large-3-10 uk-container-center">
+        <h3 class="text-bolder uk-text-center"><?= __('Register') ?></h3>
+        <div class="uk-panel uk-panel-box uk-panel-box-secondary ">
+            <?=View::factory('pages/auth/register-form')?>
+        </div>
+    </div>
+</div>
