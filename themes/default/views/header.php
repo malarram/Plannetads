@@ -21,7 +21,7 @@
                 <div class="uk-button-dropdown" data-uk-dropdown="{mode:'click'}">
                     <a class="uk-button uk-button-mini" ><img src="<?= URL::base() . 'themes/default/' ?>images/flags/gb.png" alt="United Kingdom"> English (UK) <i class="uk-icon-caret-down"></i></a>
                     <div class="uk-dropdown uk-scrollable-box">
-                        <ul class="uk-nav uk-nav-dropdown uk-panel ">
+                        <ul class="uk-nav uk-nav-dropdown uk-panel">
                             <li><a href="#" title="English (UK)" data-lang-id="en_UK" class="uk-text-bold"><img src="<?= URL::base() . 'themes/default/' ?>images/flags/gb.png" alt="United Kingdom" class="uk-margin-small-right"> English (UK)</a></li>
                             <li><a href="#" title="English (US)"  data-lang-id="en_US" ><img src="<?= URL::base() . 'themes/default/' ?>images/flags/us.png" alt="United States" class="uk-margin-small-right"> English (US)</a></li>
                             <li><a href="#" title="French (Canada)" data-lang-id="fr_CA"><img src="<?= URL::base() . 'themes/default/' ?>images/flags/ca.png" alt="Canada" class="uk-margin-small-right"> Français (Canada)</a></li>

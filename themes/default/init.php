@@ -65,14 +65,13 @@ Theme::$scripts['footer']	= array('js/jquery-1.11.3.min.js',
 /**
  * custom error alerts
  */
-Form::$errors_tpl 	= '<div class="uk-alert uk-alert-danger"><a class="close" data-dismiss="alert">×</a>
-			       		<h4 class="uk-alert-heading">%s</h4>
+Form::$errors_tpl 	= '<div class="uk-alert uk-alert-danger" data-uk-alert><a class="uk-alert-close uk-close" href="#"></a>
+			       		<h4 class="uk-alert-heading uk-hidden">%s</h4>
 			        	<ul>%s</ul></div>';
 
-Form::$error_tpl 	= '<div class="uk-alert "><a class="close" data-dismiss="alert">×</a>%s</div>';
+Form::$error_tpl 	= '<div class="uk-alert" data-uk-alert><a class="uk-alert-close uk-close" href="#"></a>%s</div>';
 
 
-Alert::$tpl 	= 	'<div class="uk-alert uk-alert-%s">
-					<a class="close" data-dismiss="alert" href="#">×</a>
-					<h4 class="uk-alert-heading">%s</h4>%s
+Alert::$tpl 	= 	'<div class="uk-alert uk-alert-%s" data-uk-alert><a class="uk-alert-close uk-close" href="#"></a>
+					<h4 class="uk-alert-heading uk-hidden">%s</h4>%s
 					</div>';

@@ -77,11 +77,7 @@ class Controller_Panel_Auth extends Controller {
                 }
                 else
                 {
-                    Form::set_errors(array( __('Wrong email or password').'. '
-                                            .'<a class="alert-link" href="'.Route::url('oc-panel',array(   'directory'=>'user',
-                                                                                        'controller'=>'auth',
-                                                                                        'action'=>'forgot'))
-                                            .'">'.__('Have you forgotten your password?').'</a>'));
+                    Form::set_errors(array( __('Wrong email or password')));
                     if ($user->loaded())
                     {
                         // fifth failed attempt, invalidate token?
