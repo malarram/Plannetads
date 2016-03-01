@@ -1,17 +1,17 @@
 // selectize for category and location selects
 $(function(){
-    
+
     // create 1st category select
     category_select = createCategorySelect();
-    // remove hidden class
-    $('#category-chained .select-category[data-level="0"]').parent('div').removeClass('hidden');
-    
+    // remove uk-hidden class
+    $('#category-chained .select-category[data-level="0"]').parent('div').removeClass('uk-hidden');
+
     // load options for 1st category select
     category_select.load(function(callback) {
         $.ajax({
             url: $('#category-chained').data('apiurl'),
             type: 'GET',
-            data: { 
+            data: {
                 "id_category_parent": 1,
                 "sort": 'order',
             },
@@ -23,18 +23,18 @@ $(function(){
             }
         });
     });
-    
+
     // create 1st location select
     location_select = createLocationSelect();
-    // remove hidden class
-    $('#location-chained .select-location[data-level="0"]').parent('div').removeClass('hidden');
-    
+    // remove uk-hidden class
+    $('#location-chained .select-location[data-level="0"]').parent('div').removeClass('uk-hidden');
+
     // load options for 1st location select
     location_select.load(function(callback) {
         $.ajax({
             url: $('#location-chained').data('apiurl'),
             type: 'GET',
-            data: { 
+            data: {
                 "id_location_parent": 1,
                 "sort": 'order',
             },
@@ -48,7 +48,7 @@ $(function(){
             }
         });
     });
-    
+
     // show custom fields
     if ($('#category-selected').val().length > 0) {
         $.ajax({
@@ -69,41 +69,41 @@ $(function(){
 });
 
 function createCategorySelect () {
-    
+
     // count how many category selects we have rendered
     num_category_select = $('#category-chained .select-category[data-level]').length;
-    
+
     // clone category select from template
     $('#select-category-template').clone().attr('id', '').insertBefore($('#select-category-template')).find('select').attr('data-level', num_category_select);
-    
+
     // initialize selectize on created category select
     category_select = $('.select-category[data-level="'+ num_category_select +'"]').selectize({
         valueField:  'id_category',
         labelField:  'name',
         searchField: 'name',
         onChange: function (value) {
-            
+
             if (!value.length) return;
-            
+
             // get current category level
             current_level = $('#category-chained .option[data-value="'+ value +'"]').closest('.selectize-control').prev().data('level');
-            
+
             // is allowed to post on selected category?
             if ( current_level > 0 || (current_level == 0 && $('#category-chained').is('[data-isparent]')))
             {
                 // update #category-selected input value
                 $('#category-selected').attr('value', value);
-                
+
                 //get category price
                 $.ajax({
                     url: $('#category-chained').data('apiurl') + '/' + value,
                     success: function(results) {
                         if (decodeHtml(results.category.price) != $('#category-chained').data('price0')) {
                             price_txt = $('#paid-category .help-block').data('title').replace(/%s/g, results.category.name).replace(/%d/g, results.category.price);
-                            $('#paid-category').removeClass('hidden').find('.help-block span').text(price_txt);
+                            $('#paid-category').removeClass('uk-hidden').find('.help-block span').text(price_txt);
                         }
                         else {
-                            $('#paid-category').addClass('hidden');
+                            $('#paid-category').addClass('uk-hidden');
                         }
                         // show custom fields for this category
                         createCustomFieldsByCategory(results.category.customfields);
@@ -114,7 +114,7 @@ function createCategorySelect () {
             {
                 // set empty value
                 $('#category-selected').attr('value', '');
-                $('#paid-category').addClass('hidden');
+                $('#paid-category').addClass('uk-hidden');
                 // show custom fields
                 $.ajax({
                     url: $('#category-chained').data('apiurl') + '/' + 1,
@@ -123,20 +123,20 @@ function createCategorySelect () {
                     }
                 });
             }
-            
+
             // get current category level
             current_level = $('#category-chained .option[data-value="'+ value +'"]').closest('.selectize-control').prev().data('level');
-            
+
             destroyCategoryChildSelect(current_level);
-            
+
             // create category select
             category_select = createCategorySelect();
-            
+
             // load options for category select
             category_select.load(function (callback) {
                 $.ajax({
                     url: $('#category-chained').data('apiurl'),
-                    data: { 
+                    data: {
                         "id_category_parent": value,
                         "sort": 'order',
                     },
@@ -145,7 +145,7 @@ function createCategorySelect () {
                         if (results.categories.length > 0)
                         {
                             callback(results.categories);
-                            $('#category-chained .select-category[data-level="' + (current_level + 1) + '"]').parent('div').removeClass('hidden');
+                            $('#category-chained .select-category[data-level="' + (current_level + 1) + '"]').parent('div').removeClass('uk-hidden');
                         }
                         else
                         {
@@ -159,44 +159,44 @@ function createCategorySelect () {
             });
         }
     });
-    
+
     // return selectize control
     return category_select[0].selectize;
 }
 
 function createLocationSelect () {
-    
+
     // count how many location selects we have rendered
     num_location_select = $('#location-chained .select-location[data-level]').length;
-    
+
     // clone location select from template
     $('#select-location-template').clone().attr('id', '').insertBefore($('#select-location-template')).find('select').attr('data-level', num_location_select);
-    
+
     // initialize selectize on created location select
     location_select = $('.select-location[data-level="'+ num_location_select +'"]').selectize({
         valueField:  'id_location',
         labelField:  'name',
         searchField: 'name',
         onChange: function (value) {
-            
+
             if (!value.length) return;
-            
+
             // update #location-selected input value
             $('#location-selected').attr('value', value);
-            
+
             // get current location level
             current_level = $('#location-chained .option[data-value="'+ value +'"]').closest('.selectize-control').prev().data('level');
-            
+
             destroyLocationChildSelect(current_level);
-            
+
             // create location select
             location_select = createLocationSelect();
-            
+
             // load options for location select
             location_select.load(function (callback) {
                 $.ajax({
                     url: $('#location-chained').data('apiurl'),
-                    data: { 
+                    data: {
                         "id_location_parent": value,
                         "sort": 'order',
                     },
@@ -205,7 +205,7 @@ function createLocationSelect () {
                         if (results.locations.length > 0)
                         {
                             callback(results.locations);
-                            $('#location-chained .select-location[data-level="' + (current_level + 1) + '"]').parent('div').removeClass('hidden');
+                            $('#location-chained .select-location[data-level="' + (current_level + 1) + '"]').parent('div').removeClass('uk-hidden');
                         }
                         else
                         {
@@ -219,7 +219,7 @@ function createLocationSelect () {
             });
         }
     });
-    
+
     // return selectize control
     return location_select[0].selectize;
 }
@@ -243,36 +243,40 @@ function destroyLocationChildSelect (level) {
 }
 
 $('#category-edit button').click(function(){
-    $('#category-chained').removeClass('hidden');
-    $('#category-edit').addClass('hidden');
+    $('#category-chained').removeClass('uk-hidden');
+    $('#category-edit').addClass('uk-hidden');
 });
-    
+
 $('#location-edit button').click(function(){
-    $('#location-chained').removeClass('hidden');
-    $('#location-edit').addClass('hidden');
+    $('#location-chained').removeClass('uk-hidden');
+    $('#location-edit').addClass('uk-hidden');
 });
 
 // sceditor
-$('textarea[name=description]:not(.disable-bbcode)').sceditorBBCodePlugin({
-    toolbar: "bold,italic,underline,strike,|left,center,right,justify|" +
-    "bulletlist,orderedlist|link,unlink,youtube|source",
-    resizeEnabled: "true",
-    emoticonsEnabled: false,
-    style: $('meta[name="application-name"]').data('baseurl') + "themes/default/css/jquery.sceditor.default.min.css",
-});
+//$('textarea[name=description]:not(.disable-bbcode)').sceditorBBCodePlugin({
+//    toolbar: "bold,italic,underline,strike,|left,center,right,justify|" +
+//    "bulletlist,orderedlist|link,unlink,youtube|source",
+//    resizeEnabled: "true",
+//    emoticonsEnabled: false,
+//    style: $('meta[name="application-name"]').data('baseurl') + "themes/default/css/jquery.sceditor.default.min.css",
+//});
 
 // paste plain text in sceditor
-$(".sceditor-container iframe").contents().find("body").bind('paste', function(e) {
-    e.preventDefault();
-    var text = (e.originalEvent || e).clipboardData.getData('text/plain');
-    $(".sceditor-container iframe")[0].contentWindow.document.execCommand('insertText', false, text);
-});
+//$(".sceditor-container iframe").contents().find("body").bind('paste', function(e) {
+//    e.preventDefault();
+//    var text = (e.originalEvent || e).clipboardData.getData('text/plain');
+//    $(".sceditor-container iframe")[0].contentWindow.document.execCommand('insertText', false, text);
+//});
 
-//sceditorBBCodePlugin for validation, updates iframe on submit 
-$("button[name=submit]").click(function(){
-    $("textarea[name=description]").data("sceditor").updateOriginal();
-});
+//sceditorBBCodePlugin for validation, updates iframe on submit
+//$("button[name=submit]").click(function(){
+//    $("textarea[name=description]").data("sceditor").updateOriginal();
+//});
 
+$('.summernote').summernote({
+    height: 200
+});
+    
 // google map set marker on address
 if($('#map').length !== 0){
     map = new GMaps({
@@ -306,7 +310,7 @@ if($('#map').length !== 0){
                         div: '#map',
                         lat: latlng.lat(),
                         lng: latlng.lng(),
-                    }); 
+                    });
                     map.setCenter(latlng.lat(), latlng.lng());
                     map.addMarker({
                         lat: latlng.lat(),
@@ -332,7 +336,7 @@ $('.locateme').click(function() {
                 div: '#map',
                 lat: lat,
                 lng: lng,
-            }); 
+            });
             map.setCenter(lat, lng);
             map.addMarker({
                 lat: lat,
@@ -378,7 +382,7 @@ $('input[name^="image"]').on('change', function() {
                 type: "warning",
                 allowOutsideClick: true
             });
-            
+
             $(this).replaceWith($(this).val('').clone(true));
         }
         else
@@ -449,9 +453,9 @@ function createCustomFieldsByCategory (customfields) {
         if (customfield.admin_privilege && $('#custom-fields').data("admin-privilege") === undefined)
             return;
         // clone custom field from template
-        var $template = $('#custom-field-template').clone().attr('id', '').removeClass('hidden').appendTo('#custom-fields');
+        var $template = $('#custom-field-template').clone().attr('id', '').removeClass('uk-hidden').appendTo('#custom-fields');
         $template.find('div[data-label]').replaceWith($('<label/>').attr({'for' : idx}).html(customfield.label));
-        
+
         switch (customfield.type) {
             case 'string':
                 $template.find('div[data-input]').replaceWith($('<input/>').attr({  'type'        : 'text',
@@ -592,10 +596,10 @@ function createCustomFieldsByCategory (customfields) {
         }
     });
 
-    $('input[data-toggle=tooltip]').tooltip({
-        placement: "right",
-        trigger: "focus"
-    });
+//    $('input[data-toggle=tooltip]').tooltip({
+//        placement: "right",
+//        trigger: "focus"
+//    });
 }
 
 $(function(){
@@ -639,7 +643,7 @@ $(function(){
         var title = $(this).data('title');
         var text = $(this).data('text');
         var img_id = $(this).attr('value');
-        
+
         $('#processing-modal').modal('show');
         $.ajax({
             type: "POST",
@@ -653,7 +657,7 @@ $(function(){
             $('#processing-modal').modal('hide');
             window.location.href = href;
         });
-    }); 
+    });
 });
 
 function clearFileInput($input) {
@@ -671,7 +675,7 @@ function clearFileInput($input) {
             $input.unwrap().appendTo($tmpEl).unwrap();
         } else {
             $input.wrap('<form>').closest('form').trigger('reset').unwrap();
-        }   
+        }
     } else {
         $input.val('');
     }

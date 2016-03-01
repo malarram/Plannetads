@@ -145,22 +145,17 @@
 
                         <?if($form_show['address'] != FALSE):?>
                         <div class="uk-grid">
-                            <div class="uk-width1-1-1">
+                            <div class="uk-width-1-2">
                                 <?= FORM::label('address', __('Address'), array('class' => 'uk-form-label', 'for' => 'address')) ?>
                                 <?if(core::config('advertisement.map_pub_new')):?>
-                                <div class="input-group">
-                                    <?= FORM::input('address', Request::current()->post('address'), array('class' => 'uk-width-1-1 uk-form-large', 'id' => 'address', 'placeholder' => __('Address'))) ?>
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default locateme" type="button"><?= __('Locate me') ?></button>
-                                    </span>
-                                </div>
+                                    <?= FORM::input('address', Request::current()->post('address'), array('class' => 'uk-width-5-6', 'id' => 'address', 'placeholder' => __('Address'))) ?>
+                                    <button class="uk-button uk-button-default locateme" type="button"><i class="uk-icon-wifi"></i></button>
                                 <?else:?>
                                 <?= FORM::input('address', Request::current()->post('address'), array('class' => 'uk-width-1-1 uk-form-large', 'id' => 'address', 'placeholder' => __('Address'))) ?>
                                 <?endif?>
                             </div>
-                        </div>
                         <?if(core::config('advertisement.map_pub_new')):?>
-                        <div class="popin-map-container">
+                        <div class="uk-width-1-2 popin-map-container">
                             <div class="map-inner" id="map"
                                  data-lat="<?= core::config('advertisement.center_lat') ?>"
                                  data-lon="<?= core::config('advertisement.center_lon') ?>"
@@ -171,6 +166,7 @@
                         <input type="hidden" name="latitude" id="publish-latitude" value="" disabled>
                         <input type="hidden" name="longitude" id="publish-longitude" value="" disabled>
                         <?endif?>
+                        </div>
                         <?endif?>
                         <?if(core::config('payment.stock')):?>
                         <div class="uk-grid">
