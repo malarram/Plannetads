@@ -1,48 +1,60 @@
 <div class="cities uk-float-right">
     <div class="uk-button-dropdown" data-uk-dropdown="{mode:'click'}">
         <?php
-        $locations = new Widget_Locations();
-        $locations->before();
+        $parent_loc = (new Model_Location())->where('id_location_parent', '<>', 0)->order_by('order', 'asc')->cached()->find_all();
+        $locations = array();
+        foreach ($parent_loc as $loc) {
+            if ($loc->id_location_parent == 1)
+                $locations[$loc->id_location]['optgroup'] = $loc->name;
+            else
+                $locations[$loc->id_location_parent]['options'][] = [$loc->id_location, $loc->name, $loc->seoname];
+        }
+
+        if(is_null($selected_option = Model_Location::current()->seoname)) {
+            $selected_option = Cookie::get('current_location');
+        }
         ?>
         <select data-placeholder="Choose a location..." class="uk-nav uk-nav-dropdown uk-panel chosen-select" id="location-change">
-            <?foreach($locations->loc_items as $loc):?>
-            <option <?= ($loc->id_location == Model_Location::current()->id_location) ? 'selected' : '' ?> value="<?=$loc->id_location?>" data-href="<?=Route::url('list',array('location'=>$loc->seoname,'category'=>$locations->cat_seoname))?>">
-                <?=$loc->name?>
-            </option>
+            <?foreach($locations as $loc):?>
+            <optgroup label="<?= $loc['optgroup'] ?>">
+                <?foreach($loc['options'] as $option):?>
+                <option <?= ($option[2] == $selected_option) ? 'selected="selected"' : '' ?> value="<?= $option[0] ?>" data-href="<?= Route::url('list', array('location' => $option[2])) ?>"><?= $option[1] ?></option>
+                <?endforeach?>
+            </optgroup>
             <?endforeach?>
         </select>
 
         <!--<a class="uk-button uk-button-mini" ><i class="uk-icon-map-marker"></i> London <i class="uk-icon-caret-down"></i></a>-->
-<!--        <div class="uk-dropdown uk-scrollable-box">
-            <div class="uk-h6">Cities in England : </div>
-            <ul class="uk-nav uk-nav-dropdown uk-panel uk-margin-bottom">
-                <li><a href="#" title="London"> Bath</a></li>
-                <li><a href="#" title="Edinburgh"> Brighton and Hove</a></li>
-                <li><a href="#" title="Manchester"> Canterbury</a></li>
-                <li><a href="#" title="Birmingham"> Chichester</a></li>
-                <li><a href="#" title="Oxford">  Durham</a></li>
-                <li><a href="#" title="Cambridge"> Cambridge</a></li>
-                <li><a href="#" title="Brighton"> Brighton</a></li>
-                <li><a href="#" title="Nottingham"> Nottingham</a></li>
-                <li><a href="#" title="Aberdeen"> Aberdeen</a></li>
-            </ul>
-            <div class="uk-h6"> Cities in Wales : </div>
-            <ul class="uk-nav uk-nav-dropdown uk-panel uk-margin-bottom">
-                <li><a href="#" title="London"> Bangor</a></li>
-                <li><a href="#" title="Edinburgh"> Cardiff</a></li>
-                <li><a href="#" title="Manchester"> Newport</a></li>
-                <li><a href="#" title="Birmingham"> Swansea</a></li>
-                <li><a href="#" title="Oxford">  St Davids</a></li>
-            </ul>
-            <div class="uk-h6"> Cities in Scotland : </div>
-            <ul class="uk-nav uk-nav-dropdown uk-panel">
-                <li><a href="#" title="London"> Aberdeen</a></li>
-                <li><a href="#" title="Edinburgh"> Dundee</a></li>
-                <li><a href="#" title="Manchester"> Edinburgh</a></li>
-                <li><a href="#" title="Birmingham"> Glasgow</a></li>
-                <li><a href="#" title="Oxford">  Inverness</a></li>
-                <li><a href="#" title="Oxford">  Stirling</a></li>
-            </ul>
-        </div>-->
+        <!--        <div class="uk-dropdown uk-scrollable-box">
+                    <div class="uk-h6">Cities in England : </div>
+                    <ul class="uk-nav uk-nav-dropdown uk-panel uk-margin-bottom">
+                        <li><a href="#" title="London"> Bath</a></li>
+                        <li><a href="#" title="Edinburgh"> Brighton and Hove</a></li>
+                        <li><a href="#" title="Manchester"> Canterbury</a></li>
+                        <li><a href="#" title="Birmingham"> Chichester</a></li>
+                        <li><a href="#" title="Oxford">  Durham</a></li>
+                        <li><a href="#" title="Cambridge"> Cambridge</a></li>
+                        <li><a href="#" title="Brighton"> Brighton</a></li>
+                        <li><a href="#" title="Nottingham"> Nottingham</a></li>
+                        <li><a href="#" title="Aberdeen"> Aberdeen</a></li>
+                    </ul>
+                    <div class="uk-h6"> Cities in Wales : </div>
+                    <ul class="uk-nav uk-nav-dropdown uk-panel uk-margin-bottom">
+                        <li><a href="#" title="London"> Bangor</a></li>
+                        <li><a href="#" title="Edinburgh"> Cardiff</a></li>
+                        <li><a href="#" title="Manchester"> Newport</a></li>
+                        <li><a href="#" title="Birmingham"> Swansea</a></li>
+                        <li><a href="#" title="Oxford">  St Davids</a></li>
+                    </ul>
+                    <div class="uk-h6"> Cities in Scotland : </div>
+                    <ul class="uk-nav uk-nav-dropdown uk-panel">
+                        <li><a href="#" title="London"> Aberdeen</a></li>
+                        <li><a href="#" title="Edinburgh"> Dundee</a></li>
+                        <li><a href="#" title="Manchester"> Edinburgh</a></li>
+                        <li><a href="#" title="Birmingham"> Glasgow</a></li>
+                        <li><a href="#" title="Oxford">  Inverness</a></li>
+                        <li><a href="#" title="Oxford">  Stirling</a></li>
+                    </ul>
+                </div>-->
     </div>
 </div>
