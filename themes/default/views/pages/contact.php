@@ -58,6 +58,12 @@
                                 <?= FORM::textarea('message', Core::request('message'), array('class' => 'uk-width-1-1 uk-form-large', 'placeholder' => __('Message'), 'name' => 'message', 'id' => 'message', 'rows' => 7, 'required')) ?>
                             </div>
                         </div>
+                        <div class="uk-form-row">
+                            <?= FORM::label('attachment', __('Attachment'), array('class' => 'uk-form-label', 'for' => 'message')) ?>
+                            <div class="uk-form-controls">
+                                <?= FORM::file('attachment',array('name' => 'attachment', 'id' => 'attachment')) ?>
+                            </div>
+                        </div>
 
                         <?if (core::config('advertisement.captcha') != FALSE):?>
                         <div class="uk-form-row">

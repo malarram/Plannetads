@@ -275,11 +275,11 @@ class Controller_Panel_Auth extends Controller {
             }
             else
             {
-                $errors = $validation->errors('auth');
+                $errors = $validation->errors('register');
                 Form::set_errors($errors);
-                
-                foreach ($errors as $error)
-                    Alert::set(Alert::ALERT, $error);
+
+//                foreach ($errors as $error)
+//                    Alert::set(Alert::ALERT, $error);
             }
 		}
 

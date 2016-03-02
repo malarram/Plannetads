@@ -1,5 +1,5 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
-<form class="uk-form uk-form-stacked"  method="post" action="<?= Route::url('oc-panel', array('directory' => 'user', 'controller' => 'auth', 'action' => 'forgot')) ?>">
+<form class="uk-form uk-form-stacked forgot"  method="post" action="<?= Route::url('oc-panel', array('directory' => 'user', 'controller' => 'auth', 'action' => 'forgot')) ?>">
     <?= Form::errors() ?>
     <div class="uk-form-row">
         <label class="uk-form-label"><?= __('Enter your email address to reset your password') ?></label>

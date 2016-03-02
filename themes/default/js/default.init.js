@@ -99,6 +99,33 @@ $(function(){
         $(this).validate($register_params)
     });
 
+
+    var $forgot_params = {rules:{}, messages:{}};
+    $forgot_params['rules']['email'] = {required: true, email: true};
+
+    $forgot_params['messages']['email'] = {required: 'Enter email address', email: 'Email address not valid'};
+
+
+    $(".forgot").each(function() {
+        $(this).validate($forgot_params)
+    });
+
+
+    var $contact_ad_params = {rules:{}, messages:{}};
+    $contact_ad_params['rules']['name'] = {required: true};
+    $contact_ad_params['rules']['email'] = {required: true, email: true};
+    $contact_ad_params['rules']['message'] = {required: true};
+    $contact_ad_params['rules']['captcha'] = {required: true};
+
+    $contact_ad_params['messages']['name'] = {required: 'Enter your name'};
+    $contact_ad_params['messages']['email'] = {required: 'Enter email address', email: 'Email address not valid'};
+    $contact_ad_params['messages']['message'] = {required: 'Enter message'};
+    $contact_ad_params['messages']['captcha'] = {required: 'Enter captcha'};
+
+
+    $(".contact-ad").each(function() {
+        $(this).validate($contact_ad_params)
+    });
 });
 
 function createCookie(name,value,seconds) {
@@ -150,7 +177,8 @@ $(function(){
         if ( ! readCookie('cancel_auto_locate') && ( ! readCookie('mylat') || ! readCookie('mylng'))) {
             var lat;
             var lng;
-            GMaps.geolocate({
+            if(typeof GMaps != 'undefined'){
+                GMaps.geolocate({
                 success: function(position) {
                     lat = position.coords.latitude;
                     lng = position.coords.longitude
@@ -172,6 +200,7 @@ $(function(){
                     createCookie('cancel_auto_locate',1,1800);
                 },
             });
+            }
         }
     }
 

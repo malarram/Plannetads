@@ -6,7 +6,7 @@
         ?>
         <select data-placeholder="Choose a location..." class="uk-nav uk-nav-dropdown uk-panel chosen-select" id="location-change">
             <?foreach($locations->loc_items as $loc):?>
-            <option <?= ($loc->id_location == $locations->loc_breadcrumb['id']) ? 'selected' : '' ?> value="<?=$loc->id_location?>" data-href="<?=Route::url('list',array('location'=>$loc->seoname,'category'=>$locations->cat_seoname))?>">
+            <option <?= ($loc->id_location == Model_Location::current()->id_location) ? 'selected' : '' ?> value="<?=$loc->id_location?>" data-href="<?=Route::url('list',array('location'=>$loc->seoname,'category'=>$locations->cat_seoname))?>">
                 <?=$loc->name?>
             </option>
             <?endforeach?>

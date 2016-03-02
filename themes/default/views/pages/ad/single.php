@@ -2,14 +2,15 @@
 
 <?if ($ad->status != Model_Ad::STATUS_PUBLISHED && $permission === FALSE && ($ad->id_user != $user)):?>
 
-<div class="page-header">
-    <h1><?= __('This advertisement doesn´t exist, or is not yet published!') ?></h1>
+<div class="uk-container uk-container-center">
+    <article class="uk-article">
+        <h1 class="uk-article-title ad-title"><?= __('This advertisement doesn´t exist, or is not yet published!') ?></h1>
+    </article>
 </div>
 
 <?else:?>
-<?= Form::errors() ?>
-<?= Breadcrumbs::render('breadcrumbs') ?>
 
+<?= Breadcrumbs::render('breadcrumbs') ?>
 <div class="uk-container uk-container-center">
     <article class="uk-article">
         <h1 class="uk-article-title ad-title"><?= $ad->title; ?></h1>
@@ -70,7 +71,9 @@
                             </div>
                             <div class="uk-float-left">
                                 <h4 class="uk-comment-title"><a href="<?= Route::url('profile', array('seoname' => $ad->user->seoname)) ?>"><?= ucwords($ad->user->name) ?></a></h4>
-                                <div class="uk-comment-meta">10 ads | Member since <?= Date::format($ad->user->created, 'M Y'); ?></div>
+                                <div class="uk-comment-meta">
+                                   <?php $count_ads = (new Model_Ad)->where('id_user', '=', $ad->user->id_user)->where('status', '=', Model_Ad::STATUS_PUBLISHED)->count_all(); ?>
+                                    <?= $count_ads ?> ads | Member since <?= Date::format($ad->user->created, 'M Y'); ?></div>
                                 <div class="uk-comment-meta"><a href="<?= Route::url('profile', array('seoname' => $ad->user->seoname)) ?>">More ads from <?= ucwords($ad->user->name) ?></a></div>
                             </div>
                         </header>
@@ -115,8 +118,9 @@
 
                     <div class="contact-seller">
                         <h4 class="uk-panel-title">Contact Seller</h4>
-                        <?= Form::errors() ?>
-                        <?= FORM::open(Route::url('default', array('controller' => 'contact', 'action' => 'user_contact', 'id' => $ad->id_ad)), array('class' => 'uk-form uk-form-stacked', 'enctype' => 'multipart/form-data')) ?>
+                        <?= FORM::open(Route::url('default', array('controller' => 'contact', 'action' => 'user_contact', 'id' => $ad->id_ad)), array('class' => 'uk-form uk-form-stacked contact-ad', 'enctype' => 'multipart/form-data')) ?>
+                        <?= FORM::errors() ?>
+
                         <?if (!Auth::instance()->get_user()):?>
                             <div class="uk-form-row">
                                 <?= FORM::label('name', __('Name'), array('class' => 'uk-form-label', 'for' => 'name')) ?>

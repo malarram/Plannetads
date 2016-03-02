@@ -658,3 +658,8 @@ table {
   white-space: nowrap;
   overflow: hidden;
 }
+.uk-alert > ul {
+  list-style: outside none none;
+  margin-top: 0;
+  padding-left: 0;
+}

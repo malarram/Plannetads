@@ -17,8 +17,8 @@
           <script type="text/javascript" src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
         <![endif]-->
         <?= Theme::styles($styles) ?>
-<?= Theme::scripts($scripts) ?>
-<?= core::config('general.html_head') ?>
+        <?= Theme::scripts($scripts) ?>
+        <?= core::config('general.html_head') ?>
         <!--<? View::factory('analytics')?>-->
         <script type="text/javascript">
             var baseURL = '<?= URL::base() ?>';
@@ -29,17 +29,20 @@
 
         <?= View::factory('alert_terms') ?>
 
-<?= $header ?>
+        <?= $header ?>
         <div class="alert alert-warning off-line" style="display:none;"><strong><?= __('Warning') ?>!</strong> <?= __('We detected you are currently off-line, please connect to gain full experience.') ?></div>
         <div class="uk-width-1-1">
-            <div id="uk-container"><?= $content ?></div>
+            <div id="uk-container">
+                <?= Alert::show() ?>
+                <?= $content ?>
+            </div>
         </div>
-        
+
         <?= $footer ?>
 
         <?= Theme::scripts($scripts, 'footer') ?>
         <?= core::config('general.html_footer') ?>
 
-<?= (Kohana::$environment === Kohana::DEVELOPMENT) ? View::factory('profiler') : '' ?>
+        <?= (Kohana::$environment === Kohana::DEVELOPMENT) ? View::factory('profiler') : '' ?>
     </body>
 </html>
