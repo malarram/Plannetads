@@ -3,26 +3,22 @@
 <div class="uk-container uk-container-center ">
     <div class="uk-grid uk-block">
         <div class="uk-width-large-2-10 uk-visible-large">
-            <div class="uk-panel uk-panel-box uk-panel-box-secondary settings-sidebar">
-                <h3 class="uk-panel-title">
-                    <img src="<?= $user->get_profile_image() ?>" alt="<?= ucwords($user->name) ?>" >
-                    <div class="uk-text-center"><?= ucwords($user->name) ?></div>
-                </h3>
-                <ul class="uk-nav uk-nav-side">
-                    <?if (Core::config('advertisement.reviews')==1):?>
-                    <li>
+            <div class="uk-panel uk-panel-box-secondary settings-sidebar">
+                <div class="uk-thumbnail uk-thumbnail-medium">
+                    <img class="uk-thumbnail-medium" src="<?= $user->get_profile_image() ?>" alt="<?= ucwords($user->name) ?>" >
+                    <div class="uk-thumbnail-caption"><?= ucwords($user->name) ?></div>
+                    <div class="uk-thumbnail-caption"><?= 'Since ' . Date::format($user->created, core::config('general.date_format')) ?></div>
+                    <div class="uk-thumbnail-caption"><?= 'Last ' . Date::format($user->last_login, core::config('general.date_format')) ?></div>
+                    <div class="uk-thumbnail-caption">
+                        <?if (Core::config('advertisement.reviews')==1):?>
                         <?if ($user->rate!==NULL):?>
                         <?for ($i=0; $i < round($user->rate,1); $i++):?>
-                        <span class="glyphicon glyphicon-star"></span>
+                        <i class="uk-icon uk-icon-star"></i>
                         <?endfor?>
                         <?endif?>
-                    </li>
-                    <?endif?>
-                    <li><strong><?= __('Created') ?>:</strong> <?= Date::format($user->created, core::config('general.date_format')) ?></li>
-                    <?if ($user->last_login!=NULL):?>
-                    <li><strong><?= __('Last Login') ?>:</strong> <?= Date::format($user->last_login, core::config('general.date_format')) ?></li>
-                    <?endif?>
-                </ul>
+                        <?endif?>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="uk-width-large-7-10 uk-width-medium-1-1">

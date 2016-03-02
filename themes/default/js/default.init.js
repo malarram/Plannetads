@@ -110,6 +110,18 @@ $(function(){
         $(this).validate($forgot_params)
     });
 
+    var $changepass_params = {rules:{}, messages:{}};
+    $changepass_params['rules']['password1'] = {required: true};
+    $changepass_params['rules']['password2'] = {required: true, equalTo: "#password1"};
+
+    $changepass_params['messages']['password1'] = {required: 'Enter password'};
+    $changepass_params['messages']['password2'] = {required: 'Enter Retype password', equalTo: "Repeat password not equal"};
+
+
+    $(".changepass").each(function() {
+        $(this).validate($changepass_params)
+    });
+
 
     var $contact_ad_params = {rules:{}, messages:{}};
     $contact_ad_params['rules']['name'] = {required: true};

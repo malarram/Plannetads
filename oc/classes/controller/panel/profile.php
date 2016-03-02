@@ -2,12 +2,12 @@
 
 class Controller_Panel_Profile extends Auth_Frontcontroller {
 
-    
+
 
 	public function action_index()
 	{
 		Breadcrumbs::add(Breadcrumb::factory()->set_title(__('Home')));
-		
+
 		$this->template->title = __('Home');
 		//$this->template->scripts['footer'][] = 'js/user/index.js';
 		$this->template->content = View::factory('oc-panel/home-user');
@@ -17,19 +17,22 @@ class Controller_Panel_Profile extends Auth_Frontcontroller {
 	public function action_changepass()
 	{
 		Breadcrumbs::add(Breadcrumb::factory()->set_title(__('Change password')));
-		
+
 		$this->template->title   = __('Change password');
 
 		$user = Auth::instance()->get_user();
 
 		$this->template->bind('content', $content);
-		$this->template->content = View::factory('oc-panel/profile/edit',array('user'=>$user,'custom_fields'=>Model_UserField::get_all()));
+
+                $view = (core::post('via_action') == 'edit') ? 'edit' : 'changepass';
+
+		$this->template->content = View::factory("oc-panel/profile/$view",array('user'=>$user,'custom_fields'=>Model_UserField::get_all()));
 		$this->template->content->msg ='';
 
 		if ($this->request->post())
 		{
 			$user = Auth::instance()->get_user();
-			
+
 			if (core::post('password1')==core::post('password2'))
 			{
 				$new_pass = core::post('password1');
@@ -37,7 +40,7 @@ class Controller_Panel_Profile extends Auth_Frontcontroller {
 
 					$user->password = core::post('password1');
                     $user->last_modified = Date::unix2mysql();
-                    
+
 					try
 					{
 						$user->save();
@@ -52,6 +55,7 @@ class Controller_Panel_Profile extends Auth_Frontcontroller {
 					}
 
 					Alert::set(Alert::SUCCESS, __('Password is changed'));
+                                        $this->redirect(Route::url('oc-panel',array('controller'=>'profile', 'action'=>'edit')));
 				}
 				else
 				{
@@ -62,10 +66,10 @@ class Controller_Panel_Profile extends Auth_Frontcontroller {
 			{
 				Form::set_errors(array(__('Passwords do not match')));
 			}
-			
+
 		}
 
-	  
+
 	}
 
 	public function action_image()
@@ -83,7 +87,7 @@ class Controller_Panel_Profile extends Auth_Frontcontroller {
 
             if ($result === TRUE)
                 Alert::set(Alert::SUCCESS, $image['name'].' '.__('Image is uploaded.'));
-            else 
+            else
                 Alert::set(Alert::ALERT,$result);
         }
 
@@ -104,7 +108,7 @@ class Controller_Panel_Profile extends Auth_Frontcontroller {
 
 		if($this->request->post())
 		{
-			
+
 			$user->name = core::post('name');
             $user->description = core::post('description');
 			$user->email = core::post('email');
@@ -113,7 +117,7 @@ class Controller_Panel_Profile extends Auth_Frontcontroller {
             $user->last_modified = Date::unix2mysql();
 
             //modify custom fields
-            foreach ($this->request->post() as $custom_field => $value) 
+            foreach ($this->request->post() as $custom_field => $value)
             {
                 if (strpos($custom_field,'cf_')!==FALSE)
                 {
@@ -123,11 +127,11 @@ class Controller_Panel_Profile extends Auth_Frontcontroller {
 
 			try {
 				$user->save();
-				Alert::set(Alert::SUCCESS, __('You have successfully changed your data'));				
+				Alert::set(Alert::SUCCESS, __('You have successfully changed your data'));
 			} catch (Exception $e) {
 				//throw 500
 				throw HTTP_Exception::factory(500,$e->getMessage());
-			}	
+			}
 
             $this->redirect(Route::url('oc-panel', array('controller'=>'profile','action'=>'edit')));
 		}
@@ -165,12 +169,12 @@ class Controller_Panel_Profile extends Auth_Frontcontroller {
         $this->template->bind('content', $content);
         $this->template->content = View::factory('oc-panel/profile/orders', array('orders' => $orders,'pagination'=>$pagination));
 
-        
+
     }
    /**
     * list all subscription for a given user
-    * @return view 
-    */ 
+    * @return view
+    */
    public function action_subscriptions()
    {
         $this->template->title = __('My subscriptions');
@@ -188,11 +192,11 @@ class Controller_Panel_Profile extends Auth_Frontcontroller {
 
    		if(count($query) != 0)
    		{
-   			// get categories, location, date, and price range to show in view 					   
-   			
+   			// get categories, location, date, and price range to show in view
+
 
 			$subs = $query->as_array();
-			foreach ($subs as $s) 
+			foreach ($subs as $s)
 			{
 
 				$min_price = $s->min_price;
@@ -209,7 +213,7 @@ class Controller_Panel_Profile extends Auth_Frontcontroller {
 								'location'=>$location->name,
 								'id'=>$s->id_subscribe);
 			}
-			
+
 			$this->template->content = View::factory('oc-panel/profile/subscriptions', array('list'=>$list));
    		}
    		else
@@ -226,12 +230,12 @@ class Controller_Panel_Profile extends Auth_Frontcontroller {
 
 		if($subscription->loaded() AND $subscription->id_user == Auth::instance()->get_user()->id_user)
 		{
-			try 
+			try
 			{
 				$subscription->delete();
 				Alert::set(Alert::SUCCESS, __('You are unsubscribed'));
-			} 
-			catch (Exception $e) 
+			}
+			catch (Exception $e)
 			{
 				throw HTTP_Exception::factory(500,$e->getMessage());
 			}
@@ -253,7 +257,7 @@ class Controller_Panel_Profile extends Auth_Frontcontroller {
             $ad = new Model_Ad($id_ad);
             //ad exists
             if ($ad->loaded())
-            {   
+            {
                 //if fav exists we delete
                 if (Model_Favorite::unfavorite($user->id_user,$id_ad)===TRUE)
                 {
@@ -269,16 +273,16 @@ class Controller_Panel_Profile extends Auth_Frontcontroller {
             }
             else
                 $this->template->content = __('Ad Not Found');
-            
+
         }
         else
         {
             $this->template->title = __('My Favorites');
             Breadcrumbs::add(Breadcrumb::factory()->set_title($this->template->title));
             Controller::$full_width = TRUE;
-            
+
             $this->template->styles = array('//cdn.jsdelivr.net/sweetalert/1.1.3/sweetalert.css' => 'screen');
-            
+
             $this->template->scripts['footer'][] = '//cdn.jsdelivr.net/sweetalert/1.1.3/sweetalert.min.js';
             $this->template->scripts['footer'][] = 'js/oc-panel/favorite.js';
 
@@ -291,23 +295,23 @@ class Controller_Panel_Profile extends Auth_Frontcontroller {
             $this->template->content = View::factory('oc-panel/profile/favorites', array('favorites' => $favorites));
         }
     }
-    
+
     public function action_notifications()
     {
         $this->auto_render = FALSE;
         $this->template = View::factory('js');
-        
+
         $user = Auth::instance()->get_user();
         $user->notification_date = Date::unix2mysql();
         $user->save();
-        
+
         $this->template->content = __('Saved');
     }
 
    /**
     * redirects to public profile, we use it so we can cache the view and redirect them
-    * @return redirect 
-    */ 
+    * @return redirect
+    */
    public function action_public()
    {
         $this->redirect(Route::url('profile',array('seoname'=>Auth::instance()->get_user()->seoname)));
@@ -318,7 +322,7 @@ class Controller_Panel_Profile extends Auth_Frontcontroller {
     * all this functions are only redirect, just in case we missed any link or if they got the link via email so keeps working.
     * now all in myads controller
     */
-   
+
     public function action_ads()
     {
         $this->redirect(Route::url('oc-panel',array('controller'=>'myads','action'=>'index')));
@@ -348,7 +352,7 @@ class Controller_Panel_Profile extends Auth_Frontcontroller {
     public function action_stats()
     {
         if (is_numeric($id_ad = $this->request->param('id')))
-            $this->redirect(Route::url('oc-panel',array('controller'=>'myads','action'=>'stats','id'=>$id_ad)));           
+            $this->redirect(Route::url('oc-panel',array('controller'=>'myads','action'=>'stats','id'=>$id_ad)));
         else
             $this->redirect(Route::url('oc-panel',array('controller'=>'myads','action'=>'stats')));
     }

@@ -33,7 +33,6 @@
         <div class="alert alert-warning off-line" style="display:none;"><strong><?= __('Warning') ?>!</strong> <?= __('We detected you are currently off-line, please connect to gain full experience.') ?></div>
         <div class="uk-width-1-1">
             <div id="uk-container">
-                <?= Alert::show() ?>
                 <?= $content ?>
             </div>
         </div>
@@ -42,6 +41,7 @@
 
         <?= Theme::scripts($scripts, 'footer') ?>
         <?= core::config('general.html_footer') ?>
+        <? Alert::notify() ?>
 
         <?= (Kohana::$environment === Kohana::DEVELOPMENT) ? View::factory('profiler') : '' ?>
     </body>

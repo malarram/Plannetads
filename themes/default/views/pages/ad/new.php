@@ -1,7 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
 <?= Breadcrumbs::render('breadcrumbs') ?>
 
-<?= Alert::show() ?>
 <div class="uk-container uk-container-center new-ad-form">
     <div class="uk-grid">
         <div class="uk-width-medium-7-10 uk-width-small-1-1 uk-container-center">

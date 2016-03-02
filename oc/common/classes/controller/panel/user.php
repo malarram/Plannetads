@@ -139,7 +139,7 @@ class Controller_Panel_User extends Auth_CrudAjax {
             $user = new Model_User($this->request->param('id'));
 
             if (core::post('password1') == core::post('password2')) {
-                if (!empty($_POST['password1'])) {
+                if (!empty(core::post('password1'))) {
 
                     $user->password = core::post('password1');
                     $user->last_modified = Date::unix2mysql();

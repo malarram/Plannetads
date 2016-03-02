@@ -6,7 +6,6 @@
             <?= View::factory('sidebar_user_prof') ?>
         </div>
         <div class="uk-width-large-7-10 uk-width-medium-1-1">
-            <?= Alert::show() ?>
             <h3 class="uk-text-bold"><?= __('Settings') ?></h3>
             <hr>
             <?= FORM::open(Route::url('oc-panel', array('controller' => 'profile', 'action' => 'edit')), array('class' => 'uk-form uk-form-horizontal', 'enctype' => 'multipart/form-data')) ?>
@@ -95,6 +94,7 @@
                     <div class="uk-form-row">
                         <label for="save" class="uk-form-label"></label>
                         <div class="uk-form-controls">
+                            <input type="hidden" name="via_action" value="edit" />
                             <button type="submit" class="uk-button uk-button-primary uk-button-large"><?= __('Save') ?></button>
                         </div>
                     </div>

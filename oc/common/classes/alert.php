@@ -169,4 +169,39 @@ class Alert {
 		return sprintf(self::$tpl, $type, (( ! empty($title)) ? $title: ''), $text).PHP_EOL;
 	}
 
+        public static function notify($name = NULL, $persist = FALSE)
+	{
+		$session = Session::instance();
+		$data = $session->get(self::$session_var, array());
+
+		$out = '';
+		if (($name !== NULL) AND isset($data[$name]))
+		{
+			$v = $data[$name];
+			$out .= "UIkit.notify({ message : '{$v['text']}', status  : '{$v['type']}', timeout: 5000, pos: 'top-right'});";
+//			$out .= self::msg($v['type'], $v['text'], (isset($v['title'])) ? $v['title'] : NULL);
+			if (! $persist)
+			{
+				unset($data[$name]);
+			}
+		}
+		else
+		{
+			foreach ($data as $k=>$v)
+			{
+                                $out .= "UIkit.notify({ message : '{$v['text']}', status  : '{$v['type']}', timeout: 5000, pos: 'top-right'});";
+//				$out .= self::msg($v['type'], $v['text'], (isset($v['title'])) ? $v['title'] : NULL);
+				if ( ! $persist)
+				{
+					unset($data[$k]);
+				}
+			}
+
+		}
+
+		// Update the alert data in session
+		$session->set(self::$session_var, $data);
+                echo "<script type='text/javascript'>{$out}</script>";
+	}
+
 } // End Alert

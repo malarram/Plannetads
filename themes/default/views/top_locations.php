@@ -9,6 +9,7 @@
             else
                 $locations[$loc->id_location_parent]['options'][] = [$loc->id_location, $loc->name, $loc->seoname];
         }
+        ksort($locations);
 
         if(is_null($selected_option = Model_Location::current()->seoname)) {
             $selected_option = Cookie::get('current_location');

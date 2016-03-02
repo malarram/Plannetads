@@ -11,6 +11,7 @@
         <div class="uk-dropdown uk-dropdown-navbar <?= (Auth::instance()->logged_in()) ? "uk-contrast" : "" ?>">
             <ul class="uk-nav uk-nav-navbar">
                 <li><a href="<?= Route::url('oc-panel', array('controller' => 'myads', 'action' => 'index')) ?>"><?= __('My Ads') ?></a></li>
+                <li><a href="<?= Route::url('oc-panel', array('controller' => 'messages', 'action' => 'index')) ?>"><?= __('My Messages') ?></a></li>
                 <li><a href="<?= Route::url('oc-panel', array('controller' => 'profile', 'action' => 'favorites')) ?>"><?= __('Wishlists') ?></a></li>
                 <li><a href="<?= Route::url('oc-panel', array('controller' => 'profile', 'action' => 'edit')) ?>"><?= __('Settings') ?></a></li>
                 <li><a href="<?= Route::url('oc-panel', array('directory' => 'user', 'controller' => 'auth', 'action' => 'logout')) ?>"><?= __('Logout') ?></a></li>

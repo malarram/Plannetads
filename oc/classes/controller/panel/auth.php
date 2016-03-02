@@ -303,8 +303,7 @@ class Controller_Panel_Auth extends Controller {
 		//not a url go to login!
 		if ($url==FALSE)
 		{
-			$url = Route::url('oc-panel',array('controller' => 'auth',
-										  		'action'     => 'login'));
+			$url = Route::url('oc-panel',array('controller' => 'auth','action' => 'login'));
 		}
 		$this->redirect($url);
 	}
