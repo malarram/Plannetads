@@ -1,6 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
+<a class="uk-button uk-button-large uk-button-success" href="<?=Route::url('post_new')?>"><?= __('Post an Ad') ?></a>
 <?if (Auth::instance()->logged_in()):?>
-<ul class="uk-navbar-nav">
+<ul class="uk-navbar-nav uk-float-right">
     <li class="uk-parent" data-uk-dropdown="{mode:'click', pos:'bottom-right'}">
         <a class="uk-height-1-1 uk-vertical-align  uk-text-contrast"> <span class="uk-vertical-align-middle">
                 <img src="<?= Auth::instance()->get_user()->get_profile_image() ?>" alt="..." class="uk-border-circle uk-thumbnail-xx-mini uk-margin-right"><span class="uk-hidden-small"><?=  ucwords(Auth::instance()->get_user()->name)?></span>
@@ -22,4 +23,3 @@
 <?else:?>
 <a class="uk-button uk-button-large uk-margin-small-right" href="#signin_form" data-uk-modal><span ><?= __('Sign in') ?></span></a>
 <?endif?>
-<a class="uk-button uk-button-large uk-button-success" href="<?=Route::url('post_new')?>"><?= __('Post an Ad') ?></a>
