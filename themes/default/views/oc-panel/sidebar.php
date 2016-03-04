@@ -104,7 +104,7 @@
                             </div>
                         </div>-->
                         <?if ($user->has_access_to_any('settings,config')):?>
-<!--                        <div class="panel panel-sidebar">
+                       <div class="panel panel-sidebar">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseSettings">
@@ -122,15 +122,15 @@
                                         <tr><td class="br"><?=Theme::admin_link(__('Email'), 'settings','email','oc-panel','glyphicon  glyphicon-envelope')?></td></tr>
                                         <tr><td class="br"><?=Theme::admin_link(__('Images'), 'settings','image','oc-panel','glyphicon  glyphicon-picture')?></td></tr>
                                         <tr><td class="br"><?=Theme::admin_link(__('Advertisement'), 'settings','form','oc-panel','glyphicon  glyphicon-edit')?></td></tr>
-                                        <tr><td class="br"><?=Theme::admin_link(__('Custom Fields'), 'fields','index','oc-panel','glyphicon  glyphicon-plus-sign')?></td></tr>
+                                        <tr class="hidden"><td class="br"><?=Theme::admin_link(__('Custom Fields'), 'fields','index','oc-panel','glyphicon  glyphicon-plus-sign')?></td></tr>
                                         <?if (core::config('general.social_auth')):?>
                                             <tr><td class="br"><?=Theme::admin_link(__('Social Auth'), 'social','index','oc-panel','glyphicon glyphicon-thumbs-up')?></td></tr>
                                         <?endif?>
-                                        <tr><td class="br"><?=Theme::admin_link(__('Plugins'), 'settings','plugins','oc-panel','fa fa-fw fa-plug')?></td></tr>
+                                        <tr class="hidden"><td class="br"><?=Theme::admin_link(__('Plugins'), 'settings','plugins','oc-panel','fa fa-fw fa-plug')?></td></tr>
                                     </table>
                                 </div>
                             </div>
-                        </div>-->
+                        </div>
                         <?endif?>
                         <?if ($user->has_access_to_any('user,role,access')):?>
                         <div class="panel panel-sidebar">
