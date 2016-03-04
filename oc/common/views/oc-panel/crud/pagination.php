@@ -70,9 +70,13 @@ for ($i = $n7; $i <= $n8; $i++)
 		</li>
 
        <?php foreach ($links as $number => $content): ?>
-            <li <?=($number == $current_page)?'class="uk-active"':''?>>
+            <li <?=($number == $current_page)?'class="uk-disabled uk-active"':''?>>
+            <?php if($number == $current_page){?>
+                <span class="ajax-load" title="<?=__('Page')?> <?=$number?> <?=$page->title()?>" href="<?=HTML::chars($page->url($number)) ?>"><?=$content?></span>
+			<?php }else{?>
                 <a class="ajax-load" title="<?=__('Page')?> <?=$number?> <?=$page->title()?>" href="<?=HTML::chars($page->url($number)) ?>"><?=$content?></a>
-            </li>
+			<?php } ?>
+			</li>
         <?php endforeach ?>
 
 		<li class="uk-pagination-next <?=(!$next_page)?'uk-disabled':''?>" >
