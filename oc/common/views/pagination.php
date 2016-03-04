@@ -57,26 +57,37 @@ for ($i = $n7; $i <= $n8; $i++)
 ?>
 
   <ul class="uk-pagination">
-		<li <?=(!$first_page)?'class="uk-disabled"':''?>>
-			<a title="<?=__('First')?> <?=$page->title()?>" href="<?=HTML::chars($page->url($first_page))?>"><i class="glyphicon glyphicon-step-backward"></i></a>
+	<!--	<li <?=(!$first_page)?'class="uk-disabled"':''?>>
+			<a class="ajax-load" title="<?=__('First')?> <?=$page->title()?>" href="<?=HTML::chars($page->url($first_page))?>" rel="first"><i class="glyphicon glyphicon-step-backward uk-icon-angle-double-left"></i></a>
+		</li>-->
+
+		<li class="uk-pagination-previous <?=(!$previous_page)?'uk-disabled':''?>">
+			<?php if(!$previous_page){?>
+			<span>Previous </span>
+			<?php }else{?>
+			<a class="ajax-load" title="<?=__('Previous')?> <?=$page->title()?>" href="<?=HTML::chars($page->url($previous_page))?>" rel="prev" id="prev"> Previous </a>
+			<?php } ?>
 		</li>
 
-		<li <?=(!$previous_page)?'class="uk-disabled"':''?>>
-			<a title="<?=__('Previous')?> <?=$page->title()?>" href="<?=HTML::chars($page->url($previous_page))?>" rel="prev" id="prev"><i class="uk-icon uk-icon-backward"></i></a>
-		</li>
-
-        <?php foreach ($links as $number => $content): ?>
-            <li <?=($number == $current_page)?'class="uk-active"':''?>>
-                <a title="<?=__('Page')?> <?=$number?> <?=$page->title()?>" href="<?=HTML::chars($page->url($number)) ?>"><?=$content?></a>
-            </li>
+       <?php foreach ($links as $number => $content): ?>
+            <li <?=($number == $current_page)?'class="uk-disabled uk-active"':''?>>
+            <?php if($number == $current_page){?>
+                <span><?=$content?></span>
+			<?php }else{?>
+                <a class="ajax-load" title="<?=__('Page')?> <?=$number?> <?=$page->title()?>" href="<?=HTML::chars($page->url($number)) ?>"><?=$content?></a>
+			<?php } ?>
+			</li>
         <?php endforeach ?>
 
-		<li <?=(!$next_page)?'class="uk-disabled"':''?>>
-			<a title="<?=__('Next')?> <?=$page->title()?>" href="<?=HTML::chars($page->url($next_page)) ?>" rel="next" id="next"><i class="glyphicon glyphicon-forward"></i></a>
+		<li class="uk-pagination-next <?=(!$next_page)?'uk-disabled':''?>" >
+		<?php if(!$next_page){?>
+			<span><i class="glyphicon glyphicon-forward"></i> Next </span>
+		<?php }else{?>
+			<a class="ajax-load" title="<?=__('Next')?> <?=$page->title()?>" href="<?=HTML::chars($page->url($next_page)) ?>" rel="next" id="next"><i class="glyphicon glyphicon-forward"></i> Next </a>
+		<?php } ?>
 		</li>
 
-		<li <?=(!$last_page)?'class="uk-disabled"':''?>>
-			<a title="<?=__('Last')?> <?=$page->title()?>" href="<?=HTML::chars($page->url($last_page)) ?>" id="last" data-last="<?=$last_page?>"><i class="uk-icon uk-icon-forward"></i></a>
-		</li>
-
+		<!--<li <?=(!$last_page)?'class="uk-disabled"':''?>>
+			<a class="ajax-load" title="<?=__('Last')?> <?=$page->title()?>" href="<?=HTML::chars($page->url($last_page)) ?>" rel="last" id="last" data-last="<?=$last_page?>"><i class="glyphicon glyphicon-step-forward uk-icon-angle-double-right"></i></a>
+		</li>-->
   </ul><!-- .pagination -->

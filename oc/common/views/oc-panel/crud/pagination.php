@@ -60,10 +60,10 @@ for ($i = $n7; $i <= $n8; $i++)
 	<!--	<li <?=(!$first_page)?'class="uk-disabled"':''?>>
 			<a class="ajax-load" title="<?=__('First')?> <?=$page->title()?>" href="<?=HTML::chars($page->url($first_page))?>" rel="first"><i class="glyphicon glyphicon-step-backward uk-icon-angle-double-left"></i></a>
 		</li>-->
-	
+
 		<li class="uk-pagination-previous <?=(!$previous_page)?'uk-disabled':''?>">
 			<?php if(!$previous_page){?>
-			<span class="ajax-load" title="<?=__('Previous')?> <?=$page->title()?>" href="<?=HTML::chars($page->url($previous_page))?>" rel="prev" id="prev"> Previous </span>
+			<span>Previous </span>
 			<?php }else{?>
 			<a class="ajax-load" title="<?=__('Previous')?> <?=$page->title()?>" href="<?=HTML::chars($page->url($previous_page))?>" rel="prev" id="prev"> Previous </a>
 			<?php } ?>
@@ -72,7 +72,7 @@ for ($i = $n7; $i <= $n8; $i++)
        <?php foreach ($links as $number => $content): ?>
             <li <?=($number == $current_page)?'class="uk-disabled uk-active"':''?>>
             <?php if($number == $current_page){?>
-                <span class="ajax-load" title="<?=__('Page')?> <?=$number?> <?=$page->title()?>" href="<?=HTML::chars($page->url($number)) ?>"><?=$content?></span>
+                <span><?=$content?></span>
 			<?php }else{?>
                 <a class="ajax-load" title="<?=__('Page')?> <?=$number?> <?=$page->title()?>" href="<?=HTML::chars($page->url($number)) ?>"><?=$content?></a>
 			<?php } ?>
@@ -81,7 +81,7 @@ for ($i = $n7; $i <= $n8; $i++)
 
 		<li class="uk-pagination-next <?=(!$next_page)?'uk-disabled':''?>" >
 		<?php if(!$next_page){?>
-			<span class="ajax-load" title="<?=__('Next')?> <?=$page->title()?>" href="<?=HTML::chars($page->url($next_page)) ?>" rel="next" id="next"><i class="glyphicon glyphicon-forward"></i> Next </span>
+			<span><i class="glyphicon glyphicon-forward"></i> Next </span>
 		<?php }else{?>
 			<a class="ajax-load" title="<?=__('Next')?> <?=$page->title()?>" href="<?=HTML::chars($page->url($next_page)) ?>" rel="next" id="next"><i class="glyphicon glyphicon-forward"></i> Next </a>
 		<?php } ?>
