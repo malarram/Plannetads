@@ -62,7 +62,7 @@ for ($i = $n7; $i <= $n8; $i++)
 		</li>
 
 		<li <?=(!$previous_page)?'class="uk-disabled"':''?>>
-			<a title="<?=__('Previous')?> <?=$page->title()?>" href="<?=HTML::chars($page->url($previous_page))?>" rel="prev" id="prev"><i class="glyphicon glyphicon-backward"></i></a>
+			<a title="<?=__('Previous')?> <?=$page->title()?>" href="<?=HTML::chars($page->url($previous_page))?>" rel="prev" id="prev"><i class="uk-icon uk-icon-backward"></i></a>
 		</li>
 
         <?php foreach ($links as $number => $content): ?>
@@ -76,7 +76,7 @@ for ($i = $n7; $i <= $n8; $i++)
 		</li>
 
 		<li <?=(!$last_page)?'class="uk-disabled"':''?>>
-			<a title="<?=__('Last')?> <?=$page->title()?>" href="<?=HTML::chars($page->url($last_page)) ?>" id="last" data-last="<?=$last_page?>"><i class="glyphicon glyphicon-step-forward"></i></a>
+			<a title="<?=__('Last')?> <?=$page->title()?>" href="<?=HTML::chars($page->url($last_page)) ?>" id="last" data-last="<?=$last_page?>"><i class="uk-icon uk-icon-forward"></i></a>
 		</li>
 
   </ul><!-- .pagination -->
