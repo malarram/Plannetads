@@ -64,6 +64,7 @@
                                             <tr><td class="br"><?=Theme::admin_link(__('Topics'), 'topic','index','oc-panel','glyphicon glyphicon-pencil')?></td></tr>
                                         <?endif?>
 <!--                                        <tr><td class="br"><?=Theme::admin_link(__('CMS Images'), 'cmsimages','index','oc-panel','glyphicon glyphicon-camera')?></td></tr>-->
+                                        <tr><td class="br"><?=Theme::admin_link(__('Contact Message(s)'), 'content','contact','oc-panel','glyphicon glyphicon-envelope')?></td></tr>
                                     </table>
                                 </div>
                             </div>

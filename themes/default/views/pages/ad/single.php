@@ -136,7 +136,7 @@
                                 <?= FORM::textarea('message', Core::request('message'), array('class' => 'uk-form-large uk-width-1-1', 'placeholder' => __('Message'), 'name' => 'message', 'id' => 'message', 'rows' => 5,'cols'=>30, 'required')) ?>
                             </div>
                             <?if (core::config('advertisement.captcha') != FALSE):?>
-                                <div class="="uk-form-row">
+                                <div class="uk-form-row">
                                     <?= FORM::label('captcha', __('Captcha'), array('class' => 'uk-form-label', 'for' => 'captcha')) ?>
                                     <?if (Core::config('general.recaptcha_active')):?>
                                     <?= Captcha::recaptcha_display() ?>
