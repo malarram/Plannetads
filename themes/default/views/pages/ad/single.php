@@ -23,7 +23,8 @@
                 </ul>
                 <div id="media"  class="uk-switcher">
                     <div class="slide-wrapper">
-                        <div class="uk-slidenav-position" data-uk-slideshow>
+                        height
+                        <div class="uk-slidenav-position" data-uk-slideshow="{height:<?= Core::config('image.height') ?>}">
                         <?$images = $ad->get_images()?>
                         <?if($images): $i=0; $dots_html = ""; ?>
                             <ul class="uk-slideshow">
