@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
 <!-- Search bar starts -->
-<?=View::factory('top_search')?>
+<?= View::factory('top_search') ?>
 
 
 <!-- Featured Listing -->
@@ -19,17 +19,17 @@
             <?
             $i=0; foreach($ads as $ad):
             if(!$ad_first = $ad->get_first_image()):
-                $ad_first = URL::base().'themes/default/images/default-ad-thumb.jpg';
+            $ad_first = URL::base().'themes/default/images/default-ad-thumb.jpg';
             endif;
             ?>
             <li>
                 <div class="uk-panel uk-panel-box">
                     <div class="uk-panel-teaser">
                         <a href="<?= Route::url('ad', array('category' => $ad->category->seoname, 'seotitle' => $ad->seotitle)) ?>">
-                            <img src="<?=$ad_first?>" alt="<?= HTML::chars($ad->title) ?>">
+                            <img src="<?= $ad_first ?>" alt="<?= HTML::chars($ad->title) ?>">
                         </a>
                     </div>
-                    <span class="uk-text-danger uk-text-bold uk-text-small"><?=i18n::money_format( $ad->price)?></span>
+                    <span class="uk-text-danger uk-text-bold uk-text-small"><?= i18n::money_format( $ad->price) ?></span>
                     <h5 class="uk-margin-top-remove trim-title">
                         <a href="<?= Route::url('ad', array('category' => $ad->category->seoname, 'seotitle' => $ad->seotitle)) ?>">
                             <?= $ad->title ?>
@@ -49,51 +49,32 @@
             <br> In hac habitasse platea dictumst. Nulla commodo elementum elit, et ultrices magna venenatis nec</p>
     </div>
     <div class="uk-grid-width-small-1-2 uk-grid-width-medium-1-4" data-uk-grid="{gutter: 20}">
-<?$i=0; foreach($categs as $c):?>
+        <?php
+        $i = 0;
+        $disclaimer_cats = array('Adult', 'Casual Dating');
+        foreach($categs as $c): $disclaimer_alert = (in_array($c['name'], $disclaimer_cats));
+        ?>
         <?if($c['id_category_parent'] == 1 && $c['id_category'] != 1): $icon_class = (!empty($c['has_icon_class'])) ? $c['has_icon_class'] : 'uk-icon-home';?>
         <div class="uk-panel uk-accordion"  data-uk-accordion="{animate: false}">
             <h3 class="uk-padding-remove uk-position-relative category-acc">
-                
-				<?php 
-				$url_res=Route::url('list', array('category' => $c['seoname'], 'location' => $user_location ? $user_location->seoname : NULL));
-				if((HTML::chars($c['name'])=='Adult')||(HTML::chars($c['name'])=='Casual Dating'))
-				{
-					$declaimar=1;?>
-				<a title="<?= HTML::chars($c['name']) ?>" rel="<?= HTML::chars($c['name']) ?>"  class="uk-panel-title uk-display-block " 
-					onclick="UIkit.modal.confirm('<h3>Disclaimer</h3><p>This section contains sexual content, including pictorial nudity and adult language. It is to be accessed only by persons who are 18 years of age or older (and is not considered to be a minor in his/her country of residence) and who live in a community or local jurisdiction where nude pictures and explicit adult materials are not prohibited by law. By accessing this section, you are representing to us that you meet the above qualifications. A false representation may be a criminal offence. I confirm and represent that I am 18 years of age or older (and am not considered to be a minor in my country of residence) and that I am not located in a community or local jurisdiction where nude pictures or explicit adult materials are prohibited by any law. I agree to report any illegal services or activities which violate the Terms of Use. I also agree to report suspected exploitation of minors and/or human trafficking to the appropriate authorities.</p><p><strong>I have read the disclaimer and agree to all rules and regulations including the Terms of Use.</strong></p>', function(){ window.location.replace('<?php echo $url_res; ?>'); });">
-                    <i class="<?=$icon_class?> uk-margin-small-right"></i><?= $c['name']; ?>
+                <a title="<?= HTML::chars($c['name']) ?>" href="<?= Route::url('list', array('category' => $c['seoname'], 'location' => $user_location ? $user_location->seoname : NULL)) ?>" rel="<?= HTML::chars($c['name']) ?>"  class="uk-panel-title uk-display-block <?= ($disclaimer_alert) ? 'disclaimer-popup' : ''; ?>">
+                    <i class="<?= $icon_class ?> uk-margin-small-right"></i><?= $c['name']; ?>
                 </a>
-				<?php }else{	
-				$declaimar=0; ?>
-				<a title="<?= HTML::chars($c['name']) ?>" rel="<?= HTML::chars($c['name']) ?>" href="<?= Route::url('list', array('category' => $c['seoname'], 'location' => $user_location ? $user_location->seoname : NULL)) ?>" class="uk-panel-title uk-display-block " >
-                    <i class="<?=$icon_class?> uk-margin-small-right"></i><?= $c['name']; ?>
+                <a href="javascript:void(0);" class="uk-accordion-title uk-active uk-position-absolute uk-position-top-right"  data-uk-toggle="{target:'.cat-plus-<?= $i ?>'}">
+                    <i class="uk-icon-plus uk-text-small cat-plus-<?= $i ?>"></i>
+                    <i class="uk-icon-minus uk-text-small cat-plus-<?= $i ?> uk-hidden"></i>
                 </a>
-				<?php } ?>
-               
-			   <a href="javascript:void(0);" class="uk-accordion-title uk-active uk-position-absolute uk-position-top-right"  data-uk-toggle="{target:'.cat-plus-<?=$i?>'}">
-                    <i class="uk-icon-plus uk-text-small cat-plus-<?=$i?>"></i>
-                    <i class="uk-icon-minus uk-text-small cat-plus-<?=$i?> uk-hidden"></i>
-                </a >
             </h3>
             <div class="uk-panel-box uk-accordion-content">
                 <ul class="uk-list uk-list-space">
                     <?foreach($categs as $chi):?>
-                        <?if($chi['id_category_parent'] == $c['id_category']):?>
-							<?php $url_new=Route::url('list', array('category' => $chi['seoname'], 'location' => $user_location ? $user_location->seoname : NULL)); ?>
-							<li>
-							<?php if($declaimar==1){?>
-						
-							<a title="<?= HTML::chars($chi['name']) ?>" rel="<?= HTML::chars($chi['name']) ?>" 
-							onclick="UIkit.modal.confirm('<h3>Disclaimer</h3><p>This section contains sexual content, including pictorial nudity and adult language. It is to be accessed only by persons who are 18 years of age or older (and is not considered to be a minor in his/her country of residence) and who live in a community or local jurisdiction where nude pictures and explicit adult materials are not prohibited by law. By accessing this section, you are representing to us that you meet the above qualifications. A false representation may be a criminal offence. I confirm and represent that I am 18 years of age or older (and am not considered to be a minor in my country of residence) and that I am not located in a community or local jurisdiction where nude pictures or explicit adult materials are prohibited by any law. I agree to report any illegal services or activities which violate the Terms of Use. I also agree to report suspected exploitation of minors and/or human trafficking to the appropriate authorities.</p><p><strong>I have read the disclaimer and agree to all rules and regulations including the Terms of Use.</strong></p>', function(){ window.location.replace('<?php echo $url_new; ?>'); });"><?= $chi['name']; ?>
-							</a>
-			
-							<?php }else{?>
-							<a title="<?= HTML::chars($chi['name']) ?>" rel="<?= HTML::chars($chi['name']) ?>" href="<?= Route::url('list', array('category' => $chi['seoname'], 'location' => $user_location ? $user_location->seoname : NULL)) ?>"><?= $chi['name']; ?>
-                            </a><?php	
-							}?>
-						</li>
-                        <?endif?>
-                        <?endforeach?>
+                    <?if($chi['id_category_parent'] == $c['id_category']):?>
+                    <li>
+                        <a title="<?= HTML::chars($chi['name']) ?>" href="<?= Route::url('list', array('category' => $chi['seoname'], 'location' => $user_location ? $user_location->seoname : NULL)) ?>" rel="<?= HTML::chars($chi['name']) ?>" class="<?= ($disclaimer_alert) ? 'disclaimer-popup' : ''; ?>"><?= $chi['name']; ?>
+                        </a>
+                    </li>
+                    <?endif?>
+                    <?endforeach?>
                 </ul>
             </div>
         </div>
@@ -125,3 +106,14 @@
 </div>
 <?endif?>
 <?endif?>
+
+<div id="uk-disclaimer-modal" class="uk-modal">
+    <div class="uk-modal-dialog">
+        <div class="uk-modal-header"><h3>Disclaimer</h3></div>
+        <p>This section contains sexual content, including pictorial nudity and adult language. It is to be accessed only by persons who are 18 years of age or older (and is not considered to be a minor in his/her country of residence) and who live in a community or local jurisdiction where nude pictures and explicit adult materials are not prohibited by law. By accessing this section, you are representing to us that you meet the above qualifications. A false representation may be a criminal offence. I confirm and represent that I am 18 years of age or older (and am not considered to be a minor in my country of residence) and that I am not located in a community or local jurisdiction where nude pictures or explicit adult materials are prohibited by any law. I agree to report any illegal services or activities which violate the Terms of Use. I also agree to report suspected exploitation of minors and/or human trafficking to the appropriate authorities.</p><p><strong>I have read the disclaimer and agree to all rules and regulations including the Terms of Use.</strong></p>
+        <div class="uk-modal-footer uk-text-right">
+            <button class="uk-button uk-modal-close" type="button">Disagree</button>
+            <a class="uk-button uk-button-primary" type="button" href="#" id="disclaimer-agree-link">Agree</a>
+        </div>
+    </div>
+</div>
