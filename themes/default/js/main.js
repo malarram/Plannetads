@@ -48,3 +48,9 @@ var cities = {
 };
 
 $("#location-search").easyAutocomplete(cities);
+
+$( ".infi" ).click(function() {
+  alert( "Handler for .click() called." );
+  $( "#disclaimer" ).show();
+  
+});
