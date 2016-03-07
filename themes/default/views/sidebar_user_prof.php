@@ -6,16 +6,17 @@
     </h3>
     <ul class="uk-nav uk-nav-side">
         <li><a href="<?= Route::url('oc-panel', array('controller' => 'myads', 'action' => 'index')) ?>"><i class="uk-icon-tags uk-margin-small-right"></i><?= __('My Ads') ?></a></li>
-        <li><a href="<?= Route::url('oc-panel', array('controller' => 'messages', 'action' => 'index')) ?>"><i class="uk-icon-inbox uk-margin-small-right"></i><?= __('My Messages') ?></a></li>
 		<li><a href="<?= Route::url('oc-panel', array('controller' => 'profile', 'action' => 'favorites')) ?>"><i class="uk-icon-heart uk-margin-small-right"></i><?= __('Wishlists') ?></a></li>
-		<li><a href="<?= Route::url('oc-panel', array('controller' => 'profile', 'action' => 'edit')) ?>"><i class="uk-icon-cog uk-margin-small-right"></i><?= __('Settings') ?></a></li>
 		<li><a href="<?= Route::url('oc-panel', array('controller' => 'profile', 'action' => 'orders')) ?>"><i class="uk-icon-tags uk-margin-small-right"></i><?= __('My Payments') ?></a></li>
-		<li><a href="<?= Route::url('oc-panel', array('controller' => 'profile', 'action' => 'subscriptions')) ?>"><i class="uk-icon-tags uk-margin-small-right"></i><?= __('Subscriptions') ?></a></li>
+		<li><a href="<?= Route::url('oc-panel', array('controller' => 'messages', 'action' => 'index')) ?>"><i class="uk-icon-inbox uk-margin-small-right"></i><?= __('My Messages') ?></a></li>
+		<li><a href="<?= Route::url('oc-panel', array('controller' => 'profile', 'action' => 'subscriptions')) ?>"><i class="uk-icon-tags uk-margin-small-right"></i><?= __('Subscriptions') ?></a></li>		
+		<li><a href="<?= Route::url('oc-panel', array('controller' => 'profile', 'action' => 'edit')) ?>"><i class="uk-icon-cog uk-margin-small-right"></i><?= __('Settings') ?></a></li>
 
 		<li class="uk-nav-divider"></li>
 		<li><a href="<?= Route::url('oc-panel', array('directory' => 'user', 'controller' => 'auth', 'action' => 'logout')) ?>"><i class="uk-icon-sign-out uk-margin-small-right"></i><?= __('Logout') ?></a></li>
+		<li><a href="<?=Route::url('default')?>"><i class="uk-icon-cog uk-margin-small-right"></i><?= __('Visit Site') ?></a></li>
 
-		
+
 		
 		
 	</ul>
