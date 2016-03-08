@@ -22,6 +22,16 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Open Sans', sans-serif;
 }
 
+
+h2 {
+    font-weight: 700;
+    color: #333333;
+}
+
+h5 {
+    font-weight: 500;
+}
+
 /* 3.1) Top Bar
 ====================================*/
 .top-bar{
@@ -78,6 +88,27 @@ h1, h2, h3, h4, h5, h6 {
     height:300px;
 }
 
+.cities .uk-h6{
+    padding: 10px;
+    background-color: #eeeeee;
+    color: #12222d;
+    font-weight: 700;
+}
+
+/* 3.1) Pagination
+====================================*/
+.uk-pagination > .uk-active > span{
+    background-color: #fff;
+    border: #505656 1px solid;
+    color: #505656;
+}
+
+.uk-pagination > li > a, .uk-pagination > li > span{
+    padding: 3px 10px;
+    border: 1px solid #DBDADB;
+    
+}
+
 /* 3.1) Off Canvas Menu
 ====================================*/
 .off-canvas-btn {
@@ -98,281 +129,8 @@ h1, h2, h3, h4, h5, h6 {
     border-top: 1px solid #292929;
 }
 
-/* =================================================================== */
-/* 2) HOME PAGE
-====================================================================== */
-
-/* 3.1) Main Search Bar
+/* 3.1) Footer
 ====================================*/
-.cities .uk-h6{
-    padding: 10px;
-    background-color: #eeeeee;
-    color: #12222d;
-    font-weight: 700;
-}
-
-.CoverImage {
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 0 auto 1em;
-    max-height: 600px;
-}
-
-/* Different color for some fields */
-
-.keyword-input::-webkit-input-placeholder,
-.keyword-input::-webkit-input-placeholder
-{
-  color: #424242;
-}
-
-.keyword-input:-moz-placeholder,
-.keyword-input:-moz-placeholder
-{
-  color:    #424242;
-}
-
-.keyword-input::-moz-placeholder,
-.keyword-input::-moz-placeholder
-{
-  color:    #424242;
-}
-
-.keyword-input:-ms-input-placeholder,
-.keyword-input:-ms-input-placeholder
-{
-  color:    #424242;
-}
-
-.location-input::-webkit-input-placeholder,
-.location-input::-webkit-input-placeholder
-{
-  color:    #424242;
-}
-
-.location-input:-moz-placeholder,
-.location-input:-moz-placeholder
-{
-  color:    #424242;
-}
-
-.location-input::-moz-placeholder,
-.location-input::-moz-placeholder
-{
-  color:    #424242;
-}
-
-.location-input:-ms-input-placeholder,
-.location-input:-ms-input-placeholder
-{
-  color:    #424242;
-}
-
-.search-container {
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 10px;
-}
-
-/*Select Location*/
-#select-cities .uk-modal-header{
-    margin-bottom: 0;
-    background: #12222d;
-    border-radius: 0;
-}
-
-#select-cities .search-cities{
-    margin:0 -20px 20px -20px;
-    padding: 20px;
-    background: #F5F5F5;
-}
-
-.search-cities .uk-search-field{
-    width:100% !important;
-}
-
-.popular-cities li a{
-    /*color:#505656;*/
-    font-size: 14px;
-}
-
-.search-cities .uk-nav-header{
-    display: none;
-}
-
-.uk-nav-autocomplete > li.uk-active > a {
-    background: #eeeeee;
-    color: #505656;
-    outline: none;
-}
-
-.uk-nav-autocomplete > li > a{
-    border-bottom: #DDDDDD 1px solid;
-}
-
-.category-acc .uk-accordion-title {
-    line-height: 40px;
-    background: #21394A;
-}
-
-.categories-listing .uk-panel-box {
-    border: 3px solid #F3F3F3;
-    background: #fff;
-}
-
-.categories-listing ul li a {
-    color: #12222d;
-    font-size: 14px
-}
-
-.categories-listing ul li a:hover {
-    color: #797979;
-}
-
-.categories-listing ul {
-    margin-bottom: 0;
-}
-
-.categories-listing .uk-panel-box {
-    border-top: 0;
-}
-
-.categories-listing  .uk-panel-title {
-    background: #12222d;
-    padding: 12px 15px;
-    margin-bottom: 0;
-    font-size: 17px;
-    color: #fff;
-}
-
-.categories-listing i {
-    color: #31b47e;
-}
-
-.uk-text-upper {
-    text-transform: uppercase;
-}
-
-.uk-slideset h5 {
-    font-size: 15px;
-}
-
-.uk-slideset h5 a {
-    color: #8E8E8E;
-}
-
-.uk-slideset h5 a:hover {
-    color: #5F5F5F;
-}
-
-.main-search h1 {
-    color: #fff;
-    font-weight: 600;
-    font-size: 30px;
-}
-
-.main-search input[type="search"] {
-    background-color: #fff;
-    font-size: 15px;
-    color: #888;
-    width: 100%;
-    border: none;
-    border-radius: 0;
-    height: 52px;
-}
-
-html[data-useragent*='MSIE 10.0'] .main-search input[type="search"] {
-    height:32px;
-}
-
-.main-search input[type="search"]:focus, .main-search input[type="search"]:active {
-    outline: none;
-}
-
-#submit-search {
-    cursor: pointer;
-    width: 100%;
-    height: 31px;
-    line-height: 0;
-    font-size: 0;
-    color: transparent;
-    background: url(../images/icon_search.png) no-repeat #35c187 center;
-    min-height: 52px;
-}
-
-html[data-useragent*='MSIE 10.0'] #submit-search {
-    background-color: #35c187 center;
-    background-repeat: no-repeat;
-    background-image: url(../images/icon_search.png) ;
-    background-position: 65px 19px;
-}
-
-input[type="search"].keyword-input {
-    border-left: #DDDDDD 1px solid;
-    border-right: #DDDDDD 1px solid;
-}
-
-html[data-useragent*='MSIE 10.0'] .location-input {
-     border-left: #DDDDDD 1px solid;
-}
-/* Style the search button hover state */
-#submit-search:hover {
-    background-color: #31b47e;
-}
-
-h2 {
-    font-weight: 700;
-    color: #333333;
-}
-
-h5 {
-    font-weight: 500;
-}
-/*
-.uk-pagination > li > a, .uk-pagination > li > span {
-    padding: 3px 12px;
-    border-radius: 50%;
-}
-.uk-pagination > .uk-active > span {
-    background: #ed5555;
-}*/
-
-
-.uk-navbar .uk-button {
-    padding: 0 15px;
-    min-width: 75px;
-    font-size: 16px;
-}
-
-.uk-slidenav-custom {
-    min-height: 40px;
-}
-
-.uk-slidenav-custom .uk-slidenav {
-    width: 25px;
-    height: 25px;
-    line-height: 25px;
-}
-
-.uk-slidenav-custom .uk-slidenav-previous {
-    top: 75%;
-    right: 22px;
-    display: block;
-    left: auto;
-    font-size: 20px;
-}
-
-.uk-slidenav-custom .uk-slidenav-next {
-    top: 75%;
-    right: 0;
-    display: block;
-    left: auto;
-    font-size: 20px;
-}
-
-.sponsors-container {
-    border: #E2E2E2 1px solid;
-}
 
 footer {
     background: #E8E8E8;
@@ -440,6 +198,263 @@ footer {
     color:#fff;
 }
 
+/* =================================================================== */
+/* 2) HOME PAGE
+====================================================================== */
+
+/* 3.1) Main Search Bar
+====================================*/
+.CoverImage {
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto 1em;
+    max-height: 600px;
+}
+
+.main-search h1 {
+    color: #fff;
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.main-search input[type="search"] {
+    background-color: #fff;
+    font-size: 15px;
+    color: #888;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    height: 52px;
+}
+
+html[data-useragent*='MSIE 10.0'] .main-search input[type="search"] {
+    height:32px;
+}
+
+.main-search input[type="search"]:focus, .main-search input[type="search"]:active {
+    outline: none;
+}
+
+#submit-search {
+    cursor: pointer;
+    width: 100%;
+    height: 31px;
+    line-height: 0;
+    font-size: 0;
+    color: transparent;
+    background: url(../images/icon_search.png) no-repeat #35c187 center;
+    min-height: 52px;
+}
+
+html[data-useragent*='MSIE 10.0'] #submit-search {
+    background-color: #35c187 center;
+    background-repeat: no-repeat;
+    background-image: url(../images/icon_search.png) ;
+    background-position: 65px 19px;
+}
+
+input[type="search"].keyword-input {
+    border-left: #DDDDDD 1px solid;
+    border-right: #DDDDDD 1px solid;
+}
+
+html[data-useragent*='MSIE 10.0'] .location-input {
+     border-left: #DDDDDD 1px solid;
+}
+
+#submit-search:hover {
+    background-color: #31b47e;
+}
+
+.keyword-input::-webkit-input-placeholder,
+.keyword-input::-webkit-input-placeholder{
+  color: #424242;
+}
+
+.keyword-input:-moz-placeholder,
+.keyword-input:-moz-placeholder{
+  color: #424242;
+}
+
+.keyword-input::-moz-placeholder,
+.keyword-input::-moz-placeholder{
+  color: #424242;
+}
+
+.keyword-input:-ms-input-placeholder,
+.keyword-input:-ms-input-placeholder{
+  color:#424242;
+}
+
+.location-input::-webkit-input-placeholder,
+.location-input::-webkit-input-placeholder{
+  color:#424242;
+}
+
+.location-input:-moz-placeholder,
+.location-input:-moz-placeholder{
+  color:#424242;
+}
+
+.location-input::-moz-placeholder,
+.location-input::-moz-placeholder{
+  color:#424242;
+}
+
+.location-input:-ms-input-placeholder,
+.location-input:-ms-input-placeholder{
+  color:#424242;
+}
+
+.search-container {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+}
+
+#select-cities .uk-modal-header{
+    margin-bottom: 0;
+    background: #12222d;
+    border-radius: 0;
+}
+
+#select-cities .search-cities{
+    margin:0 -20px 20px -20px;
+    padding: 20px;
+    background: #F5F5F5;
+}
+
+.search-cities .uk-search-field{
+    width:100% !important;
+}
+
+.popular-cities li a{
+    /*color:#505656;*/
+    font-size: 14px;
+}
+
+.search-cities .uk-nav-header{
+    display: none;
+}
+
+.uk-nav-autocomplete > li.uk-active > a {
+    background: #eeeeee;
+    color: #505656;
+    outline: none;
+}
+
+.uk-nav-autocomplete > li > a{
+    border-bottom: #DDDDDD 1px solid;
+}
+
+/* 3.1) Featured Ads
+====================================*/
+.uk-slidenav-custom {
+    min-height: 40px;
+}
+
+.uk-slidenav-custom .uk-slidenav {
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+}
+
+.uk-slidenav-custom .uk-slidenav-previous {
+    top: 75%;
+    right: 22px;
+    display: block;
+    left: auto;
+    font-size: 20px;
+}
+
+.uk-slidenav-custom .uk-slidenav-next {
+    top: 75%;
+    right: 0;
+    display: block;
+    left: auto;
+    font-size: 20px;
+}
+
+/* 3.1) Browse Categories
+====================================*/
+.category-acc .uk-accordion-title {
+    line-height: 40px;
+    background: #21394A;
+}
+
+.categories-listing .uk-panel-box {
+    border: 3px solid #F3F3F3;
+    background: #fff;
+}
+
+.categories-listing ul li a {
+    color: #12222d;
+    font-size: 14px
+}
+
+.categories-listing ul li a:hover {
+    color: #797979;
+}
+
+.categories-listing ul {
+    margin-bottom: 0;
+}
+
+.categories-listing .uk-panel-box {
+    border-top: 0;
+}
+
+.categories-listing  .uk-panel-title {
+    background: #12222d;
+    padding: 12px 15px;
+    margin-bottom: 0;
+    font-size: 17px;
+    color: #fff;
+}
+
+.categories-listing i {
+    color: #31b47e;
+}
+
+
+/* =================================================================== */
+/* 2) Ads Listing Page
+====================================================================== */
+.uk-slideset h5 {
+    font-size: 15px;
+}
+
+.uk-slideset h5 a {
+    color: #8E8E8E;
+}
+
+.uk-slideset h5 a:hover {
+    color: #5F5F5F;
+}
+
+.listings{
+    margin-bottom: 10px;
+}
+
+.listings a{
+    display: block;
+    padding: 10px
+}
+
+.highlighted{
+    border: 2px solid #E57373;
+}
+
+.uk-navbar .uk-button {
+    padding: 0 15px;
+    min-width: 75px;
+    font-size: 16px;
+}
+
+.sponsors-container {
+    border: #E2E2E2 1px solid;
+}
+
 .listings h5 {
     margin-bottom: 0;
 }
@@ -460,52 +475,11 @@ footer {
     color: #848484;
 }
 
-.text-bold {
-    font-weight: 600;
-}
-
-.text-bolder {
-    font-weight: 700;
-}
-
 @media (min-width: 1220px) {
-
-    .uk-grid + .uk-grid,
-  .uk-grid-margin,
-  .uk-grid > * > .uk-panel + .uk-panel {
+    .uk-grid + .uk-grid, .uk-grid-margin,
+    .uk-grid > * > .uk-panel + .uk-panel {
         margin-top: 20px;
     };
-}
-
-.new-ad-form .uk-accordion-title {
-    padding: 0;
-    margin-bottom: 0;
-    border-bottom: 1px #fff solid;
-    font-size: 16px;
-    font-weight: 600;
-}
-
-.steps {
-    padding: 20px;
-    display: inline-block;
-    background: #9E9E9E;
-    margin-right: 20px;
-    color: #fff;
-}
-
-.uk-active .steps {
-    background: #35c187;
-}
-
-.new-ad-form .uk-accordion-content {
-    border: #dddddd 1px solid;
-    border-top: 1px #fff solid;
-    padding: 25px;
-}
-
-select.uk-form-large, textarea.uk-form-large, input[type].uk-form-large, input:not([type]).uk-form-large {
-    font-size: 15px;
-    padding: 10px;
 }
 
 .report-listing-btn, .report-listing-btn:hover, .report-listing-btn:active, .report-listing-btn:focus {
@@ -549,10 +523,6 @@ select.uk-form-large, textarea.uk-form-large, input[type].uk-form-large, input:n
     top: 20px;
 }
 
-.uk-thumbnail-xx-mini {
-    width: 35px;
-}
-
 table {
     font-size: 14px;
 }
@@ -571,25 +541,53 @@ table {
     color: #949494;
 }
 
-
 .pls-language-container-scrollable{
     min-width: 400px;
-
 }
 
-/*.language a {
+.uk-alert > ul {
+  list-style: outside none none;
+  margin-top: 0;
+  padding-left: 0;
+}
+
+/* =================================================================== */
+/* 2) Post New Add Page
+====================================================================== */
+.new-ad-form .uk-accordion-title {
+    padding: 0;
+    margin-bottom: 0;
+    border-bottom: 1px #fff solid;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.steps {
+    padding: 20px;
+    display: inline-block;
+    background: #9E9E9E;
+    margin-right: 20px;
     color: #fff;
 }
 
-.language a:hover {
-    color: #fff;
-    text-decoration: none;
+.uk-active .steps {
+    background: #35c187;
 }
 
-.language-modal .uk-button-link {
-    color: #505656;
-}*/
+.new-ad-form .uk-accordion-content {
+    border: #dddddd 1px solid;
+    border-top: 1px #fff solid;
+    padding: 25px;
+}
 
+select.uk-form-large, textarea.uk-form-large, input[type].uk-form-large, input:not([type]).uk-form-large {
+    font-size: 15px;
+    padding: 10px;
+}
+
+/* =================================================================== */
+/* 2) Settings
+====================================================================== */
 .settings-sidebar {
     border: #E8E8E8 1px solid;
 }
@@ -610,46 +608,9 @@ table {
     color: #505656;
 }
 
-
-/* Portrait and Landscape */
-/*@media only screen
-  and (min-device-width: 320px)
-  and (max-device-width: 767px)
-  and (-webkit-min-device-pixel-ratio: 2) {
-	.language{
-        width:100%;
-        height:50px;
-        float: none;
-    }
-}
-
-
- Portrait and Landscape
-@media only screen
-  and (min-device-width: 480px)
-  and (-webkit-min-device-pixel-ratio: 2) {
-    .logo-large{
-         display:inline-block;
-    }
-     .logo-small{
-        display:none;
-
-    }
-}
-
-@media only screen
-    and (min-device-width: 120px)
-    and (max-device-width: 480px)
-    and (-webkit-min-device-pixel-ratio: 2) {
-    .logo-large{
-        display:none;
-    }
-    .logo-small{
-        display:inline-block;
-
-    }
-}*/
-
+/* =================================================================== */
+/* 2) FAQ
+====================================================================== */
 .faq .uk-accordion-title{
     font-size: 16px;
     background-color: #fff;
@@ -665,15 +626,22 @@ table {
     border-bottom: #ddd 1px solid;
 }
 
+/* =================================================================== */
+/* 2) Helper Classes
+====================================================================== */
+.uk-text-upper {
+    text-transform: uppercase;
+}
 
-.trim-title {
-  text-overflow: ellipsis;
-  /* Required for text-overflow to do anything */
-  white-space: nowrap;
-  overflow: hidden;
+.text-bold {
+    font-weight: 600;
 }
-.uk-alert > ul {
-  list-style: outside none none;
-  margin-top: 0;
-  padding-left: 0;
+
+.text-bolder {
+    font-weight: 700;
 }
+
+.uk-thumbnail-xx-mini {
+    width: 35px;
+}
+
