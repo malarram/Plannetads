@@ -1,8 +1,19 @@
-/*@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300);*/
+/* Table of contents
+––––––––––––––––––––––––––––––––––––––––––––––––––
+- 1) IMPORTS
+- 2) GLOBAL STYLES
+*/
 
-/*@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700);*/
-/*font-family: 'Open Sans', sans-serif;*/
+/* =================================================================== */
+/* 1) IMPORTS
+====================================================================== */
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
 
+
+/* =================================================================== */
+/* 2) GLOBAL STYLES
+====================================================================== */
 body {
     font-family: 'Roboto', sans-serif;
 }
@@ -11,16 +22,18 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Open Sans', sans-serif;
 }
 
+/* 3.1) Top Bar
+====================================*/
 .top-bar{
     padding:5px 0;
 }
 
 .logo-small{
-        display:none;
-    }
+    display:none;
+}
 
 .top-bar{
-        margin-right: 22px;
+    margin-right: 22px;
 }
 
 .top-bar .uk-nav > li > a{
@@ -58,31 +71,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .top-bar .uk-nav-dropdown > li > a:hover, .top-bar .uk-nav-dropdown > li > a:focus{
-background: #F5F5F5;
+    background: #F5F5F5;
 }
 
 .top-bar .uk-scrollable-box{
     height:300px;
 }
 
-.cities .uk-h6{
-    padding: 10px;
-    background-color: #eeeeee;
-        color: #12222d;
-        font-weight: 700;
-}
-
-.CoverImage {
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 0 auto 1em;
-    max-height: 600px;
-}
-
-.uk-navbar {
-}
-
+/* 3.1) Off Canvas Menu
+====================================*/
 .off-canvas-btn {
     line-height: 100px;
     font-size: 28px !important;
@@ -101,7 +98,25 @@ background: #F5F5F5;
     border-top: 1px solid #292929;
 }
 
-.main-search {
+/* =================================================================== */
+/* 2) HOME PAGE
+====================================================================== */
+
+/* 3.1) Main Search Bar
+====================================*/
+.cities .uk-h6{
+    padding: 10px;
+    background-color: #eeeeee;
+    color: #12222d;
+    font-weight: 700;
+}
+
+.CoverImage {
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto 1em;
+    max-height: 600px;
 }
 
 /* Different color for some fields */
@@ -109,7 +124,7 @@ background: #F5F5F5;
 .keyword-input::-webkit-input-placeholder,
 .keyword-input::-webkit-input-placeholder
 {
-  color:    #424242;
+  color: #424242;
 }
 
 .keyword-input:-moz-placeholder,
@@ -193,7 +208,6 @@ background: #F5F5F5;
 
 .uk-nav-autocomplete > li > a{
     border-bottom: #DDDDDD 1px solid;
-
 }
 
 .category-acc .uk-accordion-title {
