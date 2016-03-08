@@ -23,7 +23,6 @@
                 </ul>
                 <div id="media"  class="uk-switcher">
                     <div class="slide-wrapper">
-                        height
                         <div class="uk-slidenav-position" data-uk-slideshow="{height:<?= Core::config('image.height') ?>}">
                         <?$images = $ad->get_images()?>
                         <?if($images): $i=0; $dots_html = ""; ?>
@@ -44,6 +43,8 @@
                             <ul class="uk-dotnav uk-dotnav-contrast uk-position-bottom uk-flex-center">
                                 <?php echo $dots_html; ?>
                             </ul>
+                        <?else:?>
+                        <img src="http://placehold.it/<?= Core::config('image.width') ?>x<?= Core::config('image.height') ?>/12222D/35C187/?text=plannetads" alt="<?= HTML::chars($ad->title) ?>" />
                         <?endif?>
                         </div>
                     </div>
