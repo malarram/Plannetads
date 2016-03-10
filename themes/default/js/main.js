@@ -2,7 +2,7 @@ var doc = document.documentElement;
 doc.setAttribute('data-useragent', navigator.userAgent);
 
 $(function () {
-    $('.search-container select.selectric-select').selectric();
+//    $('.search-container select.selectric-select').selectric();
     $('#location-change').on('change', function () {
         _href = $(this).find(':selected').data('href');
         window.location.href = _href;
