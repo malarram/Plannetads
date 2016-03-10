@@ -5,7 +5,9 @@ $("button[name=submit]").click(function(){
     $("textarea[name=description]").data("sceditor").updateOriginal();
 });
 
-$('.chosen-select').chosen();
+$('.chosen-select').chosen({
+    'inherit_select_classes':true
+});
 
     //chosen enable/disable
 //    $('select').chosen({
