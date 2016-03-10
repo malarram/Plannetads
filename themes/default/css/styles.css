@@ -358,14 +358,13 @@ html[data-useragent*='MSIE 10.0'] .location-input {
     border: none;
     line-height: 51px;
     font-size: 15px;
-    
-
 }
 
 .search-location.chosen-container-active.chosen-with-drop .chosen-single{
     border: none;
-
 }
+
+.search-location .chosen-single span
 
 
 /* 3.1) Featured Ads
