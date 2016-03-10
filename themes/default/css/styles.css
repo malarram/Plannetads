@@ -347,7 +347,25 @@ html[data-useragent*='MSIE 10.0'] .location-input {
     border-bottom: #DDDDDD 1px solid;
 }
 
-/*Chosen Theme*/
+.search-location{
+    width: 100%;
+    border: none;
+    height: 52px;
+}
+
+.search-location .chosen-single{
+    height: 52px;
+    border: none;
+    line-height: 51px;
+    font-size: 15px;
+    
+
+}
+
+.search-location.chosen-container-active.chosen-with-drop .chosen-single{
+    border: none;
+
+}
 
 
 /* 3.1) Featured Ads
@@ -447,7 +465,7 @@ html[data-useragent*='MSIE 10.0'] .location-input {
 }
 
 .listings .highlighted-ads{
-    border: 2px solid #FFDF6D;
+    border: 2px solid #FF1100;
     background-color: #FFFACC
 }
 
