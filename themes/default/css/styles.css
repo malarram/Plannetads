@@ -347,6 +347,9 @@ html[data-useragent*='MSIE 10.0'] .location-input {
     border-bottom: #DDDDDD 1px solid;
 }
 
+/*Chosen Theme*/
+
+
 /* 3.1) Featured Ads
 ====================================*/
 .uk-slidenav-custom {
@@ -420,30 +423,70 @@ html[data-useragent*='MSIE 10.0'] .location-input {
 /* =================================================================== */
 /* 2) Ads Listing Page
 ====================================================================== */
-.uk-slideset h5 {
+.uk-slideset h5, .uk-slider h5{
     font-size: 15px;
 }
 
-.uk-slideset h5 a {
+.uk-slideset h5 a, .uk-slider h5 a{
     color: #8E8E8E;
 }
 
-.uk-slideset h5 a:hover {
+.uk-slideset h5 a:hover, .uk-slider h5 a:hover{
     color: #5F5F5F;
 }
 
 .listings{
     margin-bottom: 10px;
+    position: relative;
 }
 
 .listings a{
     display: block;
-    padding: 10px
+    padding: 10px;
+    border: 1px solid #E0DFDF;
 }
 
-.highlighted{
-    border: 2px solid #E57373;
+.listings .highlighted-ads{
+    border: 2px solid #FFDF6D;
+    background-color: #FFFACC
 }
+
+.product {
+  margin: 50px auto;
+  width: 280px;
+  height: 370px;
+  background: white;
+  border: 1px solid #333;
+  position: relative;
+  z-index: 90;
+}
+
+.ribbon-wrapper {
+  width: 85px;
+  height: 88px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.ribbon-wrapper .ribbon {
+  font-size: 13px;
+  color: #333;
+  text-align: center;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  position: relative;
+  padding: 1px 0;
+  top: 15px;
+  left: -30px;
+  width: 120px;
+  background-color: #4CAF50;
+  color: #fff;
+}
+
+
 
 .uk-navbar .uk-button {
     padding: 0 15px;
