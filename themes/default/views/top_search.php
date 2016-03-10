@@ -19,7 +19,7 @@ $selected_option = Cookie::get('current_location');
             <?php echo FORM::open(Route::url('search'), array('class' => 'search-container', 'method' => 'GET', 'action' => '', 'enctype' => 'multipart/form-data')) ?>
             <div class="uk-grid uk-grid-collapse">
                 <div class="uk-width-medium-1-4 uk-width-small-1-1">
-                    <select name="category" id="category" data-placeholder="<?php echo __('Category') ?>" class="uk-form selectric-select">
+                    <select name="category" id="category" data-placeholder="<?php echo __('Category') ?>" class="uk-form chosen-select-no-search search-location">
                         <option value=""><?php echo __('All Category') ?></option>
                         <?php foreach ($categories as $category): ?>
                             <option value="<?php echo $category->seoname ?>" data-id="<?php echo $category->id_category ?>" <?php echo (core::request('category') == $category->seoname) ? "selected" : '' ?> ><?php echo $category->name ?></option>

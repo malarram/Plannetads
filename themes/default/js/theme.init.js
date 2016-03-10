@@ -5,9 +5,13 @@ $("button[name=submit]").click(function(){
     $("textarea[name=description]").data("sceditor").updateOriginal();
 });
 
-$('.chosen-select').chosen({
-    'inherit_select_classes':true
-});
+ var config = {
+      '.chosen-select'           : {inherit_select_classes:true},
+      '.chosen-select-no-search' : {inherit_select_classes:true, disable_search: true }
+    }
+    for (var selector in config) {
+      $(selector).chosen(config[selector]);
+    }
 
     //chosen enable/disable
 //    $('select').chosen({
