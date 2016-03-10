@@ -257,6 +257,7 @@ html[data-useragent*='MSIE 10.0'] #submit-search {
 input[type="search"].keyword-input {
     border-left: #DDDDDD 1px solid;
     border-right: #DDDDDD 1px solid;
+    z-index: 1;
 }
 
 html[data-useragent*='MSIE 10.0'] .location-input {
@@ -265,6 +266,10 @@ html[data-useragent*='MSIE 10.0'] .location-input {
 
 #submit-search:hover {
     background-color: #31b47e;
+}
+
+.search-keyword{
+    z-index: 1;
 }
 
 .keyword-input::-webkit-input-placeholder,
@@ -347,25 +352,45 @@ html[data-useragent*='MSIE 10.0'] .location-input {
     border-bottom: #DDDDDD 1px solid;
 }
 
-.search-location{
+.search-location, .search-category{
     width: 100%;
     border: none;
     height: 52px;
 }
 
-.search-location .chosen-single{
+.search-location .chosen-single, .search-category .chosen-single{
     height: 52px;
     border: none;
-    line-height: 51px;
+    line-height: 30px;
     font-size: 15px;
+    padding: 12px;
+
 }
 
-.search-location.chosen-container-active.chosen-with-drop .chosen-single{
+.search-location .chosen-single{
+    padding-left: 30px;
+}
+
+.search-location.chosen-container-active.chosen-with-drop .chosen-single, 
+.search-category.chosen-container-active.chosen-with-drop .chosen-single{
     border: none;
 }
 
-.search-location .chosen-single span
+.search-location .chosen-single span{
+    /*margin-left: 26px;*/
+}
 
+.search-container .chosen-single div b{
+    background-position:  0px 17px;
+}
+
+.search-container .chosen-container-active.chosen-with-drop div b{
+    background-position:  0px 17px;
+}
+
+.uk-icon-map-marker{
+    z-index: 999;
+}
 
 /* 3.1) Featured Ads
 ====================================*/
