@@ -5,22 +5,20 @@
             <?=View::factory('sidebar_user_prof')?>
         </div>
         <div class="uk-width-large-7-10 uk-width-medium-1-1">
-            <?= Alert::show() ?>
             <h3 class="uk-text-bold"><?= __('My Advertisements') ?></h3>
             <hr>
             <table class="uk-table responsive">
                 <thead>
                     <tr>
-                        <th width="40%"><?= __('Name') ?></th>
+                        <th width="25%"><?= __('Name') ?></th>
+                        <th><?= __('Category') ?></th>
                         <th><?= __('Posted on') ?></th>
                         <th><?= __('Price') ?></th>
-<!--                        <th><?= __('Category') ?></th>
-                        <th><?= __('Location') ?></th>-->
-                        <th><?= __('Status') ?></th>
                         <?if( core::config('payment.to_featured')):?>
                         <th><?= __('Featured') ?></th>
                         <?endif?>
-                        <th>Details</th>
+                        <th style="text-align: right"><?= __('Action') ?></th>
+                        <th style="text-align: center"><?= __('Status') ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,73 +27,42 @@
                         <? foreach($category as $cat){ if ($cat->id_category == $ad->id_category) $cat_name = $cat->seoname; }?>
                         <td><a href="<?= Route::url('ad', array('controller' => 'ad', 'category' => $cat_name, 'seotitle' => $ad->seotitle)) ?>"><?= $ad->title; ?></a>
                         </td>
+                        <td>
+                            <? foreach($category as $cat):?>
+                                <? if ($cat->id_category == $ad->id_category): ?>
+                                    <?= $cat->name ?>
+                                <?endif?>
+                            <?endforeach?>
+                        </td>
                         <td><?= Date::format($ad->published, core::config('general.date_format')) ?></td>
                         <td><?= i18n::money_format($ad->price) ?></td>
-
-<!--                        <? foreach($category as $cat):?>
-                        <? if ($cat->id_category == $ad->id_category):
-                        $cat_name=$cat->name;
-                        ?>
-                        <td><?= $cat_name ?> </td>
-                            <?endif?>
-                            <?endforeach?>
-                        <?if($cat_name == NULL):?>
-                        <td>n/a</td>
-                        <?endif?>
-
-                            <?$locat_name = NULL;?>
-                            <?foreach($location as $loc):?>
-                            <? if ($loc->id_location == $ad->id_location):
-                            $locat_name=$loc->name;?>
-                        <td><?= $locat_name ?></td>
-                        <?endif?>
-                        <?endforeach?>
-                        <?if($locat_name == NULL):?>
-                        <td>n/a</td>
-                        <?endif?>-->
-
-
                         <?if( core::config('payment.to_featured')):?>
-                        <td>
+                        <td align="center">
                             <?if($ad->featured == NULL):?>
-                            <a class="btn btn-default"
-                               href="<?= Route::url('default', array('controller' => 'ad', 'action' => 'to_featured', 'id' => $ad->id_ad)) ?>"
-                               onclick="return confirm('<?= __('Make featured?') ?>');"
+                            <a href="<?= Route::url('default', array('controller' => 'ad', 'action' => 'to_featured', 'id' => $ad->id_ad)) ?>"
+                               onclick="return confirm('<?= __('Are you sure this ad make featured?') ?>');"
                                rel="tooltip" title="<?= __('Featured') ?>" data-id="tr1" data-text="<?= __('Are you sure you want to make it featured?') ?>">
-                                <i class="glyphicon glyphicon-bookmark "></i> <?= __('Featured') ?>
+                                <i class="uk-icon-star-o"></i>
                             </a>
                             <?else:?>
-                            <?= Date::format($ad->featured, core::config('general.date_format')) ?>
+                            <i class="uk-icon-star"></i>
+                            <? // Date::format($ad->featured, core::config('general.date_format')) ?>
                             <?endif?>
                         </td>
                         <?endif?>
 
-                        <td>
-<!--                            <a class="uk-margin-small-left uk-button uk-button-mini uk-button-primary"
+                        <td align="right">
+                            <a class="uk-margin-small-left uk-button uk-button-mini uk-button-primary"
                                href="<?= Route::url('oc-panel', array('controller' => 'myads', 'action' => 'stats', 'id' => $ad->id_ad)) ?>"
                                rel="tooltip" title="<?= __('Stats') ?>">
-                                <?= __('Stats') ?>
-                            </a>-->
+                                <i class="uk-icon-bar-chart"></i>
+                             </a>
                             <a class="uk-margin-small-left uk-button-mini uk-button-primary uk-button"
                                href="<?= Route::url('oc-panel', array('controller' => 'myads', 'action' => 'update', 'id' => $ad->id_ad)) ?>"
                                rel="tooltip" title="<?= __('Update') ?>">
-                                <?= __('Edit') ?>
+                                <i class="uk-icon-pencil"></i>
                             </a>
-                            <? if( $ad->status == Model_Ad::STATUS_UNAVAILABLE
-                            AND !in_array(core::config('general.moderation'), Model_Ad::$moderation_status)
-                            ):?>
-                            <?if ( ($order = $ad->get_order()) === FALSE OR ($order !== FALSE AND $order->status == Model_Order::STATUS_PAID) ):?>
-                            <a
-                                href="<?= Route::url('oc-panel', array('controller' => 'myads', 'action' => 'activate', 'id' => $ad->id_ad)) ?>"
-                                class="uk-margin-small-left uk-button uk-button-mini uk-button-success"
-                                title="<?= __('Activate?') ?>"
-                                data-toggle="confirmation"
-                                data-btnOkLabel="<?= __('Yes, definitely!') ?>"
-                                data-btnCancelLabel="<?= __('No way!') ?>">
-                                <i class="glyphicon glyphicon-ok"></i>
-                            </a>
-                            <?endif?>
-                            <?elseif($ad->status != Model_Ad::STATUS_UNAVAILABLE):?>
+                            <?if($ad->status != Model_Ad::STATUS_UNAVAILABLE):?>
                             <a
                                 href="<?= Route::url('oc-panel', array('controller' => 'myads', 'action' => 'deactivate', 'id' => $ad->id_ad)) ?>"
                                 class="uk-margin-small-left uk-button uk-button-mini uk-button-danger"
@@ -103,7 +70,7 @@
                                 data-toggle="confirmation"
                                 data-btnOkLabel="<?= __('Yes, definitely!') ?>"
                                 data-btnCancelLabel="<?= __('No way!') ?>">
-                                <?= __('Delete') ?>
+                                <i class="uk-icon-trash"></i>
                             </a>
                             <?endif?>
                             <?if( core::config('payment.to_top') ):?>
@@ -114,11 +81,11 @@
                                 data-toggle="confirmation"
                                 data-btnOkLabel="<?= __('Yes, definitely!') ?>"
                                 data-btnCancelLabel="<?= __('No way!') ?>">
-                                <i class="glyphicon glyphicon-circle-arrow-up"></i>
+                                <i class="uk-icon uk-icon-circle-arrow-up"></i>
                             </a>
                             <?endif?>
                         </td>
-                        <td>
+                        <td align="center">
                             <?if($ad->status == Model_Ad::STATUS_NOPUBLISHED):?>
                             <i class="uk-icon-close uk-text-danger"></i>
                             <? elseif($ad->status == Model_Ad::STATUS_PUBLISHED):?>
@@ -126,21 +93,25 @@
                             <? elseif($ad->status == Model_Ad::STATUS_SPAM):?>
                             <?= __('Spam') ?>
                             <? elseif($ad->status == Model_Ad::STATUS_UNAVAILABLE):?>
-                            <?= __('Unavailable') ?>
+                            <a
+                                href="<?= Route::url('oc-panel', array('controller' => 'myads', 'action' => 'activate', 'id' => $ad->id_ad)) ?>"
+                                title="<?= __('Activate?') ?>"
+                                data-toggle="confirmation"
+                                data-btnOkLabel="<?= __('Yes, definitely!') ?>"
+                                data-btnCancelLabel="<?= __('No way!') ?>">
+                                <i class="uk-icon-ban uk-text-danger"></i>
+                            </a>
                             <?endif?>
-
                             <?if( ($order = $ad->get_order())!==FALSE ):?>
                             <?if ($order->status==Model_Order::STATUS_CREATED AND $ad->status != Model_Ad::STATUS_PUBLISHED):?>
-                            <a class="btn btn-warning" href="<?= Route::url('default', array('controller' => 'ad', 'action' => 'checkout', 'id' => $order->id_order)) ?>">
-                                <i class="glyphicon glyphicon-shopping-cart"></i> <?= __('Pay') ?>Â Â <?= i18n::format_currency($order->amount, $order->currency) ?>Â 
+                            <a class="uk-button uk-button-warning" href="<?= Route::url('default', array('controller' => 'ad', 'action' => 'checkout', 'id' => $order->id_order)) ?>">
+                                <i class="uk-icon glyphicon-shopping-cart"></i> <?= __('Pay') ?>Â Â <?= i18n::format_currency($order->amount, $order->currency) ?>Â 
                             </a>
                             <?elseif ($order->status==Model_Order::STATUS_PAID):?>
                             (<?= __('Paid') ?>)
                             <?endif?>
                             <?endif?>
                         </td>
-
-
                     </tr>
                     <?endforeach?>
                 </tbody>

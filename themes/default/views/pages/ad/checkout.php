@@ -3,7 +3,7 @@
 <script type="text/javascript">
 document.write(unescape("%3Cscript src='" + ('https:' == document.location.protocol ? 'https://' : 'http://') + "static.fraudlabspro.com/agent.js' type='text/javascript'%3E%3C/script%3E"));
 </script>
- 
+
 <script type="text/javascript">
 try{
     var flp = new FraudLabsPro;
@@ -13,16 +13,16 @@ catch(e){}
 </script>
 <?endif?>
 
-<div class="well col-xs-12 col-sm-12 col-md-12">
+<div class="well uk-width-1-1">
     <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-6">
+        <div class="uk-width-1-2">
             <address>
                 <strong><?=Core::config('general.site_name')?></strong>
                 <br>
                 <?=Core::config('general.base_url')?>
             </address>
         </div>
-        <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+        <div class="uk-width-1-2 uk-text-right">
             <p>
                 <em><?=__('Date')?>: <?= Date::format($order->created, core::config('general.date_format'))?></em>
                 <br>
@@ -31,15 +31,15 @@ catch(e){}
         </div>
     </div>
     <div class="row">
-        <div class="text-center">
+        <div class="uk-text-center">
             <h1><?=__('Checkout')?></h1>
         </div>
-        <table class="table table-hover">
+        <table class="uk-table uk-table-hover">
             <thead>
                 <tr>
-                    <th style="text-align: center">#</th>
+                    <th class="uk-text-center">#</th>
                     <th><?=__('Product')?></th>
-                    <th class="text-center"><?=__('Price')?></th>
+                    <th class="uk-text-center"><?=__('Price')?></th>
                 </tr>
             </thead>
             <tbody>
@@ -59,8 +59,8 @@ catch(e){}
                         <td class="col-md-1" style="text-align: center"><?=$order->id_product?></td>
                         <?if (Theme::get('premium')==1):?>
                             <td class="col-md-9">
-                                <?=$order->description?> 
-                                <em>(<?=Model_Order::product_desc($order->id_product)?> 
+                                <?=$order->description?>
+                                <em>(<?=Model_Order::product_desc($order->id_product)?>
                                     <?if ($order->id_product == Model_Order::PRODUCT_TO_FEATURED):?>
                                         <?=$order->featured_days?> <?=__('Days')?>
                                     <?endif?>
@@ -69,7 +69,7 @@ catch(e){}
                                 <div class="dropdown" style="display:inline-block;">
                                 <?if ($order->id_product == Model_Order::PRODUCT_TO_FEATURED AND is_array($featured_plans=Model_Order::get_featured_plans()) AND count($featured_plans) > 1):?>
                                     <button class="btn btn-xs btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                                        <?=__('Change plan')?> 
+                                        <?=__('Change plan')?>
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu">
@@ -103,7 +103,7 @@ catch(e){}
                             <td class="col-md-2 text-center text-danger">
                                 -<?=i18n::format_currency($discount, $order->currency)?>
                             </td>
-                        </tr>  
+                        </tr>
                     <?endif?>
                 <?endif?>
                 <tr>
@@ -129,7 +129,7 @@ catch(e){}
                 </a>
             </p>
         <?endif?>
-        
+
         <?if ($order->id_product!=Model_Order::PRODUCT_AD_SELL):?>
             <?if ( ($user = Auth::instance()->get_user())!=FALSE AND ($user->id_role == Model_Role::ROLE_ADMIN OR $user->id_role == Model_Role::ROLE_MODERATOR)):?>
                 <ul class="list-inline text-right">
@@ -192,4 +192,3 @@ catch(e){}
     </div>
 </div>
 
- 

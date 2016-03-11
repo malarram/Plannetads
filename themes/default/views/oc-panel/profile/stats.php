@@ -1,17 +1,13 @@
 <?php defined('SYSPATH') or die('No direct script access.');?>
-
-<div class="page-header">
-    <h1><?=__('Statistics')?>
-    <?if ($advert->loaded()):?>
-    : <?=$advert->title?>
-    <?endif?>
-    </h1>   
-</div>
-
-<div class="row">
-    <div class="col-md-12">
-        <div class="panel panel-default">
-            <table class="table table-bordered">
+<div class="uk-container uk-container-center ">
+    <div class="uk-grid uk-block">
+        <div class="uk-width-large-3-10 uk-visible-large">
+            <?=View::factory('sidebar_user_prof')?>
+        </div>
+        <div class="uk-width-large-7-10 uk-width-medium-1-1">
+            <h3 class="uk-text-bold"><?=__('Statistics')?><?if ($advert->loaded()):?> : <?=$advert->title?> <?endif?></h3>
+            <hr>
+            <table class="uk-table responsive">
                 <thead>
                     <tr>
                         <th></th>
@@ -38,14 +34,13 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?=__('Charts')?></h3>
+            <div class="uk-panel">
+            <div class="uk-panel-heading">
+                <h3 class="uk-panel-title"><?=__('Charts')?></h3>
             </div>
-            <div class="panel-body">
-                <form id="edit-profile" class="form-inline text-center" method="post" action="">
-                    <div class="form-group">
+            <div class="uk-panel-body">
+                <form id="edit-profile" class="uk-form uk-text-center" method="post" action="">
+                    <div class="uk-form-row">
                         <div class="input-group">
                             <div class="input-group-addon"><?=__('From')?></div>
                             <input type="text" class="form-control" id="from_date" name="from_date" value="<?=$from_date?>" data-date="<?=$from_date?>" data-date-format="yyyy-mm-dd">
@@ -55,7 +50,7 @@
                         </div>
                     </div>
                     <span>-</span>
-                    <div class="form-group">
+                    <div class="uk-form-row">
                         <div class="input-group">
                             <div class="input-group-addon"><?=__('To')?></div>
                             <input type="text" class="form-control" id="to_date" name="to_date" value="<?=$to_date?>" data-date="<?=$to_date?>" data-date-format="yyyy-mm-dd">
@@ -64,7 +59,7 @@
                             </span>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary"><?=__('Filter')?></button>
+                    <button type="submit" class="uk-button uk-button-primary"><?=__('Filter')?></button>
                     <div>
                         <br>
                         <strong class="text-center"><?=__('Views and Contacts statistic')?></strong>
@@ -74,6 +69,7 @@
                     </div>
                 </form>
             </div>
+        </div>
         </div>
     </div>
 </div>
