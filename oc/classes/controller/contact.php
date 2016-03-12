@@ -46,11 +46,13 @@ class Controller_Contact extends Controller {
                             $attachment = $_FILES['attachment']; //file post
                             $path = 'images/attachments/';
                             $root = DOCROOT . $path; //root folder
-                            $attachment_name = md5(rand() . time()) . '.png';
+                            $ext = pathinfo($_FILES['attachment']['name'], PATHINFO_EXTENSION);
+                            $attachment_name = md5(rand() . time()) . '.'.$ext;
+                            $allowable_formats = array_merge(array('word','pdf'),explode(',', core::config('image.allowed_formats')));
                             if (
-                                    !Upload::valid($attachment) OR
+                                    ! Upload::valid($attachment) OR
                                     ! Upload::not_empty($attachment) OR
-                                    ! Upload::type($attachment, explode(',', core::config('image.allowed_formats'))) OR
+                                    ! Upload::type($attachment, $allowable_formats) OR
                                     ! Upload::size($attachment, core::config('image.max_image_size') . 'M') OR
                                     ! file_exists($root) AND ! @mkdir($root, 0775, true) OR
                                     ! Upload::save($attachment, $attachment_name, $root)

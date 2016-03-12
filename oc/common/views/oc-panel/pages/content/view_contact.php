@@ -35,7 +35,13 @@
             <?if($contact->contact_attachment): ?>
             <tr>
                 <td><?= __('Attachment') ?></td>
-                <td><a href="<?= core::config('general.base_url').'images/attachments/'.$contact->contact_attachment ?>" target="_blank"><img src="<?= core::config('general.base_url').'images/attachments/'.$contact->contact_attachment ?>" width="250"/></a></td>
+                <td><a href="<?= core::config('general.base_url').'images/attachments/'.$contact->contact_attachment ?>" target="_blank">
+                        <? if(in_array(pathinfo($contact->contact_attachment, PATHINFO_EXTENSION),explode(',', core::config('image.allowed_formats')))): ?>
+                        <img src="<?= core::config('general.base_url').'images/attachments/'.$contact->contact_attachment ?>" style="max-width:250px"/>
+                        <? else: ?>
+                        <i class="fa fa-file-<?= pathinfo($contact->contact_attachment, PATHINFO_EXTENSION);?>-o"> File</i>
+                        <? endif ?>
+                    </a></td>
             </tr>
             <?endif?>
             <tr>
