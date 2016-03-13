@@ -6,7 +6,7 @@
  * @package		OC
  * @copyright	(c) 2009-2013 Open Classifieds Team
  * @license		GPL v3
- * 
+ *
  */
 class Model_Ad extends ORM {
 
@@ -50,26 +50,26 @@ class Model_Ad extends ORM {
     /**
      * status constants
      */
-    const STATUS_NOPUBLISHED = 0; //first status of the item, not published. This status send ad to moderation always. Until it gets his status changed 
+    const STATUS_NOPUBLISHED = 0; //first status of the item, not published. This status send ad to moderation always. Until it gets his status changed
     const STATUS_PUBLISHED   = 1; // ad it's available and published
     const STATUS_UNCONFIRMED = 20; // this status is for advertisements that need to be confirmed by email,
     const STATUS_SPAM        = 30; // mark as spam
     const STATUS_UNAVAILABLE = 50; // item unavailable but previously was / expired
-    
+
 
     /**
      * moderation status
      */
-    const POST_DIRECTLY         = 0; // create new ad directly 
+    const POST_DIRECTLY         = 0; // create new ad directly
     const MODERATION_ON         = 1; // new ad after creation goes to moderation
     const PAYMENT_ON            = 2; // redirects to payment and after paying there is no moderation
-    const EMAIL_CONFIRMATION    = 3; // sends email to confirm ad, until then is in moderation 
+    const EMAIL_CONFIRMATION    = 3; // sends email to confirm ad, until then is in moderation
     const EMAIL_MODERATION      = 4; // sends email to confirm, but admin needs also to validate
     const PAYMENT_MODERATION    = 5; // even after payment, admin still needs to validate
-    
+
     //this are the moderation statuses that makes moderation link appear
     public static $moderation_status = array(self::MODERATION_ON,
-                                            self::EMAIL_MODERATION , 
+                                            self::EMAIL_MODERATION ,
                                             self::PAYMENT_MODERATION);
 
     /**
@@ -89,8 +89,8 @@ class Model_Ad extends ORM {
         {
             self::$_current = new self();
 
-            if( strtolower(Request::current()->controller()=='Ad')  
-                AND strtolower(Request::current()->action()) == 'view' 
+            if( strtolower(Request::current()->controller()=='Ad')
+                AND strtolower(Request::current()->action()) == 'view'
                 AND Request::current()->param('seotitle')!==NULL )
             {
                 self::$_current = self::$_current->where('seotitle', '=', Request::current()->param('seotitle'))
@@ -129,10 +129,10 @@ class Model_Ad extends ORM {
 
         if (core::config('advertisement.description') == FALSE)
             $rules['description'] = array(array('min_length', array(':value', 5)), array('max_length', array(':value', 65535)), );
-        
+
         if (core::config('payment.stock')==1)
             $rules['stock'] =  array(array('numeric'));
-        
+
         return $rules;
     }
 
@@ -163,9 +163,9 @@ class Model_Ad extends ORM {
 			        'last_modified'	=> __('Last modified'),
 			    );
     }
-    
+
     /**
-     * 
+     *
      * formmanager definitions
      * @param $form
      * @return $insert
@@ -183,9 +183,9 @@ class Model_Ad extends ORM {
      * generate seo title. return the title formatted for the URL
      *
      * @param string title
-     * @return $seotitle (unique string)  
+     * @return $seotitle (unique string)
      */
-    
+
     public function gen_seo_title($title)
     {
         $ad = new self;
@@ -195,7 +195,7 @@ class Model_Ad extends ORM {
 
         //find a ad same seotitle
         $a = $ad->where('seotitle', '=', $seotitle)->and_where('id_ad', '!=', $this->id_ad)->limit(1)->find();
-        
+
         if($a->loaded())
         {
             $cont = 1;
@@ -221,14 +221,14 @@ class Model_Ad extends ORM {
 
     /**
      *  Create single table for each advertisement hit
-     * 
+     *
      */
     public function count_ad_hit()
     {
         $hits = 0;
-        if (!Model_Visit::is_bot() 
-            AND $this->loaded() 
-            AND $this->status==Model_Ad::STATUS_PUBLISHED 
+        if (!Model_Visit::is_bot()
+            AND $this->loaded()
+            AND $this->status==Model_Ad::STATUS_PUBLISHED
             AND core::config('advertisement.count_visits')==1)
         {
             if(!Auth::instance()->logged_in())
@@ -242,12 +242,12 @@ class Model_Ad extends ORM {
                                     ->values(array($this->id_ad, $visitor_id))
                                     ->execute();
 
-            //count how many matches are found 
+            //count how many matches are found
             $hits = new Model_Visit();
             $hits = $hits->where('id_ad','=', $this->id_ad)->count_all();
         }
         return $hits;
-        
+
     }
 
     /**
@@ -257,17 +257,17 @@ class Model_Ad extends ORM {
     public function get_images()
     {
         $image_path = array();
-       
+
         if($this->loaded() AND $this->has_images > 0)
-        {              
-           
+        {
+
             $base = Core::S3_domain();
             $route      = $this->image_path();
             $folder     = DOCROOT.$route;
             $seotitle   = $this->seotitle;
             $version    = $this->last_modified ? '?v='.Date::mysql2unix($this->last_modified) : NULL;
-            
-            for ($i=1; $i <= $this->has_images; $i++) 
+
+            for ($i=1; $i <= $this->has_images; $i++)
             {
                 $filename_thumb = 'thumb_'.$seotitle.'_'.$i.'.jpg';
                 $filename_original = $seotitle.'_'.$i.'.jpg';
@@ -275,7 +275,7 @@ class Model_Ad extends ORM {
                 $image_path[$i]['thumb'] = $base.$route.$filename_thumb.$version;
             }
         }
-        
+
         return $image_path;
     }
 
@@ -300,27 +300,27 @@ class Model_Ad extends ORM {
      * @return string path
      */
     public function image_path()
-    { 
+    {
         if (!$this->loaded())
             return FALSE;
 
-        $obj_date = date_parse($this->created); // convert date to array 
-        
+        $obj_date = date_parse($this->created); // convert date to array
+
         $year = $obj_date['year'];
-        
-        // check for length, because original path is with 2 integers 
+
+        // check for length, because original path is with 2 integers
         if(strlen($obj_date['month']) != 2)
             $month = '0'.$obj_date['month'];
         else
             $month = $obj_date['month'];
-        
+
         if(strlen($obj_date['day']) != 2)
             $day = '0'.$obj_date['day'];
         else
             $day = $obj_date['day'];
 
-        $path = 'images/'.$year.'/'.$month.'/'.$day.'/'.$this->id_ad.'/';       
-        
+        $path = 'images/'.$year.'/'.$month.'/'.$day.'/'.$this->id_ad.'/';
+
         //check if path is a directory
         if ( ! is_dir($path) )
         {
@@ -334,7 +334,7 @@ class Model_Ad extends ORM {
 
     /**
      * save_image upload images with given path
-     * 
+     *
      * @param array image
      * @return bool
      */
@@ -344,8 +344,8 @@ class Model_Ad extends ORM {
             return FALSE;
 
         $seotitle = $this->seotitle;
-        
-        if ( 
+
+        if (
         ! Upload::valid($image) OR
         ! Upload::not_empty($image) OR
         ! Upload::type($image, explode(',',core::config('image.allowed_formats'))) OR
@@ -362,13 +362,13 @@ class Model_Ad extends ORM {
             if( ! Upload::not_empty($image))
                 return FALSE;
         }
-          
+
         if (core::config('image.disallow_nudes') AND ! Upload::not_nude_image($image))
         {
             Alert::set(Alert::ALERT, $image['name'].' '.__('Seems a nude picture so you cannot upload it'));
             return FALSE;
         }
-        
+
         if ($image !== NULL)
         {
             $path           = $this->image_path();
@@ -377,17 +377,17 @@ class Model_Ad extends ORM {
             {
                 return $this->save_image_file($file,$this->has_images+1);
             }
-            else 
+            else
             {
                 Alert::set(Alert::ALERT, __('Something went wrong with uploading pictures, please check format'));
                 return FALSE;
             }
-        }   
+        }
     }
 
     /**
      * save_base64_image upload images with given path
-     * 
+     *
      * @param string $image [base64 encoded image]
      * @return bool
      */
@@ -409,7 +409,7 @@ class Model_Ad extends ORM {
             Alert::set(Alert::ALERT, $image->mime.' '.sprintf(__('Is not valid format, please use one of this formats "%s"'),core::config('image.allowed_formats')));
             return FALSE;
         }
-        
+
         if (filesize($image_tmp_uri) > Num::bytes(core::config('image.max_image_size').'M'))
         {
             Alert::set(Alert::ALERT, $image->mime.' '.sprintf(__('Is not of valid size. Size is limited to %s MB per image'),core::config('image.max_image_size')));
@@ -427,7 +427,7 @@ class Model_Ad extends ORM {
 
     /**
      * saves image in the disk
-     * @param  string  $file 
+     * @param  string  $file
      * @param  integer $num  number of the image
      * @return bool        success?
      */
@@ -457,17 +457,17 @@ class Model_Ad extends ORM {
         if( ! is_numeric($height)) // when installing this field is empty, to avoid crash we check here
             $height         = NULL;
         if( ! is_numeric($height_thumb))
-            $height_thumb   = NULL;    
+            $height_thumb   = NULL;
 
         $filename_thumb     = 'thumb_'.$this->seotitle.'_'.$num.'.jpg';
         $filename_original  = $this->seotitle.'_'.$num.'.jpg';
-         
+
         /*WATERMARK*/
         if(core::config('image.watermark')==TRUE AND is_readable(core::config('image.watermark_path')))
         {
             $mark = Image::factory(core::config('image.watermark_path')); // watermark image object
             $size_watermark = getimagesize(core::config('image.watermark_path')); // size of watermark
-          
+
             if(core::config('image.watermark_position') == 0) // position center
             {
                 $wm_left_x = $width/2-$size_watermark[0]/2; // x axis , from left
@@ -483,7 +483,7 @@ class Model_Ad extends ORM {
                 $wm_left_x = $width/2-$size_watermark[0]/2; // x axis , from left
                 $wm_top_y = 10; // y axis , from top
             }
-        }   
+        }
         /*end WATERMARK variables*/
 
 
@@ -493,8 +493,8 @@ class Model_Ad extends ORM {
         } catch (Exception $e) {
             return FALSE;
         }
-        
-        
+
+
         if($image_size_orig[0] > $width || $image_size_orig[1] > $height)
         {
             if(core::config('image.watermark') AND is_readable(core::config('image.watermark_path'))) // watermark ON
@@ -505,7 +505,7 @@ class Model_Ad extends ORM {
                     ->watermark( $mark, $wm_left_x, $wm_top_y) // CUSTOM FUNCTION (kohana)
                     ->save($directory.$filename_original,$image_quality);
             }
-            else 
+            else
             {
                 Image::factory($file)
                     ->orientate()
@@ -530,13 +530,13 @@ class Model_Ad extends ORM {
                     ->save($directory.$filename_original,$image_quality);
             }
         }
-        
+
         //creating the thumb and resizing using the the biggest side INVERSE
         Image::factory($file)
             ->orientate()
             ->resize($width_thumb, $height_thumb, Image::INVERSE)
             ->save($directory.$filename_thumb,$image_quality);
-            
+
         //check if the height or width of the thumb is bigger than default then crop
         if ($height_thumb!==NULL)
         {
@@ -548,38 +548,38 @@ class Model_Ad extends ORM {
                             ->save($directory.$filename_thumb);
             }
         }
-        
+
         // put image and thumb to Amazon S3
         if(core::config('image.aws_s3_active'))
         {
             $s3->putObject($s3->inputFile($directory.$filename_original), core::config('image.aws_s3_bucket'), $path.$filename_original, S3::ACL_PUBLIC_READ);
             $s3->putObject($s3->inputFile($directory.$filename_thumb), core::config('image.aws_s3_bucket'), $path.$filename_thumb, S3::ACL_PUBLIC_READ);
         }
-        
+
         // Delete the temporary file
         @unlink($file);
 
 
         $this->has_images++;
 
-        try 
+        try
         {
             $this->save();
             return TRUE;
-        } 
-        catch (Exception $e) 
+        }
+        catch (Exception $e)
         {
             return FALSE;
         }
-        
+
     }
 
     /**
      * returns the images path name
-     * @param  integer $id      
-     * @param  string  $type    
-     * @param  string  $version 
-     * @return string           
+     * @param  integer $id
+     * @param  string  $type
+     * @param  string  $version
+     * @return string
      */
     public function image_name($id = 1, $type='')
     {
@@ -607,13 +607,13 @@ class Model_Ad extends ORM {
             return FALSE;
 
         $img_path = DOCROOT.$this->image_path();
-        
+
         if(core::config('image.aws_s3_active') AND $this->has_images > 0)
         {
             require_once Kohana::find_file('vendor', 'amazon-s3-php-class/S3','php');
             $s3 = new S3(core::config('image.aws_access_key'), core::config('image.aws_secret_key'));
-            
-            for ($i=1; $i <= $this->has_images; $i++) 
+
+            for ($i=1; $i <= $this->has_images; $i++)
             {
                 $s3->deleteObject(core::config('image.aws_s3_bucket'), $this->image_name($i));
                 $s3->deleteObject(core::config('image.aws_s3_bucket'), $this->image_name($i, 'thumb'));
@@ -624,30 +624,30 @@ class Model_Ad extends ORM {
             return FALSE;
 
         File::delete($img_path);
-        
+
         return TRUE;
     }
 
     /**
      * [delete_image description]
-     * @param  integer $deleted_image 
-     * @return void                
+     * @param  integer $deleted_image
+     * @return void
      */
     public function delete_image($deleted_image)
     {
         $img_path = $this->image_path();
-        
+
         // delete image from Amazon S3
         if (core::config('image.aws_s3_active'))
         {
             require_once Kohana::find_file('vendor', 'amazon-s3-php-class/S3','php');
             $s3 = new S3(core::config('image.aws_access_key'), core::config('image.aws_secret_key'));
-            
+
             //delete original image
             $s3->deleteObject(core::config('image.aws_s3_bucket'), $this->image_name($deleted_image));
             //delete formated image
             $s3->deleteObject(core::config('image.aws_s3_bucket'), $this->image_name($deleted_image,'thumb'));
-            
+
             //re-ordering image file names
             for($i = $deleted_image; $i < $this->has_images; $i++)
             {
@@ -659,9 +659,9 @@ class Model_Ad extends ORM {
                 $s3->deleteObject(core::config('image.aws_s3_bucket'), $this->image_name(($i+1),'thumb'));
             }
         }
-        
+
         //delete image from local filesystem
-        if (!is_dir($img_path)) 
+        if (!is_dir($img_path))
             return FALSE;
         else
         {
@@ -669,7 +669,7 @@ class Model_Ad extends ORM {
             @unlink($this->image_name($deleted_image));
             //delete formated image
             @unlink($this->image_name($deleted_image,'thumb'));
-            
+
             //re-ordering image file names
             for($i = $deleted_image; $i < $this->has_images; $i++)
             {
@@ -680,23 +680,23 @@ class Model_Ad extends ORM {
         $this->has_images = ($this->has_images > 0) ? $this->has_images-1 : 0;
         $this->last_modified = Date::unix2mysql();
 
-        try 
+        try
         {
             $this->save();
             return TRUE;
-        } 
-        catch (Exception $e) 
+        }
+        catch (Exception $e)
         {
             throw HTTP_Exception::factory(500,$e->getMessage());
         }
-        
+
         return FALSE;
     }
 
     /**
      * Set primary image by swapping ids
-     * @param  integer $primary_image 
-     * @return void                
+     * @param  integer $primary_image
+     * @return void
      */
     public function set_primary_image($primary_image)
     {
@@ -705,13 +705,13 @@ class Model_Ad extends ORM {
             return;
 
         $img_path = $this->image_path();
-        
+
         // delete image from Amazon S3
         if (core::config('image.aws_s3_active'))
         {
             require_once Kohana::find_file('vendor', 'amazon-s3-php-class/S3','php');
             $s3 = new S3(core::config('image.aws_access_key'), core::config('image.aws_secret_key'));
-            
+
             //re-ordering image file names
             $s3->copyObject(core::config('image.aws_s3_bucket'), $this->image_name('1'), core::config('image.aws_s3_bucket'), $this->image_name('1_old'), S3::ACL_PUBLIC_READ);
             $s3->deleteObject(core::config('image.aws_s3_bucket'), $this->image_name('1'));
@@ -741,22 +741,22 @@ class Model_Ad extends ORM {
 
         $this->last_modified = Date::unix2mysql();
 
-        try 
+        try
         {
             $this->save();
             return TRUE;
-        } 
-        catch (Exception $e) 
+        }
+        catch (Exception $e)
         {
             throw HTTP_Exception::factory(500,$e->getMessage());
         }
-        
+
         return FALSE;
     }
 
     /**
      * tells us if this ad can be contacted
-     * @return bool 
+     * @return bool
      */
     public function can_contact()
     {
@@ -767,7 +767,7 @@ class Model_Ad extends ORM {
                 return TRUE;
             }
         }
-    
+
         return FALSE;
     }
 
@@ -784,7 +784,7 @@ class Model_Ad extends ORM {
                 return View::factory('pages/ad/map',array('id_ad'=>$this->id_ad))->render();
             }
         }
-    
+
         return FALSE;
     }
 
@@ -801,7 +801,7 @@ class Model_Ad extends ORM {
                 return core::generate_qr(Route::url('ad', array('controller'=>'ad','category'=>$this->category->seoname,'seotitle'=>$this->seotitle)));
             }
         }
-    
+
         return FALSE;
     }
 
@@ -828,7 +828,7 @@ class Model_Ad extends ORM {
         {
             return $this->fbcomments().$this->disqus();
         }
-    
+
         return FALSE;
     }
 
@@ -848,7 +848,7 @@ class Model_Ad extends ORM {
                         ->render();
             }
         }
-    
+
         return FALSE;
     }
 
@@ -867,15 +867,15 @@ class Model_Ad extends ORM {
                         ->render();
             }
         }
-    
+
         return FALSE;
     }
-    
+
 
    /**
     * returns a list with custom field values of this ad
     * @param  boolean $show_listing only those fields that needs to be displayed on the list of ads show_listing===TRUE
-    * @return array else false 
+    * @return array else false
     */
     public function custom_columns($show_listing = FALSE)
     {
@@ -892,13 +892,13 @@ class Model_Ad extends ORM {
 
             if(!isset($cf_config))
                 return array();
-            
-            //getting the custom fields this advertisement has and his value          
+
+            //getting the custom fields this advertisement has and his value
             $active_custom_fields = array();
             foreach($this->_table_columns as $value)
-            {   
+            {
                 //we want only those that are custom fields
-                if(strpos($value['column_name'],'cf_') !== FALSE) 
+                if(strpos($value['column_name'],'cf_') !== FALSE)
                 {
                     $cf_name  = str_replace('cf_', '', $value['column_name']);
                     $cf_column_name = $value['column_name'];
@@ -916,10 +916,10 @@ class Model_Ad extends ORM {
                     }
 
                     if(isset($cf_value) AND $display )
-                    {   
+                    {
                         //formating the value depending on the type
-                        switch ($cf_config->$cf_name->type) 
-                        {   
+                        switch ($cf_config->$cf_name->type)
+                        {
                             case 'checkbox':
                                 $cf_value = ($cf_value)?'checkbox_'.$cf_value:NULL;
                                 break;
@@ -929,27 +929,27 @@ class Model_Ad extends ORM {
                             case 'date':
                                 $cf_value = Date::format($cf_value, core::config('general.date_format'));
                                 break;
-                        }      
-                        
+                        }
+
                         //should it be added to the listing? //I added the isset since those who update may not have this field ;)
-                        if ($show_listing == TRUE AND isset($cf_config->$cf_name->show_listing)) 
+                        if ($show_listing == TRUE AND isset($cf_config->$cf_name->show_listing))
                         {
                             //only to the listing
                             if ($cf_config->$cf_name->show_listing===TRUE)
                             {
                                 $active_custom_fields[$cf_name] = $cf_value;
-                            }                            
+                            }
                         }
                         else
                             $active_custom_fields[$cf_name] = $cf_value;
                     }
-       
+
                 }
             }
 
             // sorting using json order
             $ad_custom_vals = array();
-            foreach ($cf_config as $name => $value) 
+            foreach ($cf_config as $name => $value)
             {
                 if(isset($active_custom_fields[$name]))
                     $ad_custom_vals[$value->label] = $active_custom_fields[$name];
@@ -957,7 +957,7 @@ class Model_Ad extends ORM {
 
 
             return $ad_custom_vals;
-            
+
         }
         return array();
     }
@@ -970,7 +970,7 @@ class Model_Ad extends ORM {
     public function related()
     {
         if($this->loaded() AND core::config('advertisement.related')>0 )
-        {    
+        {
             $ads = new self();
             $ads
             ->where_open()
@@ -979,8 +979,8 @@ class Model_Ad extends ORM {
             ->where_close()
             ->where('id_ad','!=',$this->id_ad)
             ->where('status','=',self::STATUS_PUBLISHED);
-            
-            //if ad have passed expiration time dont show 
+
+            //if ad have passed expiration time dont show
             if(core::config('advertisement.expire_date') > 0)
             {
                 $ads->where(DB::expr('DATE_ADD( published, INTERVAL '.core::config('advertisement.expire_date').' DAY)'), '>', Date::unix2mysql());
@@ -992,16 +992,16 @@ class Model_Ad extends ORM {
 
             return View::factory('pages/ad/related',array('ads'=>$ads))->render();
         }
-    
+
         return FALSE;
     }
 
 
-  
+
     public function sale (Model_Order $order)
     {
         if ($this->loaded())
-        {    
+        {
             // decrease limit of ads, if 0 deactivate
             if ($this->stock > 0)
             {
@@ -1011,9 +1011,9 @@ class Model_Ad extends ORM {
                 if ($this->stock == 0)
                 {
                     $this->status = Model_Ad::STATUS_UNAVAILABLE;
-                    
+
                     //send email to owner that he run out of stock
-                    $url_edit = $this->user->ql('oc-panel', array( 'controller' => 'myads', 
+                    $url_edit = $this->user->ql('oc-panel', array( 'controller' => 'myads',
                                                                    'action'     => 'update',
                                                                    'id'         => $this->id_ad), TRUE);
 
@@ -1023,7 +1023,7 @@ class Model_Ad extends ORM {
                     // send email to ad OWNER
                     $this->user->email('out-of-stock', $email_content);
                 }
-            
+
             }
 
             try {
@@ -1032,7 +1032,7 @@ class Model_Ad extends ORM {
                 throw HTTP_Exception::factory(500,$e->getMessage());
             }
 
-                
+
             $url_ad = Route::url('ad', array('category'=>$this->category->seoname,'seotitle'=>$this->seotitle));
 
             $email_content = array( '[URL.AD]'     => $url_ad,
@@ -1045,20 +1045,20 @@ class Model_Ad extends ORM {
             // send email to ad OWNER
             $this->user->email('ads-sold', $email_content);
 
-            
+
         }
-    
- 
+
+
     }
 
     /**
      * tops up an advertisement
-     * @return void 
+     * @return void
      */
     public function to_top()
     {
         if($this->loaded())
-        {    
+        {
             $this->published = Date::unix2mysql();
             try {
                 $this->save();
@@ -1071,16 +1071,16 @@ class Model_Ad extends ORM {
     /**
      * features an advertisement
      * @param $days days to be featured
-     * @return void 
+     * @return void
      */
     public function to_feature($days = NULL)
     {
 
         if($this->loaded())
-        {    
+        {
             if (!is_numeric($days))
             {
-                $plans = Model_Order::get_featured_plans();
+                $plans = Model_Order::get_plans('featured');
                 $days  = array_keys($plans);
                 $days  = reset($days);
             }
@@ -1096,12 +1096,12 @@ class Model_Ad extends ORM {
 
     /**
      * unfeatures an advertisement
-     * @return void 
+     * @return void
      */
     public function unfeature()
     {
         if($this->loaded())
-        {    
+        {
             $this->featured = NULL;
             try {
                 $this->save();
@@ -1113,12 +1113,12 @@ class Model_Ad extends ORM {
 
     /**
      * paid for a category, notify user and publish ad if needed
-     * @return void 
+     * @return void
      */
     public function paid_category()
     {
         if($this->loaded())
-        {    
+        {
             $moderation = core::config('general.moderation');
 
             if($moderation == Model_Ad::PAYMENT_ON)
@@ -1140,17 +1140,17 @@ class Model_Ad extends ORM {
                 $ret = $this->user->email('ads-user-check',array('[URL.CONTACT]'  =>$url_cont,
                                                             '[URL.AD]'      =>$url_ad,
                                                             '[AD.NAME]'     =>$this->title));
-                
+
             }
             elseif($moderation == Model_Ad::PAYMENT_MODERATION)
             {
                 //he paid but stays in moderation
-                $url_ql = $this->user->ql('oc-panel',array( 'controller'=> 'myads', 
+                $url_ql = $this->user->ql('oc-panel',array( 'controller'=> 'myads',
                                                       'action'    => 'update',
                                                       'id'        => $this->id_ad));
 
                 $ret = $this->user->email('ads-notify',array('[URL.QL]'=>$url_ql,
-                                                       '[AD.NAME]'=>$this->title));     
+                                                       '[AD.NAME]'=>$this->title));
             }
         }
     }
@@ -1206,10 +1206,10 @@ class Model_Ad extends ORM {
             throw new Kohana_Exception('Cannot delete :model model because it is not loaded.', array(':model' => $this->_object_name));
 
         $this->delete_images();
-        
+
         //delete favorites
         DB::delete('favorites')->where('id_ad', '=',$this->id_ad)->execute();
-        
+
         //delete reviews
         DB::delete('reviews')->where('id_ad', '=',$this->id_ad)->execute();
 
@@ -1229,8 +1229,8 @@ class Model_Ad extends ORM {
 
     /**
      * saves an ad changes status etc...
-     * @param  array $data 
-     * @return array       
+     * @param  array $data
+     * @return array
      */
     public function save_ad($data)
     {
@@ -1243,7 +1243,7 @@ class Model_Ad extends ORM {
             $original_category = $this->category;
 
             $this->last_modified = Date::unix2mysql(); //TODO review doesnt break anything
-            
+
             $this->values($data);
 
              // update status on re-stock
@@ -1254,7 +1254,7 @@ class Model_Ad extends ORM {
                 elseif($data['stock'] > 0 AND $this->status == Model_Ad::STATUS_UNAVAILABLE)
                     $this->status = Model_Ad::STATUS_PUBLISHED;
             }
-        
+
             try {
                 $this->save();
             }
@@ -1262,7 +1262,7 @@ class Model_Ad extends ORM {
             {
                 return array('validation_errors' => $e->errors('ad'));
             }
-            catch (Exception $e) 
+            catch (Exception $e)
             {
                 return array('error' => $e->getMessage(),'error_type'=>Alert::ALERT);
             }
@@ -1270,9 +1270,9 @@ class Model_Ad extends ORM {
             $moderation = core::config('general.moderation');
 
             //payment for category only if category changed
-            if( (   $moderation == Model_Ad::PAYMENT_ON 
-                    OR $moderation == Model_Ad::PAYMENT_MODERATION 
-                ) 
+            if( (   $moderation == Model_Ad::PAYMENT_ON
+                    OR $moderation == Model_Ad::PAYMENT_MODERATION
+                )
                 AND isset ($data['id_category']) AND $data['id_category'] !== $original_category->id_category )
             {
                 $amount = 0;
@@ -1297,7 +1297,7 @@ class Model_Ad extends ORM {
                 }
                 else
                     $amount = $new_cat->price;
-                
+
                 //only process apyment if you need to pay
                 if ($amount > 0)
                 {
@@ -1305,7 +1305,7 @@ class Model_Ad extends ORM {
                         $this->status = Model_Ad::STATUS_NOPUBLISHED;
 
                         $this->save();
-                    } 
+                    }
                     catch (Exception $e){
                         throw HTTP_Exception::factory(500,$e->getMessage());
                     }
@@ -1318,15 +1318,15 @@ class Model_Ad extends ORM {
                 }
 
             }
-            
+
             // ad edited but we have moderation on, so goes to moderation queue unless you are admin
-            if( ($moderation == Model_Ad::MODERATION_ON 
+            if( ($moderation == Model_Ad::MODERATION_ON
                 OR $moderation == Model_Ad::EMAIL_MODERATION
-                OR $moderation == Model_Ad::PAYMENT_MODERATION) AND Auth::instance()->get_user()->id_role != Model_Role::ROLE_ADMIN ) 
+                OR $moderation == Model_Ad::PAYMENT_MODERATION) AND Auth::instance()->get_user()->id_role != Model_Role::ROLE_ADMIN )
             {
                 //notify admins new ad
                 $this->notify_admins();
-                
+
                 $return_message =  __('Advertisement is updated, but first administrator needs to validate. Thank you for being patient!');
                 $this->status = Model_Ad::STATUS_NOPUBLISHED;
                 $this->save();
@@ -1339,15 +1339,15 @@ class Model_Ad extends ORM {
         }
 
         return array('message'=>$return_message,'checkout_url'=>$checkout_url);
-        
+
     }
 
-    
+
     /**
      * creates a new ad
-     * @param  array $data 
-     * @param  model_user $user 
-     * @return array       
+     * @param  array $data
+     * @param  model_user $user
+     * @return array
      */
     public static function new_ad($data,$user)
     {
@@ -1360,7 +1360,7 @@ class Model_Ad extends ORM {
             // is user marked as spammer? Make him one :)
             if(core::config('general.black_list'))
                $user->user_spam();
-            
+
             return array('error' => __('This post has been considered as spam! We are sorry but we can not publish this advertisement.'),
                          'error_type' => Alert::ALERT);
         }//akismet
@@ -1368,9 +1368,9 @@ class Model_Ad extends ORM {
         $ad = new Model_Ad();
         $ad->id_user = $user->id_user;
         $ad->values($data);
-        $ad->seotitle   = $ad->gen_seo_title($ad->title); 
+        $ad->seotitle   = $ad->gen_seo_title($ad->title);
         $ad->created    = Date::unix2mysql();
-        
+
         try {
             $ad->save();
         }
@@ -1378,7 +1378,7 @@ class Model_Ad extends ORM {
         {
             return array('validation_errors' => $e->errors('ad'));
         }
-        catch (Exception $e) 
+        catch (Exception $e)
         {
             return array('error'        => $e->getMessage(),
                          'error_type'   => Alert::ALERT);
@@ -1386,9 +1386,9 @@ class Model_Ad extends ORM {
 
 
         /////////// NOTIFICATION Emails,messages to user and Status of the ad
-        
+
         // depending on user flow (moderation mode), change usecase
-        $moderation = core::config('general.moderation'); 
+        $moderation = core::config('general.moderation');
 
         //calculate how much he needs to pay in case we have payment on
         if ($moderation == Model_Ad::PAYMENT_ON OR $moderation == Model_Ad::PAYMENT_MODERATION)
@@ -1415,7 +1415,7 @@ class Model_Ad extends ORM {
         }
 
         //where and what we say to the user depending ont he moderation
-        switch ($moderation) 
+        switch ($moderation)
         {
             case Model_Ad::PAYMENT_ON:
             case Model_Ad::PAYMENT_MODERATION:
@@ -1431,10 +1431,10 @@ class Model_Ad extends ORM {
             case Model_Ad::EMAIL_CONFIRMATION:
 
                     $ad->status = Model_Ad::STATUS_UNCONFIRMED;
-                    $url_ql = $user->ql('oc-panel',array( 'controller'=> 'myads', 
+                    $url_ql = $user->ql('oc-panel',array( 'controller'=> 'myads',
                                                   'action'    => 'confirm',
                                                   'id'        => $ad->id_ad));
-            
+
                     $user->email('ads-confirm',array('[URL.QL]'=>$url_ql,
                                                     '[AD.NAME]'=>$ad->title));
                     $return_message = __('Advertisement is posted but first you need to activate. Please check your email!');
@@ -1443,18 +1443,18 @@ class Model_Ad extends ORM {
             case Model_Ad::MODERATION_ON:
 
                     $ad->status = Model_Ad::STATUS_NOPUBLISHED;
-                    $url_ql = $user->ql('oc-panel',array( 'controller'=> 'myads', 
+                    $url_ql = $user->ql('oc-panel',array( 'controller'=> 'myads',
                                                   'action'    => 'update',
                                                   'id'        => $ad->id_ad));
 
                     $user->email('ads-notify',array('[URL.QL]'       =>$url_ql,
-                                                   '[AD.NAME]'      =>$ad->title,)); // email to notify user of creating, but it is in moderation currently 
+                                                   '[AD.NAME]'      =>$ad->title,)); // email to notify user of creating, but it is in moderation currently
                     $return_message = __('Advertisement is received, but first administrator needs to validate. Thank you for being patient!');
                 break;
-            
+
             case Model_Ad::POST_DIRECTLY:
             default:
-                    
+
                     $ad->status = Model_Ad::STATUS_PUBLISHED;
                     $ad->published = $ad->created;
 
@@ -1471,7 +1471,7 @@ class Model_Ad extends ORM {
                     $return_message = __('Advertisement is posted. Congratulations!');
                 break;
         }
-   
+
         //save the last changes on status
         $ad->save();
 
@@ -1485,16 +1485,16 @@ class Model_Ad extends ORM {
 
     /**
      * notify admins of new ad
-     * @return void 
+     * @return void
      */
     public function notify_admins()
     {
         //NOTIFY ADMIN
-        // new ad notification email to admin (notify_email), if set to TRUE 
+        // new ad notification email to admin (notify_email), if set to TRUE
         if(core::config('email.new_ad_notify') == TRUE)
         {
             $url_ad = Route::url('ad', array('category'=>$this->category->seoname,'seotitle'=>$this->seotitle));
-            
+
             $replace = array('[URL.AD]'        =>$url_ad,
                              '[AD.TITLE]'      =>$this->title);
 
@@ -1527,10 +1527,10 @@ class Model_Ad extends ORM {
 
 
         // append to $values new custom values
-        foreach ($values as $name => $field) 
+        foreach ($values as $name => $field)
         {
             // get by prefix
-            if (strpos($name,'cf_') !== false) 
+            if (strpos($name,'cf_') !== false)
             {
                 //checkbox when selected return string 'on' as a value
                 if($field == 'on')
@@ -1545,8 +1545,8 @@ class Model_Ad extends ORM {
 
     /**
      * changes the status of an ad to deactivated
-     * @return bool 
-     */ 
+     * @return bool
+     */
     public function deactivate()
     {
         if ($this->loaded() AND $this->status != Model_Ad::STATUS_UNAVAILABLE)
@@ -1555,7 +1555,7 @@ class Model_Ad extends ORM {
             {
                 $this->status = Model_Ad::STATUS_UNAVAILABLE;
                 $this->save();
-                
+
                 return TRUE;
             }
             catch (Exception $e)
@@ -1585,6 +1585,23 @@ class Model_Ad extends ORM {
             //3rd and default use the email of the user
             else
                 return $this->user->email;
+        }
+
+        return NULL;
+    }
+
+    public function get_plan_tags()
+    {
+        if ($this->loaded() && $this->plans)
+        {
+            $html = '';
+            $plans = json_decode($this->plans,TRUE);
+            foreach ($plans as $k => $v):
+                $notify_class = array('featured' => 'uk-badge-primary','premium' => 'uk-badge-success','sponsored' => 'uk-badge-warning','highlighted' => 'uk-badge-danger','bumpup' => 'uk-badge-notification');
+                $html .= "<div class='uk-badge {$notify_class[$k]}'>".ucfirst($k)."-".Date::format($v, 'd M')."</div>";
+            endforeach;
+
+            return $html;
         }
 
         return NULL;

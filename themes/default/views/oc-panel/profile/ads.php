@@ -14,9 +14,7 @@
                         <th><?= __('Category') ?></th>
                         <th><?= __('Posted on') ?></th>
                         <th><?= __('Price') ?></th>
-                        <?if( core::config('payment.to_featured')):?>
-                        <th><?= __('Featured') ?></th>
-                        <?endif?>
+                        <th style="text-align: center"><?= __('Plans') ?></th>
                         <th style="text-align: right"><?= __('Action') ?></th>
                         <th style="text-align: center"><?= __('Status') ?></th>
                     </tr>
@@ -36,28 +34,29 @@
                         </td>
                         <td><?= Date::format($ad->published, core::config('general.date_format')) ?></td>
                         <td><?= i18n::money_format($ad->price) ?></td>
-                        <?if( core::config('payment.to_featured')):?>
                         <td align="center">
-                            <?if($ad->featured == NULL):?>
-                            <a href="<?= Route::url('default', array('controller' => 'ad', 'action' => 'to_featured', 'id' => $ad->id_ad)) ?>"
+                            <?=$ad->get_plan_tags()?>
+                            <?if($ad->plans):?>
+
+<!--                            <a href="<?= Route::url('default', array('controller' => 'ad', 'action' => 'to_featured', 'id' => $ad->id_ad)) ?>"
                                onclick="return confirm('<?= __('Are you sure this ad make featured?') ?>');"
                                rel="tooltip" title="<?= __('Featured') ?>" data-id="tr1" data-text="<?= __('Are you sure you want to make it featured?') ?>">
                                 <i class="uk-icon-star-o"></i>
-                            </a>
-                            <?else:?>
-                            <i class="uk-icon-star"></i>
-                            <? // Date::format($ad->featured, core::config('general.date_format')) ?>
+                            </a>-->
                             <?endif?>
                         </td>
-                        <?endif?>
-
                         <td align="right">
-                            <a class="uk-margin-small-left uk-button uk-button-mini uk-button-primary"
+                            <a class="uk-margin-small-left uk-button uk-button-mini uk-button-primary  uk-hidden"
                                href="<?= Route::url('oc-panel', array('controller' => 'myads', 'action' => 'stats', 'id' => $ad->id_ad)) ?>"
                                rel="tooltip" title="<?= __('Stats') ?>">
                                 <i class="uk-icon-bar-chart"></i>
                              </a>
-                            <a class="uk-margin-small-left uk-button-mini uk-button-primary uk-button"
+                            <a class="uk-margin-small-left uk-button uk-button-mini uk-button-primary"
+                               href="<?= Route::url('default', array('controller' => 'ad', 'action' => 'add_plan', 'id' => $ad->id_ad)) ?>"
+                               rel="tooltip" title="<?= __('Plans') ?>">
+                                <i class="uk-icon-puzzle-piece"></i>
+                             </a>
+                            <a class="uk-margin-small-left uk-button uk-button-mini uk-button-primary"
                                href="<?= Route::url('oc-panel', array('controller' => 'myads', 'action' => 'update', 'id' => $ad->id_ad)) ?>"
                                rel="tooltip" title="<?= __('Update') ?>">
                                 <i class="uk-icon-pencil"></i>

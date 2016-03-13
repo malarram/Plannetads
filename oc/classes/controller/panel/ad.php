@@ -18,19 +18,19 @@ class Controller_Panel_Ad extends Auth_Controller {
 		$this->template->title           	= __('Advertisements');
 		$this->template->meta_description	= __('Advertisements');
 		Breadcrumbs::add(Breadcrumb::factory()->set_title(__('List')));
-		
+
 		$this->template->scripts['footer'][]= 'js/jquery.toolbar.js';
 		$this->template->scripts['footer'][]= 'js/oc-panel/moderation.js';
-		 
-		
+
+
 		$ads = new Model_Ad();
 
         $fields = array('title','id_ad','published','created','id_category', 'id_location','status');
-		
+
         //filter ads by status
         $status = is_numeric(Core::get('status'))?Core::get('status'):Model_Ad::STATUS_PUBLISHED;
         $ads = $ads->where('status', '=', $status);
-		
+
 		// sort ads by search value
 		if($q = $this->request->query('search'))
 		{
@@ -41,7 +41,7 @@ class Controller_Panel_Ad extends Auth_Controller {
 
         if (is_numeric(Core::request('filter__id_user')))
             $ads = $ads->where('id_user', '=',Core::request('filter__id_user'));
-		
+
         $ads_count = clone $ads;
 		$res_count = $ads_count->count_all();
 		if ($res_count > 0)
@@ -54,46 +54,45 @@ class Controller_Panel_Ad extends Auth_Controller {
      	    ))->route_params(array(
                     'controller' 		=> $this->request->controller(),
                     'action'      		=> $this->request->action(),
-                 
+
     	    ));
     	    $ads = $ads->order_by(core::get('order','published'),core::get('sort','desc'))
                 	            ->limit($pagination->items_per_page)
                 	            ->offset($pagination->offset)
                 	            ->find_all();
-		
 
 			$this->template->content = View::factory('oc-panel/pages/ad',array('res'			=> $ads,
 																				'pagination'	=> $pagination,
                                                                                 'fields'        => $fields
-                                                                                )); 
+                                                                                ));
 
 		}
 		else
 		{
 			$this->template->content = View::factory('oc-panel/pages/ad', array('res' => NULL,'fields'        => $fields));
-		}		
+		}
 	}
 
 	/**
 	 * Action MODERATION
 	 */
-	
+
 	public function action_moderate()
 	{
 		//template header
 		$this->template->title           	= __('Moderation');
 		$this->template->meta_description	= __('Moderation');
-		
+
 		$this->template->scripts['footer'][]= 'js/jquery.toolbar.js';
-		$this->template->scripts['footer'][]= '/js/oc-panel/moderation.js'; 
+		$this->template->scripts['footer'][]= '/js/oc-panel/moderation.js';
 
 
-		//find all tables 
-		
+		//find all tables
+
 		$ads = new Model_Ad();
 
 		$res_count = $ads->where('status', '=', Model_Ad::STATUS_NOPUBLISHED)->count_all();
-		
+
 		if ($res_count > 0)
 		{
 
@@ -104,26 +103,26 @@ class Controller_Panel_Ad extends Auth_Controller {
      	    ))->route_params(array(
                     'controller' 		=> $this->request->controller(),
                     'action'      		=> $this->request->action(),
-                 
+
     	    ));
     	    $ads = $ads->where('status', '=', Model_Ad::STATUS_NOPUBLISHED)
     	    					->order_by('created','desc')
                 	            ->limit($pagination->items_per_page)
                 	            ->offset($pagination->offset)
                 	            ->find_all();
-		
+
 
 			$this->template->content = View::factory('oc-panel/pages/moderate',array('ads'			=> $ads,
 																					'pagination'	=> $pagination,
-																					)); 
+																					));
 		}
 		else
 		{
 			Alert::set(Alert::INFO, __('You do not have any advertisements waiting to be published'));
 			$this->template->content = View::factory('oc-panel/pages/moderate', array('ads' => NULL));
 		}
-        
-	} 
+
+	}
 
 	/**
 	 * Delete advertisement: Delete
@@ -132,18 +131,18 @@ class Controller_Panel_Ad extends Auth_Controller {
 	public function action_delete()
 	{
 		$id = $this->request->param('id');
-		
+
 		$format_id = explode('_', $id);
 		$auth_user = Auth::instance();
-	
+
 		$nb_Ads_Deleted = 0;
-		foreach ($format_id as $id) 
+		foreach ($format_id as $id)
 		{
-			
+
 			if (isset($id) AND $id !== '')
 			{
 				$ad = new Model_Ad($id);
-				
+
 				if($ad->loaded())
 				{
 					try
@@ -171,7 +170,7 @@ class Controller_Panel_Ad extends Auth_Controller {
 		Alert::set($level_Alert, $nb_Ads_Deleted);
 
 		$param_current_url = Core::get('current_url');
-		
+
 		if ($param_current_url == Model_Ad::STATUS_NOPUBLISHED AND in_array(core::config('general.moderation'), Model_Ad::$moderation_status))
 			HTTP::redirect(Route::url('oc-panel',array('controller'=>'ad','action'=>'moderate')));
 		elseif ($param_current_url == Model_Ad::STATUS_PUBLISHED)
@@ -189,10 +188,10 @@ class Controller_Panel_Ad extends Auth_Controller {
 		$param_current_url = Core::get('current_url');
 		$format_id = explode('_', $id);
 
-		foreach ($format_id as $id) 
-		{ 
+		foreach ($format_id as $id)
+		{
 			if (isset($id) AND $id !== '')
-			{ 
+			{
 				$spam_ad = new Model_Ad($id);
 
 				if ($spam_ad->loaded())
@@ -203,7 +202,7 @@ class Controller_Panel_Ad extends Auth_Controller {
 						$spam_ad->user->user_spam();
                         //mark as as spam
 						$spam_ad->status = Model_Ad::STATUS_SPAM;
-						
+
 						try{
 							$spam_ad->save();
 						}
@@ -212,11 +211,11 @@ class Controller_Panel_Ad extends Auth_Controller {
 						}
 					}
 				}
-				
+
 			}
 		}
 		Alert::set(Alert::SUCCESS, __('Advertisement is marked as spam'));
-		
+
 		if ($param_current_url == Model_Ad::STATUS_NOPUBLISHED AND in_array(core::config('general.moderation'), Model_Ad::$moderation_status))
 			HTTP::redirect(Route::url('oc-panel',array('controller'=>'ad','action'=>'moderate')));
 		elseif ($param_current_url == Model_Ad::STATUS_PUBLISHED)
@@ -236,7 +235,7 @@ class Controller_Panel_Ad extends Auth_Controller {
 		$param_current_url = Core::get('current_url');
 		$format_id = explode('_', $id);
 
-		foreach ($format_id as $id) 
+		foreach ($format_id as $id)
 		{
 			if (isset($id) AND is_numeric($id))
 			{
@@ -245,7 +244,7 @@ class Controller_Panel_Ad extends Auth_Controller {
 			}
 		}
 		Alert::set(Alert::SUCCESS, __('Advertisement is deactivated'));
-		
+
 		if ($param_current_url == Model_Ad::STATUS_NOPUBLISHED AND in_array(core::config('general.moderation'), Model_Ad::$moderation_status))
 			HTTP::redirect(Route::url('oc-panel',array('controller'=>'ad','action'=>'moderate')));
 		elseif ($param_current_url == Model_Ad::STATUS_PUBLISHED)
@@ -267,9 +266,9 @@ class Controller_Panel_Ad extends Auth_Controller {
             $ad = new Model_Ad($id);
             $ad->unfeature();
         }
-        
+
         Alert::set(Alert::SUCCESS, __('Removed featured ad'));
-        
+
         if ($param_current_url == Model_Ad::STATUS_NOPUBLISHED AND in_array(core::config('general.moderation'), Model_Ad::$moderation_status))
             HTTP::redirect(Route::url('oc-panel',array('controller'=>'ad','action'=>'moderate')));
         elseif ($param_current_url == Model_Ad::STATUS_PUBLISHED)
@@ -282,7 +281,7 @@ class Controller_Panel_Ad extends Auth_Controller {
 	/**
 	 * Mark advertisement as active : STATUS = 1
 	 */
-	
+
 	public function action_activate()
 	{
 
@@ -290,7 +289,7 @@ class Controller_Panel_Ad extends Auth_Controller {
 		$param_current_url = Core::get('current_url');
 		$format_id = explode('_', $id);
 
-		foreach ($format_id as $id) 
+		foreach ($format_id as $id)
 		{
 			if (isset($id) AND $id !== '')
 			{
@@ -302,7 +301,7 @@ class Controller_Panel_Ad extends Auth_Controller {
 					{
 						$active_ad->published = Date::unix2mysql();
 						$active_ad->status    = Model_Ad::STATUS_PUBLISHED;
-						
+
 						try
 						{
 							$active_ad->save();
@@ -320,7 +319,7 @@ class Controller_Panel_Ad extends Auth_Controller {
 		$this->multiple_mails($format_id); // sending many mails at the same time @TODO EMAIl
 
 		Alert::set(Alert::SUCCESS, __('Advertisement is active and published'));
-			
+
 		if ($param_current_url == Model_Ad::STATUS_NOPUBLISHED AND in_array(core::config('general.moderation'), Model_Ad::$moderation_status))
 			HTTP::redirect(Route::url('oc-panel',array('controller'=>'ad','action'=>'moderate')));
 		elseif ($param_current_url == Model_Ad::STATUS_PUBLISHED)
@@ -340,21 +339,21 @@ class Controller_Panel_Ad extends Auth_Controller {
 
 		$ads = new Model_Ad();
 		$ads = $ads->where('status', '=', $query)->find_all();
-	
+
 		if (isset($ads))
 		{
-			try 
+			try
 			{
                 $i = 0;
-                foreach ($ads as $ad) 
+                foreach ($ads as $ad)
                 {
                     $ad->delete();
                     $i++;
                 }
                 Alert::set(Alert::INFO, $i.' '.__('Ads deleted'));
-				//DB::delete('ads')->where('status', '=', $query)->execute();	
-			} 
-			catch (Exception $e) 
+				//DB::delete('ads')->where('status', '=', $query)->execute();
+			}
+			catch (Exception $e)
 			{
 				Alert::set(Alert::ALERT, __('Warning, something went wrong while deleting'));
 				throw HTTP_Exception::factory(500,$e->getMessage());
@@ -383,18 +382,18 @@ class Controller_Panel_Ad extends Auth_Controller {
                     $usr        = $ad->user;
 
 					//we get the QL, and force the regen of token for security
-					$url_ql = $usr->ql('ad',array( 'category' => $cat->seoname, 
+					$url_ql = $usr->ql('ad',array( 'category' => $cat->seoname,
 				 	                                'seotitle'=> $ad->seotitle),TRUE);
 
 					$ret = $usr->email('ads-activated',array('[USER.OWNER]'=>$usr->name,
 															 '[URL.QL]'=>$url_ql,
 															 '[AD.NAME]'=>$ad->title));
-					
-				}	
+
+				}
 			}
-			
+
 		}
-		
+
 	}
 
 }

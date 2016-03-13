@@ -12,8 +12,10 @@ try{
 catch(e){}
 </script>
 <?endif?>
-
-<div class="well uk-width-1-1">
+<div class="uk-container uk-container-center new-ad-form">
+    <div class="uk-grid">
+        <div class="uk-width-medium-8-10 uk-width-small-1-1 uk-container-center">
+<div class="uk-panel uk-width-1-1">
     <div class="row">
         <div class="uk-width-1-2">
             <address>
@@ -24,9 +26,12 @@ catch(e){}
         </div>
         <div class="uk-width-1-2 uk-text-right">
             <p>
-                <em><?=__('Date')?>: <?= Date::format($order->created, core::config('general.date_format'))?></em>
+                <em><?=__('Date')?>: <?= Date::format($orders[0]->created, core::config('general.date_format'))?></em>
                 <br>
-                <em><?=__('Checkout')?> :# <?=$order->id_order?></em>
+                <em><?=__('Checkout')?> :# <?=$orders[0]->id_order?></em>
+                <br>
+                <em><?=__('Product')?> :<?=$orders[0]->ad->title?></em>
+
             </p>
         </div>
     </div>
@@ -43,21 +48,9 @@ catch(e){}
                 </tr>
             </thead>
             <tbody>
-                <?if($order->id_product == Model_Order::PRODUCT_AD_SELL AND isset($order->ad->cf_shipping) AND Valid::numeric($order->ad->cf_shipping) AND $order->ad->cf_shipping > 0):?>
+                <? $total_amt = 0; foreach($orders as $order):?>
                     <tr>
                         <td class="col-md-1" style="text-align: center"><?=$order->id_product?></td>
-                        <td class="col-md-9"><?=$order->description?> <em>(<?=Model_Order::product_desc($order->id_product)?>)</em></td>
-                        <td class="col-md-2 text-center"><?=i18n::format_currency($order->amount - $order->ad->cf_shipping, $order->currency)?></td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-1" style="text-align: center"></td>
-                        <td class="col-md-9"><?=__('Shipping')?></td>
-                        <td class="col-md-2 text-center"><?=i18n::format_currency($order->ad->cf_shipping, $order->currency)?></td>
-                    </tr>
-                <?else:?>
-                    <tr>
-                        <td class="col-md-1" style="text-align: center"><?=$order->id_product?></td>
-                        <?if (Theme::get('premium')==1):?>
                             <td class="col-md-9">
                                 <?=$order->description?>
                                 <em>(<?=Model_Order::product_desc($order->id_product)?>
@@ -66,28 +59,7 @@ catch(e){}
                                     <?endif?>
                                     )
                                 </em>
-                                <div class="dropdown" style="display:inline-block;">
-                                <?if ($order->id_product == Model_Order::PRODUCT_TO_FEATURED AND is_array($featured_plans=Model_Order::get_featured_plans()) AND count($featured_plans) > 1):?>
-                                    <button class="btn btn-xs btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                                        <?=__('Change plan')?>
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <?foreach ($featured_plans as $days => $price):?>
-                                            <?if ($order->featured_days != $days):?>
-                                                <li>
-                                                    <a href="<?=Route::url('default',array('controller'=>'ad', 'action'=>'checkout','id'=>$order->id_order))?>?featured_days=<?=$days?>">
-                                                        <small><?=$days?> <?=__('Days')?> - <?=i18n::money_format($price)?></small>
-                                                    </a>
-                                                </li>
-                                            <?endif?>
-                                        <?endforeach?>
-                                    </ul>
-                                <?endif?>
                             </td>
-                        <?else :?>
-                            <td class="col-md-9"><?=$order->description?> <em>(<?=Model_Order::product_desc($order->id_product)?>)</em></td>
-                        <?endif?>
                         <td class="col-md-2 text-center"><?=i18n::format_currency(($order->coupon->loaded())?$order->original_price():$order->amount, $order->currency)?></td>
                     </tr>
                     <?if (Theme::get('premium')==1 AND $order->coupon->loaded()):?>
@@ -105,26 +77,22 @@ catch(e){}
                             </td>
                         </tr>
                     <?endif?>
-                <?endif?>
-                <tr>
-                    <td class="col-md-1" style="text-align: center"><?=$order->ad->id_ad?></td>
-                    <td colspan=2 class="col-md-12">
-                        <em><?=$order->ad->title?></em>
-                    </td>
-                </tr>
-                <tr>
-                    <td>   </td>
-                    <td class="text-right"><h4><strong><?=__('Total')?>: </strong></h4></td>
-                    <td class="text-center text-danger"><h4><strong><?=i18n::format_currency($order->amount, $order->currency)?></strong></h4></td>
-                </tr>
+                <? $total_amt += $order->amount; endforeach;?>
             </tbody>
+            <tfoot>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td class="text-right"><h4><strong><?=__('Total')?>: </strong></h4></td>
+                    <td class="text-center text-danger"><h4><strong><?=i18n::format_currency($total_amt, $orders[0]->currency)?></strong></h4></td>
+                </tr>
+            </tfoot>
         </table>
 
-        <?if ($order->amount>0):?>
+        <?if ($total_amt>0):?>
 
         <?if (Core::config('payment.paypal_account')!=''):?>
             <p class="text-right">
-                <a class="btn btn-success btn-lg" href="<?=Route::url('default', array('controller'=> 'paypal','action'=>'pay' , 'id' => $order->id_order))?>">
+                <a class="btn btn-success btn-lg" href="<?=Route::url('default', array('controller'=> 'paypal','action'=>'pay' , 'id' => $orders[0]->order_no))?>">
                     <?=__('Pay with Paypal')?> <span class="glyphicon glyphicon-chevron-right"></span>
                 </a>
             </p>
@@ -134,7 +102,7 @@ catch(e){}
             <?if ( ($user = Auth::instance()->get_user())!=FALSE AND ($user->id_role == Model_Role::ROLE_ADMIN OR $user->id_role == Model_Role::ROLE_MODERATOR)):?>
                 <ul class="list-inline text-right">
                     <li>
-                        <a title="<?=__('Mark as paid')?>" class="btn btn-warning" href="<?=Route::url('oc-panel', array('controller'=> 'order', 'action'=>'pay','id'=>$order->id_order))?>">
+                        <a title="<?=__('Mark as paid')?>" class="btn btn-warning" href="<?=Route::url('oc-panel', array('controller'=> 'order', 'action'=>'pay','id'=>$orders[0]->order_no))?>">
                             <i class="glyphicon glyphicon-usd"></i> <?=__('Mark as paid')?>
                         </a>
                     </li>
@@ -181,7 +149,7 @@ catch(e){}
         <?else:?>
             <ul class="list-inline text-right">
                 <li>
-                    <a title="<?=__('Click to proceed')?>" class="btn btn-success" href="<?=Route::url('default', array('controller'=> 'ad', 'action'=>'checkoutfree','id'=>$order->id_order))?>">
+                    <a title="<?=__('Click to proceed')?>" class="btn btn-success" href="<?=Route::url('default', array('controller'=> 'ad', 'action'=>'checkoutfree','id'=>$orders[0]->order_no))?>">
                         <?=__('Click to proceed')?>
                     </a>
                 </li>
@@ -189,6 +157,9 @@ catch(e){}
             </ul>
         <?endif?>
 
+    </div>
+</div>
+        </div>
     </div>
 </div>
 
