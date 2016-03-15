@@ -10,9 +10,10 @@ class Controller_Panel_Theme extends Auth_Controller {
     public function __construct($request, $response)
     {
         parent::__construct($request, $response);
-        
+
         Breadcrumbs::add(Breadcrumb::factory()->set_title(__('Themes'))->set_url(Route::url('oc-panel',array('controller'  => 'theme'))));
 
+        throw HTTP_Exception::factory(404,__('Page not found'));
     }
 
     /**
@@ -22,12 +23,12 @@ class Controller_Panel_Theme extends Auth_Controller {
     public function action_options()
     {
         //clear skin and theme cookie
-        if (Core::config('appearance.allow_query_theme')=='1') 
+        if (Core::config('appearance.allow_query_theme')=='1')
         {
             Cookie::set('skin_'.Theme::$theme, '', Core::config('auth.lifetime'));
             Cookie::set('theme', '', Core::config('auth.lifetime'));
         }
-        
+
         $options = NULL;
         $data    = NULL;
 
@@ -45,9 +46,9 @@ class Controller_Panel_Theme extends Auth_Controller {
             $data = Theme::$data;
 
 
-        // validation active 
+        // validation active
         //$this->template->scripts['footer'][]= '/js/oc-panel/settings.js';
-        Breadcrumbs::add(Breadcrumb::factory()->set_title(__('Theme Options')));     
+        Breadcrumbs::add(Breadcrumb::factory()->set_title(__('Theme Options')));
         $this->template->title = __('Theme Options');
 
         $this->template->scripts['footer'][] = 'js/jscolor/jscolor.js';
@@ -55,24 +56,24 @@ class Controller_Panel_Theme extends Auth_Controller {
         // save only changed values
         if($this->request->post())
         {
-           
+
             //delete image
-            foreach ($_POST as $key => $value) 
+            foreach ($_POST as $key => $value)
             {
                 if (strpos($key,'delete_')!==FALSE)
                 {
                     if ($options[$keyname = str_replace('delete_','',$key)]['display'] == 'logo')
                     {
                         $url = Theme::delete_image(Core::post($key));
-                    
+
                         if ($url!==FALSE)
                             $data[$keyname] = $url;
                     }
                 }
             }
-            
+
             //for each file option upload
-            foreach ($_FILES as $key=>$values) 
+            foreach ($_FILES as $key=>$values)
             {
                 if ($options[$key]['display'] == 'logo')
                 {
@@ -88,7 +89,7 @@ class Controller_Panel_Theme extends Auth_Controller {
             }
 
             //for each option read the post and store it
-            foreach ($_POST as $key => $value) 
+            foreach ($_POST as $key => $value)
             {
                 if (isset($options[$key]))
                 {
@@ -96,12 +97,12 @@ class Controller_Panel_Theme extends Auth_Controller {
                     if ($options[$key]['display'] == 'textarea')
                         $data[$key] = Kohana::$_POST_ORIG[$key];
                     else
-                        $data[$key] = core::post($key);                    
+                        $data[$key] = core::post($key);
                 }
             }
-            
+
             Theme::save($this->request->param('id'),$data);
-            
+
             Alert::set(Alert::SUCCESS, __('Theme configuration updated'));
             $this->redirect(Route::url('oc-panel',array('controller'=>'theme','action'=>'options','id'=>$this->request->param('id'))));
         }
@@ -112,36 +113,36 @@ class Controller_Panel_Theme extends Auth_Controller {
 
     /**
      * theme selector
-     * @return [view] 
+     * @return [view]
      */
     public function action_index()
     {
-        // validation active 
+        // validation active
         //$this->template->scripts['footer'][]= '/js/oc-panel/settings.js';
-        Breadcrumbs::add(Breadcrumb::factory()->set_title(__('Themes')));  
-        $this->template->title = __('Themes');     
-        
+        Breadcrumbs::add(Breadcrumb::factory()->set_title(__('Themes')));
+        $this->template->title = __('Themes');
+
         $this->template->scripts['footer'][] = 'js/oc-panel/license.js';
 
         //getting the themes
         $themes = Theme::get_installed_themes();
 
         $mobile_themes = Theme::get_installed_themes(TRUE);
-  
+
         //getting themes from market
         $market = array();
         $json = Core::get_market();
         if(is_array($json))
-        {    
-            foreach ($json as $theme) 
+        {
+            foreach ($json as $theme)
             {
                 //we add only those the user doesn't have installed
-                if ( strtolower($theme['type']) == 'themes' 
+                if ( strtolower($theme['type']) == 'themes'
                     AND!in_array(strtolower($theme['seoname']), array_keys($themes))
                     AND !in_array(strtolower($theme['seoname']), array_keys($mobile_themes)) )
                     $market[] = $theme;
             }
-        }    
+        }
 
         // change the theme
         if($this->request->param('id'))
@@ -167,12 +168,12 @@ class Controller_Panel_Theme extends Auth_Controller {
                 Theme::set_theme($theme);
                 Alert::set(Alert::SUCCESS, __('Appearance configuration updated'));
             }
-            
+
             $this->redirect(Route::url('oc-panel',array('controller'=>'theme','action'=> (!isset($opt['premium']))?'index':'options')));
         }
 
         $this->template->content = View::factory('oc-panel/pages/themes/theme', array('market' => $market,
-                                                                                    'themes' => $themes, 
+                                                                                    'themes' => $themes,
                                                                                     'mobile_themes' => $mobile_themes,
                                                                                     'selected'=>Theme::get_theme_info(Theme::$theme)));
     }
@@ -180,7 +181,7 @@ class Controller_Panel_Theme extends Auth_Controller {
 
    /**
      * theme selector
-     * @return [view] 
+     * @return [view]
      */
     public function action_license()
     {
@@ -197,7 +198,7 @@ class Controller_Panel_Theme extends Auth_Controller {
                 else
                     Theme::set_theme($theme);
 
-                Theme::$options = Theme::get_options($theme);       
+                Theme::$options = Theme::get_options($theme);
                 Theme::load($theme);
 
                 Theme::$data['license']      = core::request('license');
@@ -210,19 +211,19 @@ class Controller_Panel_Theme extends Auth_Controller {
             else
             {
                 Alert::set(Alert::INFO, __('There was an error activating your license.'));
-            }            
+            }
         }
 
-        Breadcrumbs::add(Breadcrumb::factory()->set_title(__('Theme License')));  
-        $this->template->title = __('Theme License');     
+        Breadcrumbs::add(Breadcrumb::factory()->set_title(__('Theme License')));
+        $this->template->title = __('Theme License');
         $this->template->scripts['footer'][] = 'js/oc-panel/license.js';
 
         $this->template->content = View::factory('oc-panel/pages/themes/license', array('theme' => Theme::$theme));
     }
-    
+
     /**
     * install theme from selected zip file
-    * @return redirect 
+    * @return redirect
     */
     public function action_install_theme()
     {
@@ -234,24 +235,24 @@ class Controller_Panel_Theme extends Auth_Controller {
         }
         else
         {
-            if($zip_theme != NULL) // sanity check 
-            {   
+            if($zip_theme != NULL) // sanity check
+            {
                 // saving/uploadng zip file to dir.
                 $root = DOCROOT.'themes/'; //root folder
-            
+
                  // save file to root folder, file, name, dir
                 $file = Upload::save($zip_theme, $zip_theme['name'], $root);
 
                 $zip = new ZipArchive;
 
                 // open zip file, and extract to root dir
-                if ($zip_open = $zip->open($root.$zip_theme['name'])) 
+                if ($zip_open = $zip->open($root.$zip_theme['name']))
                 {
                     $zip->extractTo($root);
                     $zip->close();
                     unlink($root.$zip_theme['name']);
-                } 
-                else 
+                }
+                else
                 {
                     Alert::set(Alert::ALERT, $zip_theme['name'].' '.__('Zip file failed to extract, please try again.'));
                     $this->redirect(Route::url('oc-panel',array('controller'=>'theme', 'action'=>'index')));
@@ -263,13 +264,13 @@ class Controller_Panel_Theme extends Auth_Controller {
                 Alert::set(Alert::SUCCESS, $zip_theme['name'].' '.__('You have successfully installed the theme!'));
                 $this->redirect(Route::url('oc-panel',array('controller'=>'theme', 'action'=>'index')));
             }
-            
+
         }
     }
 
     /**
      * mobile theme selector
-     * @return [view] 
+     * @return [view]
      */
     public function action_mobile()
     {
@@ -278,18 +279,18 @@ class Controller_Panel_Theme extends Auth_Controller {
         if($this->request->param('id'))
         {
             Theme::set_mobile_theme($this->request->param('id'));
-            
+
             Alert::set(Alert::SUCCESS, __('Mobile Theme updated'));
             $this->redirect(Route::url('oc-panel',array('controller'=>'theme','action'=>'index')));
         }
 
-       
+
     }
 
 
     /**
      * download theme from license key
-     * @return [view] 
+     * @return [view]
      */
     public function action_download()
     {
@@ -309,14 +310,14 @@ class Controller_Panel_Theme extends Auth_Controller {
 
     /**
      * custom css for default theme
-     * @return [view] 
+     * @return [view]
      */
     public function action_css()
     {
-        // validation active 
+        // validation active
         //$this->template->scripts['footer'][]= '/js/oc-panel/settings.js';
         $this->template->title = __('Custom CSS');
-        Breadcrumbs::add(Breadcrumb::factory()->set_title($this->template->title));  
+        Breadcrumbs::add(Breadcrumb::factory()->set_title($this->template->title));
 
         $css_active  = Core::post('css_active',Core::Config('appearance.custom_css'));
         $css_content = Core::curl_get_contents(Theme::get_custom_css());
@@ -325,7 +326,7 @@ class Controller_Panel_Theme extends Auth_Controller {
 
         // change the CSS
         if( ($new_css = Core::post('css'))!==NULL )
-        {            
+        {
             //save css file
             $file = Theme::theme_folder('default').'/css/web-custom.css';
             if (File::write($file,$new_css))
@@ -345,7 +346,7 @@ class Controller_Panel_Theme extends Auth_Controller {
             }
             else
                 Alert::set(Alert::ERROR, __('CSS file not saved'));
-            
+
         }
 
         $this->template->content = View::factory('oc-panel/pages/themes/css', array('css_content' => $css_content,

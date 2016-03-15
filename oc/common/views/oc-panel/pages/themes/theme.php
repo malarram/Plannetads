@@ -17,25 +17,8 @@
                     <h4 class="media-heading"><?=$selected['Name']?></h4>
                     <p>
                         <span class="label label-info"><?=__('Current Theme')?></span>
-                        <?if (Theme::has_options()):?>
-                        <a class="btn btn-xs btn-primary ajax-load" title="<?=__('Theme Options')?>"
-                            href="<?=Route::url('oc-panel',array('controller'=>'theme','action'=>'options'))?>">
-                            <i class="glyphicon  glyphicon-wrench glyphicon"></i> </a>
-                        <?endif?>
                     </p>
                     <p><?=$selected['Description']?></p>
-                    <?if(Core::config('appearance.theme_mobile')!=''):?>
-                        <p>
-                            <?=__('Using mobile theme')?> <code><?=Core::config('appearance.theme_mobile')?></code>
-                            <a class="btn btn-xs btn-warning" title="<?=__('Disable')?>"
-                                href="<?=Route::url('oc-panel',array('controller'=>'theme','action'=>'mobile','id'=>'disable'))?>">
-                                <i class="glyphicon   glyphicon-remove"></i>
-                            </a>
-                            <a class="btn btn-xs btn-primary" title="<?=__('Options')?>"
-                                href="<?=Route::url('oc-panel',array('controller'=>'theme','action'=>'options','id'=>Core::config('appearance.theme_mobile')))?>">
-                            <i class="glyphicon  glyphicon-wrench glyphicon"></i></a>
-                        </p>
-                    <?endif?>
                 </div>
             </div>
         </div>
@@ -96,12 +79,6 @@
                         <h3><?=$info['Name']?></h3>
                         <p><?=$info['Description']?></p>
                         <p><?=$info['License']?> v<?=$info['Version']?></p>
-                        <p>
-                            <a class="btn btn-primary" href="<?=Route::url('oc-panel',array('controller'=>'theme','action'=>'index','id'=>$theme))?>"><?=__('Activate')?></a>
-                            <?if (Core::config('appearance.allow_query_theme')=='1'):?>
-                            <a class="btn btn-default" target="_blank" href="<?=Route::url('default')?>?theme=<?=$theme?>"><?=__('Preview')?></a>
-                            <?endif?>
-                        </p>
                     </div>
                 </div>
             </div>
@@ -136,10 +113,6 @@ foreach ($mobile_themes as $theme=>$info):?>
             <h3><?=$info['Name']?></h3>
             <p><?=$info['Description']?></p>
             <p><?=$info['License']?> v<?=$info['Version']?></p>
-            <p>
-                <a class="btn btn-primary" href="<?=Route::url('oc-panel',array('controller'=>'theme','action'=>'index','id'=>$theme))?>"><?=__('Activate')?></a>
-                <a class="btn btn-default" target="_blank" href="<?=Route::url('default')?>?theme=<?=$theme?>"><?=__('Preview')?></a>
-            </p>
         </div>
     </div>
     </div>

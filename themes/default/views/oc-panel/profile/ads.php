@@ -104,7 +104,7 @@
                             <?if( ($order = $ad->get_order())!==FALSE ):?>
                             <?if ($order->status==Model_Order::STATUS_CREATED AND $ad->status != Model_Ad::STATUS_PUBLISHED):?>
                             <a class="uk-button uk-button-warning" href="<?= Route::url('default', array('controller' => 'ad', 'action' => 'checkout', 'id' => $order->id_order)) ?>">
-                                <i class="uk-icon glyphicon-shopping-cart"></i> <?= __('Pay') ?>Â Â <?= i18n::format_currency($order->amount, $order->currency) ?>Â 
+                                <i class="uk-icon-shopping-cart"></i> <?= __('Pay') ?>Â Â <?= i18n::format_currency($order->amount, $order->currency) ?>Â 
                             </a>
                             <?elseif ($order->status==Model_Order::STATUS_PAID):?>
                             (<?= __('Paid') ?>)

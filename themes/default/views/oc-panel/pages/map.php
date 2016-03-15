@@ -10,7 +10,6 @@
 </div>
 <?if (Theme::get('premium')!=1):?>
     <p class="well"><span class="label label-info"><?=__('Heads Up!')?></span>
-        <a class="btn btn-success pull-right ajax-load" title="<?=__('Browse Themes')?>" href="<?=Route::url('oc-panel',array('controller'=>'theme'))?>"><?=__('Browse Themes')?></a>
         <?=__('Interactive map is only available with premium themes!').'<br/>'.__('Upgrade your Open Classifieds site to activate this feature.')?>
     </p>
 <?endif?>

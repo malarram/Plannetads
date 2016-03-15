@@ -5,7 +5,6 @@
 <?if (Theme::get('premium')!=1):?>
     <p class="well"><span class="label label-info"><?=__('Heads Up!')?></span>
         <?=__('Only if you have a premium theme you will be able to filter by users!').'<br/>'.__('Upgrade your Open Classifieds site to activate this feature.')?>
-        <a class="btn btn-success pull-right ajax-load" href="<?=Route::url('oc-panel',array('controller'=>'theme'))?>" title="<?=__('Browse Themes')?>"><?=__('Browse Themes')?></a>
     </p>
 <?endif?>
 

@@ -16,9 +16,9 @@
             <ul class="uk-nav uk-nav-navbar">
                 <li><a href="<?= Route::url('oc-panel', array('controller' => 'myads', 'action' => 'index')) ?>"><?= __('My Ads') ?></a></li>
                 <li><a href="<?= Route::url('oc-panel', array('controller' => 'profile', 'action' => 'favorites')) ?>"><?= __('My Favourties') ?></a></li>
-                <li><a href="<?= Route::url('oc-panel', array('controller' => 'profile', 'action' => 'orders')) ?>"><?= __('My Payments') ?></a></li>
+                <li><a href="<?= Route::url('oc-panel', array('controller' => 'profile', 'action' => 'orders')) ?>"><?= __('My Orders') ?></a></li>
                 <li><a href="<?= Route::url('oc-panel', array('controller' => 'messages', 'action' => 'index')) ?>"><?= __('My Messages') ?></a></li>
-                <li><a href="<?= Route::url('oc-panel', array('controller' => 'profile', 'action' => 'subscriptions')) ?>"><?= __('My Subscriptions') ?></a></li>
+                <!--<li><a href="<?= Route::url('oc-panel', array('controller' => 'profile', 'action' => 'subscriptions')) ?>"><?= __('My Subscriptions') ?></a></li>-->
                 <li><a href="<?= Route::url('oc-panel', array('controller' => 'profile', 'action' => 'edit')) ?>"><?= __('Settings') ?></a></li>
                 <li><a href="<?= Route::url('oc-panel', array('directory' => 'user', 'controller' => 'auth', 'action' => 'logout')) ?>"><?= __('Logout') ?></a></li>
             </ul>
