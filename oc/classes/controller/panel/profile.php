@@ -146,7 +146,9 @@ class Controller_Panel_Profile extends Auth_Frontcontroller {
         Controller::$full_width = TRUE;
 
         $orders = new Model_Order();
-        $orders = $orders->where('id_user', '=', $user->id_user);
+        $orders = $orders
+                ->select(array(DB::expr('SUM(`amount`)'), 'total_amount'),array(DB::expr('GROUP_CONCAT(CONCAT(`description`,"( ",`featured_days`," Days )")  separator ", ")'), 'order_description'),array(DB::expr('GROUP_CONCAT(`id_product` separator ",")'), 'product_ids'))
+                ->where('id_user', '=', $user->id_user)->group_by('order_no');
 
 
         $pagination = Pagination::factory(array(

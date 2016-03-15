@@ -1085,7 +1085,147 @@ class Model_Ad extends ORM {
                 $days  = reset($days);
             }
 
-            $this->featured = Date::unix2mysql(time() + ($days * 24 * 60 * 60));
+            $expired_date = Date::unix2mysql(time() + ($days * 24 * 60 * 60));
+
+            if($this->plans)
+                $plan_array = array_merge(json_decode($this->plans,TRUE),array('featured'=>$expired_date));
+            else
+                $plan_array = array('featured'=>$expired_date);
+
+            $this->plans = json_encode($plan_array);
+
+            try {
+                $this->save();
+            } catch (Exception $e) {
+                throw HTTP_Exception::factory(500,$e->getMessage());
+            }
+        }
+    }
+    /**
+     * features an advertisement
+     * @param $days days to be featured
+     * @return void
+     */
+    public function to_premium($days = NULL)
+    {
+
+        if($this->loaded())
+        {
+            if (!is_numeric($days))
+            {
+                $plans = Model_Order::get_plans('premium');
+                $days  = array_keys($plans);
+                $days  = reset($days);
+            }
+
+            $expired_date = Date::unix2mysql(time() + ($days * 24 * 60 * 60));
+
+            if($this->plans)
+                $plan_array = array_merge(json_decode($this->plans,TRUE),array('premium'=>$expired_date));
+            else
+                $plan_array = array('premium'=>$expired_date);
+
+            $this->plans = json_encode($plan_array);
+
+            try {
+                $this->save();
+            } catch (Exception $e) {
+                throw HTTP_Exception::factory(500,$e->getMessage());
+            }
+        }
+    }
+    /**
+     * features an advertisement
+     * @param $days days to be featured
+     * @return void
+     */
+    public function to_sponsored($days = NULL)
+    {
+
+        if($this->loaded())
+        {
+            if (!is_numeric($days))
+            {
+                $plans = Model_Order::get_plans('sponsored');
+                $days  = array_keys($plans);
+                $days  = reset($days);
+            }
+
+            $expired_date = Date::unix2mysql(time() + ($days * 24 * 60 * 60));
+
+            if($this->plans)
+                $plan_array = array_merge(json_decode($this->plans,TRUE),array('sponsored'=>$expired_date));
+            else
+                $plan_array = array('sponsored'=>$expired_date);
+
+            $this->plans = json_encode($plan_array);
+
+            try {
+                $this->save();
+            } catch (Exception $e) {
+                throw HTTP_Exception::factory(500,$e->getMessage());
+            }
+        }
+    }
+    /**
+     * features an advertisement
+     * @param $days days to be featured
+     * @return void
+     */
+    public function to_highlighted($days = NULL)
+    {
+
+        if($this->loaded())
+        {
+            if (!is_numeric($days))
+            {
+                $plans = Model_Order::get_plans('highlighted');
+                $days  = array_keys($plans);
+                $days  = reset($days);
+            }
+
+            $expired_date = Date::unix2mysql(time() + ($days * 24 * 60 * 60));
+
+            if($this->plans)
+                $plan_array = array_merge(json_decode($this->plans,TRUE),array('highlighted'=>$expired_date));
+            else
+                $plan_array = array('highlighted'=>$expired_date);
+
+            $this->plans = json_encode($plan_array);
+
+            try {
+                $this->save();
+            } catch (Exception $e) {
+                throw HTTP_Exception::factory(500,$e->getMessage());
+            }
+        }
+    }
+    /**
+     * features an advertisement
+     * @param $days days to be featured
+     * @return void
+     */
+    public function to_bumpup($days = NULL)
+    {
+
+        if($this->loaded())
+        {
+            if (!is_numeric($days))
+            {
+                $plans = Model_Order::get_plans('bumpup');
+                $days  = array_keys($plans);
+                $days  = reset($days);
+            }
+
+            $expired_date = Date::unix2mysql(time() + ($days * 24 * 60 * 60));
+
+            if($this->plans)
+                $plan_array = array_merge(json_decode($this->plans,TRUE),array('bumpup'=>$expired_date));
+            else
+                $plan_array = array('bumpup'=>$expired_date);
+
+            $this->plans = json_encode($plan_array);
+
             try {
                 $this->save();
             } catch (Exception $e) {

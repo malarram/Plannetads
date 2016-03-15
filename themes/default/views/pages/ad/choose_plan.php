@@ -23,25 +23,37 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <? foreach($promotions as $k => $promotion): ?>
+                                        <?
+                                        $ad_plans = json_decode($ad->plans,TRUE);
+//                                        Remove unwanted promotion
+                                        foreach($promotions as $k => $promotion){
+                                            $plan_plans = json_decode(Core::config("payment.{$k}_plans"),TRUE);
+                                            $exp_date = @$ad_plans[$k];
+
+                                            if(!$plan_plans || $exp_date > Date::unix2mysql(time()))
+                                                unset($promotions[$k]);
+                                        }
+                                        if($promotions):
+                                        foreach($promotions as $k => $promotion):
+                                            $plans = json_decode(Core::config("payment.{$k}_plans"),TRUE);
+                                        ?>
                                         <tr class="uk-disabled">
                                             <td><input type="checkbox" name="plan_enable_disable" id="plan_check_<?=$k?>" /></td>
                                             <td><label for="plan_check_<?=$k?>"><?=$promotion?></label></td>
                                             <td>
-                                                <?php
-                                                    $plans = json_decode(Core::config("payment.{$k}_plans"),TRUE);
-                                                    if($plans):
-                                                ?>
                                                 <select name="plan[<?=$k?>]" class="chosen-select-no-search plan_list" disabled>
                                                     <?foreach($plans as $days => $amt):?>
                                                     <option value="<?=$days?>" data-price="<?=$amt?>"><?="$days Days"?></option>
                                                     <?endforeach?>
                                                 </select>
-                                                <? endif ?>
                                             </td>
                                             <td><span class="plan_price">0.00</span></td>
                                         </tr>
-                                        <? endforeach; ?>
+                                        <? endforeach; else:  ?>
+                                        <tr class="uk-disabled">
+                                            <td colspan="4"><?=__('No promotion available for this ad')?></td>
+                                        </tr>
+                                        <? endif;?>
                                     </tbody>
                                     <tfoot>
                                         <tr>
@@ -57,7 +69,7 @@
 
                         <div class="uk-grid uk-float-right">
                             <div class="uk-form-controls">
-                                <button type="submit" class="uk-button uk-button-primary uk-button-large"><?=__('Proceed to checkout')?></button>
+                                <button name="proceed" type="submit" class="uk-button uk-button-primary uk-button-large"><?=__('Proceed to checkout')?></button>
                             </div>
                         </div>
                     <?= FORM::close() ?>

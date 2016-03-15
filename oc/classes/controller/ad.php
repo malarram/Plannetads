@@ -597,54 +597,6 @@ class Controller_Ad extends Controller {
     }
 
     /**
-     * [action_to_featured] [pay to go in featured]
-     *
-     */
-    public function action_to_featured() {
-        //check pay to featured top is enabled
-        if (core::config('payment.to_featured') == FALSE)
-            throw HTTP_Exception::factory(404, __('Page not found'));
-
-        $id_product = Model_Order::PRODUCT_TO_FEATURED;
-
-        //check ad exists
-        $id_ad = $this->request->param('id');
-
-        //how many days
-        if (!is_numeric($days = Core::request('featured_days'))) {
-            $plans = Model_Order::get_featured_plans();
-            $days = array_keys($plans);
-            $days = reset($days);
-        }
-
-        //get price for the days
-        $amount = Model_Order::get_featured_price($days);
-
-        $ad = new Model_Ad($id_ad);
-        if ($ad->loaded()) {
-            //case when payment is set to 0,gets featured for free...
-            if ($amount <= 0) {
-                $ad->featured = Date::unix2mysql(time() + ($days * 24 * 60 * 60));
-                try {
-                    $ad->save();
-                } catch (Exception $e) {
-                    throw HTTP_Exception::factory(500, $e->getMessage());
-                }
-
-                $this->redirect(Route::url('list'));
-            }
-
-            $currency = core::config('payment.paypal_currency');
-
-            $order = Model_Order::new_order($ad, $ad->user, $id_product, $amount, $currency, NULL, $days);
-
-            // redirect to payment
-            $this->redirect(Route::url('default', array('controller' => 'ad', 'action' => 'checkout', 'id' => $order->id_order)));
-        } else
-            throw HTTP_Exception::factory(404, __('Page not found'));
-    }
-
-    /**
      * [action_add_plan] [pay to go in featured]
      *
      */
@@ -654,7 +606,7 @@ class Controller_Ad extends Controller {
         $ad = new Model_Ad($id_ad);
         $promotions = Model_Order::$promotions;
 
-        if (isset($_POST) && $ad->loaded()) {
+        if (isset($_POST['proceed']) && $ad->loaded()) {
                 $data = $this->request->post();
 
                 $validation = Validation::factory($data);

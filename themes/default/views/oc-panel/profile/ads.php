@@ -36,14 +36,6 @@
                         <td><?= i18n::money_format($ad->price) ?></td>
                         <td align="center">
                             <?=$ad->get_plan_tags()?>
-                            <?if($ad->plans):?>
-
-<!--                            <a href="<?= Route::url('default', array('controller' => 'ad', 'action' => 'to_featured', 'id' => $ad->id_ad)) ?>"
-                               onclick="return confirm('<?= __('Are you sure this ad make featured?') ?>');"
-                               rel="tooltip" title="<?= __('Featured') ?>" data-id="tr1" data-text="<?= __('Are you sure you want to make it featured?') ?>">
-                                <i class="uk-icon-star-o"></i>
-                            </a>-->
-                            <?endif?>
                         </td>
                         <td align="right">
                             <a class="uk-margin-small-left uk-button uk-button-mini uk-button-primary  uk-hidden"

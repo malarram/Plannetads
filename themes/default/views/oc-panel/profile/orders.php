@@ -21,14 +21,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?foreach($orders as $order):?>
+                    <?foreach($orders as $k => $order):?>
                     <tr id="tr<?= $order->pk() ?>">
 
-                        <td><?= $order->pk() ?></td>
+                        <td><?= ++$k ?></td>
 
                         <td>
                             <?if ($order->status == Model_Order::STATUS_CREATED):?>
-                            <a class="uk-button uk-button-warning" href="<?= Route::url('default', array('controller' => 'ad', 'action' => 'checkout', 'id' => $order->id_order)) ?>">
+                            <a class="uk-button uk-button-warning" href="<?= Route::url('default', array('controller' => 'ad', 'action' => 'checkout', 'id' => $order->order_no)) ?>">
                                 <i class="uk-icon-shopping-cart"></i> <?= __('Pay') ?>   
                             </a>
                             <?else:?>
@@ -36,9 +36,9 @@
                             <?endif?>
                         </td>
 
-                        <td><?= Model_Order::product_desc($order->id_product) ?></td>
+                        <td><?= str_replace(",","<br />",$order->order_description) ?></td>
 
-                        <td><?= i18n::format_currency($order->amount, $order->currency) ?></td>
+                        <td><?= i18n::format_currency($order->total_amount, $order->currency) ?></td>
 
                         <td><a href="<?= Route::url('oc-panel', array('controller' => 'myads', 'action' => 'update', 'id' => $order->ad->pk())) ?>" title="<?= HTML::chars($order->ad->title) ?>">
                                 <?= Text::limit_chars($order->ad->title, 30, NULL, TRUE) ?></a></td>
