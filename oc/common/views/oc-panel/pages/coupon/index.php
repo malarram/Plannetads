@@ -9,12 +9,6 @@
     </a>
 
 
-<?if (Theme::get('premium')!=1):?>
-    <p class="well"><span class="label label-info"><?=__('Heads Up!')?></span>
-        <?=__('only available with premium themes!').'<br/>'.__('Upgrade your Open Classifieds site to activate this feature.')?>
-    </p>
-<?endif?>
-
 <form class="form-inline pull-right" method="get" action="<?=URL::current();?>">
   	<div class="form-group">
   		<input type="text" class="form-control" name="name" placeholder="<?=__('Coupon name')?>" value="<?=core::get('name')?>">

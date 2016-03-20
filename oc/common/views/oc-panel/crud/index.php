@@ -1,14 +1,13 @@
 <?php defined('SYSPATH') or die('No direct script access.');?>
-<div class="page-header">	
+<div class="page-header">
 	<?if ($controller->allowed_crud_action('create')):?>
 	<a class="btn btn-primary pull-right ajax-load" href="<?=Route::url($route, array('controller'=> Request::current()->controller(), 'action'=>'create')) ?>" title="<?=__('New')?>">
 		<i class="glyphicon glyphicon-pencil"></i>
 		<?=__('New')?>
-	</a>				
+	</a>
 	<?endif?>
 
 	<h1><?=Text::ucfirst(__($name))?></h1>
-	<?if($name == 'role'):?><p><a href="https://docs.yclas.com/roles-work-classified-ads-script/" target="_blank"><?=__('Read more')?></a></p><?endif;?>
 </div>
 
 <?if($name == "user") :?>
@@ -51,12 +50,12 @@
 								</a>
 								<?endif?>
 								<?if ($controller->allowed_crud_action('delete')):?>
-								<a 
-									href="<?=Route::url($route, array('controller'=> Request::current()->controller(), 'action'=>'delete','id'=>$element->pk()))?>" 
-									class="btn btn-danger index-delete" 
-									title="<?=__('Are you sure you want to delete?')?>" 
-									data-id="tr<?=$element->pk()?>" 
-									data-btnOkLabel="<?=__('Yes, definitely!')?>" 
+								<a
+									href="<?=Route::url($route, array('controller'=> Request::current()->controller(), 'action'=>'delete','id'=>$element->pk()))?>"
+									class="btn btn-danger index-delete"
+									title="<?=__('Are you sure you want to delete?')?>"
+									data-id="tr<?=$element->pk()?>"
+									data-btnOkLabel="<?=__('Yes, definitely!')?>"
 									data-btnCancelLabel="<?=__('No way!')?>">
 									<i class="glyphicon glyphicon-trash"></i>
 								</a>
@@ -78,5 +77,5 @@
 <a class="btn btn-sm btn-success pull-right " href="<?=Route::url($route, array('controller'=> Request::current()->controller(), 'action'=>'export')) ?>" title="<?=__('Export')?>">
     <i class="glyphicon glyphicon-download"></i>
     <?=__('Export all')?>
-</a>                
+</a>
 <?endif?>

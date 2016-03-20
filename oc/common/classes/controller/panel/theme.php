@@ -12,7 +12,7 @@ class Controller_Panel_Theme extends Auth_Controller {
         parent::__construct($request, $response);
 
         Breadcrumbs::add(Breadcrumb::factory()->set_title(__('Themes'))->set_url(Route::url('oc-panel',array('controller'  => 'theme'))));
-
+        
         throw HTTP_Exception::factory(404,__('Page not found'));
     }
 

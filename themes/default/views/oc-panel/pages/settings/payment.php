@@ -6,23 +6,22 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h5 class="modal-title text-center">Plan</h5>
+                <h5 class="modal-title text-center"><?=__('Featured Plan')?></h5>
             </div>
             <?= FORM::open(Route::url('oc-panel',array('controller'=>'settings', 'action'=>'payment')), array('class'=>'config'))?>
                 <div class="modal-body">
                     <div class="form-group">
-                        <input class="form-control" type="text" name="plan_days" placeholder="<?=__('Days')?>">
+                        <input class="form-control" type="text" name="featured_days" placeholder="<?=__('Days')?>">
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="text" name="plan_price" placeholder="<?=i18n::money_format(0)?>">
+                        <input class="form-control" type="text" name="featured_price" placeholder="<?=i18n::money_format(0)?>">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal"><?=__('Close')?></button>
-                    <input type="hidden" name="plan_name" value="">
                     <button type="submit" class="btn btn-primary"><?=__('Save plan')?></button>
                 </div>
-                <input  type="hidden" name="plan_days_key">
+                <input  type="hidden" name="featured_days_key">
             </form>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -33,11 +32,6 @@
 <div class="page-header">
     <h1><?=__('Payments Configuration')?></h1>
     <p class=""><?=__('List of payment configuration values. Replace input fields with new desired values.')?></p>
-    <?if (Theme::get('premium')!=1):?>
-        <p class="well"><span class="label label-info"><?=__('Heads Up!')?></span>
-            Authorize, Stripe, Paymill and Bitpay <?=__('only available with premium themes!').'<br/>'.__('Upgrade your Open Classifieds site to activate this feature.')?>
-        </p>
-    <?endif?>
 </div>
 
 
@@ -67,7 +61,7 @@
                             ));?>
                         </div>
                     </div>
-<!--Featured Plan-->
+
                     <div class="form-group">
                         <?= FORM::label($forms['to_featured']['key'], __('Featured Ads'), array('class'=>'control-label col-sm-4', 'for'=>$forms['to_featured']['key']))?>
                         <div class="col-sm-8">
@@ -96,9 +90,9 @@
                                     <?$i=0;foreach ($featured_plans as $days => $price):?>
                                         <li>
                                             <div class="btn-group" style="margin-right:10px;">
-                                                <button type="button" class="btn btn-xs btn-warning plan-edit" data-plan="featured" data-days="<?=$days?>" data-price="<?=$price?>"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
+                                                <button type="button" class="btn btn-xs btn-warning plan-edit" data-days="<?=$days?>" data-price="<?=$price?>"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
                                                 <?if($i>0):?>
-                                                    <a class="btn btn-xs btn-danger plan-delete" href="<?=Route::url('oc-panel',array('controller'=>'settings', 'action'=>'payment'))?>?plan_name=featured&delete_plan=<?=$days?>"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
+                                                    <a class="btn btn-xs btn-danger plan-delete" href="<?=Route::url('oc-panel',array('controller'=>'settings', 'action'=>'payment'))?>?delete_plan=<?=$days?>"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
                                                 <?endif?>
                                             </div>
                                             <?=$days?> <?=__('Days')?> - <?=i18n::money_format($price)?>
@@ -106,189 +100,13 @@
                                     <?$i++;endforeach?>
                                 </ul>
                             <?endif?>
-                            <button type="button" class="btn btn-primary plan-add" ata-plan="featured" data-toggle="modal" data-target="#modalplan">
-                                <?=__('Add a plan')?>
-                            </button>
-                        </div>
-                    </div>
-<!--Premium Plan-->
-                    <div class="form-group">
-                        <?= FORM::label($forms['to_premium']['key'], __('Premium Ads'), array('class'=>'control-label col-sm-4', 'for'=>$forms['to_premium']['key']))?>
-                        <div class="col-sm-8">
-                            <div class="onoffswitch">
-                                <?= FORM::hidden($forms['to_premium']['key'], 0);?>
-                                <?= Form::checkbox($forms['to_premium']['key'], 1, (bool) $forms['to_premium']['value'], array(
-                                'placeholder' => "",
-                                'class' => 'onoffswitch-checkbox',
-                                'id' => $forms['to_premium']['key'],
-                                'data-original-title'=> __("Premium ads"),
-                                'data-trigger'=>"hover",
-                                'data-placement'=>"right",
-                                'data-toggle'=>"popover",
-                                'data-content'=>__("Premium ads will be highlighted for a defined number of days."),
-                                ))?>
-                                <?= FORM::label($forms['to_premium']['key'], "<span class='onoffswitch-inner'></span><span class='onoffswitch-switch'></span>", array('class'=>'onoffswitch-label', 'for'=>$forms['to_premium']['key']))?>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <?= FORM::label($forms['to_top']['key'], __('Premium Plans'), array('class'=>'control-label col-sm-4', 'for'=>$forms['to_top']['key']))?>
-                        <div class="col-sm-8">
-                            <?if (is_array($premium_plans)):?>
-                                <ul class="list-unstyled">
-                                    <?$i=0;foreach ($premium_plans as $days => $price):?>
-                                        <li>
-                                            <div class="btn-group" style="margin-right:10px;">
-                                                <button type="button" class="btn btn-xs btn-warning plan-edit" data-plan="premium" data-days="<?=$days?>" data-price="<?=$price?>"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
-                                                <?if($i>0):?>
-                                                    <a class="btn btn-xs btn-danger plan-delete" href="<?=Route::url('oc-panel',array('controller'=>'settings', 'action'=>'payment'))?>?plan_name=premium&delete_plan=<?=$days?>"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
-                                                <?endif?>
-                                            </div>
-                                            <?=$days?> <?=__('Days')?> - <?=i18n::money_format($price)?>
-                                        </li>
-                                    <?$i++;endforeach?>
-                                </ul>
-                            <?endif?>
-                            <button type="button" class="btn btn-primary plan-add" data-plan="premium" data-toggle="modal" data-target="#modalplan">
-                                <?=__('Add a plan')?>
-                            </button>
-                        </div>
-                    </div>
-<!--Sponsored Plan-->
-                    <div class="form-group">
-                        <?= FORM::label($forms['to_sponsored']['key'], __('Sponsored Ads'), array('class'=>'control-label col-sm-4', 'for'=>$forms['to_sponsored']['key']))?>
-                        <div class="col-sm-8">
-                            <div class="onoffswitch">
-                                <?= FORM::hidden($forms['to_sponsored']['key'], 0);?>
-                                <?= Form::checkbox($forms['to_sponsored']['key'], 1, (bool) $forms['to_sponsored']['value'], array(
-                                'placeholder' => "",
-                                'class' => 'onoffswitch-checkbox',
-                                'id' => $forms['to_sponsored']['key'],
-                                'data-original-title'=> __("Sponsored ads"),
-                                'data-trigger'=>"hover",
-                                'data-placement'=>"right",
-                                'data-toggle'=>"popover",
-                                'data-content'=>__("Sponsored ads will be highlighted for a defined number of days."),
-                                ))?>
-                                <?= FORM::label($forms['to_sponsored']['key'], "<span class='onoffswitch-inner'></span><span class='onoffswitch-switch'></span>", array('class'=>'onoffswitch-label', 'for'=>$forms['to_sponsored']['key']))?>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <?= FORM::label($forms['to_top']['key'], __('Sponsored Plans'), array('class'=>'control-label col-sm-4', 'for'=>$forms['to_top']['key']))?>
-                        <div class="col-sm-8">
-                            <?if (is_array($sponsored_plans)):?>
-                                <ul class="list-unstyled">
-                                    <?$i=0;foreach ($sponsored_plans as $days => $price):?>
-                                        <li>
-                                            <div class="btn-group" style="margin-right:10px;">
-                                                <button type="button" class="btn btn-xs btn-warning plan-edit" data-plan="sponsored" data-days="<?=$days?>" data-price="<?=$price?>"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
-                                                <?if($i>0):?>
-                                                    <a class="btn btn-xs btn-danger plan-delete" href="<?=Route::url('oc-panel',array('controller'=>'settings', 'action'=>'payment'))?>?plan_name=sponsored&delete_plan=<?=$days?>"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
-                                                <?endif?>
-                                            </div>
-                                            <?=$days?> <?=__('Days')?> - <?=i18n::money_format($price)?>
-                                        </li>
-                                    <?$i++;endforeach?>
-                                </ul>
-                            <?endif?>
-                            <button type="button" class="btn btn-primary plan-add" data-plan="sponsored" data-toggle="modal" data-target="#modalplan">
-                                <?=__('Add a plan')?>
-                            </button>
-                        </div>
-                    </div>
-<!--Highlighted Plan-->
-                    <div class="form-group">
-                        <?= FORM::label($forms['to_highlighted']['key'], __('Highlighted Ads'), array('class'=>'control-label col-sm-4', 'for'=>$forms['to_highlighted']['key']))?>
-                        <div class="col-sm-8">
-                            <div class="onoffswitch">
-                                <?= FORM::hidden($forms['to_highlighted']['key'], 0);?>
-                                <?= Form::checkbox($forms['to_highlighted']['key'], 1, (bool) $forms['to_highlighted']['value'], array(
-                                'placeholder' => "",
-                                'class' => 'onoffswitch-checkbox',
-                                'id' => $forms['to_highlighted']['key'],
-                                'data-original-title'=> __("Highlighted ads"),
-                                'data-trigger'=>"hover",
-                                'data-placement'=>"right",
-                                'data-toggle'=>"popover",
-                                'data-content'=>__("Highlighted ads will be highlighted for a defined number of days."),
-                                ))?>
-                                <?= FORM::label($forms['to_highlighted']['key'], "<span class='onoffswitch-inner'></span><span class='onoffswitch-switch'></span>", array('class'=>'onoffswitch-label', 'for'=>$forms['to_highlighted']['key']))?>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <?= FORM::label($forms['to_top']['key'], __('Highlighted Plans'), array('class'=>'control-label col-sm-4', 'for'=>$forms['to_top']['key']))?>
-                        <div class="col-sm-8">
-                            <?if (is_array($highlighted_plans)):?>
-                                <ul class="list-unstyled">
-                                    <?$i=0;foreach ($highlighted_plans as $days => $price):?>
-                                        <li>
-                                            <div class="btn-group" style="margin-right:10px;">
-                                                <button type="button" class="btn btn-xs btn-warning plan-edit" data-plan="highlighted" data-days="<?=$days?>" data-price="<?=$price?>"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
-                                                <?if($i>0):?>
-                                                    <a class="btn btn-xs btn-danger plan-delete" href="<?=Route::url('oc-panel',array('controller'=>'settings', 'action'=>'payment'))?>?plan_name=highlighted&delete_plan=<?=$days?>"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
-                                                <?endif?>
-                                            </div>
-                                            <?=$days?> <?=__('Days')?> - <?=i18n::money_format($price)?>
-                                        </li>
-                                    <?$i++;endforeach?>
-                                </ul>
-                            <?endif?>
-                            <button type="button" class="btn btn-primary plan-add" data-plan="highlighted" data-toggle="modal" data-target="#modalplan">
-                                <?=__('Add a plan')?>
-                            </button>
-                        </div>
-                    </div>
-<!--Bump up Plan-->
-                    <div class="form-group">
-                        <?= FORM::label($forms['to_bumpup']['key'], __('Bump up Ads'), array('class'=>'control-label col-sm-4', 'for'=>$forms['to_bumpup']['key']))?>
-                        <div class="col-sm-8">
-                            <div class="onoffswitch">
-                                <?= FORM::hidden($forms['to_bumpup']['key'], 0);?>
-                                <?= Form::checkbox($forms['to_bumpup']['key'], 1, (bool) $forms['to_bumpup']['value'], array(
-                                'placeholder' => "",
-                                'class' => 'onoffswitch-checkbox',
-                                'id' => $forms['to_bumpup']['key'],
-                                'data-original-title'=> __("Bump up ads"),
-                                'data-trigger'=>"hover",
-                                'data-placement'=>"right",
-                                'data-toggle'=>"popover",
-                                'data-content'=>__("Bump up ads will be bumpup for a defined number of days."),
-                                ))?>
-                                <?= FORM::label($forms['to_bumpup']['key'], "<span class='onoffswitch-inner'></span><span class='onoffswitch-switch'></span>", array('class'=>'onoffswitch-label', 'for'=>$forms['to_bumpup']['key']))?>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <?= FORM::label($forms['to_top']['key'], __('Bump up Plans'), array('class'=>'control-label col-sm-4', 'for'=>$forms['to_top']['key']))?>
-                        <div class="col-sm-8">
-                            <?if (is_array($bumpup_plans)):?>
-                                <ul class="list-unstyled">
-                                    <?$i=0;foreach ($bumpup_plans as $days => $price):?>
-                                        <li>
-                                            <div class="btn-group" style="margin-right:10px;">
-                                                <button type="button" class="btn btn-xs btn-warning plan-edit" data-plan="bumpup" data-days="<?=$days?>" data-price="<?=$price?>"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
-                                                <?if($i>0):?>
-                                                    <a class="btn btn-xs btn-danger plan-delete" href="<?=Route::url('oc-panel',array('controller'=>'settings', 'action'=>'payment'))?>?plan_name=bumpup&delete_plan=<?=$days?>"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
-                                                <?endif?>
-                                            </div>
-                                            <?=$days?> <?=__('Days')?> - <?=i18n::money_format($price)?>
-                                        </li>
-                                    <?$i++;endforeach?>
-                                </ul>
-                            <?endif?>
-                            <button type="button" class="btn btn-primary plan-add" data-plan="bumpup" data-toggle="modal" data-target="#modalplan">
+                            <button type="button" class="btn btn-primary plan-add" data-toggle="modal" data-target="#modalplan">
                                 <?=__('Add a plan')?>
                             </button>
                         </div>
                     </div>
 
-                    <div class="form-group hidden">
+                    <div class="form-group">
                         <?= FORM::label($forms['to_top']['key'], __('Bring to top Ad'), array('class'=>'control-label col-sm-4', 'for'=>$forms['to_top']['key']))?>
                         <div class="col-sm-8">
                             <div class="onoffswitch">
@@ -307,7 +125,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group hidden">
+                    <div class="form-group">
                         <?= FORM::label($forms['pay_to_go_on_top']['key'], __('To top price'), array('class'=>'control-label col-sm-4', 'for'=>$forms['pay_to_go_on_top']['key']))?>
                         <div class="col-sm-8">
                             <div class="input-group">
@@ -327,7 +145,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group hidden">
+                    <div class="form-group">
                         <?= FORM::label($forms['alternative']['key'], __('Alternative Payment'), array('class'=>'col-md-4 control-label', 'for'=>$forms['alternative']['key']))?>
                         <div class="col-md-8">
                             <?= FORM::select($forms['alternative']['key'], $pages, $forms['alternative']['value'], array(
@@ -429,7 +247,7 @@
             </div>
         </div>
 
-         <div class="panel panel-default hidden">
+         <div class="panel panel-default">
             <div class="panel-heading"><?=__('2checkout')?></div>
             <div class="panel-body">
                 <div class="form-horizontal">
@@ -499,7 +317,7 @@
             </div>
         </div>
 
-        <div class="panel panel-default hidden">
+        <div class="panel panel-default">
             <div class="panel-heading">Authorize.net</div>
             <div class="panel-body">
                 <div class="form-horizontal">
@@ -569,7 +387,7 @@
             </div>
         </div>
 
-        <div class="panel panel-default hidden">
+        <div class="panel panel-default">
             <div class="panel-heading">Paymill</div>
             <div class="panel-body">
                 <div class="form-horizontal">
@@ -616,7 +434,7 @@
             </div>
         </div>
 
-        <div class="panel panel-default hidden">
+        <div class="panel panel-default">
             <div class="panel-heading">Stripe</div>
             <div class="panel-body">
                 <div class="form-horizontal">
@@ -702,7 +520,7 @@
                 </div>
             </div>
         </div>
-        <div class="panel panel-default hidden">
+        <div class="panel panel-default">
             <div class="panel-heading">Bitpay</div>
             <div class="panel-body">
                 <div class="form-horizontal">
@@ -734,7 +552,7 @@
             </div>
         </div>
 
-        <div class="panel panel-default hidden">
+        <div class="panel panel-default">
             <div class="panel-heading">Paysbuy</div>
             <div class="panel-body">
                 <div class="form-horizontal">
@@ -784,7 +602,7 @@
             </div>
         </div>
 
-        <div class="panel panel-default hidden">
+        <div class="panel panel-default">
             <div class="panel-heading">Prevent Fraud</div>
             <div class="panel-body">
                 <div class="form-horizontal">

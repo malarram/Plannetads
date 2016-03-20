@@ -154,7 +154,7 @@
             </div>
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><?="<a target='_blank' href='https://docs.yclas.com/use-import-tool-categories-locations/'>"._('Upload CSV file')."</a>"?></div>
+                    <div class="panel-heading"><?=_('Upload CSV file')?></div>
                     <div class="panel-body">
                         <p>
                             <?=__('Please use the correct CSV format')?> <a href="https://docs.google.com/uc?id=0B60e9iwQucDwa2VjRXAtV0FXVlk&export=download"><?=__('download example')?>.</a>

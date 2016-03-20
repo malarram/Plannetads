@@ -189,17 +189,6 @@ function init_panel()
 
 	//intial value
 	favicon.badge($('#contact-notification span').text());
-
-    //load modal documentation
-    $('a[href*="docs.yclas.com"]').click(function( event ) {
-        event.preventDefault();
-        $('#docModal .modal-body').load($(this).attr('href') + ' .post', function() {
-            $('#docModal .modal-body img').each( function() {
-                $(this).addClass('img-responsive');
-            });
-            $('#docModal').modal('show');
-        });
-    });
 }
 
 $(function (){

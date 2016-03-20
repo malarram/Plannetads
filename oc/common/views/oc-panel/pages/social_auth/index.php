@@ -3,11 +3,6 @@
     <h1><?=__('Social Authentication Settings')?></h1>
 </div>
 
-<?if (Theme::get('premium')!=1):?>
-    <p class="well"><span class="label label-info"><?=__('Heads Up!')?></span>
-        <?=__('Social authentication is only available with premium themes!').'<br/>'.__('Upgrade your Open Classifieds site to activate this feature.')?>
-    </p>
-<?endif?>
 
 <div class="row">
     <div class="col-md-8">
