@@ -93,7 +93,7 @@
                         </div>
 
                         <div class="form-group">
-                            <?= FORM::label($forms['black_list']['id'],__("Black List"), array('class'=>'control-label col-sm-4', 'for'=>$forms['black_list']['id']))?>
+                            <?= FORM::label($forms['black_list']['id'], __("Black List"), array('class'=>'control-label col-sm-4', 'for'=>$forms['black_list']['id']))?>
                             <div class="col-sm-8">
                                 <div class="onoffswitch">
                                     <?= Form::checkbox($forms['black_list']['key'], 1, (bool) $forms['black_list']['value'], array(

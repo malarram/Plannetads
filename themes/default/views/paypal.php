@@ -20,8 +20,6 @@
         <input type="hidden" name="handling" value="0.00">
         <input type="hidden" name="return" value="<?=$site_url?>">
         <input type="hidden" name="notify_url" value="<?=Route::url('default',array('controller'=>'paypal','action'=>'ipn','id'=>$order_id))?>">
-        <input type="hidden" name="return" value="<?=Route::url('default',array('controller'=>'paypal','action'=>'return','id'=>$order_id))?>">
-        <input type="hidden" name="cancel_return" value="<?=Route::url('default',array('controller'=>'paypal','action'=>'cancel','id'=>$order_id))?>">
         <input type="hidden" name="no_note" value="1">
         <input type="hidden" name="custom" value="">
         <input type="hidden" name="currency_code" value="<?=$paypal_currency?>">

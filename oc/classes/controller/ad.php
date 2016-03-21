@@ -597,60 +597,51 @@ class Controller_Ad extends Controller {
     }
 
     /**
-     * [action_add_plan] [pay to go in featured]
+     * [action_to_featured] [pay to go in featured]
      *
      */
-    public function action_add_plan() {
+    public function action_to_featured() {
+        //check pay to featured top is enabled
+        if (core::config('payment.to_featured') == FALSE)
+            throw HTTP_Exception::factory(404, __('Page not found'));
+
+        $id_product = Model_Order::PRODUCT_TO_FEATURED;
+
         //check ad exists
         $id_ad = $this->request->param('id');
-        $ad = new Model_Ad($id_ad);
-        $promotions = Model_Order::$promotions;
 
-        if (isset($_POST['proceed']) && $ad->loaded()) {
-                $data = $this->request->post();
-
-                $validation = Validation::factory($data);
-                $validation = $validation->rule('plan_enable_disable', 'not_empty');
-
-                if ($validation->check()) {
-                    $total_amt = 0;
-                    $order_no = uniqid();
-                    foreach ($data['plan'] as $plan => $days){
-                        $total_amt += $amount = Model_Order::get_price($plan, $days);
-                    //case when payment is set to 0,gets featured for free...
-                    if ($amount <= 0) {
-                        if($ad->plans){
-                            $plan_array = array_merge(json_decode($ad->plans,TRUE),array($plan => Date::unix2mysql(time() + ($days * 24 * 60 * 60))));
-                        }else{
-                            $plan_array = array($plan => Date::unix2mysql(time() + ($days * 24 * 60 * 60)));
-                        }
-                        $ad->plans = json_encode($plan_array);
-                        $ad->save();
-                    }
-
-                    $currency = core::config('payment.paypal_currency');
-                    $id_product = constant("Model_Order::PRODUCT_TO_".strtoupper($plan));
-
-                    $order = Model_Order::new_order($ad, $ad->user, $id_product, $amount, $currency, NULL, $days,$order_no);
-                    }
-                    // redirect to payment
-                    $this->redirect(Route::url('default', array('controller' => 'ad', 'action' => 'checkout', 'id' => $order_no)));
-                } else {
-                    $errors = $validation->errors('choose_plan');
-                    foreach ($errors as $f => $err) {
-                        Alert::set(Alert::ALERT, $err);
-                    }
-                }
+        //how many days
+        if (!is_numeric($days = Core::request('featured_days'))) {
+            $plans = Model_Order::get_featured_plans();
+            $days = array_keys($plans);
+            $days = reset($days);
         }
 
-        Breadcrumbs::add(Breadcrumb::factory()->set_title(__('Home'))->set_url(Route::url('default')));
-        Breadcrumbs::add(Breadcrumb::factory()->set_title('Choose Plan'));
+        //get price for the days
+        $amount = Model_Order::get_featured_price($days);
 
-        $this->template->scripts['footer'][] = 'js/choose_plan.js';
+        $ad = new Model_Ad($id_ad);
+        if ($ad->loaded()) {
+            //case when payment is set to 0,gets featured for free...
+            if ($amount <= 0) {
+                $ad->featured = Date::unix2mysql(time() + ($days * 24 * 60 * 60));
+                try {
+                    $ad->save();
+                } catch (Exception $e) {
+                    throw HTTP_Exception::factory(500, $e->getMessage());
+                }
 
-        $this->template->bind('content', $content);
+                $this->redirect(Route::url('list'));
+            }
 
-        $this->template->content = View::factory('pages/ad/choose_plan', array('ad' => $ad,'promotions' => $promotions));
+            $currency = core::config('payment.paypal_currency');
+
+            $order = Model_Order::new_order($ad, $ad->user, $id_product, $amount, $currency, NULL, $days);
+
+            // redirect to payment
+            $this->redirect(Route::url('default', array('controller' => 'ad', 'action' => 'checkout', 'id' => $order->id_order)));
+        } else
+            throw HTTP_Exception::factory(404, __('Page not found'));
     }
 
     /**
@@ -695,23 +686,23 @@ class Controller_Ad extends Controller {
      * @return [type] [description]
      */
     public function action_checkout() {
-        $orders = (new Model_Order())->where('order_no',    '=', $this->request->param('id'))->find_all();
+        $order = new Model_Order($this->request->param('id'));
 
-        if ($orders->count()) {
+        if ($order->loaded()) {
             //hack jquery paymill
             Paymill::jquery();
 
             //if paid...no way jose
-//            if ($order->status != Model_Order::STATUS_CREATED) {
-//                Alert::set(Alert::INFO, __('This order was already paid.'));
-//                $this->redirect(Route::url('default'));
-//            }
+            if ($order->status != Model_Order::STATUS_CREATED) {
+                Alert::set(Alert::INFO, __('This order was already paid.'));
+                $this->redirect(Route::url('default'));
+            }
 
             //checks coupons or amount of featured days
-//            $orders->check_pricing();
+            $order->check_pricing();
 
             //template header
-            $this->template->title = __('Checkout');
+            $this->template->title = __('Checkout') . ' ' . Model_Order::product_desc($order->id_product);
             Breadcrumbs::add(Breadcrumb::factory()->set_title(__('Home'))->set_url(Route::url('default')));
             Breadcrumbs::add(Breadcrumb::factory()->set_title($this->template->title));
 
@@ -719,43 +710,12 @@ class Controller_Ad extends Controller {
 
             $this->template->bind('content', $content);
 
-            $this->template->content = View::factory('pages/ad/checkout', array('orders' => $orders));
+            $this->template->content = View::factory('pages/ad/checkout', array('order' => $order));
         } else {
             //throw 404
             throw HTTP_Exception::factory(404, __('Page not found'));
         }
     }
-//    public function action_checkout() {
-//        $order = new Model_Order($this->request->param('id'));
-//
-//        if ($order->loaded()) {
-//            //hack jquery paymill
-//            Paymill::jquery();
-//
-//            //if paid...no way jose
-//            if ($order->status != Model_Order::STATUS_CREATED) {
-//                Alert::set(Alert::INFO, __('This order was already paid.'));
-//                $this->redirect(Route::url('default'));
-//            }
-//
-//            //checks coupons or amount of featured days
-//            $order->check_pricing();
-//
-//            //template header
-//            $this->template->title = __('Checkout') . ' ' . Model_Order::product_desc($order->id_product);
-//            Breadcrumbs::add(Breadcrumb::factory()->set_title(__('Home'))->set_url(Route::url('default')));
-//            Breadcrumbs::add(Breadcrumb::factory()->set_title($this->template->title));
-//
-//            Controller::$full_width = TRUE;
-//
-//            $this->template->bind('content', $content);
-//
-//            $this->template->content = View::factory('pages/ad/checkout', array('order' => $order));
-//        } else {
-//            //throw 404
-//            throw HTTP_Exception::factory(404, __('Page not found'));
-//        }
-//    }
 
     /**
      * confirms a checkout when its a free order

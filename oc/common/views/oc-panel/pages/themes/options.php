@@ -7,13 +7,20 @@
     <?if(Core::config('appearance.theme_mobile')!=''):?>
             <p>
                 <?=__('Using mobile theme')?> <code><?=Core::config('appearance.theme_mobile')?></code>
+                <a class="btn btn-xs btn-warning" title="<?=__('Disable')?>" 
+                    href="<?=Route::url('oc-panel',array('controller'=>'theme','action'=>'mobile','id'=>'disable'))?>">
+                    <i class="glyphicon   glyphicon-remove"></i>
+                </a>
+                <a class="btn btn-xs btn-primary" title="<?=__('Options')?>" 
+                    href="<?=Route::url('oc-panel',array('controller'=>'theme','action'=>'options','id'=>Core::config('appearance.theme_mobile')))?>">
+                <i class="glyphicon  glyphicon-wrench glyphicon"></i></a>
             </p>
         <?endif?>
 </div>
 
 <div class="row">
     <div class="col-md-8">
-        <form action="<?=URL::base()?><?=Request::current()->uri()?>" method="post" class="form-horizontal" enctype="multipart/form-data">
+        <form action="<?=URL::base()?><?=Request::current()->uri()?>" method="post" class="form-horizontal" enctype="multipart/form-data"> 
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="form-horizontal">

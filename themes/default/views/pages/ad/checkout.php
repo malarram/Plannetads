@@ -12,13 +12,9 @@ try{
 catch(e){}
 </script>
 <?endif?>
-<?= Breadcrumbs::render('breadcrumbs') ?>
 
-<div class="uk-container uk-container-center new-ad-form">
-    <div class="uk-grid">
-        <div class="uk-width-medium-8-10 uk-width-small-1-1 uk-container-center">
-<div class="uk-panel">
-    <div class="uk-grid">
+<div class="well uk-width-1-1">
+    <div class="row">
         <div class="uk-width-1-2">
             <address>
                 <strong><?=Core::config('general.site_name')?></strong>
@@ -26,18 +22,15 @@ catch(e){}
                 <?=Core::config('general.base_url')?>
             </address>
         </div>
-        <div class="uk-width-1-2">
+        <div class="uk-width-1-2 uk-text-right">
             <p>
-                <em><?=__('Date')?>: <?= Date::format($orders[0]->created, core::config('general.date_format'))?></em>
+                <em><?=__('Date')?>: <?= Date::format($order->created, core::config('general.date_format'))?></em>
                 <br>
-                <em><?=__('Checkout')?> :# <?=$orders[0]->order_no?></em>
-                <br>
-                <em><?=__('Product')?> :<?=$orders[0]->ad->title?></em>
-
+                <em><?=__('Checkout')?> :# <?=$order->id_order?></em>
             </p>
         </div>
     </div>
-    <div class="uk-grid">
+    <div class="row">
         <div class="uk-text-center">
             <h1><?=__('Checkout')?></h1>
         </div>
@@ -50,103 +43,145 @@ catch(e){}
                 </tr>
             </thead>
             <tbody>
-                <? $total_amt = 0; foreach($orders as $order):?>
+                <?if($order->id_product == Model_Order::PRODUCT_AD_SELL AND isset($order->ad->cf_shipping) AND Valid::numeric($order->ad->cf_shipping) AND $order->ad->cf_shipping > 0):?>
                     <tr>
-                        <td class="uk-width-1-10" style="text-align: center"><?=$order->id_product?></td>
-                            <td class="uk-width-7-10">
+                        <td class="col-md-1" style="text-align: center"><?=$order->id_product?></td>
+                        <td class="col-md-9"><?=$order->description?> <em>(<?=Model_Order::product_desc($order->id_product)?>)</em></td>
+                        <td class="col-md-2 text-center"><?=i18n::format_currency($order->amount - $order->ad->cf_shipping, $order->currency)?></td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-1" style="text-align: center"></td>
+                        <td class="col-md-9"><?=__('Shipping')?></td>
+                        <td class="col-md-2 text-center"><?=i18n::format_currency($order->ad->cf_shipping, $order->currency)?></td>
+                    </tr>
+                <?else:?>
+                    <tr>
+                        <td class="col-md-1" style="text-align: center"><?=$order->id_product?></td>
+                        <?if (Theme::get('premium')==1):?>
+                            <td class="col-md-9">
                                 <?=$order->description?>
-                                <em>(<?=$order->featured_days?> <?=__('Days')?>)</em>
+                                <em>(<?=Model_Order::product_desc($order->id_product)?>
+                                    <?if ($order->id_product == Model_Order::PRODUCT_TO_FEATURED):?>
+                                        <?=$order->featured_days?> <?=__('Days')?>
+                                    <?endif?>
+                                    )
+                                </em>
+                                <div class="dropdown" style="display:inline-block;">
+                                <?if ($order->id_product == Model_Order::PRODUCT_TO_FEATURED AND is_array($featured_plans=Model_Order::get_featured_plans()) AND count($featured_plans) > 1):?>
+                                    <button class="btn btn-xs btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                        <?=__('Change plan')?>
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <?foreach ($featured_plans as $days => $price):?>
+                                            <?if ($order->featured_days != $days):?>
+                                                <li>
+                                                    <a href="<?=Route::url('default',array('controller'=>'ad', 'action'=>'checkout','id'=>$order->id_order))?>?featured_days=<?=$days?>">
+                                                        <small><?=$days?> <?=__('Days')?> - <?=i18n::money_format($price)?></small>
+                                                    </a>
+                                                </li>
+                                            <?endif?>
+                                        <?endforeach?>
+                                    </ul>
+                                <?endif?>
                             </td>
-                        <td class="uk-width-2-10 uk-text-center"><?=i18n::format_currency(($order->coupon->loaded())?$order->original_price():$order->amount, $order->currency)?></td>
+                        <?else :?>
+                            <td class="col-md-9"><?=$order->description?> <em>(<?=Model_Order::product_desc($order->id_product)?>)</em></td>
+                        <?endif?>
+                        <td class="col-md-2 text-center"><?=i18n::format_currency(($order->coupon->loaded())?$order->original_price():$order->amount, $order->currency)?></td>
                     </tr>
                     <?if (Theme::get('premium')==1 AND $order->coupon->loaded()):?>
                         <?$discount = ($order->coupon->discount_amount==0)?($order->original_price() * $order->coupon->discount_percentage/100):$order->coupon->discount_amount;?>
                         <tr>
-                            <td class="uk-width-1-10" style="text-align: center">
+                            <td class="col-md-1" style="text-align: center">
                                 <?=$order->id_coupon?>
                             </td>
-                            <td class="uk-width-7-10">
+                            <td class="col-md-9">
                                 <?=__('Coupon')?> '<?=$order->coupon->name?>'
                                 <?=__('valid until')?> <?=Date::format($order->coupon->valid_date)?>.
                             </td>
-                            <td class="uk-width-2-10 uk-text-center uk-text-danger">
+                            <td class="col-md-2 text-center text-danger">
                                 -<?=i18n::format_currency($discount, $order->currency)?>
                             </td>
                         </tr>
                     <?endif?>
-                <? $total_amt += $order->amount; endforeach;?>
-            </tbody>
-            <tfoot>
+                <?endif?>
                 <tr>
-                    <td>&nbsp;</td>
-                    <td class="uk-text-right"><h4><strong><?=__('Total')?>: </strong></h4></td>
-                    <td class="uk-text-center uk-text-danger"><h4><strong><?=i18n::format_currency($total_amt, $orders[0]->currency)?></strong></h4></td>
+                    <td class="col-md-1" style="text-align: center"><?=$order->ad->id_ad?></td>
+                    <td colspan=2 class="col-md-12">
+                        <em><?=$order->ad->title?></em>
+                    </td>
                 </tr>
-            </tfoot>
+                <tr>
+                    <td>   </td>
+                    <td class="text-right"><h4><strong><?=__('Total')?>: </strong></h4></td>
+                    <td class="text-center text-danger"><h4><strong><?=i18n::format_currency($order->amount, $order->currency)?></strong></h4></td>
+                </tr>
+            </tbody>
         </table>
 
-        <?if ($total_amt>0):?>
+        <?if ($order->amount>0):?>
 
         <?if (Core::config('payment.paypal_account')!=''):?>
-        <div class="uk-margin-right">
-                <a class="uk-button uk-button-success uk-button-large" href="<?=Route::url('default', array('controller'=> 'paypal','action'=>'pay' , 'id' => $orders[0]->order_no))?>">
-                    <?=__('Pay with Paypal')?> <span class="uk-icon-chevron-right"></span>
+            <p class="text-right">
+                <a class="btn btn-success btn-lg" href="<?=Route::url('default', array('controller'=> 'paypal','action'=>'pay' , 'id' => $order->id_order))?>">
+                    <?=__('Pay with Paypal')?> <span class="glyphicon glyphicon-chevron-right"></span>
                 </a>
-            </div>
+            </p>
         <?endif?>
 
         <?if ($order->id_product!=Model_Order::PRODUCT_AD_SELL):?>
             <?if ( ($user = Auth::instance()->get_user())!=FALSE AND ($user->id_role == Model_Role::ROLE_ADMIN OR $user->id_role == Model_Role::ROLE_MODERATOR)):?>
-                <ul class="uk-list uk-list-inline uk-text-right">
+                <ul class="list-inline text-right">
                     <li>
-                        <a title="<?=__('Mark as paid')?>" class="uk-button uk-button-warning" href="<?=Route::url('oc-panel', array('controller'=> 'order', 'action'=>'pay','id'=>$orders[0]->order_no))?>">
-                            <i class="uk-icon-usd"></i> <?=__('Mark as paid')?>
+                        <a title="<?=__('Mark as paid')?>" class="btn btn-warning" href="<?=Route::url('oc-panel', array('controller'=> 'order', 'action'=>'pay','id'=>$order->id_order))?>">
+                            <i class="glyphicon glyphicon-usd"></i> <?=__('Mark as paid')?>
                         </a>
                     </li>
                 </ul>
             <?endif?>
             <?if (Theme::get('premium')==1) :?>
                 <?=Controller_Authorize::form($order)?>
-                <div class="uk-text-right">
-                    <ul class="uk-list uk-list-inline">
+                <div class="text-right">
+                    <ul class="list-inline">
                         <?if(($pm = Paymill::button($order)) != ''):?>
-                            <li class="uk-text-right"><?=$pm?></li>
+                            <li class="text-right"><?=$pm?></li>
                         <?endif?>
                     </ul>
                 </div>
-                <div class="uk-text-right">
-                    <ul class="uk-list uk-list-inline">
+                <div class="text-right">
+                    <ul class="list-inline">
                         <?if(($sk = StripeKO::button($order)) != ''):?>
-                            <li class="uk-text-right"><?=$sk?></li>
+                            <li class="text-right"><?=$sk?></li>
                         <?endif?>
                         <?if(($bp = Bitpay::button($order)) != ''):?>
-                            <li class="uk-text-right"><?=$bp?></li>
+                            <li class="text-right"><?=$bp?></li>
                         <?endif?>
                         <?if(($two = twocheckout::form($order)) != ''):?>
-                            <li class="uk-text-right"><?=$two?></li>
+                            <li class="text-right"><?=$two?></li>
                         <?endif?>
                         <?if(($paysbuy = paysbuy::form($order)) != ''):?>
-                            <li class="uk-text-right"><?=$paysbuy?></li>
+                            <li class="text-right"><?=$paysbuy?></li>
                         <?endif?>
                         <?if( ($alt = $order->alternative_pay_button()) != ''):?>
-                            <li class="uk-text-right"><?=$alt?></li>
+                            <li class="text-right"><?=$alt?></li>
                         <?endif?>
                     </ul>
                     <?=View::factory('coupon')?>
                 </div>
             <?elseif ( ($alt = $order->alternative_pay_button()) != '') :?>
-                <div class="uk-text-right">
-                    <ul class="uk-list uk-list-inline">
-                        <li class="uk-text-right"><?=$alt?></li>
+                <div class="text-right">
+                    <ul class="list-inline">
+                        <li class="text-right"><?=$alt?></li>
                     </ul>
                 </div>
             <?endif?>
         <?endif?>
 
         <?else:?>
-            <ul class="uk-list uk-list-inline uk-text-right">
+            <ul class="list-inline text-right">
                 <li>
-                    <a title="<?=__('Click to proceed')?>" class="uk-button uk-button-success" href="<?=Route::url('default', array('controller'=> 'ad', 'action'=>'checkoutfree','id'=>$orders[0]->order_no))?>">
+                    <a title="<?=__('Click to proceed')?>" class="btn btn-success" href="<?=Route::url('default', array('controller'=> 'ad', 'action'=>'checkoutfree','id'=>$order->id_order))?>">
                         <?=__('Click to proceed')?>
                     </a>
                 </li>
@@ -154,9 +189,6 @@ catch(e){}
             </ul>
         <?endif?>
 
-    </div>
-</div>
-        </div>
     </div>
 </div>
 

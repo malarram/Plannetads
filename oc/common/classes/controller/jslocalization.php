@@ -116,7 +116,7 @@ class Controller_Jslocalization extends Controller {
 	                                        return "'.__('Customize your website look and feel by choosing one of the many available themes and changing theme options.').'";
 	                                        break;
 	                                    case "step5_content":
-	                                        return "'.__('When there is something you want to know type your question here or check the full list.').'";
+	                                        return "'.__('When there is something you want to know type your question here.').'";
 	                                        break;
 	                                    case "step6_title":
 	                                        return "'.__('Hey!').'";

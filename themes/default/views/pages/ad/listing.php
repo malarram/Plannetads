@@ -67,10 +67,9 @@
                 <?foreach($ads as $ad ):?>
                 <?
                 $addt_class = '';
-                /* if($ad->featured >= Date::unix2mysql(time())):
-                    $addt_class = 'featured';
+                if($ad->featured >= Date::unix2mysql(time())):
+                $addt_class = 'featured';
                 endif;
-                */
                 ?>
                 <div class="listings uk-grid favorite <?= $addt_class ?>" id="fav-<?= $ad->id_ad ?>">
                     <div class="uk-width-medium-2-10 uk-width-small-3-10">

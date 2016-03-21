@@ -3,7 +3,6 @@
     <h1><?=__('Social Authentication Settings')?></h1>
 </div>
 
-
 <div class="row">
     <div class="col-md-8">
         <?= FORM::open(Route::url('oc-panel',array('controller'=>'social', 'action'=>'index')), array('class'=>'form-horizontal', 'enctype'=>'multipart/form-data'))?>
