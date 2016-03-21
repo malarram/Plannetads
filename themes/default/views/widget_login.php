@@ -18,7 +18,7 @@
                 <li><a href="<?= Route::url('oc-panel', array('controller' => 'profile', 'action' => 'favorites')) ?>"><?= __('My Favourties') ?></a></li>
                 <li><a href="<?= Route::url('oc-panel', array('controller' => 'profile', 'action' => 'orders')) ?>"><?= __('My Payments') ?></a></li>
                 <li><a href="<?= Route::url('oc-panel', array('controller' => 'messages', 'action' => 'index')) ?>"><?= __('My Messages') ?></a></li>
-                <li><a href="<?= Route::url('oc-panel', array('controller' => 'profile', 'action' => 'subscriptions')) ?>"><?= __('My Subscriptions') ?></a></li>
+                <!--<li><a href="<?= Route::url('oc-panel', array('controller' => 'profile', 'action' => 'subscriptions')) ?>"><?= __('My Subscriptions') ?></a></li>-->
                 <li><a href="<?= Route::url('oc-panel', array('controller' => 'profile', 'action' => 'edit')) ?>"><?= __('Settings') ?></a></li>
                 <li><a href="<?= Route::url('oc-panel', array('directory' => 'user', 'controller' => 'auth', 'action' => 'logout')) ?>"><?= __('Logout') ?></a></li>
             </ul>

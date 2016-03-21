@@ -4,7 +4,7 @@
 <div class="uk-container uk-container-center new-ad-form">
     <div class="uk-grid">
         <div class="uk-width-medium-7-10 uk-width-small-1-1 uk-container-center">
-            <div class="uk-accordion" data-uk-accordion>
+            <div class="uk-accordion">
                 <div class="uk-position-relative">
                     <h3 class="uk-accordion-title"><span class="steps active">Choose Plan</span><?=$ad->title?></h3>
                 </div>
@@ -23,12 +23,11 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?
-                                        $ad_plans = json_decode($ad->plans,TRUE);
+                                        <?php
 //                                        Remove unwanted promotion
                                         foreach($promotions as $k => $promotion){
                                             $plan_plans = json_decode(Core::config("payment.{$k}_plans"),TRUE);
-                                            $exp_date = @$ad_plans[$k];
+                                            $exp_date = @$ad->$k;
 
                                             if(!$plan_plans || $exp_date > Date::unix2mysql(time()))
                                                 unset($promotions[$k]);

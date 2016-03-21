@@ -55,5 +55,5 @@ var cities = {
     }
 };
 
-$("#location-search").easyAutocomplete(cities);
+//$("#location-search").easyAutocomplete(cities);
 

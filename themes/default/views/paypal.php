@@ -18,13 +18,13 @@
         <input type="hidden" name="shipping" value="0">
         <input type="hidden" name="shipping2" value="0">
         <input type="hidden" name="handling" value="0.00">
-        <input type="hidden" name="return" value="<?=$site_url?>">
         <input type="hidden" name="notify_url" value="<?=Route::url('default',array('controller'=>'paypal','action'=>'ipn','id'=>$order_id))?>">
+        <input type="hidden" name="return" value="<?=Route::url('default',array('controller'=>'paypal','action'=>'return','id'=>$order_id))?>">
+        <input type="hidden" name="cancel_return" value="<?=Route::url('default',array('controller'=>'paypal','action'=>'cancel','id'=>$order_id))?>">
         <input type="hidden" name="no_note" value="1">
         <input type="hidden" name="custom" value="">
         <input type="hidden" name="currency_code" value="<?=$paypal_currency?>">
         <input type="hidden" name="rm" value="2">
-        <input type="hidden" name="bn" value="OpenClassifieds_SP">
         <input type="submit" value="<?=__('Click here if you are not redirected');?>">
     </form>
 </div>

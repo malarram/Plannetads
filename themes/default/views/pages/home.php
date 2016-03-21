@@ -17,7 +17,7 @@
         </div>
         <ul class="uk-grid uk-slideset">
             <?
-            $i=0; foreach($ads as $ad):
+            $i=0; foreach($feature_ads as $ad):
             if(!$ad_first = $ad->get_first_image()):
             $ad_first = URL::base().'themes/default/images/default-ad-thumb.jpg';
             endif;
@@ -81,6 +81,47 @@
         <? $i++;?>
         <?endif?>
         <?endforeach?>
+    </div>
+</div>
+<!-- Premium Listing -->
+<div class="uk-container uk-container-center featured-listing">
+    <div class="uk-block uk-text-center">
+        <h2 class="uk-text-upper">Premium Ads</h2>
+        <p>Lorem ipsum dolor sit amet, Vivamus congue euismod ex, at sodales eros tincidunt eget
+            <br> In hac habitasse platea dictumst. Nulla commodo elementum elit, et ultrices magna venenatis nec</p>
+    </div>
+
+    <div data-uk-slider="{autoplay:true, autoplayInterval:2000}">
+        <div class="uk-slidenav-position uk-slidenav-custom">
+            <a href="" class="uk-slidenav uk-slidenav-previous" data-uk-slider-item="previous"></a>
+            <a href="" class="uk-slidenav uk-slidenav-next" data-uk-slider-item="next"></a>
+        </div>
+        <div class="uk-slider-container">
+            <ul class="uk-grid uk-slider uk-grid-width-medium-1-4">
+            <?
+            $i=0; foreach($premium_ads as $ad):
+            if(!$ad_first = $ad->get_first_image()):
+            $ad_first = URL::base().'themes/default/images/default-ad-thumb.jpg';
+            endif;
+            ?>
+            <li>
+                <div class="uk-panel uk-panel-box">
+                    <div class="uk-panel-teaser">
+                        <a href="<?= Route::url('ad', array('category' => $ad->category->seoname, 'seotitle' => $ad->seotitle)) ?>">
+                            <img src="<?= $ad_first ?>" alt="<?= HTML::chars($ad->title) ?>">
+                        </a>
+                    </div>
+                    <span class="uk-text-danger uk-text-bold uk-text-small"><?= i18n::money_format( $ad->price) ?></span>
+                    <h5 class="uk-margin-top-remove trim-title">
+                        <a href="<?= Route::url('ad', array('category' => $ad->category->seoname, 'seotitle' => $ad->seotitle)) ?>">
+                            <?= $ad->title ?>
+                        </a>
+                    </h5>
+                </div>
+            </li>
+            <?endforeach?>
+            </ul>
+        </div>
     </div>
 </div>
 
