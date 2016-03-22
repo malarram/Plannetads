@@ -282,6 +282,50 @@
                             </button>
                         </div>
                     </div>
+<!--Link web Plan-->
+                    <div class="form-group">
+                        <?= FORM::label($forms['to_linkweb']['key'], __('Link web Ads'), array('class'=>'control-label col-sm-4', 'for'=>$forms['to_linkweb']['key']))?>
+                        <div class="col-sm-8">
+                            <div class="onoffswitch">
+                                <?= FORM::hidden($forms['to_linkweb']['key'], 0);?>
+                                <?= Form::checkbox($forms['to_linkweb']['key'], 1, (bool) $forms['to_linkweb']['value'], array(
+                                'placeholder' => "",
+                                'class' => 'onoffswitch-checkbox',
+                                'id' => $forms['to_linkweb']['key'],
+                                'data-original-title'=> __("Link web ads"),
+                                'data-trigger'=>"hover",
+                                'data-placement'=>"right",
+                                'data-toggle'=>"popover",
+                                'data-content'=>__("Link web ads will be link web for a defined number of days."),
+                                ))?>
+                                <?= FORM::label($forms['to_linkweb']['key'], "<span class='onoffswitch-inner'></span><span class='onoffswitch-switch'></span>", array('class'=>'onoffswitch-label', 'for'=>$forms['to_linkweb']['key']))?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <?= FORM::label($forms['to_top']['key'], __('Link web Plans'), array('class'=>'control-label col-sm-4', 'for'=>$forms['to_top']['key']))?>
+                        <div class="col-sm-8">
+                            <?if (is_array($linkweb_plans)):?>
+                                <ul class="list-unstyled">
+                                    <?$i=0;foreach ($linkweb_plans as $days => $price):?>
+                                        <li>
+                                            <div class="btn-group" style="margin-right:10px;">
+                                                <button type="button" class="btn btn-xs btn-warning plan-edit" data-plan="linkweb" data-days="<?=$days?>" data-price="<?=$price?>"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
+                                                <?if($i>0):?>
+                                                    <a class="btn btn-xs btn-danger plan-delete" href="<?=Route::url('oc-panel',array('controller'=>'settings', 'action'=>'payment'))?>?plan_name=linkweb&delete_plan=<?=$days?>"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
+                                                <?endif?>
+                                            </div>
+                                            <?=$days?> <?=__('Days')?> - <?=i18n::money_format($price)?>
+                                        </li>
+                                    <?$i++;endforeach?>
+                                </ul>
+                            <?endif?>
+                            <button type="button" class="btn btn-primary plan-add" data-plan="linkweb" data-toggle="modal" data-target="#modalplan">
+                                <?=__('Add a plan')?>
+                            </button>
+                        </div>
+                    </div>
 
                     <div class="form-group hidden">
                         <?= FORM::label($forms['to_top']['key'], __('Bring to top Ad'), array('class'=>'control-label col-sm-4', 'for'=>$forms['to_top']['key']))?>

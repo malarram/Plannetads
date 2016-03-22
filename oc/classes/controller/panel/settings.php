@@ -359,6 +359,7 @@ class Controller_Panel_Settings extends Auth_Controller {
                                                                                            'sponsored_plans' => Model_Order::get_plans('sponsored'),
                                                                                            'highlighted_plans' => Model_Order::get_plans('highlighted'),
                                                                                            'bumpup_plans' => Model_Order::get_plans('bumpup'),
+                                                                                           'linkweb_plans' => Model_Order::get_plans('linkweb'),
                 )
                 );
     }

@@ -59,6 +59,7 @@ class Model_Order extends ORM {
     const PRODUCT_TO_SPONSORED = 6; // paid to sposored an ad in the site
     const PRODUCT_TO_HIGHLIGHTED = 7; // paid to highlighted an ad in the site
     const PRODUCT_TO_BUMPUP = 8; // paid to bumpup an ad in the site
+    const PRODUCT_TO_LINKWEB = 9; // paid to bumpup an ad in the site
 
     /**
      * @var  array  Available Promotion ad
@@ -70,6 +71,7 @@ class Model_Order extends ORM {
         'sponsored' => 'Sponsored Ad',
         'highlighted' => 'Highlighted Ad',
         'bumpup' => 'Bump Up Ad',
+        'linkweb' => 'Link Web Ad',
     );
 
     /**
@@ -85,7 +87,8 @@ class Model_Order extends ORM {
             self::PRODUCT_TO_SPONSORED => __('Sposored ad'),
             self::PRODUCT_TO_HIGHLIGHTED => __('Highlighted ad'),
             self::PRODUCT_TO_BUMPUP => __('Bump up ad'),
-            self::PRODUCT_AD_SELL => __('Buy product'),
+            self::PRODUCT_TO_LINKWEB => __('Link your website'),
+            self::PRODUCT_AD_SELL => __('Buy product')
         );
     }
 
@@ -183,6 +186,9 @@ class Model_Order extends ORM {
                 break;
             case Model_Order::PRODUCT_TO_BUMPUP:
                 $ad->to_bumpup($featured_days);
+                break;
+            case Model_Order::PRODUCT_TO_LINKWEB:
+                $ad->to_linkweb($featured_days);
                 break;
             case Model_Order::PRODUCT_CATEGORY:
                 $ad->paid_category();

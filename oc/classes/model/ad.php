@@ -276,6 +276,20 @@ class Model_Ad extends ORM {
         return (isset($first_image[$type])) ? $first_image[$type] : NULL;
     }
 
+    public function get_list_image() {
+        if (( $icon_src = $this->get_first_image() ) !== NULL):
+            $list_image = $icon_src;
+        elseif (( $icon_src = $this->category->get_icon() ) !== FALSE):
+            $list_image = $icon_src;
+        elseif (( $icon_src = $this->location->get_icon() ) !== FALSE):
+            $list_image = $icon_src;
+        else:
+            $list_image = URL::base() . 'themes/default/images/default-ad-thumb.jpg';
+        endif;
+
+        return $list_image;
+    }
+
     /**
      * image_path make unique dir path with a given date and id
      * @return string path
@@ -1054,6 +1068,28 @@ class Model_Ad extends ORM {
     }
 
     /**
+     * features an advertisement
+     * @param $days days to be featured
+     * @return void
+     */
+    public function to_linkweb($days = NULL) {
+
+        if ($this->loaded()) {
+            if (!is_numeric($days)) {
+                $plans = Model_Order::get_plans('linkweb');
+                $days = array_keys($plans);
+                $days = reset($days);
+            }
+
+            $this->linkweb = Date::unix2mysql(time() + ($days * 24 * 60 * 60));
+            try {
+                $this->save();
+            } catch (Exception $e) {
+                throw HTTP_Exception::factory(500, $e->getMessage());
+            }
+        }
+    }
+    /**
      * unfeatures an advertisement
      * @return void
      */
@@ -1428,6 +1464,7 @@ class Model_Ad extends ORM {
 
 
 
+
 // append to $values new custom values
         foreach ($values as $name => $field) {
             // get by prefix
@@ -1485,15 +1522,15 @@ class Model_Ad extends ORM {
     public function get_plan_tags() {
         if ($this->loaded()) {
             $labels = array();
-            if($this->featured)
+            if ($this->featured)
                 $labels[] = "Featured Plans : Expires on " . Date::format($this->featured, 'd M');
-            if($this->premium)
+            if ($this->premium)
                 $labels[] = "Premium Plans : Expires on " . Date::format($this->premium, 'd M');
-            if($this->sponsored)
+            if ($this->sponsored)
                 $labels[] = "Sponsored Plans : Expires on " . Date::format($this->sponsored, 'd M');
-            if($this->highlighted)
+            if ($this->highlighted)
                 $labels[] = "Highlighted Plans : Expires on " . Date::format($this->highlighted, 'd M');
-            if($this->bumpup)
+            if ($this->bumpup)
                 $labels[] = "Bumpup Plans : Expires on " . Date::format($this->bumpup, 'd M');
 
             return $labels;

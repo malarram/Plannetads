@@ -46,7 +46,7 @@ class Controller_New extends Controller {
 
         $this->template->styles = array(
             //For Summer note
-            URL::base().'cdn/bootstrap.min.css' => 'screen',
+            URL::base() . 'cdn/bootstrap.min.css' => 'screen',
             'css/summernote.css' => 'screen',
             //For codemirror
 //            'css/components/codemirror.css' => 'screen',
@@ -56,7 +56,7 @@ class Controller_New extends Controller {
 //                                        URL::base().'cdn/sweetalert.css' => 'screen'
         );
         //For Summer note
-        $this->template->scripts['footer'][] = URL::base().'cdn/bootstrap.min.js';
+        $this->template->scripts['footer'][] = URL::base() . 'cdn/bootstrap.min.js';
         $this->template->scripts['footer'][] = 'js/summernote.min.js';
         //For codemirror
 //        $this->template->scripts['footer'][] = 'js/components/codemirror.js';
@@ -175,7 +175,6 @@ class Controller_New extends Controller {
                 }
 
                 if ($validation->check()) {
-
                     // User detection, if doesnt exists create
                     if (!Auth::instance()->logged_in())
                         $user = Model_User::create_email(core::post('email'), core::post('name'));
@@ -218,6 +217,15 @@ class Controller_New extends Controller {
                                 $filename = $new_ad->save_base64_image(Core::post('base64_image' . $i));
                             elseif (isset($_FILES['image' . $i]))
                                 $filename = $new_ad->save_image($_FILES['image' . $i]);
+                        }
+
+                        if (isset($data['link_website']) && $data['link_website'] == '1') {
+                            $order_no = uniqid();
+                            $currency = core::config('payment.paypal_currency');
+                            $days = $data['linkweb_days'];
+                            $amount = Model_Order::get_price('linkweb', $days);
+                            $order = Model_Order::new_order($new_ad, $new_ad->user, Model_Order::PRODUCT_TO_LINKWEB, $amount, $currency, NULL, $days, $order_no);
+                            $return['checkout_url'] = Route::url('default', array('controller' => 'ad', 'action' => 'checkout', 'id' => $order_no));
                         }
 
                         Alert::set(Alert::SUCCESS, $return['message']);

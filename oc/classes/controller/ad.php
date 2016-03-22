@@ -256,7 +256,7 @@ class Controller_Ad extends Controller {
                 //newest first
                 case 'published-desc':
                 default:
-                    $ads->order_by('published', 'desc');
+                    $ads->order_by('bumpup', 'desc');
                     break;
             }
 
@@ -1044,7 +1044,7 @@ class Controller_Ad extends Controller {
                     //newest first
                     case 'published-desc':
                     default:
-                        $ads->order_by('published', 'desc');
+                        $ads->order_by('bumpup', 'desc');
                         break;
                 }
 

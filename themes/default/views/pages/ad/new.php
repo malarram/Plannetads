@@ -147,24 +147,24 @@
                             <div class="uk-width-1-2">
                                 <?= FORM::label('address', __('Address'), array('class' => 'uk-form-label', 'for' => 'address')) ?>
                                 <?if(core::config('advertisement.map_pub_new')):?>
-                                    <?= FORM::input('address', Request::current()->post('address'), array('class' => 'uk-width-5-6', 'id' => 'address', 'placeholder' => __('Address'))) ?>
-                                    <button class="uk-button uk-button-default locateme" type="button"><i class="uk-icon-wifi"></i></button>
+                                <?= FORM::input('address', Request::current()->post('address'), array('class' => 'uk-width-5-6', 'id' => 'address', 'placeholder' => __('Address'))) ?>
+                                <button class="uk-button uk-button-default locateme" type="button"><i class="uk-icon-wifi"></i></button>
                                 <?else:?>
                                 <?= FORM::input('address', Request::current()->post('address'), array('class' => 'uk-width-1-1 uk-form-large', 'id' => 'address', 'placeholder' => __('Address'))) ?>
                                 <?endif?>
                             </div>
-                        <?if(core::config('advertisement.map_pub_new')):?>
-                        <div class="uk-width-1-2 popin-map-container">
-                            <div class="map-inner" id="map"
-                                 data-lat="<?= core::config('advertisement.center_lat') ?>"
-                                 data-lon="<?= core::config('advertisement.center_lon') ?>"
-                                 data-zoom="<?= core::config('advertisement.map_zoom') ?>"
-                                 style="height:200px;max-width:400px;">
+                            <?if(core::config('advertisement.map_pub_new')):?>
+                            <div class="uk-width-1-2 popin-map-container">
+                                <div class="map-inner" id="map"
+                                     data-lat="<?= core::config('advertisement.center_lat') ?>"
+                                     data-lon="<?= core::config('advertisement.center_lon') ?>"
+                                     data-zoom="<?= core::config('advertisement.map_zoom') ?>"
+                                     style="height:200px;max-width:400px;">
+                                </div>
                             </div>
-                        </div>
-                        <input type="hidden" name="latitude" id="publish-latitude" value="" disabled>
-                        <input type="hidden" name="longitude" id="publish-longitude" value="" disabled>
-                        <?endif?>
+                            <input type="hidden" name="latitude" id="publish-latitude" value="" disabled>
+                            <input type="hidden" name="longitude" id="publish-longitude" value="" disabled>
+                            <?endif?>
                         </div>
                         <?endif?>
                         <?if(core::config('payment.stock')):?>
@@ -179,10 +179,23 @@
                         <?endif?>
                         <?if($form_show['website'] != FALSE):?>
                         <div class="uk-grid">
-                            <div class="uk-width1-1-1">
-                                <?= FORM::label('website', __('Website'), array('class' => 'uk-form-label', 'for' => 'website')) ?>
-                                <?= FORM::input('website', Request::current()->post('website'), array('placeholder' => core::config("general.base_url"), 'class' => 'uk-width-1-1 uk-form-large', 'id' => 'website')) ?>
-                            </div>
+                        <div class="uk-form-controls uk-form-controls-text">
+                            <p class="uk-form-controls-condensed">
+                                <input type="checkbox" name="link_website" id="link_website" value="1">
+                                <label for="link_website"><?= __('Link your Website') ?></label>
+
+                                <select class="uk-form-small" name="linkweb_days" id="linkweb_days" disabled>
+                                    <?php
+                                    $linkweb_plans = json_decode(core::config('payment.linkweb_plans'), TRUE);
+                                    foreach ($linkweb_plans as $days => $amount) {
+                                        echo "<option value='{$days}' data-amount='{$amount}'>{$days} Days</option>";
+                                    }
+                                    ?>
+                                </select>
+
+                                <?= FORM::input('website', '', array('placeholder' => __('Enter your website url'), 'class' => 'uk-form-small', 'id' => 'website', 'disabled')) ?>
+                            </p>
+                        </div>
                         </div>
                         <?endif?>
                         <?if (!Auth::instance()->get_user()):?>

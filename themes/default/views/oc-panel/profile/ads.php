@@ -48,6 +48,8 @@
                             <div class="uk-badge uk-badge-success"><?= __('Active') ?></div>
                             <? elseif($ad->status == Model_Ad::STATUS_SPAM):?>
                             <div class="uk-badge uk-badge-danger"><?= __('Spam') ?></div>
+                            <? elseif($ad->status == Model_Ad::STATUS_UNCONFIRMED):?>
+                            <div class="uk-badge uk-badge-danger"><?= __('Unconfirmed') ?></div>
                             <?endif?>
                         </td>
                         <td>
