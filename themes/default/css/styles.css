@@ -32,6 +32,10 @@ h5 {
     font-weight: 500;
 }
 
+.uk-badge{
+    font-weight: normal;
+}
+
 /* 3.1) Top Bar
 ====================================*/
 .top-bar{
@@ -691,6 +695,39 @@ select.uk-form-large, textarea.uk-form-large, input[type].uk-form-large, input:n
 .settings-sidebar .uk-nav-side > li.uk-active > a {
     background-color: #ccc;
     color: #505656;
+}
+
+
+.actions-dropdown{
+    float: right;
+}
+
+.actions-dropdown .uk-dropdown
+{
+background: #fff;
+border-radius: 2px;
+border:2px solid #ccc;
+}
+
+.actions-dropdown .uk-button{
+    background-color: #999999;
+    color: #fff;
+}
+
+ .actions-dropdown .uk-button:hover{
+    background-color: #777;
+
+ }
+
+.actions-dropdown .uk-dropdown  li a {
+   font-size: 14px;
+    padding: 6px 15px;
+}
+
+.actions-dropdown .uk-dropdown  li a:hover{
+    background:#F1F1F1;
+    text-decoration: none;
+    color: #505656
 }
 
 /* =================================================================== */
