@@ -71,7 +71,7 @@ class Model_Order extends ORM {
         'sponsored' => 'Sponsored Ad',
         'highlighted' => 'Highlighted Ad',
         'bumpup' => 'Bump Up Ad',
-        'linkweb' => 'Link Web Ad',
+        'linkweb' => 'Add Web Link',
     );
 
     /**

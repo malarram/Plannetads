@@ -618,8 +618,14 @@ class Controller_Ad extends Controller {
 
             $validation = Validation::factory($data);
             $validation = $validation->rule('plan_enable_disable', 'not_empty');
-
+            if(isset($data['plan']['linkweb']) && !empty($data['plan']['linkweb'])){
+                $validation->rule('website','not_empty')->rule('website','url');
+            }
             if ($validation->check()) {
+                if(isset($data['website']) && !empty($data['website'])){
+                    $ad->website = $data['website'];
+                    $ad->save();
+                }
                 $order_no = uniqid();
                 foreach ($data['plan'] as $plan => $days) {
                     $amount = Model_Order::get_price($plan, $days);
@@ -720,6 +726,7 @@ class Controller_Ad extends Controller {
             //template header
             $this->template->title = __('Checkout');
             Breadcrumbs::add(Breadcrumb::factory()->set_title(__('Home'))->set_url(Route::url('default')));
+//            Breadcrumbs::add(Breadcrumb::factory()->set_title(__('Choose Plans'))->set_url(Route::url('default', array('controller' => 'ad', 'action' => 'add_plan', 'id' => $orders[0]->ad->id_ad))));
             Breadcrumbs::add(Breadcrumb::factory()->set_title($this->template->title));
 
             Controller::$full_width = TRUE;

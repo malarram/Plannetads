@@ -68,8 +68,8 @@
                 <div class="uk-panel uk-panel-box ">
                     <article class="uk-comment">
                         <header class="uk-comment-header">
-                            <div class="user-photo uk-float-left">
-                                <img class="uk-comment-avatar uk-border-circle" src="<?= Auth::instance()->get_user()->get_profile_image() ?>" alt="<?=  ucwords(Auth::instance()->get_user()->name)?>">
+                            <div class="user-photo uk-width-1-6">
+                                <img class="uk-comment-avatar uk-border-circle" src="<?= $ad->user->get_profile_image() ?>" alt="<?=  ucwords($ad->user->name)?>">
                             </div>
                             <div class="uk-float-left">
                                 <h4 class="uk-comment-title"><a href="<?= Route::url('profile', array('seoname' => $ad->user->seoname)) ?>"><?= ucwords($ad->user->name) ?></a></h4>

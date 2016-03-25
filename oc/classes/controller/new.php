@@ -219,22 +219,23 @@ class Controller_New extends Controller {
                                 $filename = $new_ad->save_image($_FILES['image' . $i]);
                         }
 
-                        if (isset($data['link_website']) && $data['link_website'] == '1') {
-                            $order_no = uniqid();
-                            $currency = core::config('payment.paypal_currency');
-                            $days = $data['linkweb_days'];
-                            $amount = Model_Order::get_price('linkweb', $days);
-                            $order = Model_Order::new_order($new_ad, $new_ad->user, Model_Order::PRODUCT_TO_LINKWEB, $amount, $currency, NULL, $days, $order_no);
-                            $return['checkout_url'] = Route::url('default', array('controller' => 'ad', 'action' => 'checkout', 'id' => $order_no));
-                        }
+//                        if (isset($data['link_website']) && $data['link_website'] == '1') {
+//                            $order_no = uniqid();
+//                            $currency = core::config('payment.paypal_currency');
+//                            $days = $data['linkweb_days'];
+//                            $amount = Model_Order::get_price('linkweb', $days);
+//                            $order = Model_Order::new_order($new_ad, $new_ad->user, Model_Order::PRODUCT_TO_LINKWEB, $amount, $currency, NULL, $days, $order_no);
+//                            $return['checkout_url'] = Route::url('default', array('controller' => 'ad', 'action' => 'checkout', 'id' => $order_no));
+//                        }
 
                         Alert::set(Alert::SUCCESS, $return['message']);
+                        $this->redirect(Route::url('default', array('controller' => 'ad', 'action' => 'add_plan', 'id' => $new_ad->id_ad)));
 
                         //redirect user
-                        if (isset($return['checkout_url']) AND ! empty($return['checkout_url']))
-                            $this->redirect($return['checkout_url']);
-                        else
-                            $this->redirect(Route::url('default', array('action' => 'thanks', 'controller' => 'ad', 'id' => $new_ad->id_ad)));
+//                        if (isset($return['checkout_url']) AND ! empty($return['checkout_url']))
+//                            $this->redirect($return['checkout_url']);
+//                        else
+//                            $this->redirect(Route::url('default', array('action' => 'thanks', 'controller' => 'ad', 'id' => $new_ad->id_ad)));
                     }
                 }
                 else {

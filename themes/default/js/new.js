@@ -53,14 +53,14 @@ $(function(){
         });
     }
 
-    $('#link_website').click(function(){
-       if($(this).is(':checked')){
-           $('#website,#linkweb_days').removeAttr('disabled');
-       }else{
-           $('#website,#linkweb_days').attr('disabled','disabled');
-           $('#website').val('');
-       }
-    });
+//    $('#link_website').click(function(){
+//       if($(this).is(':checked')){
+//           $('#website,#linkweb_days').removeAttr('disabled');
+//       }else{
+//           $('#website,#linkweb_days').attr('disabled','disabled');
+//           $('#website').val('');
+//       }
+//    });
 });
 
 function createCategorySelect () {

@@ -3,8 +3,8 @@
     <div class="uk-offcanvas-bar uk-offcanvas-bar-flip ">
         <ul class="uk-nav uk-nav-offcanvas" data-uk-nav>
             <div class="uk-nav-divider"></div>
-            <li><a href="#signin_form" data-uk-modal>Sign In</a></li>
-            <li><a href="select-category.html">Post an Ad</a></li>
+            <li><a href="#signin_form" data-uk-modal><?=__('Sign In')?></a></li>
+            <li><a href="<?=Route::url('post_new')?>"><?=__('Post an Ad')?></a></li>
             <li class="uk-nav-divider"></li>
             <li><a href="">About us</a></li>
             <li><a href="">Help</a></li>

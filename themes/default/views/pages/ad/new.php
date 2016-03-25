@@ -178,7 +178,7 @@
                         </div>
                         <?endif?>
                         <?if($form_show['website'] != FALSE):?>
-                        <div class="uk-grid">
+                        <div class="uk-grid uk-hidden">
                         <div class="uk-form-controls uk-form-controls-text">
                             <p class="uk-form-controls-condensed">
                                 <input type="checkbox" name="link_website" id="link_website" value="1">

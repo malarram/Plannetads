@@ -59,8 +59,8 @@
                                 <!-- This is the dropdown -->
                                 <div class="uk-dropdown uk-dropdown-small">
                                     <ul class="uk-nav uk-nav-dropdown">
-                                        <li><a href="<?= Route::url('default', array('controller' => 'ad', 'action' => 'add_plan', 'id' => $ad->id_ad)) ?>"><i class="uk-icon-plus-circle uk-margin-small-right"></i>Add plans</a></li>
-                                        <li><a href="<?=Route::url('oc-panel', array('controller'=>'myads','action'=>'update','id'=>$ad->id_ad))?>"><i class="uk-icon-pencil uk-margin-small-right"></i>Edit</a></li>
+                                        <li><a href="<?= Route::url('default', array('controller' => 'ad', 'action' => 'add_plan', 'id' => $ad->id_ad)) ?>"><i class="uk-icon-plus-circle uk-margin-small-right"></i> <?=__('Add plans') ?></a></li>
+                                        <li><a href="<?=Route::url('oc-panel', array('controller'=>'myads','action'=>'update','id'=>$ad->id_ad))?>"><i class="uk-icon-pencil uk-margin-small-right"></i> <?=__('Edit') ?></a></li>
                                         <? if( $ad->status == Model_Ad::STATUS_UNAVAILABLE
                                         AND !in_array(core::config('general.moderation'), Model_Ad::$moderation_status)
                                         ):?>
@@ -73,7 +73,7 @@
                                                 data-toggle="confirmation"
                                                 data-btnOkLabel="<?= __('Yes, definitely!') ?>"
                                                 data-btnCancelLabel="<?= __('No way!') ?>">
-                                                <i class="uk-icon-check uk-margin-small-right"> <?= __('Activate') ?></i>
+                                                <i class="uk-icon-check uk-margin-small-right"></i> <?= __('Activate') ?>
                                             </a>
                                         </li>
                                         <?endif?>
@@ -86,7 +86,7 @@
                                                 data-toggle="confirmation"
                                                 data-btnOkLabel="<?= __('Yes, definitely!') ?>"
                                                 data-btnCancelLabel="<?= __('No way!') ?>">
-                                                <i class="uk-icon-ban uk-margin-small-right"> <?= __('Deactivate') ?></i>
+                                                <i class="uk-icon-ban uk-margin-small-right"></i> <?= __('Deactivate') ?>
                                             </a>
                                         </li>
                                         <?endif?>
