@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta charset="utf-8">
+    <title>Your page title here :)</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="css/uikit.css">
+    <link rel="stylesheet" href="js/plugins/selectric/selectric.css">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+</head>
+
+<body>
+
+    <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <header class="uk-contrast">
+            <div class="top-bar">
+                <div class="uk-container uk-container-center">
+                    <div class="cities uk-float-right">
+                        <div class="uk-button-dropdown" data-uk-dropdown="{mode:'click'}">
+                            <a class="uk-button uk-button-mini" ><i class="uk-icon-map-marker"></i> London <i class="uk-icon-caret-down"></i></a>
+                            <div class="uk-dropdown uk-scrollable-box">
+                                <div class="uk-h6">Cities in England : </div>
+                                <ul class="uk-nav uk-nav-dropdown uk-panel uk-margin-bottom">
+                                    <li><a href="#" title="London"> Bath</a></li>
+                                    <li><a href="#" title="Edinburgh"> Brighton and Hove</a></li>
+                                    <li><a href="#" title="Manchester"> Canterbury</a></li>
+                                    <li><a href="#" title="Birmingham"> Chichester</a></li>
+                                    <li><a href="#" title="Oxford">  Durham</a></li>
+                                    <li><a href="#" title="Cambridge"> Cambridge</a></li>
+                                    <li><a href="#" title="Brighton"> Brighton</a></li>
+                                    <li><a href="#" title="Nottingham"> Nottingham</a></li>
+                                    <li><a href="#" title="Aberdeen"> Aberdeen</a></li>
+                                </ul>
+                                <div class="uk-h6"> Cities in Wales : </div>
+                                <ul class="uk-nav uk-nav-dropdown uk-panel uk-margin-bottom">
+                                    <li><a href="#" title="London"> Bangor</a></li>
+                                    <li><a href="#" title="Edinburgh"> Cardiff</a></li>
+                                    <li><a href="#" title="Manchester"> Newport</a></li>
+                                    <li><a href="#" title="Birmingham"> Swansea</a></li>
+                                    <li><a href="#" title="Oxford">  St Davids</a></li>
+                                </ul>
+                                <div class="uk-h6"> Cities in Scotland : </div>
+                                <ul class="uk-nav uk-nav-dropdown uk-panel">
+                                    <li><a href="#" title="London"> Aberdeen</a></li>
+                                    <li><a href="#" title="Edinburgh"> Dundee</a></li>
+                                    <li><a href="#" title="Manchester"> Edinburgh</a></li>
+                                    <li><a href="#" title="Birmingham"> Glasgow</a></li>
+                                    <li><a href="#" title="Oxford">  Inverness</a></li>
+                                    <li><a href="#" title="Oxford">  Stirling</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="language uk-float-right  uk-margin-right">
+                        <div class="uk-button-dropdown" data-uk-dropdown="{mode:'click'}">
+                            <a class="uk-button uk-button-mini" ><img src="images/flags/gb.png" alt="United Kingdom"> English (UK) <i class="uk-icon-caret-down"></i></a>
+                            <div class="uk-dropdown uk-scrollable-box">
+                                <ul class="uk-nav uk-nav-dropdown uk-panel ">
+                                    <li><a href="#" title="English (UK)" data-lang-id="en_UK" class="uk-text-bold"><img src="images/flags/gb.png" alt="United Kingdom" class="uk-margin-small-right"> English (UK)</a></li>
+                                    <li><a href="#" title="English (US)"  data-lang-id="en_US" ><img src="images/flags/us.png" alt="United States" class="uk-margin-small-right"> English (US)</a></li>
+                                    <li><a href="#" title="French (Canada)" data-lang-id="fr_CA"><img src="images/flags/ca.png" alt="Canada" class="uk-margin-small-right"> Français (Canada)</a></li>
+                                    <li><a href="#" title="French (France)" data-lang-id="fr_FR"><img src="images/flags/fr.png" alt="France" class="uk-margin-small-right"> Français (France)</a></li>
+                                    <li><a href="#" title="Spanish" data-lang-id="es_ES"><img src="images/flags/es.png" alt="Spain" class="uk-margin-small-right"> Español</a></li>
+                                    <li><a href="#" title="Danish" data-lang-id="dk_DK"><img src="images/flags/dk.png" alt="Denmark" class="uk-margin-small-right"> Dansk</a></li>
+                                    <li><a href="#" title="Russian" data-lang-id="ru_RU"><img src="images/flags/ru.png" alt="Russia" class="uk-margin-small-right"> Русский</a></li>
+                                    <li><a href="#" title="Polish" data-lang-id="pl_PL"><img src="images/flags/pl.png" alt="Poland" class="uk-margin-small-right"> Polski</a></li>
+                                    <li><a href="#" title="Italian" data-lang-id="it_IT"><img src="images/flags/it.png" alt="Italy" class="uk-margin-small-right"> Italiano</a></li>
+                                    <li><a href="#" title="Dutch" data-lang-id="nl_NL"><img src="images/flags/nl.png" alt="Netherlands" class="uk-margin-small-right"> Nederlands</a></li>
+                                    <li><a href="#" title="Portuguese (Brazil)" data-lang-id="pt_BR"><img src="images/flags/br.png" alt="Brazil" class="uk-margin-small-right"> Português (Brasil)</a></li>
+                                    <li><a href="#" title="Portuguese (Portugal)" data-lang-id="pt_PT"><img src="images/flags/pg.png" alt="Portugal" class="uk-margin-small-right"> Português (Portugal)</a></li>
+                                    <li><a href="#" title="Japanese" data-lang-id="jp_JP"><img src="images/flags/jp.png" alt="Japan" class="uk-margin-small-right"> 日本語</a></li>
+                                    <li><a href="#" title="Japanese (Kansai)" data-lang-id="ka_JP"><img src="images/flags/jp.png" alt="Japan" class="uk-margin-small-right"> 日本語(関西)</a></li>
+                                    <li><a href="#" title="Traditional Chinese (Taiwan)" data-lang-id="cn_TW"><img src="images/flags/tw.png" alt="Taiwan" class="uk-margin-small-right"> 中文(台灣)</a></li>
+                                    <li><a href="#" title="Simplified Chinese (China)" data-lang-id="cn_CN"><img src="images/flags/cn.png" alt="China" class="uk-margin-small-right"> 中文(简体)</a></li>
+                                    <li><a href="#" title="Traditional Chinese (Hong Kong)" data-lang-id="cn_HK"><img src="images/flags/hk.png" alt="Hong Kong" class="uk-margin-small-right"> 中文(香港)</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="uk-navbar">
+                <div class="uk-container uk-container-center">
+                    <a href="" class="uk-navbar-brand uk-width-large-2-10 uk-width-medium-2-2 uk-width-small-4-10"><img src="images/logo-large.png" alt=""></a>
+                    <div class="uk-navbar-content uk-navbar-flip">
+                        <ul class="uk-navbar-nav">
+                            <!-- This is the container enabling the JavaScript -->
+                            <li class="uk-parent" data-uk-dropdown="{mode:'click', pos:'bottom-right'}">
+                                <!-- This is the menu item toggling the dropdown -->
+                                <a class="uk-height-1-1 uk-vertical-align  uk-text-contrast"> <span class="uk-vertical-align-middle">
+                                <img src="images/a1.jpg" alt="..." class="uk-border-circle uk-thumbnail-xx-mini uk-margin-right"><span class="uk-hidden-small">Nick.C</span>
+                                    <i class="uk-icon uk-icon-caret-down uk-margin-small-top uk-text-small" aria-hidden="false"></i>
+                                    </span>
+                                </a>
+                                <!-- This is the dropdown -->
+                                <div class="uk-dropdown uk-dropdown-navbar">
+                                    <ul class="uk-nav uk-nav-navbar">
+                                        <li><a href="my-ads.html">My Ads</a></li>
+                                        <li><a href="wishlists.html">Wishlists</a></li>
+                                        <li><a href="settings.html">Settings</a></li>
+                                        <li><a href="index.html">Logout</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+    <div class="uk-container uk-container-center ">
+        <div class="uk-grid uk-block">
+            <div class="uk-width-large-2-10 uk-width-medium-3-10 uk-width-small-3-10 ">
+                <div class="uk-panel uk-panel-box  uk-panel-box-secondary uk-margin-bottom">
+                    <h3 class="uk-h5 uk-text-bold">Plannetads Links</h3>
+                    <ul class="uk-nav uk-nav-side uk-nav-parent-icon" data-uk-nav>
+                        <li class="uk-nav-divider"></li>
+                        <li class="uk-active"><a href="about.html">About Us</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="help.html">Help</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="uk-width-large-8-10 uk-width-medium-7-10 uk-width-small-7-10">
+                <h3 class="uk-text-bold">About Us</h3>
+                <hr>
+                  <p>The way we advertise or discover what we want as people has evolved over the years, we have gradually moved away from the old methods of advertising on the back pages of physical newspapers/magazines, radio and television onto the use of digital platforms as we are now officially in the Internet age, where nearly all business transactions are conducted online. This has resulted in the emergence of numerous poorly managed classified ads websites that can barely provide their users with the great experience they desire.</p>
+                  <p>Established in 2016, by Ernest Osaseri a web security specialist / entrepreneur, Plannetads.com is a website ("The Site") that hosts classified advertising and related content created and developed by third-party users within the UK. This site offers a free, high quality, reliable and efficient advertisement platform to all users with the outmost confidentiality and customer service.</p>
+                  <p>Our vision is to facilitate smooth dealings between our users as we remain focused on our mission to create a safe atmosphere and a better market place for everyone. And not forgetting to mention our ultimate aim of providing a fair, responsive, secure and user friendly platform for both sellers and buyers alike. We sort to maintain a lasting relationship with you and gain your trust by creating successful trade connections between individuals just like you as people of one community. All of the above is what makes us (<a href="index.html">Plannetads.com</a>) "The Site" to go to when it comes to classified ads.</p>
+                 
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div id="footer" class="uk-container uk-container-center uk-text-center">
+            <ul class="uk-list">
+                <li><a href="">About us</a></li> |
+                <li><a href="">Help</a></li> |
+                <li><a href="">Privacy policy</a></li> |
+                <li><a href="">Terms of use</a></li> |
+                <li><a href="">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Javascripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/uikit.min.js"></script>
+
+    <script src="js/main.js"></script>
+    <!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+
+</html>
