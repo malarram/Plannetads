@@ -475,6 +475,11 @@ html[data-useragent*='MSIE 10.0'] .location-input {
 
 .uk-slideset h5 a, .uk-slider h5 a{
     color: #8E8E8E;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis; 
 }
 
 .uk-slideset h5 a:hover, .uk-slider h5 a:hover{
