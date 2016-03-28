@@ -25,7 +25,7 @@
                              <?= (core::config('advertisement.parent_category')) ? 'data-isparent' : NULL ?>
                              >
                             <div id="select-category-template" class="uk-width-1-1 uk-hidden">
-                                <select class="disable-chosen select-category" placeholder="<?= __('Pick a category...') ?>"></select>
+                                <select class="disable-chosen select-category uk-margin-bottom" placeholder="<?= __('Pick a category...') ?>"></select>
                             </div>
                             <div id="paid-category" class="uk-width1-1-1 uk-hidden">
                                 <span class="uk-form-help-block" data-title="<?= __('Category %s is a paid category: %d') ?>"><span class="text-warning"></span></span>
@@ -52,7 +52,7 @@
                         <?= FORM::label('locations', __('Location'), array('class' => 'uk-form-label', 'for' => 'location')) ?>
                         <div id="location-chained" class="uk-grid <?= ($id_location === NULL) ? NULL : 'uk-hidden' ?>" data-apiurl="<?= Route::url('api', array('version' => 'v1', 'format' => 'json', 'controller' => 'locations')) ?>">
                             <div id="select-location-template" class="uk-width-1-1 uk-hidden">
-                                <select class="disable-chosen select-location" placeholder="<?= __('Pick a location...') ?>"></select>
+                                <select class="disable-chosen select-location uk-margin-bottom" placeholder="<?= __('Pick a location...') ?>"></select>
                             </div>
                         </div>
                         <?if($id_location !== NULL):?>
