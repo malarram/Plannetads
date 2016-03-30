@@ -19,7 +19,7 @@
                 </thead>
                 <tbody>
                     <?php
-//                                        Remove unwanted promotion
+//                  Remove unwanted promotion
                     foreach($promotions as $k => $promotion){
                     $plan_plans = json_decode(Core::config("payment.{$k}_plans"), TRUE);
                     $exp_date = @$ad->$k;
@@ -49,24 +49,23 @@
                         </td>
                         <td><span class="plan_price">0.00</span></td>
                     </tr>
-                    <? endforeach; else:  ?>
-                    <tr class="uk-disabled">
-                        <td colspan="4"><?= __('No promotion available for this ad') ?></td>
-                    </tr>
-                    <? endif;?>
-                </tbody>
-                <tfoot>
-                    <tr class="uk-alert uk-alert-warning">
+                    <? endforeach; ?>
+                    <tr class="summary uk-alert uk-alert-warning">
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td class="uk-text-bold uk-text-large">Total</td>
                         <td class="uk-text-bold uk-text-large"><span class="total_price">0.00</span></td>
                     </tr>
-                </tfoot>
+                    <? else:  ?>
+                    <tr class="summary uk-disabled">
+                        <td colspan="3"><?= __('No promotion available for this ad') ?></td>
+                    </tr>
+                    <? endif;?>
+                </tbody>
             </table>
             <div class="uk-form-controls">
-                <a href="<?= Route::url('oc-panel', array('controller' => 'myads', 'action' => 'index')) ?>" class="uk-button uk-button-large uk-float-left"><?= __('Cancel') ?></a>
-                <button name="proceed" type="submit" class="uk-button uk-button-primary uk-button-large uk-float-right"><?= __('Proceed to checkout') ?></button>
+                <a id="skip-continue" href="<?= Route::url('oc-panel', array('controller' => 'myads', 'action' => 'index')) ?>" class="uk-button uk-button-primary uk-button-large uk-float-right"><?= __('Skip & Publish ad') ?></a>
+                <button id="proceed-checkout" name="proceed" type="submit" class="uk-button uk-button-primary uk-button-large uk-float-right uk-hidden"><?= __('Proceed to checkout') ?></button>
             </div>
             <?= FORM::close() ?>
         </div>

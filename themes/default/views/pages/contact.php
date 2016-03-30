@@ -93,24 +93,14 @@
                     <?= FORM::close() ?>
                 </div>
                 <div class="uk-width-medium-4-10 uk-width-small-1-1">
-                    <h5  class="uk-text-bold">Physical Address:</h5>
-                    <p>All Correspondence<br>Plannetads<br>95 Maswell Park Road,<br>London,<br>TW3 2DP,<br>United Kingdom.</p>
-                    <h5  class="uk-text-bold">Email Addresses:</h5>
-                    <dl class="uk-description-list-line">
-                        <dt>Copyrights violation related issues</dt>
-                        <dd><a href="mailto:abuse@plannetads.com">abuse@plannetads.com</a></dd>
-                    </dl>
-                    <dl class="uk-description-list-line">
-                        <dt>All help and support related issues</dt>
-                        <dd> <a href="mailto:support@plannetads.com">support@plannetads.com</a></dd>
-                    </dl>
-                    <dl class="uk-description-list-line">
-                        <dt>All inquiries</dt>
-                        <dd><a href="mailto:info@plannetads.com">info@plannetads.com</a></dd>
-                    </dl>
+                    <?php
+                        $content = (new Model_Content())->where('seotitle', '=', 'contact-us')->where('locale','=','en_US')->cached()->find();
+                        echo $content->description;
+                    ?>
                 </div>
             </div>
             <?endif?>
         </div>
     </div>
 </div>
+

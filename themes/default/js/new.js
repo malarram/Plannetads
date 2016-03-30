@@ -279,7 +279,7 @@ $('#location-edit button').click(function(){
         height: 200
     });
 // google map set marker on address
-if ($('#map').length !== 0){
+if ($('#map-oo').length !== 0){
     new GMaps({
         div: '#map',
         zoom: parseInt($('#map').attr('data-zoom')),

@@ -11,7 +11,7 @@ $(function () {
 
 function calculate_price() {
     var plan_price = 0;
-    $('table#choose_plans tbody tr').each(function () {
+    $('table#choose_plans tbody tr:not(.summary)').each(function () {
         that = $(this);
         if(that.find('[name="plan_enable_disable"]').is(':checked')){
             that.find('select.plan_list,input.website').removeAttr('disabled');
@@ -25,6 +25,15 @@ function calculate_price() {
             that.find('input.website').val('');
         }
     });
+    total_price  = plan_price.toFixed(2);
     $('select.plan_list').trigger('chosen:updated');
-    $('.total_price').text(plan_price.toFixed(2));
+    $('.total_price').text(total_price);
+
+    if(total_price > 0){
+        $('#skip-continue').addClass('uk-hidden');
+        $('#proceed-checkout').removeClass('uk-hidden');
+    }else{
+        $('#proceed-checkout').addClass('uk-hidden');
+        $('#skip-continue').removeClass('uk-hidden');
+    }
 }

@@ -55,15 +55,13 @@
                         </tr>
                         <?endif?>
                         <? $total_amt += $order->amount; endforeach;?>
-                    </tbody>
-                    <tfoot>
-                        <tr class="uk-alert uk-alert-warning">
+                        <tr class="summary uk-alert uk-alert-warning">
                             <td></td>
                             <td></td>
                             <td class="uk-text-bold uk-text-large"><?= __('Total') ?></td>
                             <td class="uk-text-bold uk-text-large"><?= i18n::format_currency($total_amt, $orders[0]->currency) ?></td>
                         </tr>
-                    </tfoot>
+                    </tbody>
                 </table>
                 <div class="uk-form-controls">
                     <?if ($total_amt>0):?>

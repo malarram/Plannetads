@@ -49,7 +49,32 @@
                         </div>
                     </div>
                     <div class="video-wrapper">
-                        Videos goes here....
+                        <div class="uk-slidenav-position" data-uk-slideshow="{height:<?= Core::config('image.height') ?>}">
+                        <?$videos = $ad->get_videos()?>
+                        <?if($videos): $i=0; $dots_html = ""; ?>
+                            <ul class="uk-slideshow">
+                                <?foreach ($videos as $path => $video):?>
+                                <?php if(isset($video) && !empty($video)):?>
+                                <li>
+                                        <iframe src="<?=$video?>" width="500" height="200" frameborder="0" allowfullscreen></iframe>
+                                    </li>
+                                <?php
+                                $dots_html .= "<li data-uk-slideshow-item='{$i}'><a href='#'></a></li>";
+                                $i++;
+                                endif;
+                                ?>
+                                <?endforeach?>
+                            </ul>
+
+                            <a href="javascript:void(0);" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
+                            <a href="javascript:void(0);" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next"></a>
+                            <ul class="uk-dotnav uk-dotnav-contrast uk-position-bottom uk-flex-center">
+                                <?php echo $dots_html; ?>
+                            </ul>
+                        <?else:?>
+                        <img src="http://placehold.it/<?= Core::config('image.width') ?>x<?= Core::config('image.height') ?>/12222D/35C187/?text=plannetads" alt="<?= HTML::chars($ad->title) ?>" />
+                        <?endif?>
+                        </div>
                     </div>
                 </div>
                 <?if(core::config('advertisement.description')!=FALSE):?>

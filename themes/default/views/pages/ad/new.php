@@ -79,7 +79,7 @@
                 <div class="uk-grid">
                     <div class="uk-width-1-1">
                         <?= FORM::label('description', __('Description'), array('class' => 'uk-form-label', 'for' => 'description', 'spellcheck' => TRUE)) ?>
-                        <?= FORM::textarea('description', Request::current()->post('description'), array('class' => 'summernote uk-width-1-1 uk-form-large' . ((Core::config("advertisement.description_bbcode")) ? NULL : ' disable-bbcode'), 'name' => 'description', 'id' => 'description', 'rows' => 10, 'required')) ?>
+                        <?= FORM::textarea('description', Request::current()->post('description'), array('class' => 'uk-width-1-1 uk-form-large', 'name' => 'description', 'id' => 'description', 'rows' => 10, 'required')) ?>
                     </div>
                 </div>
                 <?endif?>
@@ -119,6 +119,15 @@
                     </div>
                 </div>
                 <?endif?>
+
+                <div class="uk-grid">
+                    <div class="uk-width1-1-1">
+                        <?= FORM::label('videos', __('Videos'), array('class' => 'uk-form-label', 'for' => 'videos')) ?>
+                        <?for ($i=0; $i < core::config("advertisement.num_images") ; $i++):?>
+                        <?= FORM::input("video_{$i}", Request::current()->post("video_$i"), array('class' => 'uk-width-1-2 uk-float-left uk-form-large uk-margin-small-bottom', 'placeholder' => __('Enter video url here'))) ?>
+                        <?endfor?>
+                    </div>
+                </div>
 
                 <div class="uk-grid">
                     <?if($form_show['phone'] != FALSE):?>
@@ -247,7 +256,7 @@
                 <?endif?>
                 <div class="uk-grid uk-float-right">
                     <div class="uk-width1-1-1">
-                        <?= FORM::button('submit_btn', __('Publish new'), array('type' => 'submit', 'id' => 'publish-new-btn', 'class' => 'uk-button uk-button-primary uk-button-large', 'action' => Route::url('post_new', array('controller' => 'new', 'action' => 'index')))) ?>
+                        <?= FORM::button('submit_btn', __('Add premium plans(optional)'), array('type' => 'submit', 'id' => 'publish-new-btn', 'class' => 'uk-button uk-button-primary uk-button-large', 'action' => Route::url('post_new', array('controller' => 'new', 'action' => 'index')))) ?>
                         <?if ( ! Core::config('advertisement.leave_alert')):?>
                         <input type="hidden" name="leave_alert" value="0" disabled>
                         <?endif?>

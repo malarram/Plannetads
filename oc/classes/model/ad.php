@@ -46,6 +46,10 @@ class Model_Ad extends ORM {
             'model' => 'favorite',
             'foreign_key' => 'id_ad',
         ),
+        'attachments' => array(
+            'model' => 'attachment',
+            'foreign_key' => 'id_ad',
+        ),
     );
 
     /**
@@ -261,6 +265,22 @@ class Model_Ad extends ORM {
 
         return $image_path;
     }
+    /**
+     * Gets all videos
+     * @return [array] [array with image names]
+     */
+    public function get_videos() {
+        $videos = array();
+
+        if ($this->loaded() AND $this->attachments->count_all() > 0) {
+            $attachments = $this->attachments->find_all();
+            foreach ($attachments as $i => $row) {
+                $videos[$i] = $row->atch_path;
+            }
+        }
+
+        return $videos;
+    }
 
     /**
      * Gets the first image, and checks type of $type
@@ -363,6 +383,26 @@ class Model_Ad extends ORM {
                 return $this->save_image_file($file, $this->has_images + 1);
             } else {
                 Alert::set(Alert::ALERT, __('Something went wrong with uploading pictures, please check format'));
+                return FALSE;
+            }
+        }
+    }
+
+    /**
+     * save_video save videos in DB
+     *
+     * @param array image
+     * @return bool
+     */
+    public function save_video($video) {
+        if (!$this->loaded())
+            return FALSE;
+
+        if ($video !== NULL) {
+            try {
+                $this->save();
+                return TRUE;
+            } catch (Exception $e) {
                 return FALSE;
             }
         }
