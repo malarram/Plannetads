@@ -11,6 +11,8 @@
 <?else:?>
 
 <?= Breadcrumbs::render('breadcrumbs') ?>
+<?$videos = $ad->get_videos()?>
+
 <div class="uk-container uk-container-center">
     <article class="uk-article">
         <h1 class="uk-article-title ad-title"><?= $ad->title; ?></h1>
@@ -19,7 +21,9 @@
             <div class="uk-width-medium-6-10 uk-width-medium-1-1">
                 <ul class="uk-tab uk-margin-bottom" data-uk-tab="{connect:'#media'}">
                     <li class="uk-active"><a href="">Images</a></li>
+                    <?if($videos):?>
                     <li><a href="">Videos</a></li>
+                    <?endif?>
                 </ul>
                 <div id="media"  class="uk-switcher">
                     <div class="slide-wrapper">
@@ -48,34 +52,15 @@
                         <?endif?>
                         </div>
                     </div>
+                    <?if($videos):?>
                     <div class="video-wrapper">
-                        <div class="uk-slidenav-position" data-uk-slideshow="{height:<?= Core::config('image.height') ?>}">
-                        <?$videos = $ad->get_videos()?>
-                        <?if($videos): $i=0; $dots_html = ""; ?>
-                            <ul class="uk-slideshow">
-                                <?foreach ($videos as $path => $video):?>
-                                <?php if(isset($video) && !empty($video)):?>
-                                <li>
-                                        <iframe src="<?=$video?>" width="500" height="200" frameborder="0" allowfullscreen></iframe>
-                                    </li>
-                                <?php
-                                $dots_html .= "<li data-uk-slideshow-item='{$i}'><a href='#'></a></li>";
-                                $i++;
-                                endif;
-                                ?>
-                                <?endforeach?>
-                            </ul>
-
-                            <a href="javascript:void(0);" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slideshow-item="previous"></a>
-                            <a href="javascript:void(0);" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next"></a>
-                            <ul class="uk-dotnav uk-dotnav-contrast uk-position-bottom uk-flex-center">
-                                <?php echo $dots_html; ?>
-                            </ul>
-                        <?else:?>
-                        <img src="http://placehold.it/<?= Core::config('image.width') ?>x<?= Core::config('image.height') ?>/12222D/35C187/?text=plannetads" alt="<?= HTML::chars($ad->title) ?>" />
+                        <?foreach ($videos as $path => $video):?>
+                        <?if(isset($video) && !empty($video)):?>
+                            <iframe width="660" height="360" src="<?=$video?>" frameborder="0" allowfullscreen></iframe>
                         <?endif?>
-                        </div>
+                        <?endforeach?>
                     </div>
+                    <?endif?>
                 </div>
                 <?if(core::config('advertisement.description')!=FALSE):?>
                     <p><?= Text::bb2html($ad->description, TRUE) ?></p>

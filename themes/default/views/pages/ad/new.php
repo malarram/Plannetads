@@ -122,9 +122,9 @@
 
                 <div class="uk-grid">
                     <div class="uk-width1-1-1">
-                        <?= FORM::label('videos', __('Videos'), array('class' => 'uk-form-label', 'for' => 'videos')) ?>
-                        <?for ($i=0; $i < core::config("advertisement.num_images") ; $i++):?>
-                        <?= FORM::input("video_{$i}", Request::current()->post("video_$i"), array('class' => 'uk-width-1-2 uk-float-left uk-form-large uk-margin-small-bottom', 'placeholder' => __('Enter video url here'))) ?>
+                        <?= FORM::label('videos', __('Video'), array('class' => 'uk-form-label', 'for' => 'videos')) ?>
+                        <?for ($i=0; $i < core::config("advertisement.num_videos") ; $i++):?>
+                        <?= FORM::input("video_{$i}", Request::current()->post("video_$i"), array('class' => 'uk-width-1-1 uk-form-large uk-margin-small-bottom', 'placeholder' => __('Enter video url here'))) ?>
                         <?endfor?>
                     </div>
                 </div>
