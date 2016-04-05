@@ -39,16 +39,27 @@
                     'cn_HK' => ['image' => 'hk.png', 'label' => '中文(香港)']
                 ];
                 $selected_lang = @$lang_array[I18n::lang()];
+                $available_languages = OC_I18n::get_languages();
                 ?>
 
                 <div class="uk-button-dropdown" data-uk-dropdown="{mode:'click'}">
-                    <a class="uk-button uk-button-mini" ><img src="<?=URL::base()?>/themes/default/images/flags/<?=$selected_lang['image']?>" alt="United Kingdom"> <?=$selected_lang['label']?> <i class="uk-icon-caret-down"></i></a>
+                    <a class="uk-button uk-button-mini" ><img src="<?= URL::base() ?>/themes/default/images/flags/<?= $selected_lang['image'] ?>" alt="United Kingdom"> <?= $selected_lang['label'] ?> <i class="uk-icon-caret-down"></i></a>
                     <div class="uk-dropdown uk-scrollable-box">
                         <ul class="uk-nav uk-nav-dropdown uk-panel ">
                             <?php
-                            foreach ($lang_array as $code => $lang):
+//                            foreach ($lang_array as $code => $lang):
+                            foreach ($available_languages as $language):
+                                $code = $language;
+                                if (isset($lang_array[$language]))
+                                    $lang = $lang_array[$language];
+                                else
+                                    $lang = ['label' => OC_I18n::$locales[substr($language,0,2)]];
+
                                 $class = ($code == I18n::lang()) ? ' uk-text-bold' : '';
-                                echo "<li><a href='" . URL::base() . "?language={$code}' title='{$lang['label']}' class='{$class}'><img src='" . URL::base() . "/themes/default/images/flags/{$lang['image']}' alt='{$lang['label']}' class='uk-margin-small-right'> {$lang['label']}</a></li>";
+                                echo "<li><a href='" . URL::base() . "?language={$code}' title='{$lang['label']}' class='{$class}'>";
+                                if(isset($lang['image']))
+                                echo "<img src='" . URL::base() . "/themes/default/images/flags/{$lang['image']}' alt='{$lang['label']}' class='uk-margin-small-right' />";
+                                echo "{$lang['label']}</a></li>";
                             endforeach;
                             ?>
                         </ul>
