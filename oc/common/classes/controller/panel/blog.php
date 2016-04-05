@@ -15,18 +15,18 @@ class Controller_Panel_Blog extends Auth_Crud {
 	/**
      *
      * Loads a basic list info
-     * @param string $view template to render 
+     * @param string $view template to render
      */
     public function action_index($view = NULL)
     {
         $this->template->title = __($this->_orm_model);
         $this->template->scripts['footer'][] = 'js/oc-panel/crud/index.js';
-        
+
         $elements = new Model_Post();
         $elements->where('id_forum','IS',NULL);
 
         $pagination = Pagination::factory(array(
-                    'view'           => 'oc-panel/crud/pagination',
+                    'view'           => 'oc-panel/crud/pagination-admin',
                     'total_items'    => $elements->count_all(),
         //'items_per_page' => 10// @todo from config?,
         ))->route_params(array(
@@ -45,9 +45,9 @@ class Controller_Panel_Blog extends Auth_Crud {
 
         if ($view === NULL)
             $view = 'oc-panel/pages/blog/index';
-        
+
         $this->render($view, array('elements' => $elements,'pagination'=>$pagination));
-    }    
+    }
 
 
         /**
@@ -57,15 +57,15 @@ class Controller_Panel_Blog extends Auth_Crud {
     {
 
         $this->template->title = __('New').' '.__($this->_orm_model);
-        
+
         $form = new FormOrm($this->_orm_model);
-            
+
         // fields array
-        foreach ($form->fields as $field_key => $field) 
+        foreach ($form->fields as $field_key => $field)
         {
             $fields[$field_key] = array('name'=>$field['field_name'], 'value'=>$field['value'], 'id'=>$field['field_id'], 'label'=>$field['label']);
         }
-        
+
         if ($this->request->post())
         {
             if ( $success = $form->submit() )
@@ -75,30 +75,30 @@ class Controller_Panel_Blog extends Auth_Crud {
                 Alert::set(Alert::SUCCESS, __('Blog post created').'. '.__('Please to see the changes delete the cache')
                     .'<br><a class="btn btn-primary btn-mini ajax-load" href="'.Route::url('oc-panel',array('controller'=>'tools','action'=>'cache')).'?force=1" title="'.__('Delete All').'">'
                     .__('Delete All').'</a>');
-            
+
                 $this->redirect(Route::get($this->_route_name)->uri(array('controller'=> Request::current()->controller())));
             }
-            else 
+            else
             {
                 Alert::set(Alert::ERROR, __('Check form for errors'));
             }
         }
-    
+
         return $this->render('oc-panel/pages/blog/create', array('form' => $fields));
     }
-    
-    
+
+
     /**
      * CRUD controller: UPDATE
      */
     public function action_update()
     {
         $this->template->title = __('Update').' '.__($this->_orm_model).' '.$this->request->param('id');
-    
+
         $form = new FormOrm($this->_orm_model,$this->request->param('id'));
-        
+
          // fields array
-         foreach ($form->fields as $field_key => $field) 
+         foreach ($form->fields as $field_key => $field)
          {
              $fields[$field_key] = array('name'=>$field['field_name'], 'value'=>$field['value'], 'id'=>$field['field_id'], 'label'=>$field['label']);
          }
@@ -108,7 +108,7 @@ class Controller_Panel_Blog extends Auth_Crud {
             if ( $success = $form->submit() )
             {
                 $form->object->description = Kohana::$_POST_ORIG['formorm']['description'];
-              
+
                 $form->save_object();
                 Alert::set(Alert::SUCCESS, __('Blog post updated').'. '.__('Please to see the changes delete the cache')
                     .'<br><a class="btn btn-primary btn-mini ajax-load" href="'.Route::url('oc-panel',array('controller'=>'tools','action'=>'cache')).'?force=1" title="'.__('Delete All').'">'
@@ -120,7 +120,7 @@ class Controller_Panel_Blog extends Auth_Crud {
                 Alert::set(Alert::ERROR, __('Check form for errors'));
             }
         }
-    
+
         return $this->render('oc-panel/pages/blog/update', array('form' => $fields));
     }
 }
