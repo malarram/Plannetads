@@ -22,7 +22,7 @@
         <!--<? View::factory('analytics')?>-->
         <script type="text/javascript">
             var baseURL = '<?= URL::base() ?>';
-            var userLang = '<?= Cookie::get('user_language');?>';
+            var userLang = '<?= I18n::lang();?>';
         </script>
     </head>
 

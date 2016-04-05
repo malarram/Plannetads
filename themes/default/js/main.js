@@ -8,16 +8,6 @@ $(function () {
         window.location.href = _href;
     });
 
-    $('#lang-change a').on('click', function () {
-        lang_id = $(this).data('lang-id');
-        setGetParameter('language',lang_id);
-    });
-
-    if(userLang){
-        $("#lang-change a[data-lang-id='"+userLang+"']").closest();
-    }
-
-
     $.validator.setDefaults({
         'errorClass': 'uk-text-danger uk-form-help-block',
         'errorElement': 'p',
