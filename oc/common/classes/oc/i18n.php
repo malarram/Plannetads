@@ -16,15 +16,15 @@ class OC_I18n extends Kohana_I18n {
     public static $locale_default = 'en_UK';
     public static $charset;
     public static $domain;
-    
+
     /**
      * forces to use the dropin
      */
     public static $dropin = FALSE;
-    
+
 
     /**
-     * 
+     *
      * Initializes the php-gettext
      * Remember to load first php-gettext
      * @param string $locale
@@ -32,28 +32,31 @@ class OC_I18n extends Kohana_I18n {
      * @param string $domain
      */
     public static function initialize($locale = NULL, $charset = 'utf-8', $domain = 'messages')
-    {        	
+    {
         if ($locale===NULL)
             $locale = self::$locale_default;
 
         /**
          * setting the statics so later we can access them from anywhere
          */
-        
+
         //we allow to choose lang from the url
         if (Core::config('i18n.allow_query_language')==1)
         {
+            $locales = self::get_languages();
+
             if(Core::get('language')!==NULL)
-            {
                 $locale  = Core::get('language');
-            }
             elseif (Cookie::get('user_language')!==NULL)
-            {
                 $locale = Cookie::get('user_language');
-            }
-            Cookie::set('user_language',$locale, Core::config('auth.lifetime'));
+
+            //does the locale exists?
+            if (array_key_exists($locale,self::get_languages()) )
+                Cookie::set('user_language',$locale, Core::config('auth.lifetime'));
+            else
+                $locale = self::$locale_default;
         }
-     
+
         self::$lang    = $locale;//used in i18n kohana
         self::$locale  = $locale;
         self::$charset = $charset;
@@ -66,10 +69,10 @@ class OC_I18n extends Kohana_I18n {
 
         //time zone set in the config
         date_default_timezone_set(Kohana::$config->load('i18n')->timezone);
-        
+
         //Kohana core charset, used in the HTML templates as well
         Kohana::$charset  = self::$charset;
-                
+
         /**
          * In Windows LC_ALL are not recognized sometimes.
          * So we check if LC_ALL is defined to avoid bugs,
@@ -95,8 +98,8 @@ class OC_I18n extends Kohana_I18n {
              * We load php-gettext here since Kohana_I18n tries to create the function __() function when we extend it.
              * PHP-gettext already does this.
              */
-            require Kohana::find_file('vendor', 'php-gettext/gettext','inc'); 
-            
+            require Kohana::find_file('vendor', 'php-gettext/gettext','inc');
+
             T_setlocale(LC_ALL, self::$locale.'.'.self::$charset);
             T_bindtextdomain(self::$domain,DOCROOT.'languages');
             T_bind_textdomain_codeset(self::$domain, self::$charset);
@@ -104,7 +107,7 @@ class OC_I18n extends Kohana_I18n {
 
             //force to use the gettext dropin
             self::$dropin = TRUE;
-            
+
         }
         /**
          * gettext exists using fallback in case locale doesn't exists
@@ -115,18 +118,18 @@ class OC_I18n extends Kohana_I18n {
             bind_textdomain_codeset(self::$domain, self::$charset);
             textdomain(self::$domain);
         }
-        
-    }    
+
+    }
 
     /**
      * get the language used in the HTML
-     * @return string 
+     * @return string
      */
     public static function html_lang()
     {
         return substr(core::config('i18n.locale'),0,2);
     }
-    
+
     /**
      * get languages
      * @return array
@@ -139,14 +142,14 @@ class OC_I18n extends Kohana_I18n {
         $languages = array();
 
         //check directory for langs
-        foreach (new DirectoryIterator($folder) as $file) 
+        foreach (new DirectoryIterator($folder) as $file)
         {
             if($file->isDir() AND !$file->isDot())
             {
                 $languages[$file->getFilename()] = $file->getFilename();
             }
         }
-        
+
         //alphabetical order
         asort($languages);
 
@@ -182,7 +185,7 @@ class OC_I18n extends Kohana_I18n {
     }
 
     /**
-     * 
+     *
      * Override normal translate
      * @param string $string to translate
      * @param string $lang does nothing, legacy
@@ -196,9 +199,209 @@ class OC_I18n extends Kohana_I18n {
             return _($string);
     }
 
+    public static $locales = array(
+                                    "aa" => "Afar",
+                                    "ab" => "Abkhazian",
+                                    "ae" => "Avestan",
+                                    "af" => "Afrikaans",
+                                    "ak" => "Akan",
+                                    "am" => "Amharic",
+                                    "an" => "Aragonese",
+                                    "ar" => "Arabic",
+                                    "as" => "Assamese",
+                                    "av" => "Avaric",
+                                    "ay" => "Aymara",
+                                    "az" => "Azerbaijani",
+                                    "ba" => "Bashkir",
+                                    "be" => "Belarusian",
+                                    "bg" => "Bulgarian",
+                                    "bh" => "Bihari",
+                                    "bi" => "Bislama",
+                                    "bm" => "Bambara",
+                                    "bn" => "Bengali",
+                                    "bo" => "Tibetan",
+                                    "br" => "Breton",
+                                    "bs" => "Bosnian",
+                                    "ca" => "Catalan",
+                                    "ce" => "Chechen",
+                                    "ch" => "Chamorro",
+                                    "co" => "Corsican",
+                                    "cr" => "Cree",
+                                    "cs" => "Czech",
+                                    "cu" => "Church Slavic",
+                                    "cv" => "Chuvash",
+                                    "cy" => "Welsh",
+                                    "da" => "Danish",
+                                    "de" => "German",
+                                    "dv" => "Dhivehi",
+                                    "dz" => "Dzongkha",
+                                    "ee" => "Ewe",
+                                    "el" => "Greek",
+                                    "en" => "English",
+                                    "eo" => "Esperanto",
+                                    "es" => "Spanish",
+                                    "et" => "Estonian",
+                                    "eu" => "Basque",
+                                    "fa" => "Persian",
+                                    "ff" => "Fulah",
+                                    "fi" => "Finnish",
+                                    "fj" => "Fijian",
+                                    "fo" => "Faroese",
+                                    "fr" => "French",
+                                    "fy" => "Western Frisian",
+                                    "ga" => "Irish",
+                                    "gd" => "Gaelic",
+                                    "gl" => "Galician",
+                                    "gn" => "Guarani",
+                                    "gu" => "Gujarati",
+                                    "gv" => "Manx",
+                                    "ha" => "Hausa",
+                                    "he" => "Hebrew",
+                                    "hi" => "Hindi",
+                                    "ho" => "Hiri Motu",
+                                    "hr" => "Croatian",
+                                    "ht" => "Haitian",
+                                    "hu" => "Hungarian",
+                                    "hy" => "Armenian",
+                                    "hz" => "Herero",
+                                    "ia" => "Interlingua",
+                                    "id" => "Indonesian",
+                                    "ie" => "Interlingue",
+                                    "ig" => "Igbo",
+                                    "ii" => "Sichuan Yi",
+                                    "ik" => "Inupiaq",
+                                    "in" => "Indonesian",
+                                    "io" => "Ido",
+                                    "is" => "Icelandic",
+                                    "it" => "Italian",
+                                    "iu" => "Inuktitut",
+                                    "iw" => "Hebrew",
+                                    "ja" => "Japanese",
+                                    "ji" => "Yiddish",
+                                    "jv" => "Javanese",
+                                    "jw" => "Javanese",
+                                    "ka" => "Georgian",
+                                    "kg" => "Kongo",
+                                    "ki" => "Kikuyu",
+                                    "kj" => "Kuanyama",
+                                    "kk" => "Kazakh",
+                                    "kl" => "Kalaallisut",
+                                    "km" => "Central Khmer",
+                                    "kn" => "Kannada",
+                                    "ko" => "Korean",
+                                    "kr" => "Kanuri",
+                                    "ks" => "Kashmiri",
+                                    "ku" => "Kurdish",
+                                    "kv" => "Komi",
+                                    "kw" => "Cornish",
+                                    "ky" => "Kirghiz",
+                                    "la" => "Latin",
+                                    "lb" => "Luxembourgish",
+                                    "lg" => "Ganda",
+                                    "li" => "Limburgan",
+                                    "ln" => "Lingala",
+                                    "lo" => "Lao",
+                                    "lt" => "Lithuanian",
+                                    "lu" => "Luba-Katanga",
+                                    "lv" => "Latvian",
+                                    "mg" => "Malagasy",
+                                    "mh" => "Marshallese",
+                                    "mi" => "Maori",
+                                    "mk" => "Macedonian",
+                                    "ml" => "Malayalam",
+                                    "mn" => "Mongolian",
+                                    "mo" => "Moldavian",
+                                    "mr" => "Marathi",
+                                    "ms" => "Malay",
+                                    "mt" => "Maltese",
+                                    "my" => "Burmese",
+                                    "na" => "Nauru",
+                                    "nb" => "Norwegian BokmÃƒÂ¥l",
+                                    "nd" => "North Ndebele",
+                                    "ne" => "Nepali",
+                                    "ng" => "Ndonga",
+                                    "nl" => "Dutch",
+                                    "nn" => "Norwegian Nynorsk",
+                                    "no" => "Norwegian",
+                                    "nr" => "South Ndebele",
+                                    "nv" => "Navajo",
+                                    "ny" => "Nyanja",
+                                    "oc" => "Occitan",
+                                    "oj" => "Ojibwa",
+                                    "om" => "Oromo",
+                                    "or" => "Oriya",
+                                    "os" => "Ossetian",
+                                    "pa" => "Panjabi",
+                                    "pi" => "Pali",
+                                    "pl" => "Polish",
+                                    "ps" => "Pushto",
+                                    "pt" => "Portuguese",
+                                    "qu" => "Quechua",
+                                    "rm" => "Romansh",
+                                    "rn" => "Rundi",
+                                    "ro" => "Romanian",
+                                    "ru" => "Russian",
+                                    "rw" => "Kinyarwanda",
+                                    "sa" => "Sanskrit",
+                                    "sc" => "Sardinian",
+                                    "sd" => "Sindhi",
+                                    "se" => "Northern Sami",
+                                    "sg" => "Sango",
+                                    "sh" => "Serbo-Croatian",
+                                    "si" => "Sinhala",
+                                    "sk" => "Slovak",
+                                    "sl" => "Slovenian",
+                                    "sm" => "Samoan",
+                                    "sn" => "Shona",
+                                    "so" => "Somali",
+                                    "sq" => "Albanian",
+                                    "sr" => "Serbian",
+                                    "ss" => "Swati",
+                                    "st" => "Southern Sotho",
+                                    "su" => "Sundanese",
+                                    "sv" => "Swedish",
+                                    "sw" => "Swahili",
+                                    "ta" => "Tamil",
+                                    "te" => "Telugu",
+                                    "tg" => "Tajik",
+                                    "th" => "Thai",
+                                    "ti" => "Tigrinya",
+                                    "tk" => "Turkmen",
+                                    "tl" => "Tagalog",
+                                    "tn" => "Tswana",
+                                    "to" => "Tonga",
+                                    "tr" => "Turkish",
+                                    "ts" => "Tsonga",
+                                    "tt" => "Tatar",
+                                    "tw" => "Twi",
+                                    "ty" => "Tahitian",
+                                    "ug" => "Uighur",
+                                    "uk" => "Ukrainian",
+                                    "ur" => "Urdu",
+                                    "uz" => "Uzbek",
+                                    "ve" => "Venda",
+                                    "vi" => "Vietnamese",
+                                    "vo" => "VolapÃƒÂ¼k",
+                                    "wa" => "Walloon",
+                                    "wo" => "Wolof",
+                                    "xh" => "Xhosa",
+                                    "yi" => "Yiddish",
+                                    "yo" => "Yoruba",
+                                    "za" => "Zhuang",
+                                    "zh" => "Chinese",
+                                    "zu" => "Zulu");
+
+    public static function get_display_language($locale)
+    {
+        if (strlen($locale)>2)
+            $locale = substr($locale,0,2);
+
+        return (isset(self::$locales[$locale]))?self::$locales[$locale]:$locale;
+    }
+
     /**
      * returns the number in the locale format
-     * @param  float $number 
+     * @param  float $number
      * @return string
      */
     public static function money_format($number)
@@ -217,15 +420,15 @@ class OC_I18n extends Kohana_I18n {
 
     /**
      * A list of the ISO 4217 currency codes with symbol,format and symbol order
-     * 
-     * Symbols from 
+     *
+     * Symbols from
      * http://character-code.com/currency-html-codes.php
      * http://www.phpclasses.org/browse/file/2054.html
      * https://github.com/yiisoft/yii/blob/633e54866d54bf780691baaaa4a1f847e8a07e23/framework/i18n/data/en_us.php
-     * 
-     * Formats from 
+     *
+     * Formats from
      * http://www.joelpeterson.com/blog/2011/03/formatting-over-100-currencies-in-php/
-     * 
+     *
      * Array with key as ISO 4217 currency code
      * 0 - Currency Symbol if there's
      * 1 - Round
@@ -273,7 +476,7 @@ class OC_I18n extends Kohana_I18n {
         'HKD' => array('HK$',2,'.',',',0),          //  Hong Kong Dollar
         'HUF' => array('HK$',0,'','.',0),           //  Hungary, Forint
         'ISK' => array('kr',0,'','.',1),           //  Iceland Krona
-        'INR' => array('&#2352;',2,'.',',',0),          //  Indian Rupee ₹
+        'INR' => array('&#2352;',2,'.',',',0),          //  Indian Rupee â‚¹
         'IDR' => array(NULL,2,',','.',0),          //  Indonesia, Rupiah
         'IRR' => array(NULL,2,'.',',',0),          //  Iranian Rial
         'JMD' => array(NULL,2,'.',',',0),          //  Jamaican Dollar
@@ -292,7 +495,7 @@ class OC_I18n extends Kohana_I18n {
         'MZM' => array(NULL,2,',','.',0),          //  Mozambique Metical
         'NPR' => array(NULL,2,'.',',',0),          //  Nepalese Rupee
         'ANG' => array(NULL,2,'.',',',0),          //  Netherlands Antillian Guilder
-        'ILS' => array('&#8362;',2,'.',',',0),          //  New Israeli Shekel ₪
+        'ILS' => array('&#8362;',2,'.',',',0),          //  New Israeli Shekel â‚ª
         'TRY' => array(NULL,2,'.',',',0),          //  New Turkish Lira
         'NZD' => array('NZ$',2,'.',',',0),          //  New Zealand Dollar
         'NOK' => array('kr',2,',','.',1),          //  Norwegian Krone
@@ -300,7 +503,7 @@ class OC_I18n extends Kohana_I18n {
         'PEN' => array(NULL,2,'.',',',0),          //  Peru, Nuevo Sol
         'UYU' => array(NULL,2,',','.',0),          //  Peso Uruguayo
         'PHP' => array(NULL,2,'.',',',0),          //  Philippine Peso
-        'PLN' => array(NULL,2,'.',' ',0),          //  Poland, Zloty
+        'PLN' => array(" zÅ‚",2,'.',' ',1),          //  Poland, Zloty
         'GBP' => array('&pound;',2,'.',',',0),          //  Pound Sterling
         'OMR' => array(NULL,3,'.',',',0),          //  Rial Omani
         'RON' => array(NULL,2,',','.',0),          //  Romania, New Leu
@@ -311,12 +514,12 @@ class OC_I18n extends Kohana_I18n {
         'SKK' => array(NULL,2,',',' ',0),          //  Slovak Koruna
         'SIT' => array(NULL,2,',','.',0),          //  Slovenia, Tolar
         'ZAR' => array('R',2,'.',' ',0),          //  South Africa, Rand
-        'KRW' => array('&#8361;',0,'',',',0),           //  South Korea, Won ₩
+        'KRW' => array('&#8361;',0,'',',',0),           //  South Korea, Won â‚©
         'SZL' => array(NULL,2,'.',', ',0),         //  Swaziland, Lilangeni
         'SEK' => array('kr',2,',','.',1),          //  Swedish Krona
-        'CHF' => array('SFr ',2,'.','\'',0),         //  Swiss Franc 
+        'CHF' => array('SFr ',2,'.','\'',0),         //  Swiss Franc
         'TZS' => array(NULL,2,'.',',',0),          //  Tanzanian Shilling
-        'THB' => array('&#3647;',2,'.',',',1),          //  Thailand, Baht ฿
+        'THB' => array('&#3647;',2,'.',',',1),          //  Thailand, Baht à¸¿
         'TOP' => array(NULL,2,'.',',',0),          //  Tonga, Paanga
         'AED' => array(NULL,2,'.',',',0),          //  UAE Dirham
         'UAH' => array(NULL,2,',',' ',0),          //  Ukraine, Hryvnia
@@ -324,15 +527,15 @@ class OC_I18n extends Kohana_I18n {
         'VUV' => array(NULL,0,'',',',0),           //  Vanuatu, Vatu
         'VEF' => array(NULL,2,',','.',0),          //  Venezuela Bolivares Fuertes
         'VEB' => array(NULL,2,',','.',0),          //  Venezuela, Bolivar
-        'VND' => array('&#x20ab;',0,'','.',0),           //  Viet Nam, Dong ₫
+        'VND' => array('&#x20ab;',0,'','.',0),           //  Viet Nam, Dong â‚«
         'ZWD' => array(NULL,2,'.',' ',0),          //  Zimbabwe Dollar
     );
-    
+
     /**
      * Format the currency value according to the formatter rules.
      * @param  float $number  The numeric currency value.
      * @param  string $currency The 3-letter ISO 4217 currency code indicating the currency to use.
-     * @return string    representing the formatted currency value.      
+     * @return string    representing the formatted currency value.
      */
     public static function format_currency($number,$currency = 'USD')
     {
@@ -343,7 +546,7 @@ class OC_I18n extends Kohana_I18n {
         //rupees weird format
         if ($currency == 'INR')
             $number = self::format_inr($number);
-        else 
+        else
             $number = number_format($number,self::$currencies[$currency][1],self::$currencies[$currency][2],self::$currencies[$currency][3]);
 
         //no symbol using default code
@@ -386,7 +589,7 @@ class OC_I18n extends Kohana_I18n {
         }
         return $num . $dec;
     }
-    
+
     /**
      * formats measurement system (by defautl metric)
      * @param  float    $number number
@@ -400,24 +603,44 @@ class OC_I18n extends Kohana_I18n {
         else {
             $str = Num::round($number, 1).' km';
         }
-        
+
         return $str;
     }
 
     /**
+     * get ISO 4217 international currency code
+     * @return string    international currency code
+     */
+    public static function get_intl_currency_symbol()
+    {
+        $number_format = core::config('general.number_format');
+
+        if (in_array($number_format, array_keys(self::$currencies)))
+        {
+            // return since it's a ISO 4217 currency codes
+            return $number_format;
+        }
+        else
+        {
+            list( , , $intl_currency_symbol) = array_values(localeconv());
+            return $intl_currency_symbol;
+        }
+    }
+
+    /**
      * get country code using IP
-     * @param  string $ip 
-     * @return string     
+     * @param  string $ip
+     * @return string
      */
     public static function ip_country_code($ip = NULL)
     {
         $country_code = NULL;
 
         //if got the country via cloudflare and not trying to get another country...
-        if (!empty($_SERVER["HTTP_CF_IPCOUNTRY"]) AND $ip === NULL) 
+        if (!empty($_SERVER["HTTP_CF_IPCOUNTRY"]) AND $ip === NULL)
         {
             $country_code = $_SERVER["HTTP_CF_IPCOUNTRY"];
-        } 
+        }
         else
         {
             if ($ip === NULL)
@@ -434,10 +657,10 @@ class OC_I18n extends Kohana_I18n {
 
     /**
      * get ip geo information using apis from 3rd parties
-     * @param  string $ip 
-     * @return array     
+     * @param  string $ip
+     * @return array
      */
-    public static function ip_details($ip = NULL) 
+    public static function ip_details($ip = NULL)
     {
         if ($ip === NULL)
             $ip = Request::$client_ip;
@@ -453,7 +676,7 @@ class OC_I18n extends Kohana_I18n {
                                               'region'       => 'region',
                                               'postal_code'  => 'postal',
                                               'lat'          => 'loc', //"loc": "37.3860,-122.0838",
-                                              'lon'          => 'loc'), 
+                                              'lon'          => 'loc'),
 
                             'ip-api' => array('url'          => "http://ip-api.com/json/{$ip}",
                                               'country_code' => 'countryCode',
@@ -462,7 +685,7 @@ class OC_I18n extends Kohana_I18n {
                                               'region'       => 'regionName',
                                               'postal_code'  => 'zip',
                                               'lat'          => 'lat',
-                                              'lon'          => 'lon'), 
+                                              'lon'          => 'lon'),
 
                             'telize' => array('url'          => "http://www.telize.com/geoip/{$ip}",
                                               'country_code' => 'country_code',
@@ -471,10 +694,10 @@ class OC_I18n extends Kohana_I18n {
                                               'region'       => 'region',
                                               'postal_code'  => 'postal_code',
                                               'lat'          => 'latitude',
-                                              'lon'          => 'longitude'), 
-                            
+                                              'lon'          => 'longitude'),
+
                             );
-        
+
         //get 1 provider randomly
         $provider = array_rand($providers);
         $provider = $providers[$provider];
@@ -500,7 +723,7 @@ class OC_I18n extends Kohana_I18n {
             $lat = $result[$provider['lat']];
             $lon = $result[$provider['lon']];
         }
-        
+
         //echo $provider['url'];
         //return details
         $details = array( 'country_code' => $result[$provider['country_code']],
@@ -512,19 +735,19 @@ class OC_I18n extends Kohana_I18n {
                           'lon'          => $lon);
         return $details;
     }
-    
+
 }//end i18n
 
 
 /**
- * FROM: http://www.php.net/manual/en/function.money-format.php  
- *  We use this to avoid errors that Windows produces. 
+ * FROM: http://www.php.net/manual/en/function.money-format.php
+ *  We use this to avoid errors that Windows produces.
  *  money_format function is not supported on Windows OS machines
  */
 if ( !function_exists('money_format') )
 {
-    function money_format($format, $number) 
-    { 
-        return number_format($number, 2); 
-    } 
+    function money_format($format, $number)
+    {
+        return number_format($number, 2);
+    }
 }

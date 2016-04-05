@@ -7,6 +7,17 @@ $(function () {
         _href = $(this).find(':selected').data('href');
         window.location.href = _href;
     });
+
+    $('#lang-change a').on('click', function () {
+        lang_id = $(this).data('lang-id');
+        setGetParameter('language',lang_id);
+    });
+
+    if(userLang){
+        $("#lang-change a[data-lang-id='"+userLang+"']").closest();
+    }
+
+
     $.validator.setDefaults({
         'errorClass': 'uk-text-danger uk-form-help-block',
         'errorElement': 'p',
@@ -23,7 +34,7 @@ $(function () {
     $(".categories-listing .disclaimer-popup").click(function () {
         var modal = UIkit.modal("#uk-disclaimer-modal");
         _linkURL = $(this).attr('href');
-        $("#uk-disclaimer-modal").find('#disclaimer-agree-link').attr('href',_linkURL);
+        $("#uk-disclaimer-modal").find('#disclaimer-agree-link').attr('href', _linkURL);
         modal.show();
         return false;
     });
@@ -57,3 +68,26 @@ var cities = {
 
 //$("#location-search").easyAutocomplete(cities);
 
+function setGetParameter(paramName, paramValue)
+{
+    var url = baseURL;
+    var hash = location.hash;
+    url = url.replace(hash, '');
+    if (url.indexOf(paramName + "=") >= 0)
+    {
+        var prefix = url.substring(0, url.indexOf(paramName));
+        var suffix = url.substring(url.indexOf(paramName));
+        suffix = suffix.substring(suffix.indexOf("=") + 1);
+        suffix = (suffix.indexOf("&") >= 0) ? suffix.substring(suffix.indexOf("&")) : "";
+        url = prefix + paramName + "=" + paramValue + suffix;
+    }
+    else
+    {
+        if (url.indexOf("?") < 0)
+            url += "?" + paramName + "=" + paramValue;
+        else
+            url += "&" + paramName + "=" + paramValue;
+    }
+
+    window.location.href = url + hash;
+}
