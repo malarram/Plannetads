@@ -219,9 +219,11 @@ class Controller_New extends Controller {
                                 $filename = $new_ad->save_image($_FILES['image' . $i]);
                         }
 //For videos
-                        for ($i = 0; $i < core::config('advertisement.num_images'); $i++) {
-                            if (isset($_POST["video_{$i}"]) && !empty($_POST["video_{$i}"]))
-                                $filename = (new Model_Attachment)->save_video($_POST["video_{$i}"],$new_ad->id_ad);
+                        for ($i = 0; $i < core::config('advertisement.num_videos'); $i++) {
+                            if (isset($_POST["video_{$i}"]) && !empty($_POST["video_{$i}"])){
+                                $url = Model_Ad::FormatYoutubeURL($_POST["video_{$i}"]);
+                                (new Model_Attachment)->save_video($url,$new_ad->id_ad);
+                            }
                         }
 
 //                        if (isset($data['link_website']) && $data['link_website'] == '1') {

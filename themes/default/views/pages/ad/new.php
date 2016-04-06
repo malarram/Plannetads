@@ -264,19 +264,19 @@
                 </div>
             </fieldset>
             <?= FORM::close() ?>
-            <div class="uk-modal modal-statc uk-fade" id="processing-modal" data-backdrop="static" data-keyboard="false">
+        </div>
+    </div>
+</div>
+<div class="uk-modal modal-statc uk-fade" id="processing-modal" data-backdrop="static" data-keyboard="false">
+    <div class="modal-body">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><?= __('Processing...') ?></h4>
+                </div>
                 <div class="modal-body">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title"><?= __('Processing...') ?></h4>
-                            </div>
-                            <div class="modal-body">
-                                <div class="progress progress-striped active">
-                                    <div class="progress-bar" style="width: 100%"></div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="progress progress-striped active">
+                        <div class="progress-bar" style="width: 100%"></div>
                     </div>
                 </div>
             </div>

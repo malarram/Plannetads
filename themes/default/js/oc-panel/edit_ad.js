@@ -276,7 +276,7 @@ $('#location-edit button').click(function(){
 $('.summernote').summernote({
     height: 200
 });
-    
+
 // google map set marker on address
 if($('#map').length !== 0){
     map = new GMaps({

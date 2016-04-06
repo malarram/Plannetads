@@ -8,7 +8,9 @@
                     <img class="uk-thumbnail-medium" src="<?= $user->get_profile_image() ?>" alt="<?= ucwords($user->name) ?>" >
                     <div class="uk-thumbnail-caption"><?= ucwords($user->name) ?></div>
                     <div class="uk-thumbnail-caption"><?= 'Since ' . Date::format($user->created, core::config('general.date_format')) ?></div>
+                    <? if($user->last_login): ?>
                     <div class="uk-thumbnail-caption"><?= 'Last ' . Date::format($user->last_login, core::config('general.date_format')) ?></div>
+                    <? endif ?>
                     <div class="uk-thumbnail-caption">
                         <?if (Core::config('advertisement.reviews')==1):?>
                         <?if ($user->rate!==NULL):?>

@@ -92,7 +92,7 @@ class Model_Attachment extends ORM {
      * @param array image
      * @return bool
      */
-    public function save_video($video,$id_ad) {
+    public function save_video($video, $id_ad) {
         $this->atch_path = $video;
         $this->id_ad = $id_ad;
         $this->atch_type = self::ATTACHMENT_VIDEO;
@@ -103,6 +103,16 @@ class Model_Attachment extends ORM {
         } catch (Exception $e) {
             return FALSE;
         }
+    }
+
+    /**
+     * Deletes image from edit ad
+     * @return bool
+     */
+    public function delete_videos($id_ad) {
+        DB::delete('attachments')->where('id_ad', '=', $id_ad)->where('atch_type', '=', self::ATTACHMENT_VIDEO)->execute();
+
+        return TRUE;
     }
 
 }

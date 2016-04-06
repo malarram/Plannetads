@@ -34,27 +34,35 @@
                     'it_IT' => ['image' => 'it.png', 'label' => 'Italian'],
                     'da_DK' => ['image' => 'dk.png', 'label' => 'Danish']
                 ];
-                $selected_lang = @$lang_array[I18n::lang()];
-                $available_languages = OC_I18n::get_languages();
+
+                if (isset($lang_array[I18n::lang()]))
+                    $selected_lang = $lang_array[I18n::lang()];
+//                else
+//                    $selected_lang = ['label' => OC_I18n::$locales[substr(I18n::lang(), 0, 2)]];
+//                $available_languages = OC_I18n::get_languages();
                 ?>
 
                 <div class="uk-button-dropdown" data-uk-dropdown="{mode:'click'}">
-                    <a class="uk-button uk-button-mini" ><img src="<?= URL::base() ?>/themes/default/images/flags/<?= $selected_lang['image'] ?>" alt="United Kingdom"> <?= $selected_lang['label'] ?> <i class="uk-icon-caret-down"></i></a>
+                    <a class="uk-button uk-button-mini" >
+                        <?php if (isset($selected_lang['image'])): ?>
+                            <img src="<?= URL::base() ?>/themes/default/images/flags/<?= $selected_lang['image'] ?>" alt="<?= $selected_lang['label'] ?>" />
+                        <?php endif ?>
+                        <?= $selected_lang['label'] ?> <i class="uk-icon-caret-down"></i></a>
                     <div class="uk-dropdown uk-scrollable-box">
                         <ul class="uk-nav uk-nav-dropdown uk-panel ">
                             <?php
-//                            foreach ($lang_array as $code => $lang):
-                            foreach ($available_languages as $language):
-                                $code = $language;
-                                if (isset($lang_array[$language]))
-                                    $lang = $lang_array[$language];
-                                else
-                                    $lang = ['label' => OC_I18n::$locales[substr($language,0,2)]];
+                            foreach ($lang_array as $code => $lang):
+//                            foreach ($available_languages as $language):
+//                                $code = $language;
+//                                if (isset($lang_array[$language]))
+//                                    $lang = $lang_array[$language];
+//                                else
+//                                    $lang = ['label' => OC_I18n::$locales[substr($language, 0, 2)]];
 
                                 $class = ($code == I18n::lang()) ? ' uk-text-bold' : '';
                                 echo "<li><a href='" . URL::base() . "?language={$code}' title='{$lang['label']}' class='{$class}'>";
-                                if(isset($lang['image']))
-                                echo "<img src='" . URL::base() . "/themes/default/images/flags/{$lang['image']}' alt='{$lang['label']}' class='uk-margin-small-right' />";
+                                if (isset($lang['image']))
+                                    echo "<img src='" . URL::base() . "/themes/default/images/flags/{$lang['image']}' alt='{$lang['label']}' class='uk-margin-small-right' />";
                                 echo "{$lang['label']}</a></li>";
                             endforeach;
                             ?>

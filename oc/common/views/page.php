@@ -1,6 +1,5 @@
 <?php defined('SYSPATH') or die('No direct script access.'); ?>
 <?= Breadcrumbs::render('breadcrumbs') ?>
-
 <div class="uk-container uk-container-center ">
     <div class="uk-grid uk-block">
         <div class="uk-width-large-2-10 uk-width-medium-3-10 uk-width-small-3-10 ">
