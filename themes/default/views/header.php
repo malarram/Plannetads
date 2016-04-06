@@ -20,19 +20,19 @@
             <div class="language uk-float-right  uk-margin-right">
                 <?php
                 $lang_array = [
+                    'ar' => ['image' => 'dk.png', 'label' => 'Arabic'],
+                    'zh_CN' => ['image' => 'cn.png', 'label' => 'Chinese'],
+                    'nl_NL' => ['image' => 'nl.png', 'label' => 'Dutch'],
+                    'da_DK' => ['image' => 'dk.png', 'label' => 'Danish'],
                     'en_UK' => ['image' => 'us.png', 'label' => 'English'],
                     'fr_CA' => ['image' => 'ca.png', 'label' => 'French'],
-                    'es_ES' => ['image' => 'es.png', 'label' => 'Spanish'],
-                    'zh_CN' => ['image' => 'cn.png', 'label' => 'Chinese'],
-                    'ja_JP' => ['image' => 'jp.png', 'label' => 'Japanese'],
-                    'ru_RU' => ['image' => 'ru.png', 'label' => 'Russian'],
-                    'pl_PL' => ['image' => 'pl.png', 'label' => 'Polish'],
                     'de_DE' => ['image' => 'de.png', 'label' => 'German'],
-                    'nl_NL' => ['image' => 'nl.png', 'label' => 'Dutch'],
-                    'pt_PT' => ['image' => 'pg.png', 'label' => 'Portuguese'],
-                    'ar' => ['image' => 'dk.png', 'label' => 'Arabic'],
                     'it_IT' => ['image' => 'it.png', 'label' => 'Italian'],
-                    'da_DK' => ['image' => 'dk.png', 'label' => 'Danish']
+                    'ja_JP' => ['image' => 'jp.png', 'label' => 'Japanese'],
+                    'pl_PL' => ['image' => 'pl.png', 'label' => 'Polish'],
+                    'pt_PT' => ['image' => 'pg.png', 'label' => 'Portuguese'], 
+                    'ru_RU' => ['image' => 'ru.png', 'label' => 'Russian'],
+                    'es_ES' => ['image' => 'es.png', 'label' => 'Spanish']
                 ];
 
                 if (isset($lang_array[I18n::lang()]))
