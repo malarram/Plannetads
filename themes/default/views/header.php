@@ -20,23 +20,19 @@
             <div class="language uk-float-right  uk-margin-right">
                 <?php
                 $lang_array = [
-                    'en_UK' => ['image' => 'gb.png', 'label' => 'English (UK)'],
-                    'en_US' => ['image' => 'us.png', 'label' => 'English (US)'],
-                    'fr_CA' => ['image' => 'ca.png', 'label' => 'Français (Canada)'],
-                    'fr_FR' => ['image' => 'fr.png', 'label' => 'Français (France)'],
-                    'es_ES' => ['image' => 'es.png', 'label' => 'Español'],
-                    'da_DK' => ['image' => 'dk.png', 'label' => 'Dansk'],
-                    'ru_RU' => ['image' => 'ru.png', 'label' => 'Русский'],
-                    'pl_PL' => ['image' => 'pl.png', 'label' => 'Polski'],
-                    'it_IT' => ['image' => 'it.png', 'label' => 'Italiano'],
-                    'nl_NL' => ['image' => 'nl.png', 'label' => 'Nederlands'],
-                    'pt_BR' => ['image' => 'br.png', 'label' => 'Português (Brasil)'],
-                    'pt_PT' => ['image' => 'pg.png', 'label' => 'Português (Portugal)'],
-                    'ja_JP' => ['image' => 'jp.png', 'label' => '日本語'],
-                    'ka_JP' => ['image' => 'jp.png', 'label' => '日本語(関西)'],
-                    'cn_TW' => ['image' => 'tw.png', 'label' => '中文(台灣)'],
-                    'cn_CN' => ['image' => 'cn.png', 'label' => '中文(简体)'],
-                    'cn_HK' => ['image' => 'hk.png', 'label' => '中文(香港)']
+                    'en_UK' => ['image' => 'us.png', 'label' => 'English'],
+                    'fr_CA' => ['image' => 'ca.png', 'label' => 'French'],
+                    'es_ES' => ['image' => 'es.png', 'label' => 'Spanish'],
+                    'zh_CN' => ['image' => 'cn.png', 'label' => 'Chinese'],
+                    'ja_JP' => ['image' => 'jp.png', 'label' => 'Japanese'],
+                    'ru_RU' => ['image' => 'ru.png', 'label' => 'Russian'],
+                    'pl_PL' => ['image' => 'pl.png', 'label' => 'Polish'],
+                    'de_DE' => ['image' => 'de.png', 'label' => 'German'],
+                    'nl_NL' => ['image' => 'nl.png', 'label' => 'Dutch'],
+                    'pt_PT' => ['image' => 'pg.png', 'label' => 'Portuguese'],
+                    'ar' => ['image' => 'dk.png', 'label' => 'Arabic'],
+                    'it_IT' => ['image' => 'it.png', 'label' => 'Italian'],
+                    'da_DK' => ['image' => 'dk.png', 'label' => 'Danish']
                 ];
                 $selected_lang = @$lang_array[I18n::lang()];
                 $available_languages = OC_I18n::get_languages();
